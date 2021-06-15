@@ -1,2 +1,2 @@
-# Materials and Methods {-}
+# Materials and Methods {#METHODS}
 

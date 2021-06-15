@@ -1,3 +1,17 @@
 # Chapter 1 title here
-## placeholder
 
+## Introduction
+
+<!--CHANGE- placeholder for chapter intro-->
+```{=latex}
+\lipsum
+```
+
+## Methods
+\@ref(METHODS)
+
+## Results
+
+### Protrudin overexpression does not increase lysosome transport in the distal axon
+```{r}
+```
