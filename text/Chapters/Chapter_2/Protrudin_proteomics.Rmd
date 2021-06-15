@@ -1,0 +1,17 @@
+---
+title: "Protrudin_proteomics"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r data_import}
+#From Elbaz-Alon et al. 2020
+#extracted from Supplementary Data Set 2 PDF
+elbaz_alon = read.csv('./data/published_data_sets/Elbaz-Alon_2020_protrudin_interactions.csv', stringsAsFactors = F)
+
+#From 
+
+```

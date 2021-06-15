@@ -1,12 +1,14 @@
-delete_merged_file: false
+#delete_merged_file: false
 output_dir: "output"
 
 rmd_files: ["index.Rmd",
             "text/Acknowledgements.Rmd",
             "text/Abstract.Rmd",
+            "text/TOC_manual.Rmd",
             "text/Intro.Rmd",
             "text/Methods.Rmd",
             "text/Chapters/Chapter_1/Chapter_1_placeholder.Rmd",
+            "text/Chapters/Chapter_2/Chapter_2_placeholder.Rmd",
             "text/Discussion.Rmd",
             "text/Appendix.Rmd"]
 # file order not respected with rmd_subdir option in use; specify relative paths instead

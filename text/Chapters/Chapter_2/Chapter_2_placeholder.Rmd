@@ -1,0 +1,13 @@
+# Chapter 2 title here
+
+## Introduction
+
+<!--CHANGE- placeholder for chapter intro-->
+```{=latex}
+\lipsum
+```
+
+
+### Analysis of published protrudin proteomics
+```{r child='Protrudin_proteomics.Rmd'}
+```
