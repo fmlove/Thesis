@@ -1,23 +1,11 @@
-%from pandoc generated default
+% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-%-----------------------------
-
-\documentclass{book}
-
-
-%-----PACKAGES-----
-%mine
-
-
-%temporary
-\usepackage{lipsum}
-
-
-%from pandoc generated default
+%
+\documentclass[
+]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
-
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
@@ -28,15 +16,12 @@
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
   \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-
 \makeatletter
 \@ifundefined{KOMAClassName}{% if non-KOMA class
   \IfFileExists{parskip.sty}{%
@@ -47,28 +32,20 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-
 \usepackage{xcolor}
-
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-
 \hypersetup{
   pdftitle={Insert cool thesis title here},
   pdfauthor={Fiona M. Love},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
-  
 \urlstyle{same} % disable monospaced font for URLs
-
 \usepackage{color}
-
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
 \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-
 % Add ',fontsize=\small' for more characters per line
 \usepackage{framed}
 \definecolor{shadecolor}{RGB}{248,248,248}
@@ -104,19 +81,15 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-
 \usepackage{longtable,booktabs}
-
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
-
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -130,32 +103,62 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
+% packages
 
-%--------------------
+% temporary:
+\usepackage{lipsum}
 
 
+% turning off autmatic title page; replaced with title_page.tex
+\let\oldmaketitle\maketitle
+\AtBeginDocument{\let\maketitle\relax}
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
 
-
-
+\title{Insert cool thesis title here}
+\author{Fiona M. Love}
+\date{}
 
 \begin{document}
+\maketitle
 
-Insert cool thesis title here
+\begin{titlepage}
+\begin{center}
 
-Fiona M. Love
+  \hspace{0pt}
+  \vfill
+  
+  {\Huge
+  Insert thesis title here
+  }\par
+  
+  {\Large
+  Fiona M. Love
+  }\par
+  
+   \vspace{1\baselineskip}
+  
+  {Pembroke College}\par
+  {?? 2022}\par
+  
+  \vspace{4\baselineskip}
+  
+  {This thesis is submitted for the degree of Doctor of Philosophy.}\par
+  
+  \vfill
+  \hspace{0pt}
 
-Pembroke College
+\end{center}
+\end{titlepage}
 
-??? 202?
-
-This thesis is submitted for the degree of Doctor of Philosophy.
-
-
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
 \hypertarget{acknowledgements}{%
 \chapter*{Acknowledgements}\label{acknowledgements}}
 \addcontentsline{toc}{chapter}{Acknowledgements}
@@ -169,6 +172,43 @@ This thesis is submitted for the degree of Doctor of Philosophy.
 \hypertarget{introduction}{%
 \chapter*{Introduction}\label{introduction}}
 \addcontentsline{toc}{chapter}{Introduction}
+
+\hypertarget{glaucoma}{%
+\section{Glaucoma}\label{glaucoma}}
+
+\hypertarget{factors-limiting-cns-regeneration}{%
+\section{Factors limiting CNS regeneration}\label{factors-limiting-cns-regeneration}}
+
+One of the greatest challenges of modern medicine is how to promote regneration of the CNS. Compared to most other tissues and organs in the human body, the CNS has exceptionally low regenerative ability. As a result, damage to the CNS - whether through trauma, infection, or disease - often results in lifelong disability. In contrast, the peripheral nervous system (PNS) is capable of substantial regeneration after injury, with severed nerves able to regrow several centimeters, reach their targets, and form functional conenctions, suggesting that regeneration of the CNS might be medically possible, if we can identify the relevant factors at play. While there has been active research in this area for decades (if not centuries), we are still a long way from what most people would consider `successful' regeneration of damaged CNS tissues - the regrowth of damaged neuronal processes, appropriate remodelling of the extracellular environment, and restoration of functional synaptic connections. In this section, I will summarise our current understanding of the factors limiting CNS regeneration, as well as the particular challenges I have decided to address with this project.
+
+\hypertarget{extrinsic-factors}{%
+\subsection{Extrinsic factors}\label{extrinsic-factors}}
+
+In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a severed rat spinal cord could regenerate into an implanted sciatic nerve graft thus demonstrating that CNS neurons were at least somewhat capable of regeneration, but were inhibited by their environment \citep{richardsonAxonsCNSNeurones1980}.
+
+\hypertarget{myelination}{%
+\subsubsection{Myelination}\label{myelination}}
+
+\hypertarget{extracellular-matrix}{%
+\subsubsection{Extracellular matrix}\label{extracellular-matrix}}
+
+\hypertarget{mechanics}{%
+\paragraph{Mechanics}\label{mechanics}}
+
+\hypertarget{glia}{%
+\subsubsection{Glia}\label{glia}}
+
+\hypertarget{myelin-lipids}{%
+\paragraph{Myelin lipids}\label{myelin-lipids}}
+
+\hypertarget{immune-system}{%
+\subsubsection{Immune system}\label{immune-system}}
+
+\hypertarget{synaptogenesis}{%
+\subsubsection{Synaptogenesis}\label{synaptogenesis}}
+
+\hypertarget{intrinsic-factors}{%
+\subsection{Intrinsic factors}\label{intrinsic-factors}}
 
 \hypertarget{METHODS}{%
 \chapter{Materials and Methods}\label{METHODS}}
@@ -192,6 +232,169 @@ This thesis is submitted for the degree of Doctor of Philosophy.
 \hypertarget{protrudin-overexpression-does-not-increase-lysosome-transport-in-the-distal-axon}{%
 \subsection{Protrudin overexpression does not increase lysosome transport in the distal axon}\label{protrudin-overexpression-does-not-increase-lysosome-transport-in-the-distal-axon}}
 
+\hypertarget{chapter-2-title-here}{%
+\chapter{Chapter 2 title here}\label{chapter-2-title-here}}
+
+\hypertarget{introduction-2}{%
+\section{Introduction}\label{introduction-2}}
+
+\lipsum
+
+\hypertarget{analysis-of-published-protrudin-proteomics}{%
+\subsection{Analysis of published protrudin proteomics}\label{analysis-of-published-protrudin-proteomics}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\NormalTok{opts\_chunk}\OperatorTok{$}\KeywordTok{set}\NormalTok{(}\DataTypeTok{echo =} \OtherTok{TRUE}\NormalTok{)}
+
+\KeywordTok{library}\NormalTok{(ggvenn)}
+
+\CommentTok{\#Bioconductor Orgs}
+\KeywordTok{library}\NormalTok{(org.Hs.eg.db)}
+\KeywordTok{library}\NormalTok{(org.Mm.eg.db)}
+
+\CommentTok{\#Bioconductor package for handling gene aliases}
+\KeywordTok{library}\NormalTok{(limma)}
+
+\CommentTok{\#for calls to uniprot REST API}
+\KeywordTok{library}\NormalTok{(httr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#TODO {-} FIX FILE PATHS}
+
+\CommentTok{\#From Elbaz{-}Alon et al. 2020, Nat Commun}
+\CommentTok{\#extracted from Supplementary Data Set 2 PDF}
+\NormalTok{elbaz\_alon.data =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}C:/Users/fl299/PhD/Writing/Thesis/data/published\_data\_sets/Elbaz{-}Alon\_2020\_protrudin\_interactions.csv\textquotesingle{}}\NormalTok{, }\DataTypeTok{stringsAsFactors =}\NormalTok{ F)}
+
+\CommentTok{\#From Matsuzaki et al. 2011, MBOC}
+\CommentTok{\#modified from supplementary file mc{-}e11{-}01{-}0068{-}s02.xls {-} removed merged cells, etc.}
+\NormalTok{matsuzaki.data =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}C:/Users/fl299/PhD/Writing/Thesis/data/published\_data\_sets/Matsuzaki\_2011\_protrudin\_interactions.csv\textquotesingle{}}\NormalTok{, }\DataTypeTok{stringsAsFactors =}\NormalTok{ F)}
+
+\CommentTok{\#From Hashimoto et al. 2014, J Biol Chem}
+\CommentTok{\#transcribed and deduplicated from Table 1 {-} gene symbols only}
+\NormalTok{hashimoto.data =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}C:/Users/fl299/PhD/Writing/Thesis/data/published\_data\_sets/Hashimoto\_2014\_protrudin\_interactions.csv\textquotesingle{}}\NormalTok{, }\DataTypeTok{stringsAsFactors =}\NormalTok{ F)}
+
+\CommentTok{\#From uniprot interactions for human ZFYVE27 (Q5T4F4) {-} curated from literature}
+\CommentTok{\#initial query to get up{-}to{-}date interactions, then working with fixed CSV to avoid unexpected changes}
+\NormalTok{uniprot.call =}\StringTok{ }\KeywordTok{GET}\NormalTok{(}\StringTok{\textquotesingle{}https://www.uniprot.org/uniprot/?query=id:Q5T4F4\&columns=id,genes,organism,interactor\&format=tab\textquotesingle{}}\NormalTok{)}
+\NormalTok{uniprot.table =}\StringTok{ }\KeywordTok{read.delim}\NormalTok{(}\DataTypeTok{text =}\NormalTok{ httr}\OperatorTok{::}\KeywordTok{content}\NormalTok{(uniprot.call), }\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{stringsAsFactors =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{uniprot.data =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{uniprot =} \KeywordTok{strsplit}\NormalTok{(uniprot.table}\OperatorTok{$}\NormalTok{Interacts.with, }\DataTypeTok{split =} \StringTok{"; "}\NormalTok{)[[}\DecValTok{1}\NormalTok{]], }\DataTypeTok{stringsAsFactors =}\NormalTok{ F)}
+\NormalTok{uniprot.data}\OperatorTok{$}\NormalTok{uniprot[uniprot.data}\OperatorTok{$}\NormalTok{uniprot }\OperatorTok{==}\StringTok{ "Itself"}\NormalTok{] =}\StringTok{ "Q5T4F4"}
+\CommentTok{\#trim isoforms {-} won\textquotesingle{}t match in Bioconductor org}
+\NormalTok{uniprot.data}\OperatorTok{$}\NormalTok{uniprot =}\StringTok{ }\KeywordTok{sapply}\NormalTok{(uniprot.data}\OperatorTok{$}\NormalTok{uniprot, }\ControlFlowTok{function}\NormalTok{(u)\{ }\KeywordTok{sub}\NormalTok{(}\StringTok{"{-}}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{d+$"}\NormalTok{, }\StringTok{""}\NormalTok{, u) \})}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Elbaz{-}Alon set is in human cells}
+\NormalTok{elbaz\_alon =}\StringTok{ }\KeywordTok{select}\NormalTok{(org.Hs.eg.db,}
+                    \DataTypeTok{keys =}\NormalTok{ elbaz\_alon.data}\OperatorTok{$}\NormalTok{ZFYVE27,}
+                    \DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(}\StringTok{"ENTREZID"}\NormalTok{, }\StringTok{"SYMBOL"}\NormalTok{, }\StringTok{"GENENAME"}\NormalTok{),}
+                    \DataTypeTok{keytype =} \StringTok{"SYMBOL"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'select()' returned many:many mapping between keys and columns
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{elbaz\_alon}\OperatorTok{$}\NormalTok{SYMBOL =}\StringTok{ }\KeywordTok{toupper}\NormalTok{(elbaz\_alon}\OperatorTok{$}\NormalTok{SYMBOL)}
+
+
+\CommentTok{\#Matsuzaki and Hashimoto sets are in mouse cells}
+\NormalTok{matsuzaki =}\StringTok{ }\KeywordTok{select}\NormalTok{(org.Mm.eg.db,}
+                    \DataTypeTok{keys =} \KeywordTok{as.character}\NormalTok{(matsuzaki.data}\OperatorTok{$}\NormalTok{Gene),}
+                    \DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(}\StringTok{"ENTREZID"}\NormalTok{, }\StringTok{"SYMBOL"}\NormalTok{, }\StringTok{"GENENAME"}\NormalTok{),}
+                    \DataTypeTok{keytype =} \StringTok{"ENTREZID"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'select()' returned many:1 mapping between keys and columns
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#change symbols to uppercase to match with human set}
+\CommentTok{\#TODO {-} check if any orthologs have different names across sets}
+\NormalTok{matsuzaki}\OperatorTok{$}\NormalTok{SYMBOL =}\StringTok{ }\KeywordTok{toupper}\NormalTok{(matsuzaki}\OperatorTok{$}\NormalTok{SYMBOL)}
+
+\CommentTok{\# hashimoto = select(org.Mm.eg.db,}
+\CommentTok{\#                     keys = hashimoto.data$gene,}
+\CommentTok{\#                     columns = c("ENTREZID", "SYMBOL", "GENENAME"),}
+\CommentTok{\#                     keytype = "ALIAS")}
+\CommentTok{\# using symbols as{-}is}
+\NormalTok{hashimoto =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{SYMBOL =} \KeywordTok{toupper}\NormalTok{(hashimoto.data}\OperatorTok{$}\NormalTok{gene), }\DataTypeTok{stringsAsFactors =}\NormalTok{ F)}
+
+\CommentTok{\#uniprot set in human cells}
+\NormalTok{uniprot =}\StringTok{ }\KeywordTok{select}\NormalTok{(org.Hs.eg.db,}
+                 \DataTypeTok{keys =}\NormalTok{ uniprot.data}\OperatorTok{$}\NormalTok{uniprot,}
+                 \DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(}\StringTok{"ENTREZID"}\NormalTok{, }\StringTok{"SYMBOL"}\NormalTok{, }\StringTok{"GENENAME"}\NormalTok{),}
+                 \DataTypeTok{keytype =} \StringTok{"UNIPROT"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'select()' returned 1:1 mapping between keys and columns
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#NOTE {-} as of 26/08/2021, canine RAB7A is included in the interactions list for human protrudin}
+\CommentTok{\#This will come back as an "NA" from this query, since it\textquotesingle{}s not in the human data set}
+\CommentTok{\#I am leaving this as{-}is, since we\textquotesingle{}re not interested in cross{-}species reactivity}
+\CommentTok{\#(This is apparently from the Raiborg et al. 2015 paper, although I can\textquotesingle{}t find any mention in the paper or supplements of using canine RAB7)}
+
+\NormalTok{all\_symbols =}\StringTok{ }\KeywordTok{list}\NormalTok{(}\StringTok{\textasciigrave{}}\DataTypeTok{Elbaz{-}Alon et al. 2020 (human)}\StringTok{\textasciigrave{}}\NormalTok{ =}\StringTok{ }\NormalTok{elbaz\_alon}\OperatorTok{$}\NormalTok{SYMBOL,}
+                   \StringTok{\textasciigrave{}}\DataTypeTok{Matsuzaki et al. 2011 (mouse)}\StringTok{\textasciigrave{}}\NormalTok{ =}\StringTok{ }\NormalTok{matsuzaki}\OperatorTok{$}\NormalTok{SYMBOL,}
+                   \StringTok{\textasciigrave{}}\DataTypeTok{Hashimoto et al. 2014 (mouse)}\StringTok{\textasciigrave{}}\NormalTok{ =}\StringTok{ }\NormalTok{hashimoto}\OperatorTok{$}\NormalTok{SYMBOL,}
+                   \StringTok{\textasciigrave{}}\DataTypeTok{Uniprot (human)}\StringTok{\textasciigrave{}}\NormalTok{ =}\StringTok{ }\NormalTok{uniprot}\OperatorTok{$}\NormalTok{SYMBOL)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggvenn}\NormalTok{(all\_symbols, }\DataTypeTok{fill\_color =}\NormalTok{ viridis}\OperatorTok{::}\KeywordTok{viridis}\NormalTok{(}\DecValTok{4}\NormalTok{), }\DataTypeTok{set\_name\_size =} \DecValTok{6}\NormalTok{, }\DataTypeTok{text\_size =} \DecValTok{7}\NormalTok{) }\CommentTok{\#+ theme(plot.background = element\_rect(fill = "\#FDFDFD", colour = NA))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/venn-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#TODO {-} report theme}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{symbols.df =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{symbol =} \KeywordTok{unique}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(all\_symbols)), }\DataTypeTok{stringsAsFactors =}\NormalTok{ F)}
+\NormalTok{symbols.df}\OperatorTok{$}\NormalTok{in\_ea =}\StringTok{ }\NormalTok{symbols.df}\OperatorTok{$}\NormalTok{symbol }\OperatorTok{\%in\%}\StringTok{ }\NormalTok{elbaz\_alon}\OperatorTok{$}\NormalTok{SYMBOL}
+\NormalTok{symbols.df}\OperatorTok{$}\NormalTok{in\_m =}\StringTok{ }\NormalTok{symbols.df}\OperatorTok{$}\NormalTok{symbol }\OperatorTok{\%in\%}\StringTok{ }\NormalTok{matsuzaki}\OperatorTok{$}\NormalTok{SYMBOL}
+\NormalTok{symbols.df}\OperatorTok{$}\NormalTok{in\_h =}\StringTok{ }\NormalTok{symbols.df}\OperatorTok{$}\NormalTok{symbol }\OperatorTok{\%in\%}\StringTok{ }\NormalTok{hashimoto}\OperatorTok{$}\NormalTok{SYMBOL}
+\NormalTok{symbols.df}\OperatorTok{$}\NormalTok{in\_u =}\StringTok{ }\NormalTok{symbols.df}\OperatorTok{$}\NormalTok{symbol }\OperatorTok{\%in\%}\StringTok{ }\NormalTok{uniprot}\OperatorTok{$}\NormalTok{SYMBOL}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{GO =}\StringTok{ }\KeywordTok{select}\NormalTok{(org.Hs.eg.db,}
+            \DataTypeTok{keys =}\NormalTok{ symbols.df}\OperatorTok{$}\NormalTok{symbol,}
+            \DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(}\StringTok{"GO"}\NormalTok{),}
+            \DataTypeTok{keytype =} \StringTok{"SYMBOL"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'select()' returned 1:many mapping between keys and columns
+\end{verbatim}
+
 \hypertarget{discussion}{%
 \chapter*{Discussion}\label{discussion}}
 \addcontentsline{toc}{chapter}{Discussion}
@@ -199,5 +402,7 @@ This thesis is submitted for the degree of Doctor of Philosophy.
 \hypertarget{appendix}{%
 \chapter*{Appendix}\label{appendix}}
 \addcontentsline{toc}{chapter}{Appendix}
+
+  \bibliography{bib/THESIS.bib}
 
 \end{document}

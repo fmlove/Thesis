@@ -3,15 +3,109 @@ title: "Protrudin_proteomics"
 output: pdf_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup}
 knitr::opts_chunk$set(echo = TRUE)
+
+library(ggvenn)
+
+#Bioconductor Orgs
+library(org.Hs.eg.db)
+library(org.Mm.eg.db)
+
+#Bioconductor package for handling gene aliases
+library(limma)
+
+#for calls to uniprot REST API
+library(httr)
 ```
 
+
 ```{r data_import}
-#From Elbaz-Alon et al. 2020
+#TODO - FIX FILE PATHS
+
+#From Elbaz-Alon et al. 2020, Nat Commun
 #extracted from Supplementary Data Set 2 PDF
-elbaz_alon = read.csv('./data/published_data_sets/Elbaz-Alon_2020_protrudin_interactions.csv', stringsAsFactors = F)
+elbaz_alon.data = read.csv('C:/Users/fl299/PhD/Writing/Thesis/data/published_data_sets/Elbaz-Alon_2020_protrudin_interactions.csv', stringsAsFactors = F)
 
-#From 
+#From Matsuzaki et al. 2011, MBOC
+#modified from supplementary file mc-e11-01-0068-s02.xls - removed merged cells, etc.
+matsuzaki.data = read.csv('C:/Users/fl299/PhD/Writing/Thesis/data/published_data_sets/Matsuzaki_2011_protrudin_interactions.csv', stringsAsFactors = F)
 
+#From Hashimoto et al. 2014, J Biol Chem
+#transcribed and deduplicated from Table 1 - gene symbols only
+hashimoto.data = read.csv('C:/Users/fl299/PhD/Writing/Thesis/data/published_data_sets/Hashimoto_2014_protrudin_interactions.csv', stringsAsFactors = F)
+
+#From uniprot interactions for human ZFYVE27 (Q5T4F4) - curated from literature
+#initial query to get up-to-date interactions, then working with fixed CSV to avoid unexpected changes
+uniprot.call = GET('https://www.uniprot.org/uniprot/?query=id:Q5T4F4&columns=id,genes,organism,interactor&format=tab')
+uniprot.table = read.delim(text = httr::content(uniprot.call), header = TRUE, stringsAsFactors = FALSE)
+uniprot.data = data.frame(uniprot = strsplit(uniprot.table$Interacts.with, split = "; ")[[1]], stringsAsFactors = F)
+uniprot.data$uniprot[uniprot.data$uniprot == "Itself"] = "Q5T4F4"
+#trim isoforms - won't match in Bioconductor org
+uniprot.data$uniprot = sapply(uniprot.data$uniprot, function(u){ sub("-\\d+$", "", u) })
+```
+
+```{r standardisation}
+#Elbaz-Alon set is in human cells
+elbaz_alon = select(org.Hs.eg.db,
+                    keys = elbaz_alon.data$ZFYVE27,
+                    columns = c("ENTREZID", "SYMBOL", "GENENAME"),
+                    keytype = "SYMBOL")
+elbaz_alon$SYMBOL = toupper(elbaz_alon$SYMBOL)
+
+
+#Matsuzaki and Hashimoto sets are in mouse cells
+matsuzaki = select(org.Mm.eg.db,
+                    keys = as.character(matsuzaki.data$Gene),
+                    columns = c("ENTREZID", "SYMBOL", "GENENAME"),
+                    keytype = "ENTREZID")
+#change symbols to uppercase to match with human set
+#TODO - check if any orthologs have different names across sets
+matsuzaki$SYMBOL = toupper(matsuzaki$SYMBOL)
+
+# hashimoto = select(org.Mm.eg.db,
+#                     keys = hashimoto.data$gene,
+#                     columns = c("ENTREZID", "SYMBOL", "GENENAME"),
+#                     keytype = "ALIAS")
+# using symbols as-is
+hashimoto = data.frame(SYMBOL = toupper(hashimoto.data$gene), stringsAsFactors = F)
+
+#uniprot set in human cells
+uniprot = select(org.Hs.eg.db,
+                 keys = uniprot.data$uniprot,
+                 columns = c("ENTREZID", "SYMBOL", "GENENAME"),
+                 keytype = "UNIPROT")
+#NOTE - as of 26/08/2021, canine RAB7A is included in the interactions list for human protrudin
+#This will come back as an "NA" from this query, since it's not in the human data set
+#I am leaving this as-is, since we're not interested in cross-species reactivity
+#(This is apparently from the Raiborg et al. 2015 paper, although I can't find any mention in the paper or supplements of using canine RAB7)
+
+all_symbols = list(`Elbaz-Alon et al. 2020 (human)` = elbaz_alon$SYMBOL,
+                   `Matsuzaki et al. 2011 (mouse)` = matsuzaki$SYMBOL,
+                   `Hashimoto et al. 2014 (mouse)` = hashimoto$SYMBOL,
+                   `Uniprot (human)` = uniprot$SYMBOL)
+
+```
+
+```{r venn, fig.width=12, fig.height=12}
+ggvenn(all_symbols, fill_color = viridis::viridis(4), set_name_size = 6, text_size = 7) #+ theme(plot.background = element_rect(fill = "#FDFDFD", colour = NA))
+#TODO - report theme
+```
+
+
+
+```{r overlaps}
+symbols.df = data.frame(symbol = unique(unlist(all_symbols)), stringsAsFactors = F)
+symbols.df$in_ea = symbols.df$symbol %in% elbaz_alon$SYMBOL
+symbols.df$in_m = symbols.df$symbol %in% matsuzaki$SYMBOL
+symbols.df$in_h = symbols.df$symbol %in% hashimoto$SYMBOL
+symbols.df$in_u = symbols.df$symbol %in% uniprot$SYMBOL
+```
+
+
+```{r gene_ontology}
+GO = select(org.Hs.eg.db,
+            keys = symbols.df$symbol,
+            columns = c("GO"),
+            keytype = "SYMBOL")
 ```

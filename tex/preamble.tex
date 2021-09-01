@@ -1,0 +1,9 @@
+% packages
+
+% temporary:
+\usepackage{lipsum}
+
+
+% turning off autmatic title page; replaced with title_page.tex
+\let\oldmaketitle\maketitle
+\AtBeginDocument{\let\maketitle\relax}

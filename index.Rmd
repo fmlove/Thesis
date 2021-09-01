@@ -5,13 +5,20 @@ college: "Pembroke"
 sub_date: "??? 202?"
 degree: "Doctor of Philosophy"
 
+
 documentclass: book
 output:
   #bookdown::gitbook: default
   bookdown::pdf_book:
-    #in_header: "preamble.tex"
-    template: "personal_template.tex"
+    includes:
+      in_header: tex/preamble.tex
+      before_body: tex/title_page.tex
+    #template: "personal_template.tex" #breaking bibliography
     keep_tex: true
     keep_md: true
     number_sections: true
+    citation_package: natbib
+
+bibliography: bib/THESIS.bib
+csl: bib/plos.csl
 ---

@@ -1,6 +1,7 @@
 #delete_merged_file: false
 output_dir: "output"
 
+#body
 rmd_files: ["index.Rmd",
             "text/Acknowledgements.Rmd",
             "text/Abstract.Rmd",
@@ -12,3 +13,4 @@ rmd_files: ["index.Rmd",
             "text/Discussion.Rmd",
             "text/Appendix.Rmd"]
 # file order not respected with rmd_subdir option in use; specify relative paths instead
+

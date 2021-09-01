@@ -1,2 +1,30 @@
 # Introduction {-}
 
+## Glaucoma
+
+
+## Factors limiting CNS regeneration
+
+One of the greatest challenges of modern medicine is how to promote regneration of the CNS.  Compared to most other tissues and organs in the human body, the CNS has exceptionally low regenerative ability.  As a result, damage to the CNS - whether through trauma, infection, or disease - often results in lifelong disability.  In contrast, the peripheral nervous system (PNS) is capable of substantial regeneration after injury, with severed nerves able to regrow several centimeters, reach their targets, and form functional conenctions, suggesting that regeneration of the CNS might be medically possible, if we can identify the relevant factors at play.  While there has been active research in this area for decades (if not centuries), we are still a long way from what most people would consider 'successful' regeneration of damaged CNS tissues -  the regrowth of damaged neuronal processes, appropriate remodelling of the extracellular environment, and restoration of functional synaptic connections.  In this section, I will summarise our current understanding of the factors limiting CNS regeneration, as well as the particular challenges I have decided to address with this project.
+
+[//]: # (CITE - impact on QOL years worldwide)
+
+### Extrinsic factors
+
+In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a severed rat spinal cord could regenerate into an implanted sciatic nerve graft thus demonstrating that CNS neurons were at least somewhat capable of regeneration, but were inhibited by their environment [@richardsonAxonsCNSNeurones1980].  
+
+#### Myelination
+
+#### Extracellular matrix
+##### Mechanics
+
+#### Glia
+##### Myelin lipids
+
+#### Immune system
+
+#### Synaptogenesis
+
+
+### Intrinsic factors
+
