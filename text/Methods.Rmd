@@ -1,2 +1,5 @@
-# Materials and Methods {#METHODS}
+# Materials and Methods {.unnumbered #METHODS}
 
+```{=latex}
+\markboth{MATERIALS AND METHODS}{}
+```

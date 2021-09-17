@@ -17,7 +17,10 @@ output:
     keep_tex: true
     keep_md: true
     number_sections: true
+    toc: FALSE
+    #toc_bib: TRUE
     citation_package: natbib
+    
 
 bibliography: bib/THESIS.bib
 csl: bib/plos.csl

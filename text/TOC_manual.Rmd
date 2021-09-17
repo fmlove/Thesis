@@ -1,3 +1,7 @@
+
 ```{=latex}
+
+\markboth{CONTENTS}{}
+
 \tableofcontents
 ```

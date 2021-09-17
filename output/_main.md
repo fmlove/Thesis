@@ -17,7 +17,10 @@ output:
     keep_tex: true
     keep_md: true
     number_sections: true
+    toc: FALSE
+    #toc_bib: TRUE
     citation_package: natbib
+    
 
 bibliography: bib/THESIS.bib
 csl: bib/plos.csl
@@ -25,23 +28,37 @@ csl: bib/plos.csl
 
 <!--chapter:end:index.Rmd-->
 
-# Acknowledgements {-}
+# Acknowledgements {.unnumbered #ACKNOWLEDGEMENTS}
 
+```{=latex}
+\markboth{ACKNOWLEDGEMENTS}{}
+```
 
 <!--chapter:end:text/Acknowledgements.Rmd-->
 
-# Abstract {-}
+# Abstract {.unnumbered #ABSTRACT}
 
+```{=latex}
+\markboth{ABSTRACT}{}
+```
 
 <!--chapter:end:text/Abstract.Rmd-->
 
+
 ```{=latex}
+
+\markboth{CONTENTS}{}
+
 \tableofcontents
 ```
 
 <!--chapter:end:text/TOC_manual.Rmd-->
 
-# Introduction {-}
+# Introduction {.unnumbered #INTRODUCTION}
+
+```{=latex}
+\markboth{INTRODUCTION}{}
+```
 
 ## Glaucoma
 
@@ -74,8 +91,11 @@ In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a 
 
 <!--chapter:end:text/Intro.Rmd-->
 
-# Materials and Methods {#METHODS}
+# Materials and Methods {.unnumbered #METHODS}
 
+```{=latex}
+\markboth{MATERIALS AND METHODS}{}
+```
 
 <!--chapter:end:text/Methods.Rmd-->
 
@@ -259,12 +279,20 @@ GO = select(org.Hs.eg.db,
 
 <!--chapter:end:text/Chapters/Chapter_2/Chapter_2_placeholder.Rmd-->
 
-# Discussion {-}
+# Discussion {.unnumbered #DISCUSSION}
+
+```{=latex}
+\markboth{DISCUSSION}{}
+```
 
 
 <!--chapter:end:text/Discussion.Rmd-->
 
-# Appendix {-}
+# Appendix {.unnumbered #APPENDIX}
+
+```{=latex}
+\markboth{APPENDIX}{}
+```
 
 
 <!--chapter:end:text/Appendix.Rmd-->
