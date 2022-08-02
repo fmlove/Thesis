@@ -3,16 +3,23 @@ title: "Protrudin_proteomics"
 output: pdf_document
 ---
 
-```{r setup}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, echo = F}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
+source(here::here('./style/thesis_setup.R'))
+
+
+library(here)
 library(ggvenn)
+library(dplyr)
+library(viridis)
+library(ggplot2)
 
 #Bioconductor Orgs
 library(org.Hs.eg.db)
 library(org.Mm.eg.db)
 
-#Bioconductor package for handling gene aliases
+#Bioconductor package for handling gene aliases and GO analysis
 library(limma)
 
 #for calls to uniprot REST API
@@ -46,12 +53,16 @@ uniprot.data$uniprot = sapply(uniprot.data$uniprot, function(u){ sub("-\\d+$", "
 ```
 
 ```{r standardisation}
+
 #Elbaz-Alon set is in human cells
 elbaz_alon = select(org.Hs.eg.db,
                     keys = elbaz_alon.data$ZFYVE27,
                     columns = c("ENTREZID", "SYMBOL", "GENENAME"),
                     keytype = "SYMBOL")
-elbaz_alon$SYMBOL = toupper(elbaz_alon$SYMBOL)
+#elbaz_alon$SYMBOL = toupper(elbaz_alon$SYMBOL)
+
+
+
 
 
 #Matsuzaki and Hashimoto sets are in mouse cells
@@ -61,51 +72,114 @@ matsuzaki = select(org.Mm.eg.db,
                     keytype = "ENTREZID")
 #change symbols to uppercase to match with human set
 #TODO - check if any orthologs have different names across sets
-matsuzaki$SYMBOL = toupper(matsuzaki$SYMBOL)
 
-# hashimoto = select(org.Mm.eg.db,
-#                     keys = hashimoto.data$gene,
-#                     columns = c("ENTREZID", "SYMBOL", "GENENAME"),
-#                     keytype = "ALIAS")
+
+
+
+# MOUSE EXPERIMENT, BUT REPORTED HUMAN GENE NAMES
+hashimoto = select(org.Hs.eg.db,
+                    keys = hashimoto.data$gene,
+                    columns = c("ENTREZID", "SYMBOL", "GENENAME"),
+                    keytype = "SYMBOL")
 # using symbols as-is
-hashimoto = data.frame(SYMBOL = toupper(hashimoto.data$gene), stringsAsFactors = F)
+# hashimoto = data.frame(SYMBOL = toupper(hashimoto.data$gene), stringsAsFactors = F)
+
+
+
 
 #uniprot set in human cells
-uniprot = select(org.Hs.eg.db,
-                 keys = uniprot.data$uniprot,
-                 columns = c("ENTREZID", "SYMBOL", "GENENAME"),
-                 keytype = "UNIPROT")
+# uniprot = select(org.Hs.eg.db,
+#                  keys = uniprot.data$uniprot,
+#                  columns = c("ENTREZID", "SYMBOL", "GENENAME"),
+#                  keytype = "UNIPROT")
 #NOTE - as of 26/08/2021, canine RAB7A is included in the interactions list for human protrudin
 #This will come back as an "NA" from this query, since it's not in the human data set
 #I am leaving this as-is, since we're not interested in cross-species reactivity
-#(This is apparently from the Raiborg et al. 2015 paper, although I can't find any mention in the paper or supplements of using canine RAB7)
-
-all_symbols = list(`Elbaz-Alon et al. 2020 (human)` = elbaz_alon$SYMBOL,
-                   `Matsuzaki et al. 2011 (mouse)` = matsuzaki$SYMBOL,
-                   `Hashimoto et al. 2014 (mouse)` = hashimoto$SYMBOL,
-                   `Uniprot (human)` = uniprot$SYMBOL)
+#(This is apparently from the Raiborg et al. 2015 paper, although I can't find any mention in the paper or supplements of using canine RAB7, so it might be a mistake.)
 
 ```
 
+
+```{r alias_deduplication}
+#standardising gene symbols that have changed between data sets, e.g. in response to Excel issues (SEPT2 -> SEPTIN2, etc.), as well as attempting to standardise gene names between mouse and human sets
+
+aliases.mm = select(org.Mm.eg.db, keys = matsuzaki$SYMBOL, columns = c("SYMBOL", "GENENAME", "ALIAS"), keytype = "SYMBOL")
+#check for equivalent genes in human set by any alias - symbols uppercase in human db
+aliases.hs = select(org.Hs.eg.db, keys = c(elbaz_alon$SYMBOL, hashimoto$SYMBOL, toupper(aliases.mm$ALIAS)), columns = c("SYMBOL", "GENENAME", "ALIAS"), keytype = "ALIAS")
+#deduplicate, remove NAs
+aliases.hs = aliases.hs[!duplicated(aliases.hs),]
+aliases.hs = aliases.hs[!is.na(aliases.hs$SYMBOL),]
+
+#some aliases are linked to multiple symbols; picking first symbol if this is the case
+elbaz_alon$SYMBOL = sapply(elbaz_alon$SYMBOL, function(s){ if(s %in% aliases.hs$ALIAS){return(aliases.hs[aliases.hs$ALIAS == s, "SYMBOL"][1])} else{return(s)} })
+
+matsuzaki$SYMBOL = sapply(toupper(matsuzaki$SYMBOL), function(s){ if(s %in% aliases.hs$ALIAS){return(aliases.hs[aliases.hs$ALIAS == s, "SYMBOL"][1])} else{return(s)} })#CHECK
+
+hashimoto$SYMBOL = sapply(hashimoto$SYMBOL, function(s){ if(s %in% aliases.hs$ALIAS){return(aliases.hs[aliases.hs$ALIAS == s, "SYMBOL"][1])} else{return(s)} })
+
+
+#deduplicate
+elbaz_alon = elbaz_alon[!duplicated(elbaz_alon$SYMBOL),]#CHECK MANUALLY
+
+matsuzaki = matsuzaki[!duplicated(matsuzaki$SYMBOL),]#CHECK MANUALLY
+
+hashimoto = hashimoto[!duplicated(hashimoto$SYMBOL),]#CHECK MANUALLY
+
+```
+
+
+```{r combining lists}
+
+all_sets = list(`Elbaz-Alon et al. 2020 (human)` = elbaz_alon$SYMBOL,
+                   `Matsuzaki et al. 2011 (mouse)` = toupper(matsuzaki$SYMBOL),
+                   `Hashimoto et al. 2014 (mouse)` = hashimoto$SYMBOL)
+                   #`Uniprot (human)` = uniprot$SYMBOL)
+#excluding uniprot - focus on overlap in non-biased data sets
+
+```
+
+
+
+
 ```{r venn, fig.width=12, fig.height=12}
-ggvenn(all_symbols, fill_color = viridis::viridis(4), set_name_size = 6, text_size = 7) #+ theme(plot.background = element_rect(fill = "#FDFDFD", colour = NA))
+ggvenn(all_sets, fill_color = viridis(length(all_sets)), set_name_size = 6, text_size = 7, show_percentage = FALSE) #+ theme(plot.background = element_rect(fill = "#FDFDFD", colour = NA))
 #TODO - report theme
 ```
 
 
 
 ```{r overlaps}
-symbols.df = data.frame(symbol = unique(unlist(all_symbols)), stringsAsFactors = F)
+symbols.df = data.frame(symbol = unique(unlist(all_sets)), stringsAsFactors = F)
 symbols.df$in_ea = symbols.df$symbol %in% elbaz_alon$SYMBOL
 symbols.df$in_m = symbols.df$symbol %in% matsuzaki$SYMBOL
 symbols.df$in_h = symbols.df$symbol %in% hashimoto$SYMBOL
-symbols.df$in_u = symbols.df$symbol %in% uniprot$SYMBOL
+# symbols.df$in_u = symbols.df$symbol %in% uniprot$SYMBOL
+
+symbols.df = symbols.df %>%  mutate(multiple = rowSums(across(where(is.logical))))
+
+multiples.df = symbols.df[symbols.df$multiple >= 2,]
+multiples.df$ENTREZID = select(org.Hs.eg.db,
+                              keys = multiples.df$symbol,
+                              columns = c("ENTREZID"),
+                              keytype = "SYMBOL")$ENTREZID
+  
 ```
 
 
 ```{r gene_ontology}
-GO = select(org.Hs.eg.db,
-            keys = symbols.df$symbol,
-            columns = c("GO"),
-            keytype = "SYMBOL")
+
+multiples.go = goana(multiples.df$ENTREZID)
+bio_proc = topGO(multiples.go, ontology = 'BP')
+cell_comp = topGO(multiples.go, ontology = 'CC')#basically all ER; COP vesicles show up at end
+
+bio_proc$n_log = -log(bio_proc$P.DE)
+bio_proc$Term = factor(bio_proc$Term, levels = rev(bio_proc$Term))#I'm not 100% sure why this works but it does
+
+```
+
+```{r GO_plots, fig.width = 8.1, fig.height = 6}
+
+ggplot(bio_proc, aes(x = Term, y = n_log)) + geom_bar(stat='identity', fill = viridis(1)) + coord_flip() + labs(x = '', y = expression(-log[10] ~ "(p-value)"), title = "GO Biological Process") + report_theme + theme(legend.position = 'none') 
+
+
 ```

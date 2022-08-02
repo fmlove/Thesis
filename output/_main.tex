@@ -111,6 +111,7 @@
 
 % temporary:
 \usepackage{lipsum}
+\usepackage{textcomp}
 
 
 % turning off autmatic title page; replaced with title_page.tex
@@ -133,7 +134,7 @@
   \vfill
   
   {\Huge
-  Insert thesis title here
+  Insert awesome thesis title here
   }\par
   
   {\Large
@@ -183,27 +184,39 @@
 \hypertarget{factors-limiting-cns-regeneration}{%
 \section{Factors limiting CNS regeneration}\label{factors-limiting-cns-regeneration}}
 
-One of the greatest challenges of modern medicine is how to promote regneration of the CNS. Compared to most other tissues and organs in the human body, the CNS has exceptionally low regenerative ability. As a result, damage to the CNS - whether through trauma, infection, or disease - often results in lifelong disability. In contrast, the peripheral nervous system (PNS) is capable of substantial regeneration after injury, with severed nerves able to regrow several centimeters, reach their targets, and form functional conenctions, suggesting that regeneration of the CNS might be medically possible, if we can identify the relevant factors at play. While there has been active research in this area for decades (if not centuries), we are still a long way from what most people would consider `successful' regeneration of damaged CNS tissues - the regrowth of damaged neuronal processes, appropriate remodelling of the extracellular environment, and restoration of functional synaptic connections. In this section, I will summarise our current understanding of the factors limiting CNS regeneration, as well as the particular challenges I have decided to address with this project.
+One of the greatest challenges of modern medicine is how to promote regneration of the central nervous system (CNS). Compared to most other tissues and organs in the human body, the CNS has exceptionally low regenerative ability. As a result, damage to the CNS - whether through trauma, infection, or disease - often results in lifelong disability. In contrast, the peripheral nervous system (PNS) is capable of substantial regeneration after injury, with severed nerves able to regrow several centimeters, reach their targets, and form functional conenctions, suggesting that regeneration of the CNS might be medically possible, if we can identify the relevant factors at play. While there has been active research in this area for decades (if not centuries), we are still a long way from what most people would consider `successful' regeneration of damaged CNS tissues - the regrowth of damaged neuronal processes, appropriate remodelling of the extracellular environment, and restoration of functional synaptic connections. In this section, I will summarise our current understanding of the factors limiting CNS regeneration, as well as the particular challenges I have decided to address with this project.
 
 \hypertarget{extrinsic-factors}{%
 \subsection{Extrinsic factors}\label{extrinsic-factors}}
 
-In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a severed rat spinal cord could regenerate into an implanted sciatic nerve graft thus demonstrating that CNS neurons were at least somewhat capable of regeneration, but were inhibited by their environment \citep{richardsonAxonsCNSNeurones1980}.
+In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a severed rat spinal cord could regenerate into an implanted sciatic nerve graft, thus demonstrating that CNS neurons were at least somewhat capable of regeneration, but were inhibited by their environment \citep{richardsonAxonsCNSNeurones1980}. There are a variety of environmental factors that can limit CNS axon growth, ranging from differences in the cellular composition of PNS and CNS tissues, to changes in the extracellular environment and cell surface receptors that occur as an organism ages.
+
+\hypertarget{glia}{%
+\subsubsection{Glia}\label{glia}}
+
+Perhaps the most prominent difference between the CNS and the regeneration-competent PNS is their respective complements of glial cells. Peripheral glia are dominated by myelinating Schwann cells, while glia in the CNS consist largely of a mix of astrocytes, microglia, and myelinating oligodendrocytes. As glial cells can comprise roughly half of the cells in the mammalian nervous system (estimated from the human brain) \citep{vonbartheldSearchTrueNumbers2016}, it is clear how this difference could have a significant effect on how these tissues respond to and recover from injury. Glia contribute to the composition and behaviour of CNS - and thus its regenerative capacity - in a variety of ways, which I will briefly summarise in this section.
 
 \hypertarget{myelination}{%
-\subsubsection{Myelination}\label{myelination}}
+\paragraph{Myelination}\label{myelination}}
+
+Axons of the PNS and CNS are myelinated by Schwann cells and oligodendrocytes, respectively. Despite the similarity in their function, these cells are morphologically and functionally distinct, and their differences contribute substantially to the difference in axon regeneration between these tissues. In the PNS, injury induces a change in Schwann cells to a specific, repair-oriented phenotype. In this state, the Schwann cells function to clear myelin debris by up-regulating phagocytosis and autophagy while decreasing their expression of myelin components. They also increase expression of various trophic factors and cytokines, and form structures known as Bands of Büngner, which serve as guidance tracts for growing axons \citep{jessenRepairSchwannCell2016}. In contrast, oligodendrocytes in the CNS are typically either quiescent or apoptotic after injury, resulting in slower clearance of myelin debris, and the persistence of axon-inhibitory components at the injury site for longer \citep{vargasWhyWallerianDegeneration2007}.
+
+\hypertarget{myelin-lipids}{%
+\subparagraph{Myelin lipids}\label{myelin-lipids}}
+
+While much research into myelin and axon regeneration has focused on the presence of axon-inhibitory proteins in the myelin (e.g.~MAG), more recent work has identified a number of mechanisms through which myelin lipids contribute to secondary injury and inhibit axon regeneration in the CNS.
+
+\hypertarget{gliosis}{%
+\paragraph{Gliosis}\label{gliosis}}
+
+\hypertarget{intercellular-signalling}{%
+\paragraph{Intercellular signalling}\label{intercellular-signalling}}
 
 \hypertarget{extracellular-matrix}{%
 \subsubsection{Extracellular matrix}\label{extracellular-matrix}}
 
 \hypertarget{mechanics}{%
 \paragraph{Mechanics}\label{mechanics}}
-
-\hypertarget{glia}{%
-\subsubsection{Glia}\label{glia}}
-
-\hypertarget{myelin-lipids}{%
-\paragraph{Myelin lipids}\label{myelin-lipids}}
 
 \hypertarget{immune-system}{%
 \subsubsection{Immune system}\label{immune-system}}
@@ -220,24 +233,90 @@ In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a 
 
 \markboth{MATERIALS AND METHODS}{}
 
-\hypertarget{chapter-1-title-here}{%
-\chapter{Chapter 1 title here}\label{chapter-1-title-here}}
+\hypertarget{protrudins-effect-on-lysosome-transport-in-the-axon}{%
+\chapter{Protrudin's effect on lysosome transport in the axon}\label{protrudins-effect-on-lysosome-transport-in-the-axon}}
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-\lipsum
+\hypertarget{the-many-roles-of-neuronal-lysosomes}{%
+\subsection{The many roles of neuronal lysosomes}\label{the-many-roles-of-neuronal-lysosomes}}
+
+Lysosomes have traidtionally been understood as the degradative compartment of the cell, responsible for the breakdown and recycling of excess or damaged proteins and organelles. While this is certainly true, more recent work has shown that they are in fact a diverse pool of complex, multi-functional organelles. While lysosomal function is essential to cellular survival broadly, it is particularly critical in neurons, which have additional metabolic, signalling, and transport constraints imposed by their extreme morphology.
+
+\hypertarget{lysosomes-in-neurodegeneration}{%
+\subsubsection{Lysosomes in neurodegeneration}\label{lysosomes-in-neurodegeneration}}
+
+Lysosomal dysfunction has been implicated in a wide range of neurodegenerative diseases.
+
+\hypertarget{rna-and-ribsosomes}{%
+\subsubsection{RNA and ribsosomes}\label{rna-and-ribsosomes}}
+
+\hypertarget{signalling-platform}{%
+\subsubsection{Signalling platform}\label{signalling-platform}}
+
+\hypertarget{er-morphology}{%
+\subsubsection{ER morphology}\label{er-morphology}}
+
+\hypertarget{secretion}{%
+\subsubsection{Secretion}\label{secretion}}
+
+\hypertarget{lysosome-transport-mechanisms}{%
+\subsection{Lysosome transport mechanisms}\label{lysosome-transport-mechanisms}}
+
+\hypertarget{borc}{%
+\subsubsection{BORC}\label{borc}}
+
+\hypertarget{calcyon-and-other-adaptor-proteins}{%
+\subsubsection{Calcyon and other adaptor proteins}\label{calcyon-and-other-adaptor-proteins}}
+
+\hypertarget{protrudin}{%
+\subsubsection{Protrudin}\label{protrudin}}
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
 
-\ref{METHODS}
+General cell culture and microscopy methods can be found in section \ref{METHODS}.
+
+\hypertarget{cloning-of-lamp1-construct-for-lysosome-labelling}{%
+\subsection[Cloning of LAMP1 construct for lysosome labelling]{\texorpdfstring{Cloning of LAMP1 construct for lysosome\footnote{While LAMP1 labels a variety of lysosome-related organelles, ranging from late endosomes to degradative autophagosomes, I will refer to LAMP1-labelled organelles as lysosomes throughout this thesis for the sake of brevity.} labelling}{Cloning of LAMP1 construct for lysosome labelling}}\label{cloning-of-lamp1-construct-for-lysosome-labelling}}
+
+The LAMP1-RFP plasmid \emph{(Addgene, 1817)} was modified to replace the existing CMV promoter with a human synapsin promoter to improve expression level in neurons. Primers (see table \ref{tab:primer-table}) were designed using the NEBuilder tool (\url{https://nebuilder.neb.com}) from New England Biolabs.
+
+\begin{table}
+
+\caption{\label{tab:primer-table}Gibson cloning primers.}
+\centering
+\begin{tabular}[t]{ll}
+\toprule
+  & sequence\\
+\midrule
+plasmid forward & GGTTTAGTGAACCGTCAG\\
+plasmid reverse & CGGAACTCCATATATGGG\\
+insert forward & AGCCCATATATGGAGTTCCGCTAGACTCTAGCTGCAGAGGG\\
+insert reverse & ATCTGACGGTTCACTAAACCTCGACTGCGCTCTCAGGC\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Fragments for cloning were produced by PCR, separated on a 1\% agarose TBE gel, and purified using the Wizard SV Gel and PCR Clean-Up System kit \emph{(Promega, A9282)}. 20\(\textmu\)L assembly reactions were set up with Gibson master mix \emph{(New England Biolabs, E2611S)} and an appropriate ratio of insert and vector DNA (2:1 or higher) and incubated at 50\(\textdegree\) for 1.5 hours. Assembled constructs were scaled up and successful cloning confirmed with restriction digest and DNA sequencing.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
 \hypertarget{protrudin-overexpression-does-not-increase-lysosome-transport-in-the-distal-axon}{%
 \subsection{Protrudin overexpression does not increase lysosome transport in the distal axon}\label{protrudin-overexpression-does-not-increase-lysosome-transport-in-the-distal-axon}}
+
+Based on the findings in \citep{raiborgRepeatedEREndosome2015}, I first set out to see if protrudin could be increasing the anterograde transport of late endosomes or lysosomes into the distal axon. However, overexpression of wither wild type or active protrudin had no significant effect on the speed, direction, or number of lysosomes in the distal axon of cortical neurons.
+
+The experiment was then repeated using Rab7 as a marker of late endosomes. As the mechanism set out in \citep{raiborgRepeatedEREndosome2015} suggests that Rab7 is directly involved in protrudin-facilitated transport of late endosomes, overexpression of Rab7 could potentially amplify any effect of protrudin overexpression on this system. However, my results show that protrudin also has no effect on late endosome transport in cortical axons.
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+The mechanism described in \citep{raiborgRepeatedEREndosome2015} relies on the protein FYCO1 as an adaptor to link late endosomes to kinesin for anterograde transport. This protein, also known as ZFYVE7 (ADD DETAILS ON STRUCTURE). Transcriptomic data from \citep{kosekiSelectiveRab11Transport2017} suggests that FYCO1 is mostly absent from mature cortical neurons, which could explain why we see no effect on late endosome transport with protrudin overexpression. (ADD MORE TRANSCRIPTOME REFS)
+
+While these findings can effectively rule out late endosome/lysosome transport as a mechanism through which protrudin drives regeneration, they are worth bearing in mind when it comes to clinical translation. The differential expression of FYCO1 across cell types suggests variations in the regulation of late endosome transport between them. While protrudin overexpression has no effect on this transport in cortical neurons, it could potentially have an impact on other populations, leading to possible off-target effects. Any gene therapies incorporating protrudin should therefore be carefully targeted to limit expression in the PNS and non-neuronal cells.
 
 \hypertarget{chapter-2-title-here}{%
 \chapter{Chapter 2 title here}\label{chapter-2-title-here}}
@@ -249,24 +328,6 @@ In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a 
 
 \hypertarget{analysis-of-published-protrudin-proteomics}{%
 \subsection{Analysis of published protrudin proteomics}\label{analysis-of-published-protrudin-proteomics}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\NormalTok{opts\_chunk}\OperatorTok{$}\KeywordTok{set}\NormalTok{(}\DataTypeTok{echo =} \OtherTok{TRUE}\NormalTok{)}
-
-\KeywordTok{library}\NormalTok{(ggvenn)}
-
-\CommentTok{\#Bioconductor Orgs}
-\KeywordTok{library}\NormalTok{(org.Hs.eg.db)}
-\KeywordTok{library}\NormalTok{(org.Mm.eg.db)}
-
-\CommentTok{\#Bioconductor package for handling gene aliases}
-\KeywordTok{library}\NormalTok{(limma)}
-
-\CommentTok{\#for calls to uniprot REST API}
-\KeywordTok{library}\NormalTok{(httr)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -311,7 +372,10 @@ In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{elbaz\_alon}\OperatorTok{$}\NormalTok{SYMBOL =}\StringTok{ }\KeywordTok{toupper}\NormalTok{(elbaz\_alon}\OperatorTok{$}\NormalTok{SYMBOL)}
+\CommentTok{\#elbaz\_alon$SYMBOL = toupper(elbaz\_alon$SYMBOL)}
+
+
+
 
 
 \CommentTok{\#Matsuzaki and Hashimoto sets are in mouse cells}
@@ -330,20 +394,15 @@ In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a 
 \begin{Highlighting}[]
 \CommentTok{\#change symbols to uppercase to match with human set}
 \CommentTok{\#TODO {-} check if any orthologs have different names across sets}
-\NormalTok{matsuzaki}\OperatorTok{$}\NormalTok{SYMBOL =}\StringTok{ }\KeywordTok{toupper}\NormalTok{(matsuzaki}\OperatorTok{$}\NormalTok{SYMBOL)}
 
-\CommentTok{\# hashimoto = select(org.Mm.eg.db,}
-\CommentTok{\#                     keys = hashimoto.data$gene,}
-\CommentTok{\#                     columns = c("ENTREZID", "SYMBOL", "GENENAME"),}
-\CommentTok{\#                     keytype = "ALIAS")}
-\CommentTok{\# using symbols as{-}is}
-\NormalTok{hashimoto =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{SYMBOL =} \KeywordTok{toupper}\NormalTok{(hashimoto.data}\OperatorTok{$}\NormalTok{gene), }\DataTypeTok{stringsAsFactors =}\NormalTok{ F)}
 
-\CommentTok{\#uniprot set in human cells}
-\NormalTok{uniprot =}\StringTok{ }\KeywordTok{select}\NormalTok{(org.Hs.eg.db,}
-                 \DataTypeTok{keys =}\NormalTok{ uniprot.data}\OperatorTok{$}\NormalTok{uniprot,}
-                 \DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(}\StringTok{"ENTREZID"}\NormalTok{, }\StringTok{"SYMBOL"}\NormalTok{, }\StringTok{"GENENAME"}\NormalTok{),}
-                 \DataTypeTok{keytype =} \StringTok{"UNIPROT"}\NormalTok{)}
+
+
+\CommentTok{\# MOUSE EXPERIMENT, BUT REPORTED HUMAN GENE NAMES}
+\NormalTok{hashimoto =}\StringTok{ }\KeywordTok{select}\NormalTok{(org.Hs.eg.db,}
+                    \DataTypeTok{keys =}\NormalTok{ hashimoto.data}\OperatorTok{$}\NormalTok{gene,}
+                    \DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(}\StringTok{"ENTREZID"}\NormalTok{, }\StringTok{"SYMBOL"}\NormalTok{, }\StringTok{"GENENAME"}\NormalTok{),}
+                    \DataTypeTok{keytype =} \StringTok{"SYMBOL"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -353,21 +412,83 @@ In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a 
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# using symbols as{-}is}
+\CommentTok{\# hashimoto = data.frame(SYMBOL = toupper(hashimoto.data$gene), stringsAsFactors = F)}
+
+
+
+
+\CommentTok{\#uniprot set in human cells}
+\CommentTok{\# uniprot = select(org.Hs.eg.db,}
+\CommentTok{\#                  keys = uniprot.data$uniprot,}
+\CommentTok{\#                  columns = c("ENTREZID", "SYMBOL", "GENENAME"),}
+\CommentTok{\#                  keytype = "UNIPROT")}
 \CommentTok{\#NOTE {-} as of 26/08/2021, canine RAB7A is included in the interactions list for human protrudin}
 \CommentTok{\#This will come back as an "NA" from this query, since it\textquotesingle{}s not in the human data set}
 \CommentTok{\#I am leaving this as{-}is, since we\textquotesingle{}re not interested in cross{-}species reactivity}
-\CommentTok{\#(This is apparently from the Raiborg et al. 2015 paper, although I can\textquotesingle{}t find any mention in the paper or supplements of using canine RAB7)}
-
-\NormalTok{all\_symbols =}\StringTok{ }\KeywordTok{list}\NormalTok{(}\StringTok{\textasciigrave{}}\DataTypeTok{Elbaz{-}Alon et al. 2020 (human)}\StringTok{\textasciigrave{}}\NormalTok{ =}\StringTok{ }\NormalTok{elbaz\_alon}\OperatorTok{$}\NormalTok{SYMBOL,}
-                   \StringTok{\textasciigrave{}}\DataTypeTok{Matsuzaki et al. 2011 (mouse)}\StringTok{\textasciigrave{}}\NormalTok{ =}\StringTok{ }\NormalTok{matsuzaki}\OperatorTok{$}\NormalTok{SYMBOL,}
-                   \StringTok{\textasciigrave{}}\DataTypeTok{Hashimoto et al. 2014 (mouse)}\StringTok{\textasciigrave{}}\NormalTok{ =}\StringTok{ }\NormalTok{hashimoto}\OperatorTok{$}\NormalTok{SYMBOL,}
-                   \StringTok{\textasciigrave{}}\DataTypeTok{Uniprot (human)}\StringTok{\textasciigrave{}}\NormalTok{ =}\StringTok{ }\NormalTok{uniprot}\OperatorTok{$}\NormalTok{SYMBOL)}
+\CommentTok{\#(This is apparently from the Raiborg et al. 2015 paper, although I can\textquotesingle{}t find any mention in the paper or supplements of using canine RAB7, so it might be a mistake.)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggvenn}\NormalTok{(all\_symbols, }\DataTypeTok{fill\_color =}\NormalTok{ viridis}\OperatorTok{::}\KeywordTok{viridis}\NormalTok{(}\DecValTok{4}\NormalTok{), }\DataTypeTok{set\_name\_size =} \DecValTok{6}\NormalTok{, }\DataTypeTok{text\_size =} \DecValTok{7}\NormalTok{) }\CommentTok{\#+ theme(plot.background = element\_rect(fill = "\#FDFDFD", colour = NA))}
+\CommentTok{\#standardising gene symbols that have changed between data sets, e.g. in response to Excel issues (SEPT2 {-}> SEPTIN2, etc.), as well as attempting to standardise gene names between mouse and human sets}
+
+\NormalTok{aliases.mm =}\StringTok{ }\KeywordTok{select}\NormalTok{(org.Mm.eg.db, }\DataTypeTok{keys =}\NormalTok{ matsuzaki}\OperatorTok{$}\NormalTok{SYMBOL, }\DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(}\StringTok{"SYMBOL"}\NormalTok{, }\StringTok{"GENENAME"}\NormalTok{, }\StringTok{"ALIAS"}\NormalTok{), }\DataTypeTok{keytype =} \StringTok{"SYMBOL"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'select()' returned many:many mapping between keys and columns
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#check for equivalent genes in human set by any alias {-} symbols uppercase in human db}
+\NormalTok{aliases.hs =}\StringTok{ }\KeywordTok{select}\NormalTok{(org.Hs.eg.db, }\DataTypeTok{keys =} \KeywordTok{c}\NormalTok{(elbaz\_alon}\OperatorTok{$}\NormalTok{SYMBOL, hashimoto}\OperatorTok{$}\NormalTok{SYMBOL, }\KeywordTok{toupper}\NormalTok{(aliases.mm}\OperatorTok{$}\NormalTok{ALIAS)), }\DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(}\StringTok{"SYMBOL"}\NormalTok{, }\StringTok{"GENENAME"}\NormalTok{, }\StringTok{"ALIAS"}\NormalTok{), }\DataTypeTok{keytype =} \StringTok{"ALIAS"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'select()' returned many:many mapping between keys and columns
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#deduplicate, remove NAs}
+\NormalTok{aliases.hs =}\StringTok{ }\NormalTok{aliases.hs[}\OperatorTok{!}\KeywordTok{duplicated}\NormalTok{(aliases.hs),]}
+\NormalTok{aliases.hs =}\StringTok{ }\NormalTok{aliases.hs[}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(aliases.hs}\OperatorTok{$}\NormalTok{SYMBOL),]}
+
+\CommentTok{\#some aliases are linked to multiple symbols; picking first symbol if this is the case}
+\NormalTok{elbaz\_alon}\OperatorTok{$}\NormalTok{SYMBOL =}\StringTok{ }\KeywordTok{sapply}\NormalTok{(elbaz\_alon}\OperatorTok{$}\NormalTok{SYMBOL, }\ControlFlowTok{function}\NormalTok{(s)\{ }\ControlFlowTok{if}\NormalTok{(s }\OperatorTok{\%in\%}\StringTok{ }\NormalTok{aliases.hs}\OperatorTok{$}\NormalTok{ALIAS)\{}\KeywordTok{return}\NormalTok{(aliases.hs[aliases.hs}\OperatorTok{$}\NormalTok{ALIAS }\OperatorTok{==}\StringTok{ }\NormalTok{s, }\StringTok{"SYMBOL"}\NormalTok{][}\DecValTok{1}\NormalTok{])\} }\ControlFlowTok{else}\NormalTok{\{}\KeywordTok{return}\NormalTok{(s)\} \})}
+
+\NormalTok{matsuzaki}\OperatorTok{$}\NormalTok{SYMBOL =}\StringTok{ }\KeywordTok{sapply}\NormalTok{(}\KeywordTok{toupper}\NormalTok{(matsuzaki}\OperatorTok{$}\NormalTok{SYMBOL), }\ControlFlowTok{function}\NormalTok{(s)\{ }\ControlFlowTok{if}\NormalTok{(s }\OperatorTok{\%in\%}\StringTok{ }\NormalTok{aliases.hs}\OperatorTok{$}\NormalTok{ALIAS)\{}\KeywordTok{return}\NormalTok{(aliases.hs[aliases.hs}\OperatorTok{$}\NormalTok{ALIAS }\OperatorTok{==}\StringTok{ }\NormalTok{s, }\StringTok{"SYMBOL"}\NormalTok{][}\DecValTok{1}\NormalTok{])\} }\ControlFlowTok{else}\NormalTok{\{}\KeywordTok{return}\NormalTok{(s)\} \})}\CommentTok{\#CHECK}
+
+\NormalTok{hashimoto}\OperatorTok{$}\NormalTok{SYMBOL =}\StringTok{ }\KeywordTok{sapply}\NormalTok{(hashimoto}\OperatorTok{$}\NormalTok{SYMBOL, }\ControlFlowTok{function}\NormalTok{(s)\{ }\ControlFlowTok{if}\NormalTok{(s }\OperatorTok{\%in\%}\StringTok{ }\NormalTok{aliases.hs}\OperatorTok{$}\NormalTok{ALIAS)\{}\KeywordTok{return}\NormalTok{(aliases.hs[aliases.hs}\OperatorTok{$}\NormalTok{ALIAS }\OperatorTok{==}\StringTok{ }\NormalTok{s, }\StringTok{"SYMBOL"}\NormalTok{][}\DecValTok{1}\NormalTok{])\} }\ControlFlowTok{else}\NormalTok{\{}\KeywordTok{return}\NormalTok{(s)\} \})}
+
+
+\CommentTok{\#deduplicate}
+\NormalTok{elbaz\_alon =}\StringTok{ }\NormalTok{elbaz\_alon[}\OperatorTok{!}\KeywordTok{duplicated}\NormalTok{(elbaz\_alon}\OperatorTok{$}\NormalTok{SYMBOL),]}\CommentTok{\#CHECK MANUALLY}
+
+\NormalTok{matsuzaki =}\StringTok{ }\NormalTok{matsuzaki[}\OperatorTok{!}\KeywordTok{duplicated}\NormalTok{(matsuzaki}\OperatorTok{$}\NormalTok{SYMBOL),]}\CommentTok{\#CHECK MANUALLY}
+
+\NormalTok{hashimoto =}\StringTok{ }\NormalTok{hashimoto[}\OperatorTok{!}\KeywordTok{duplicated}\NormalTok{(hashimoto}\OperatorTok{$}\NormalTok{SYMBOL),]}\CommentTok{\#CHECK MANUALLY}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all\_sets =}\StringTok{ }\KeywordTok{list}\NormalTok{(}\StringTok{\textasciigrave{}}\DataTypeTok{Elbaz{-}Alon et al. 2020 (human)}\StringTok{\textasciigrave{}}\NormalTok{ =}\StringTok{ }\NormalTok{elbaz\_alon}\OperatorTok{$}\NormalTok{SYMBOL,}
+                   \StringTok{\textasciigrave{}}\DataTypeTok{Matsuzaki et al. 2011 (mouse)}\StringTok{\textasciigrave{}}\NormalTok{ =}\StringTok{ }\KeywordTok{toupper}\NormalTok{(matsuzaki}\OperatorTok{$}\NormalTok{SYMBOL),}
+                   \StringTok{\textasciigrave{}}\DataTypeTok{Hashimoto et al. 2014 (mouse)}\StringTok{\textasciigrave{}}\NormalTok{ =}\StringTok{ }\NormalTok{hashimoto}\OperatorTok{$}\NormalTok{SYMBOL)}
+                   \CommentTok{\#\textasciigrave{}Uniprot (human)\textasciigrave{} = uniprot$SYMBOL)}
+\CommentTok{\#excluding uniprot {-} focus on overlap in non{-}biased data sets}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggvenn}\NormalTok{(all\_sets, }\DataTypeTok{fill\_color =} \KeywordTok{viridis}\NormalTok{(}\KeywordTok{length}\NormalTok{(all\_sets)), }\DataTypeTok{set\_name\_size =} \DecValTok{6}\NormalTok{, }\DataTypeTok{text\_size =} \DecValTok{7}\NormalTok{, }\DataTypeTok{show\_percentage =} \OtherTok{FALSE}\NormalTok{) }\CommentTok{\#+ theme(plot.background = element\_rect(fill = "\#FDFDFD", colour = NA))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -381,26 +502,44 @@ In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{symbols.df =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{symbol =} \KeywordTok{unique}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(all\_symbols)), }\DataTypeTok{stringsAsFactors =}\NormalTok{ F)}
+\NormalTok{symbols.df =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{symbol =} \KeywordTok{unique}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(all\_sets)), }\DataTypeTok{stringsAsFactors =}\NormalTok{ F)}
 \NormalTok{symbols.df}\OperatorTok{$}\NormalTok{in\_ea =}\StringTok{ }\NormalTok{symbols.df}\OperatorTok{$}\NormalTok{symbol }\OperatorTok{\%in\%}\StringTok{ }\NormalTok{elbaz\_alon}\OperatorTok{$}\NormalTok{SYMBOL}
 \NormalTok{symbols.df}\OperatorTok{$}\NormalTok{in\_m =}\StringTok{ }\NormalTok{symbols.df}\OperatorTok{$}\NormalTok{symbol }\OperatorTok{\%in\%}\StringTok{ }\NormalTok{matsuzaki}\OperatorTok{$}\NormalTok{SYMBOL}
 \NormalTok{symbols.df}\OperatorTok{$}\NormalTok{in\_h =}\StringTok{ }\NormalTok{symbols.df}\OperatorTok{$}\NormalTok{symbol }\OperatorTok{\%in\%}\StringTok{ }\NormalTok{hashimoto}\OperatorTok{$}\NormalTok{SYMBOL}
-\NormalTok{symbols.df}\OperatorTok{$}\NormalTok{in\_u =}\StringTok{ }\NormalTok{symbols.df}\OperatorTok{$}\NormalTok{symbol }\OperatorTok{\%in\%}\StringTok{ }\NormalTok{uniprot}\OperatorTok{$}\NormalTok{SYMBOL}
+\CommentTok{\# symbols.df$in\_u = symbols.df$symbol \%in\% uniprot$SYMBOL}
+
+\NormalTok{symbols.df =}\StringTok{ }\NormalTok{symbols.df }\OperatorTok{\%>\%}\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{multiple =} \KeywordTok{rowSums}\NormalTok{(}\KeywordTok{across}\NormalTok{(}\KeywordTok{where}\NormalTok{(is.logical))))}
+
+\NormalTok{multiples.df =}\StringTok{ }\NormalTok{symbols.df[symbols.df}\OperatorTok{$}\NormalTok{multiple }\OperatorTok{>=}\StringTok{ }\DecValTok{2}\NormalTok{,]}
+\NormalTok{multiples.df}\OperatorTok{$}\NormalTok{ENTREZID =}\StringTok{ }\KeywordTok{select}\NormalTok{(org.Hs.eg.db,}
+                              \DataTypeTok{keys =}\NormalTok{ multiples.df}\OperatorTok{$}\NormalTok{symbol,}
+                              \DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(}\StringTok{"ENTREZID"}\NormalTok{),}
+                              \DataTypeTok{keytype =} \StringTok{"SYMBOL"}\NormalTok{)}\OperatorTok{$}\NormalTok{ENTREZID}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'select()' returned 1:1 mapping between keys and columns
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{multiples.go =}\StringTok{ }\KeywordTok{goana}\NormalTok{(multiples.df}\OperatorTok{$}\NormalTok{ENTREZID)}
+\NormalTok{bio\_proc =}\StringTok{ }\KeywordTok{topGO}\NormalTok{(multiples.go, }\DataTypeTok{ontology =} \StringTok{\textquotesingle{}BP\textquotesingle{}}\NormalTok{)}
+\NormalTok{cell\_comp =}\StringTok{ }\KeywordTok{topGO}\NormalTok{(multiples.go, }\DataTypeTok{ontology =} \StringTok{\textquotesingle{}CC\textquotesingle{}}\NormalTok{)}\CommentTok{\#basically all ER; COP vesicles show up at end}
+
+\NormalTok{bio\_proc}\OperatorTok{$}\NormalTok{n\_log =}\StringTok{ }\OperatorTok{{-}}\KeywordTok{log}\NormalTok{(bio\_proc}\OperatorTok{$}\NormalTok{P.DE)}
+\NormalTok{bio\_proc}\OperatorTok{$}\NormalTok{Term =}\StringTok{ }\KeywordTok{factor}\NormalTok{(bio\_proc}\OperatorTok{$}\NormalTok{Term, }\DataTypeTok{levels =} \KeywordTok{rev}\NormalTok{(bio\_proc}\OperatorTok{$}\NormalTok{Term))}\CommentTok{\#I\textquotesingle{}m not 100\% sure why this works but it does}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{GO =}\StringTok{ }\KeywordTok{select}\NormalTok{(org.Hs.eg.db,}
-            \DataTypeTok{keys =}\NormalTok{ symbols.df}\OperatorTok{$}\NormalTok{symbol,}
-            \DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(}\StringTok{"GO"}\NormalTok{),}
-            \DataTypeTok{keytype =} \StringTok{"SYMBOL"}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(bio\_proc, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Term, }\DataTypeTok{y =}\NormalTok{ n\_log)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{\textquotesingle{}identity\textquotesingle{}}\NormalTok{, }\DataTypeTok{fill =} \KeywordTok{viridis}\NormalTok{(}\DecValTok{1}\NormalTok{)) }\OperatorTok{+}\StringTok{ }\KeywordTok{coord\_flip}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, }\DataTypeTok{y =} \KeywordTok{expression}\NormalTok{(}\OperatorTok{{-}}\NormalTok{log[}\DecValTok{10}\NormalTok{] }\OperatorTok{\textasciitilde{}}\StringTok{ "(p{-}value)"}\NormalTok{), }\DataTypeTok{title =} \StringTok{"GO Biological Process"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\NormalTok{report\_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{\textquotesingle{}none\textquotesingle{}}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## 'select()' returned 1:many mapping between keys and columns
-\end{verbatim}
+\includegraphics{_main_files/figure-latex/GO_plots-1.pdf}
 
 \hypertarget{DISCUSSION}{%
 \chapter*{Discussion}\label{DISCUSSION}}

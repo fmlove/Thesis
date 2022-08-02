@@ -1,0 +1,86 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Protrudin's effect on lysosome transport in the axon
+
+```{r chapter_1_setup, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(knitr)
+
+```
+
+## Introduction
+
+### The many roles of neuronal lysosomes
+
+Lysosomes have traidtionally been understood as the degradative compartment of the cell, responsible for the breakdown and recycling of excess or damaged proteins and organelles.  While this is certainly true, more recent work has shown that they are in fact a diverse pool of complex, multi-functional organelles.  While lysosomal function is essential to cellular survival broadly, it is particularly critical in neurons, which have additional metabolic, signalling, and transport constraints imposed by their extreme morphology.
+
+#### Lysosomes in neurodegeneration
+
+Lysosomal dysfunction has been implicated in a wide range of neurodegenerative diseases.  
+
+#### RNA and ribsosomes
+
+#### Signalling platform
+
+#### ER morphology
+
+#### Secretion
+
+### Lysosome transport mechanisms
+
+#### BORC
+
+#### Calcyon and other adaptor proteins
+
+#### Protrudin
+
+
+
+## Methods
+
+General cell culture and microscopy methods can be found in section \@ref(METHODS).
+
+### Cloning of LAMP1 construct for lysosome^[While LAMP1 labels a variety of lysosome-related organelles, ranging from late endosomes to degradative autophagosomes, I will refer to LAMP1-labelled organelles as lysosomes throughout this thesis for the sake of brevity.] labelling
+
+The LAMP1-RFP plasmid *(Addgene, 1817)* was modified to replace the existing CMV promoter with a human synapsin promoter to improve expression level in neurons.  Primers (see table \@ref(tab:primer-table)) were designed using the NEBuilder tool (https://nebuilder.neb.com) from New England Biolabs. 
+
+```{r primer-table, echo = F}
+kable(#TODO - table styles
+  data.frame(
+    row.names = c('plasmid forward', 'plasmid reverse', 'insert forward', 'insert reverse'),
+    sequence = c('GGTTTAGTGAACCGTCAG', 'CGGAACTCCATATATGGG', toupper('agcccatatatggagttccgCTAGACTCTAGCTGCAGAGGG'), toupper('atctgacggttcactaaaccTCGACTGCGCTCTCAGGC'))
+  ),
+  booktabs = TRUE,
+  caption = 'Gibson cloning primers.'
+  )
+```
+
+Fragments for cloning were produced by PCR, separated on a 1% agarose TBE gel, and purified using the Wizard SV Gel and PCR Clean-Up System kit *(Promega, A9282)*. 20$\textmu$L assembly reactions were set up with Gibson master mix *(New England Biolabs, E2611S)* and an appropriate ratio of insert and vector DNA (2:1 or higher) and incubated at 50$\textdegree$ for 1.5 hours. Assembled constructs were scaled up and successful cloning confirmed with restriction digest and DNA sequencing.
+
+
+
+## Results
+
+### Protrudin overexpression does not increase lysosome transport in the distal axon
+
+Based on the findings in [@raiborgRepeatedEREndosome2015], I first set out to see if protrudin could be increasing the anterograde transport of late endosomes or lysosomes into the distal axon.  However, overexpression of wither wild type or active protrudin had no significant effect on the speed, direction, or number of lysosomes in the distal axon of cortical neurons.
+
+```{r}
+```
+
+The experiment was then repeated using Rab7 as a marker of late endosomes.  As the mechanism set out in [@raiborgRepeatedEREndosome2015] suggests that Rab7 is directly involved in protrudin-facilitated transport of late endosomes, overexpression of Rab7 could potentially amplify any effect of protrudin overexpression on this system.  However, my results show that protrudin also has no effect on late endosome transport in cortical axons.
+
+```{r}
+```
+
+
+## Discussion
+
+The mechanism described in [@raiborgRepeatedEREndosome2015] relies on the protein FYCO1 as an adaptor to link late endosomes to kinesin for anterograde transport.  This protein, also known as ZFYVE7 (ADD DETAILS ON STRUCTURE).  Transcriptomic data from [@kosekiSelectiveRab11Transport2017] suggests that FYCO1 is mostly absent from mature cortical neurons, which could explain why we see no effect on late endosome transport with protrudin overexpression.  (ADD MORE TRANSCRIPTOME REFS)  
+
+While these findings can effectively rule out late endosome/lysosome transport as a mechanism through which protrudin drives regeneration, they are worth bearing in mind when it comes to clinical translation.  The differential expression of FYCO1 across cell types suggests variations in the regulation of late endosome transport between them.  While protrudin overexpression has no effect on this transport in cortical neurons, it could potentially have an impact on other populations, leading to possible off-target effects.  Any gene therapies incorporating protrudin should therefore be carefully targeted to limit expression in the PNS and non-neuronal cells.
+

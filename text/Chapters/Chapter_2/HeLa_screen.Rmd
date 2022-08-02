@@ -1,0 +1,65 @@
+---
+title: "HeLa screen"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+source(here::here('./style/thesis_setup.R'))
+
+library(readbitmap)
+library(patchwork)
+```
+
+```{r read_in_confoncal}
+SURF4.GFP = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+SURF4.WT = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+SURF4.Mut2 = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+
+SEC31A.GFP = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+SEC31A.WT = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+SEC31A.Mut2 = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+
+ACSL3.GFP = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+ACSL3.WT = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+ACSL3.Mut2 = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+
+LC3.GFP = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+LC3.WT = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+LC3.Mut2 = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+
+```
+
+```{r read_in_epifluorescent}
+LAMP1.GFP = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+LAMP1.WT = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+LAMP1.Mut2 = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+
+Rab11.GFP = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+Rab11.WT = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+Rab11.Mut2 = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+
+GLG1.GFP = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+GLG1.WT = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+GLG1.Mut2 = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+
+BCAP31.GFP = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+BCAP31.WT = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+BCAP31.Mut2 = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+
+MIA3.GFP = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+MIA3.WT = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+MIA3.Mut2 = image_as_ggplot(read.bitmap(here('./images/microscopy/placeholder.png')))
+
+```
+
+```{r HeLa_organelle_markers}
+
+organelle_fig = (LAMP1.GFP | LAMP1.WT | LAMP1.Mut2) /
+  (Rab11.GFP | Rab11.WT | Rab11.Mut2) /
+  (LC3.GFP | LC3.WT | LC3.Mut2) & plot_layout(ncol = 3, nrow = 3)
+
+
+organelle_fig
+```

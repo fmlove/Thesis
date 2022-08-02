@@ -53,7 +53,7 @@ c_format = list(scale_colour_viridis_c(),
                 scale_fill_viridis_c())
 
 
-image_as_ggplot <- function(img){#read in image using readbitap::read.bitmap
+image_as_ggplot <- function(img){#read in image using readbitmap::read.bitmap
   img.grob = rasterGrob(img)
   img.gg = ggplot(data.frame()) + annotation_custom(img.grob) + theme_void()
   return(img.gg)

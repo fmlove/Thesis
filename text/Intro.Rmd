@@ -9,21 +9,34 @@
 
 ## Factors limiting CNS regeneration
 
-One of the greatest challenges of modern medicine is how to promote regneration of the CNS.  Compared to most other tissues and organs in the human body, the CNS has exceptionally low regenerative ability.  As a result, damage to the CNS - whether through trauma, infection, or disease - often results in lifelong disability.  In contrast, the peripheral nervous system (PNS) is capable of substantial regeneration after injury, with severed nerves able to regrow several centimeters, reach their targets, and form functional conenctions, suggesting that regeneration of the CNS might be medically possible, if we can identify the relevant factors at play.  While there has been active research in this area for decades (if not centuries), we are still a long way from what most people would consider 'successful' regeneration of damaged CNS tissues -  the regrowth of damaged neuronal processes, appropriate remodelling of the extracellular environment, and restoration of functional synaptic connections.  In this section, I will summarise our current understanding of the factors limiting CNS regeneration, as well as the particular challenges I have decided to address with this project.
+One of the greatest challenges of modern medicine is how to promote regneration of the central nervous system (CNS).  Compared to most other tissues and organs in the human body, the CNS has exceptionally low regenerative ability.  As a result, damage to the CNS - whether through trauma, infection, or disease - often results in lifelong disability.  In contrast, the peripheral nervous system (PNS) is capable of substantial regeneration after injury, with severed nerves able to regrow several centimeters, reach their targets, and form functional conenctions, suggesting that regeneration of the CNS might be medically possible, if we can identify the relevant factors at play.  While there has been active research in this area for decades (if not centuries), we are still a long way from what most people would consider 'successful' regeneration of damaged CNS tissues -  the regrowth of damaged neuronal processes, appropriate remodelling of the extracellular environment, and restoration of functional synaptic connections.  In this section, I will summarise our current understanding of the factors limiting CNS regeneration, as well as the particular challenges I have decided to address with this project.
 
 [//]: # (CITE - impact on QOL years worldwide)
 
 ### Extrinsic factors
 
-In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a severed rat spinal cord could regenerate into an implanted sciatic nerve graft thus demonstrating that CNS neurons were at least somewhat capable of regeneration, but were inhibited by their environment [@richardsonAxonsCNSNeurones1980].  
+In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a severed rat spinal cord could regenerate into an implanted sciatic nerve graft, thus demonstrating that CNS neurons were at least somewhat capable of regeneration, but were inhibited by their environment [@richardsonAxonsCNSNeurones1980].  There are a variety of environmental factors that can limit CNS axon growth, ranging from differences in the cellular composition of PNS and CNS tissues, to changes in the extracellular environment and cell surface receptors that occur as an organism ages.
 
-#### Myelination
+
+#### Glia
+
+Perhaps the most prominent difference between the CNS and the regeneration-competent PNS is their respective complements of glial cells.  Peripheral glia are dominated by myelinating Schwann cells, while glia in the CNS consist largely of a mix of astrocytes, microglia, and myelinating oligodendrocytes.  As glial cells can comprise roughly half of the cells in the mammalian nervous system (estimated from the human brain) [@vonbartheldSearchTrueNumbers2016], it is clear how this difference could have a significant effect on how these tissues respond to and recover from injury.  Glia contribute to the composition and behaviour of CNS - and thus its regenerative capacity - in a variety of ways, which I will briefly summarise in this section.
+
+##### Myelination
+
+Axons of the PNS and CNS are myelinated by Schwann cells and oligodendrocytes, respectively.  Despite the similarity in their function, these cells are morphologically and functionally distinct, and their differences contribute substantially to the difference in axon regeneration between these tissues.  In the PNS, injury induces a change in Schwann cells to a specific, repair-oriented phenotype.  In this state, the Schwann cells function to clear myelin debris by up-regulating phagocytosis and autophagy while decreasing their expression of myelin components.  They also increase expression of various trophic factors and cytokines, and form structures known as Bands of Büngner, which serve as guidance tracts for growing axons [@jessenRepairSchwannCell2016].  In contrast, oligodendrocytes in the CNS are typically either quiescent or apoptotic after injury, resulting in slower clearance of myelin debris, and the persistence of axon-inhibitory components at the injury site for longer [@vargasWhyWallerianDegeneration2007].
+
+###### Myelin lipids
+
+While much research into myelin and axon regeneration has focused on the presence of axon-inhibitory proteins in the myelin (e.g. MAG), more recent work has identified a number of mechanisms through which myelin lipids contribute to secondary injury and inhibit axon regeneration in the CNS.
+
+
+##### Gliosis
+##### Intercellular signalling
+
 
 #### Extracellular matrix
 ##### Mechanics
-
-#### Glia
-##### Myelin lipids
 
 #### Immune system
 

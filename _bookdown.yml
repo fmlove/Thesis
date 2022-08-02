@@ -8,7 +8,7 @@ rmd_files: ["index.Rmd",
             "text/TOC_manual.Rmd",
             "text/Intro.Rmd",
             "text/Methods.Rmd",
-            "text/Chapters/Chapter_1/Chapter_1_placeholder.Rmd",
+            "text/Chapters/Chapter_1/Chapter_1.Rmd",
             "text/Chapters/Chapter_2/Chapter_2_placeholder.Rmd",
             "text/Discussion.Rmd",
             "text/Appendix.Rmd"]
