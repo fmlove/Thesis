@@ -4,7 +4,7 @@ output: pdf_document
 ---
 
 ```{r setup, echo = F}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, fig.width = 4.75)
 
 source(here::here('./style/thesis_setup.R'))
 
@@ -43,13 +43,13 @@ matsuzaki.data = read.csv('C:/Users/fl299/PhD/Writing/Thesis/data/published_data
 hashimoto.data = read.csv('C:/Users/fl299/PhD/Writing/Thesis/data/published_data_sets/Hashimoto_2014_protrudin_interactions.csv', stringsAsFactors = F)
 
 #From uniprot interactions for human ZFYVE27 (Q5T4F4) - curated from literature
-#initial query to get up-to-date interactions, then working with fixed CSV to avoid unexpected changes
-uniprot.call = GET('https://www.uniprot.org/uniprot/?query=id:Q5T4F4&columns=id,genes,organism,interactor&format=tab')
-uniprot.table = read.delim(text = httr::content(uniprot.call), header = TRUE, stringsAsFactors = FALSE)
-uniprot.data = data.frame(uniprot = strsplit(uniprot.table$Interacts.with, split = "; ")[[1]], stringsAsFactors = F)
-uniprot.data$uniprot[uniprot.data$uniprot == "Itself"] = "Q5T4F4"
-#trim isoforms - won't match in Bioconductor org
-uniprot.data$uniprot = sapply(uniprot.data$uniprot, function(u){ sub("-\\d+$", "", u) })
+# #initial query to get up-to-date interactions, then working with fixed CSV to avoid unexpected changes
+# uniprot.call = GET('https://www.uniprot.org/uniprot/?query=id:Q5T4F4&columns=id,genes,organism,interactor&format=tab')
+# uniprot.table = read.delim(text = httr::content(uniprot.call), header = TRUE, stringsAsFactors = FALSE)
+# uniprot.data = data.frame(uniprot = strsplit(uniprot.table$Interacts.with, split = "; ")[[1]], stringsAsFactors = F)
+# uniprot.data$uniprot[uniprot.data$uniprot == "Itself"] = "Q5T4F4"
+# #trim isoforms - won't match in Bioconductor org
+# uniprot.data$uniprot = sapply(uniprot.data$uniprot, function(u){ sub("-\\d+$", "", u) })
 ```
 
 ```{r standardisation}
@@ -177,9 +177,9 @@ bio_proc$Term = factor(bio_proc$Term, levels = rev(bio_proc$Term))#I'm not 100% 
 
 ```
 
-```{r GO_plots, fig.width = 8.1, fig.height = 6}
+```{r GO_plots, fig.width = 4.75, fig.height = 3}
 
-ggplot(bio_proc, aes(x = Term, y = n_log)) + geom_bar(stat='identity', fill = viridis(1)) + coord_flip() + labs(x = '', y = expression(-log[10] ~ "(p-value)"), title = "GO Biological Process") + report_theme + theme(legend.position = 'none') 
+ggplot(bio_proc, aes(x = Term, y = n_log)) + geom_bar(stat='identity', fill = viridis(1)) + coord_flip() + labs(x = '', y = expression(-log[10] ~ "(p-value)"), title = "GO Biological Process") + report_theme + theme(legend.position = 'none', text = element_text(size = 8), plot.title = element_text(hjust = 0.75), plot.title.position = "plot") 
 
 
 ```

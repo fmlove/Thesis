@@ -4,23 +4,25 @@ library(ggplot2)
 library(grid)
 
 
-
-
 #colours
 colours = character()
 colours.protrudin = character()
 
 #Protrudin colours - expanded from ColourBrewer Dark2
-colours.protrudin["GFP"] = '#8AC926'
+colours.protrudin["GFP"] = '#8AC926'#too close to WT
 colours.protrudin["mCherry"] = '#FF595E'
+
+# colours.protrudin["Control"] = colours.protrudin["mCherry"]
+
 colours.protrudin["WT"] = '#E6AB02'
 colours.protrudin["Mut2"] = '#7570B3'
+# colours.protrudin["Active"] = colours.protrudin["Mut2"]
 
 colours.protrudin["ER"] = '#D95F02'
 colours.protrudin["FFAT"] = '#1B9E77'
 colours.protrudin["RBD"] = '#E7298A'
 colours.protrudin["KIF5"] = '#66A61E'
-colours.protrudin["FYVE"] = '#A6761D'
+colours.protrudin["FYVE"] = '#A6761D'#too close to ER - change
 
 colours.protrudin["NA"] = '#666666'
 

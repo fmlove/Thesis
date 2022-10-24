@@ -20,6 +20,7 @@ output:
     toc: FALSE
     #toc_bib: TRUE
     citation_package: natbib
+    geometry: a4paper
 
 bibliography: bib/THESIS.bib
 csl: bib/plos.csl
