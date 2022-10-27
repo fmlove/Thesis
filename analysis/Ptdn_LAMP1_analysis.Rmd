@@ -494,13 +494,6 @@ Repeat with mCherry Ptdn constructs and LAMP1-mNeonGreen to compare
 
 Import representative kymographs
 ```{r}
-# GFP_example = read.bitmap("C:\\Users\\fl299\\PhD\\Presentations\\Third\ year\ seminar\\Ptdn_LAMP1_representative_kymographs\\CNC32_GFP_C2.png")
-# WT_example = read.bitmap("C:\\Users\\fl299\\PhD\\Presentations\\Third\ year\ seminar\\Ptdn_LAMP1_representative_kymographs\\CNC32_WT_C8.png")
-# Mut_example = read.bitmap("C:\\Users\\fl299\\PhD\\Presentations\\Third\ year\ seminar\\Ptdn_LAMP1_representative_kymographs\\CNC32_MUT_C4.png")
-# 
-# GFP_LAMP1_example.gg = image_as_ggplot(GFP_example) + labs(title = "    Control")
-# WT_LAMP1_example.gg = image_as_ggplot(WT_example) + labs(title = "    WT Protrudin")
-# Mut_LAMP1_example.gg = image_as_ggplot(Mut_example) + labs(title = "    Active Protrudin")
 LAMP1_kymo_panel = image_as_ggplot(read.bitmap('C:\\Users\\fl299\\PhD\\LAMP1_kymo_panel.png'))
 ```
 
@@ -511,18 +504,3 @@ Patchwork
   plot_annotation(tag_levels = 'A')
 ```
 
-#Edited for Richard's Karolinska seminar
-```{r Karolinska_LAMP1, fig.width = 16, fig.height = 9, eval = FALSE}
-  (GFP_LAMP1_example.gg + WT_LAMP1_example.gg + Mut_LAMP1_example.gg)/
-  (LAMP1_trace_dot + LAMP1_mean_run_length + LAMP1_mean_run_velocity) &
-  theme(legend.position = 'none', 
-        axis.text.x = element_text(size = 14),
-        axis.title.y = element_text(size = 16, margin = margin(r = 5)),
-        strip.text = element_text(size = 16),
-        panel.grid.major = element_blank(),panel.grid.minor = element_blank(),
-        plot.title = element_text(size = 18),
-        plot.tag = element_text(size = 18, face = 'bold'),
-        plot.margin = unit(c(5.5, 5.5, 5.5, 5.5), "points"))
-
-
-```
