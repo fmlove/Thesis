@@ -5,37 +5,35 @@ library(grid)
 library(showtext)
 
 #Fonts
-fig.path = "figures/"
+font_add_google("Readex Pro")
 showtext_auto()
 
 
-#Colours
+#Colours - selected from ColourBrewer "Dark2" palette and misc. coolors palettes
 colours = character()
-colours.protrudin = character()
-
-#Protrudin colours - expanded from ColourBrewer Dark2
 
 #colours.protrudin["GFP"] = '#8AC926'#too close to WT
 #colours.protrudin["mCherry"] = '#FF595E'
 
-colours.protrudin["Control"] = '#7570B3'
-colours.protrudin["WT"] = '#E6AB02'
-colours.protrudin["Active"] = '#FF595E'
 
-colours.protrudin["ER"] = '#D95F02'
-colours.protrudin["FFAT"] = '#1B9E77'
-colours.protrudin["RBD"] = '#E7298A'
-colours.protrudin["KIF5"] = '#66A61E'
-colours.protrudin["FYVE"] = '#6A4C93'
-colours.protrudin["NA"] = '#666666'
+colours["Control"] = '#8AC926'
+colours["WT"] = '#19647E'
+colours["Active"] = '#FF595E'
 
-#rest selected using coolors.co
+#edit palette for mutants?  some fairly close to main set
+colours[paste0('\U0394', 'ER')] = '#6A4CA4'
+colours[paste0('\U0394', 'FFAT')] = '#D95F02'
+colours[paste0('\U0394', 'RBD')] = '#1B9E77'
+colours[paste0('\U0394', 'KIF5')] = '#F8298A'
+colours[paste0('\U0394', 'FYVE')] = '#E6AB02'
 
-colours["Arl8b"] = '#734B5E'
-colours["Myrlysin"] = '#086788'
-colours["SKIP"] = '#FFA630'
 
-colours["LAMP1"] = '#723D46'
+colours["NA"] = '#BBBBBB'
+
+colours["mushroom"] = '#067195'
+colours["thin"] = '#FF950A' #'#FFA630'
+colours["stubby"] = '#A74C86'
+colours["filopodia"] = '#697A21' #'#7B9E87'
 
 colours["DIV3"] = '#119DA4'
 colours["DIV15"] = '#4B3F72'
@@ -52,8 +50,8 @@ report_theme = theme_classic(base_size = 18) + custom_add
 report_blank = theme_void(base_size = 18) + custom_add
 
 #TODO - change discrete palette for grayscale print-friendliness
-d_format = list(scale_colour_manual(values = c(colours.protrudin, colours)),
-                 scale_fill_manual(values = c(colours.protrudin, colours)))
+d_format = list(scale_colour_manual(values = colours),
+                 scale_fill_manual(values = colours))
 c_format = list(scale_colour_viridis_c(),
                 scale_fill_viridis_c())
 
@@ -64,3 +62,16 @@ image_as_ggplot <- function(img){#read in image using readbitmap::read.bitmap
   return(img.gg)
 }
 
+
+#taken from previous work on Huoviala et al. paper
+view_colours <- function(){
+  plot.new()
+  ybottom = seq(1-(1/length(colours)), 0, length.out = length(colours))
+  ytop = seq(1, (1/length(colours)), length.out = length(colours))
+  rect(xleft = rep(0, length(colours)),
+       ybottom = ybottom,
+       xright = rep(1, length(colours)),
+       ytop =  ytop,
+       col = colours)
+  text(x = rep(0.5, length(colours)), y = rowMeans(cbind(ybottom, ytop)), labels = names(colours))
+}

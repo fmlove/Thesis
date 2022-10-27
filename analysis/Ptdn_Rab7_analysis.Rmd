@@ -1,12 +1,11 @@
 # Setup
 ```{r setup}
 knitr::opts_chunk$set(echo = TRUE)
-dir.create("./figures/")
-knitr::opts_chunk$set(fig.path = "figures/")
+knitr::opts_chunk$set(fig.path = "../figures/")
 
 
 source('C:\\Users\\fl299\\GitHub\\kymograph-analysis\\Kymograph_trace_analysis.R')
-source(here::here('./style/thesis_setup.R'))
+source('../style/thesis_setup.R')
 
 
 library(dplyr)
@@ -323,7 +322,7 @@ Rab7_kymo_panel = image_as_ggplot(read.bitmap('C:\\Users\\fl299\\PhD\\Rab7_kymo_
 ```
 
 Patchwork
-```{r Rab7_full_kymographs, fig.width = 16, fig.height = 8}
+```{r Rab7_full_kymographs, fig.width = 16, fig.height = 8, fig.path = "figures/full/"}
   Rab7_kymo_panel/
   (Rab7_trace_dot + mean_run_length + velocity_box) + 
   plot_annotation(tag_levels = 'A')

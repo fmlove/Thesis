@@ -1,0 +1,333 @@
+---
+title: "Protrudin_dendritic_spine_analysis"
+output:
+  pdf_document:
+    latex_engine: xelatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, dev = 'png', message = FALSE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80),tidy=TRUE)
+knitr::opts_chunk$set(fig.path = "../figures/")
+
+source('../style/thesis_setup.R')
+```
+
+# Setup and data handling
+
+Loading R packages used in this file
+```{r packages}
+library(stringr)
+library(reshape2)
+library(ggplot2)
+library(ggpubr)
+library(patchwork)
+```
+
+Reading in CSV files
+```{r read_CSVs}
+#CNC79 - copied and pasted for 80 and 78
+CNC79.dir = 'C:/Users/fl299/PhD/Data/Mine/Spinning\ Disc/070721_cnc79_dendrites/max_projections/GFP/dendrite_sections/spines/'
+CNC79.csvs = lapply(list.files(path = CNC79.dir, pattern = '\\.csv$'), 
+                              function(f){
+                                df = read.csv(paste0(CNC79.dir, f), stringsAsFactors = F);
+                                df$file = rep(f, nrow(df));
+                                return(df);
+                              })
+#remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
+#WARNING - reassigned for each experiment - start looking here if any bugs pop up
+colnames = unique(lapply(CNC79.csvs, colnames))
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC79.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
+
+CNC79.csvs = CNC79.csvs[which(lapply(lapply(CNC79.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
+
+CNC79 = do.call(rbind, CNC79.csvs)
+
+CNC79$expt = rep("79", nrow(CNC79))
+CNC79$age = rep("DIV15", nrow(CNC79))
+
+#cleanup
+remove(CNC79.dir, CNC79.csvs, colnames, colnames.counts, colnames.correct)
+
+
+#CNC80
+CNC80.dir = 'C:/Users/fl299/PhD/Data/Mine/Spinning\ Disc/140721_CNC80_dendrites/max_projections/GFP/dendrite_sections/spines/'
+CNC80.csvs = lapply(list.files(path = CNC80.dir, pattern = '\\.csv$'), 
+                              function(f){
+                                df = read.csv(paste0(CNC80.dir, f), stringsAsFactors = F);
+                                df$file = rep(f, nrow(df));
+                                return(df);
+                              })
+#remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
+colnames = unique(lapply(CNC80.csvs, colnames))
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC80.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
+
+CNC80.csvs = CNC80.csvs[which(lapply(lapply(CNC80.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
+
+CNC80 = do.call(rbind, CNC80.csvs)
+
+CNC80$expt = rep("80", nrow(CNC80))
+CNC80$age = rep("DIV15", nrow(CNC80))
+
+#cleanup
+remove(CNC80.dir, CNC80.csvs, colnames, colnames.counts, colnames.correct)
+
+
+#CNC78
+CNC78.dir = 'C:/Users/fl299/PhD/Data/Mine/Spinning\ Disc/300621_CNC78_dendrites/max_projections/GFP/dendrite_sections/spines/'
+CNC78.csvs = lapply(list.files(path = CNC78.dir, pattern = '\\.csv$'), 
+                              function(f){
+                                df = read.csv(paste0(CNC78.dir, f), stringsAsFactors = F);
+                                df$file = rep(f, nrow(df));
+                                return(df);
+                              })
+#remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
+colnames = unique(lapply(CNC78.csvs, colnames))
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC78.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
+
+CNC78.csvs = CNC78.csvs[which(lapply(lapply(CNC78.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
+
+CNC78 = do.call(rbind, CNC78.csvs)
+
+CNC78$expt = rep("78", nrow(CNC78))
+CNC78$age = rep("DIV15", nrow(CNC78))
+
+#cleanup
+remove(CNC78.dir, CNC78.csvs, colnames, colnames.counts, colnames.correct)
+
+```
+Combine experiments into single data frame
+```{r combo_df}
+spine_lengths.df = do.call(rbind, list(CNC79, CNC80, CNC78))
+
+```
+
+
+Parsing filenames for experimental condition and cell number
+```{r parse_filenames}
+spine_lengths.df$id = str_match(spine_lengths.df$file, "(.+)_(C\\d+)")[,1]
+spine_lengths.df$cond = str_match(spine_lengths.df$file, "(.+)_(C\\d+)")[,2]
+spine_lengths.df$cell = str_match(spine_lengths.df$file, "(.+)_(C\\d+)")[,3]
+
+spine_lengths.df$id = paste(spine_lengths.df$id, spine_lengths.df$expt, spine_lengths.df$age, sep = '_')
+
+```
+
+Traced spine counts
+```{r spine_counts_from_trace}
+spine_counts.df = as.data.frame(table(spine_lengths.df$id), stringsAsFactors = F)
+spine_counts.df$cond = str_match(spine_counts.df$Var1, "(.+)_(C\\d+)")[,2]
+spine_counts.df$cell = str_match(spine_counts.df$Var1, "(.+)_(C\\d+)")[,3]
+
+spine_counts.df$cond = factor(spine_counts.df$cond, levels = c('mCh', 'WT', 'Mut2', 'ER', 'FFAT', 'RBD', 'KIF5', 'FYVE'), labels = c('Control', 'WT', 'Active', paste0('\U0394', 'ER'), paste0('\U0394', 'FFAT'), paste0('\U0394', 'RBD'), paste0('\U0394', 'KIF5'), paste0('\U0394', 'FYVE')), ordered = T)
+
+```
+
+```{r spine_counts_plot}
+counts.plot = ggplot(spine_counts.df, aes(x = cond, y = Freq, fill = cond, colour = cond)) + 
+  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + 
+  geom_boxplot(fill = NA, colour = 'black') + labs(title = 'Spinning disc') + 
+  d_format + report_theme +
+  stat_compare_means(label = 'p.signif', ref.group = 'Control', hide.ns = F)
+
+counts.plot
+```
+
+Spine length plots
+```{r spine_lengths}
+spine_lengths.melt = melt(spine_lengths.df, id.vars = c('expt', 'age', 'cond', 'cell', 'id'), measure.vars = 'Length')
+spine_lengths.melt$cond = factor(spine_lengths.melt$cond, levels = c('mCh', 'WT', 'Mut2', 'ER', 'FFAT', 'RBD', 'KIF5', 'FYVE'), labels = c('Control', 'WT', 'Active', paste0('\U0394', 'ER'), paste0('\U0394', 'FFAT'), paste0('\U0394', 'RBD'), paste0('\U0394', 'KIF5'), paste0('\U0394', 'FYVE')), ordered = T)
+
+```
+
+```{r spine_length_plots}
+lengths.plot = ggplot(spine_lengths.melt, aes(x = cond, y = value, fill = cond, colour = cond)) + 
+  geom_violin(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.2) + 
+  geom_boxplot(fill = NA, width = 0.2, outlier.shape = NA)  + labs(title = 'Spinning disc') + 
+  d_format + report_theme +
+  stat_compare_means(label = 'p.signif', ref.group = 'Control', hide.ns = F)
+
+lengths.plot
+```
+
+
+
+
+# Confocal spines
+```{r read_CSVs_confocal}
+#coped and pasted from CNC79
+
+CNC81.dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC81_dendrites\\GFP_max_projections\\dendrite_sections\\spines\\'
+CNC81.csvs = lapply(list.files(path = CNC81.dir, pattern = '\\.csv$'), 
+                              function(f){
+                                df = read.csv(paste0(CNC81.dir, f), stringsAsFactors = F);
+                                df$file = rep(f, nrow(df));
+                                return(df);
+                              })
+#remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
+#WARNING - reassigned for each experiment - start looking here if any bugs pop up
+colnames = unique(lapply(CNC81.csvs, colnames))
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC81.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
+
+CNC81.csvs = CNC81.csvs[which(lapply(lapply(CNC81.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
+
+CNC81 = do.call(rbind, CNC81.csvs)
+
+CNC81$expt = rep("81", nrow(CNC81))
+CNC81$age = rep("DIV15", nrow(CNC81))
+
+#cleanup
+remove(CNC81.dir, CNC81.csvs, colnames, colnames.counts, colnames.correct)
+
+
+
+
+
+
+CNC82.dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC82_dendrites\\GFP_max_projections\\dendrite_sections\\spines\\'
+CNC82.csvs = lapply(list.files(path = CNC82.dir, pattern = '\\.csv$'), 
+                              function(f){
+                                df = read.csv(paste0(CNC82.dir, f), stringsAsFactors = F);
+                                df$file = rep(f, nrow(df));
+                                return(df);
+                              })
+#remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
+#WARNING - reassigned for each experiment - start looking here if any bugs pop up
+colnames = unique(lapply(CNC82.csvs, colnames))
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC82.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
+
+CNC82.csvs = CNC82.csvs[which(lapply(lapply(CNC82.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
+
+CNC82 = do.call(rbind, CNC82.csvs)
+
+CNC82$expt = rep("82", nrow(CNC82))
+CNC82$age = rep("DIV15", nrow(CNC82))
+
+#cleanup
+remove(CNC82.dir, CNC82.csvs, colnames, colnames.counts, colnames.correct)
+
+
+
+
+
+
+CNC83.dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC83_dendrites\\GFP_max_projections\\dendrite_sections\\spines\\'
+CNC83.csvs = lapply(list.files(path = CNC83.dir, pattern = '\\.csv$'), 
+                              function(f){
+                                df = read.csv(paste0(CNC83.dir, f), stringsAsFactors = F);
+                                df$file = rep(f, nrow(df));
+                                return(df);
+                              })
+#remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
+#WARNING - reassigned for each experiment - start looking here if any bugs pop up
+colnames = unique(lapply(CNC83.csvs, colnames))
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC83.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
+
+CNC83.csvs = CNC83.csvs[which(lapply(lapply(CNC83.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
+
+CNC83 = do.call(rbind, CNC83.csvs)
+
+CNC83$expt = rep("83", nrow(CNC83))
+CNC83$age = rep("DIV15", nrow(CNC83))
+
+#cleanup
+remove(CNC83.dir, CNC83.csvs, colnames, colnames.counts, colnames.correct)
+
+
+
+
+
+
+CNC84.dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC84_dendrites\\GFP_max_projections\\dendrite_sections\\spines\\'
+CNC84.csvs = lapply(list.files(path = CNC84.dir, pattern = '\\.csv$'), 
+                              function(f){
+                                df = read.csv(paste0(CNC84.dir, f), stringsAsFactors = F);
+                                df$file = rep(f, nrow(df));
+                                return(df);
+                              })
+#remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
+#WARNING - reassigned for each experiment - start looking here if any bugs pop up
+colnames = unique(lapply(CNC84.csvs, colnames))
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC84.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
+
+CNC84.csvs = CNC84.csvs[which(lapply(lapply(CNC84.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
+
+CNC84 = do.call(rbind, CNC84.csvs)
+
+CNC84$expt = rep("84", nrow(CNC84))
+CNC84$age = rep("DIV15", nrow(CNC84))
+
+#cleanup
+remove(CNC84.dir, CNC84.csvs, colnames, colnames.counts, colnames.correct)
+```
+Combine experiments into single data frame
+```{r combo_df_confocal}
+spine_lengths_confocal.df = do.call(rbind, list(CNC81, CNC82, CNC83, CNC84))
+
+```
+
+
+Parsing filenames for experimental condition and cell number
+```{r parse_filenames_confocal}
+spine_lengths_confocal.df$id = str_match(spine_lengths_confocal.df$file, "(.+)_(C\\d+)")[,1]
+spine_lengths_confocal.df$cond = str_match(spine_lengths_confocal.df$file, "(.+)_(C\\d+)")[,2]
+spine_lengths_confocal.df$cell = str_match(spine_lengths_confocal.df$file, "(.+)_(C\\d+)")[,3]
+
+spine_lengths_confocal.df$id = paste(spine_lengths_confocal.df$id, spine_lengths_confocal.df$expt, spine_lengths_confocal.df$age, sep = '_')
+
+```
+
+Traced spine counts
+```{r spine_counts_confocal_from_trace_confocal}
+spine_counts_confocal.df = as.data.frame(table(spine_lengths_confocal.df$id), stringsAsFactors = F)
+spine_counts_confocal.df$cond = str_match(spine_counts_confocal.df$Var1, "(.+)_(C\\d+)")[,2]
+spine_counts_confocal.df$cell = str_match(spine_counts_confocal.df$Var1, "(.+)_(C\\d+)")[,3]
+
+spine_counts_confocal.df$cond = factor(spine_counts_confocal.df$cond, levels = c('mCh', 'WT', 'Mut2', 'ER', 'FFAT', 'RBD', 'KIF5', 'FYVE'), labels = c('Control', 'WT', 'Active', paste0('\U0394', 'ER'), paste0('\U0394', 'FFAT'), paste0('\U0394', 'RBD'), paste0('\U0394', 'KIF5'), paste0('\U0394', 'FYVE')), ordered = T)
+
+```
+
+```{r spine_counts_confocal_plot}
+counts_confocal.plot= ggplot(spine_counts_confocal.df, aes(x = cond, y = Freq, fill = cond, colour = cond)) + 
+  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + 
+  geom_boxplot(fill = NA, colour = 'black') + labs(title = 'Confocal') + 
+  d_format + report_theme +
+  stat_compare_means(label = 'p.signif', ref.group = 'Control', hide.ns = F)
+
+counts_confocal.plot
+```
+
+
+Spine length plots
+```{r spine_lengths_confocal}
+spine_lengths_confocal.melt = melt(spine_lengths_confocal.df, id.vars = c('expt', 'age', 'cond', 'cell', 'id'), measure.vars = 'Length')
+spine_lengths_confocal.melt$cond = factor(spine_lengths_confocal.melt$cond, levels = c('mCh', 'WT', 'Mut2', 'ER', 'FFAT', 'RBD', 'KIF5', 'FYVE'), labels = c('Control', 'WT', 'Active', paste0('\U0394', 'ER'), paste0('\U0394', 'FFAT'), paste0('\U0394', 'RBD'), paste0('\U0394', 'KIF5'), paste0('\U0394', 'FYVE')), ordered = T)
+
+```
+
+```{r spine_length_plots_confocal}
+lengths_confocal.plot = ggplot(spine_lengths_confocal.melt, aes(x = cond, y = value, fill = cond)) + 
+  geom_violin(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.2) + 
+  geom_boxplot(fill = NA, width = 0.2, outlier.shape = NA) + labs(title = 'Confocal') + 
+  d_format + report_theme +
+  stat_compare_means(label = 'p.signif', ref.group = 'Control', hide.ns = F)
+
+lengths_confocal.plot
+```
+
+# Combined plots
+
+```{r combo_plots, fig.height=12, fig.width=16}
+(counts.plot + counts_confocal.plot) / (lengths.plot + lengths_confocal.plot)
+
+```
+
+
+
