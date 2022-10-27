@@ -61,6 +61,22 @@ kable(#TODO - table styles
 
 Fragments for cloning were produced by PCR, separated on a 1% agarose TBE gel, and purified using the Wizard SV Gel and PCR Clean-Up System kit *(Promega, A9282)*. 20$\textmu$L assembly reactions were set up with Gibson master mix *(New England Biolabs, E2611S)* and an appropriate ratio of insert and vector DNA (2:1 or higher) and incubated at 50$\textdegree$ for 1.5 hours. Assembled constructs were scaled up and successful cloning confirmed with restriction digest and DNA sequencing.
 
+### Calcyon shRNA silencing
+Ready-cloned shRNA expression vectors against calcyon were obtained from OriGene *(TG712969)* (see figure \@ref(tab:caly-tab)).  The constructs readily expressed in rat cortical neurons (as seen from TurboGFP signal), but proved highly toxic to the cells.  Many cells transfected with either a mixture of Caly shRNA constructs or the scrambled control shRNA *(Origene, TR30013)* showed complete fragmentation, and the remaining intact cells had abnormally low 
+
+```{r caly-tab}
+kable(#TODO - table styles
+  data.frame(
+    row.names = c('TG712969A', 'TG712969B', 'TG712969C', 'TG712969D'),
+    sequence = c('ATCCGCAGAAGGCGGAGGATGTGCCGTCC', 
+                 'TGCGGACCAGCCAAAGAAGTTCGCAGATT', 
+                 'CCAGATGGCTTCCTACTTCGGCACAAGAT',
+                 'TCAGCCATCATTCCCTGACCAGGTGGTCA')
+  ),
+  booktabs = TRUE,
+  caption = 'Calcyon shRNA sequences.'
+  )
+```
 
 
 ## Results

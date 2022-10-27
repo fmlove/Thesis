@@ -1,0 +1,528 @@
+# Setup
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+dir.create("./figures/")
+knitr::opts_chunk$set(fig.path = "figures/")
+
+
+source('C:\\Users\\fl299\\GitHub\\kymograph-analysis\\Kymograph_trace_analysis.R')
+source(here::here('./style/thesis_setup.R'))
+
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
+#library(plyr) #calling explicitly to avoid conflict with dplyr
+library(ggpubr)
+library(reshape2)
+library(PMCMRplus)
+library(rstatix)
+
+library(readbitmap)
+library(patchwork)
+```
+
+# Data handling
+```{r csv_selection}
+
+CNC20 = "C:\\Users\\fl299\\GitHub\\first-year-report\\data_analysis\\data\\CNC20_kymo_analysis"
+CNC25 = "C:\\Users\\fl299\\GitHub\\first-year-report\\data_analysis\\data\\CNC25_kymo_analysis"
+CNC26 = "C:\\Users\\fl299\\GitHub\\first-year-report\\data_analysis\\data\\CNC26_kymo_analysis"
+CNC32 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\kymograph_processing_TO_SORT\\CNC32_kymograph_analysis"
+
+#keeping experiments separate because of frame rate differences
+GFP_CSVs_20 = list.files(CNC20, pattern = "^GFP_.+\\.csv$", full.names = TRUE)
+Mut2_CSVs_20 = list.files(CNC20, pattern = "^M(UT)?2_.+\\.csv$", full.names = TRUE)
+WT_CSVs_20 = list.files(CNC20, pattern = "^WT_.+\\.csv$", full.names = TRUE)
+
+GFP_CSVs_25 = list.files(CNC25, pattern = "^GFP_.+\\.csv$", full.names = TRUE)
+Mut2_CSVs_25 = list.files(CNC25, pattern = "^M(UT)?2_.+\\.csv$", full.names = TRUE)
+WT_CSVs_25 = list.files(CNC25, pattern = "^WT_.+\\.csv$", full.names = TRUE)
+
+GFP_CSVs_26 = list.files(CNC26, pattern = "^GFP_.+\\.csv$", full.names = TRUE)
+Mut2_CSVs_26 = list.files(CNC26, pattern = "^M(UT)?2_.+\\.csv$", full.names = TRUE)
+WT_CSVs_26 = list.files(CNC26, pattern = "^WT_.+\\.csv$", full.names = TRUE)
+
+GFP_CSVs_32 = list.files(CNC32, pattern = "^GFP_.+\\.csv$", full.names = TRUE)
+Mut2_CSVs_32 = list.files(CNC32, pattern = "^M(UT)?2_.+\\.csv$", full.names = TRUE)
+WT_CSVs_32 = list.files(CNC32, pattern = "^WT_.+\\.csv$", full.names = TRUE)
+
+#TODO - expand to look at repeat consistency
+```
+
+
+Parse CSVs
+```{r analyse_traces}
+GFP_data_20 = lapply(GFP_CSVs_20, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 1.1)
+  traces$experiment = "CNC20"
+  return(traces)
+})
+Mut2_data_20 = lapply(Mut2_CSVs_20, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 1.1)
+  traces$experiment = "CNC20"
+  return(traces)
+})
+WT_data_20 = lapply(WT_CSVs_20, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 1.1)
+  traces$experiment = "CNC20"
+  return(traces)
+})
+
+GFP_data_25 = lapply(GFP_CSVs_25, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.53)
+  traces$experiment = "CNC25"
+  return(traces)
+})
+Mut2_data_25 = lapply(Mut2_CSVs_25, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.53)
+  traces$experiment = "CNC25"
+  return(traces)
+})
+WT_data_25 = lapply(WT_CSVs_25, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.53)
+  traces$experiment = "CNC25"
+  return(traces)
+})
+
+GFP_data_26 = lapply(GFP_CSVs_26, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.53)
+  traces$experiment = "CNC26"
+  return(traces)
+})
+Mut2_data_26 = lapply(Mut2_CSVs_26, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.53)
+  traces$experiment = "CNC26"
+  return(traces)
+})
+WT_data_26 = lapply(WT_CSVs_26, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.53)
+  traces$experiment = "CNC26"
+  return(traces)
+})
+
+GFP_data_32 = lapply(GFP_CSVs_32, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.53)
+  traces$experiment = "CNC32"
+  return(traces)
+})
+Mut2_data_32 = lapply(Mut2_CSVs_32, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.53)
+  traces$experiment = "CNC32"
+  return(traces)
+})
+WT_data_32 = lapply(WT_CSVs_32, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.53)
+  traces$experiment = "CNC32"
+  return(traces)
+})
+
+#combine
+GFP_data = c(GFP_data_20, GFP_data_25, GFP_data_26, GFP_data_32)
+Mut2_data = c(Mut2_data_20, Mut2_data_25, Mut2_data_26, Mut2_data_32)
+WT_data = c(WT_data_20, WT_data_25, WT_data_26, WT_data_32)
+
+```
+
+Basic analysis
+```{r}
+#all one video per cell in this case - don't need separate count and can number sequentially
+n_cells = list("GFP" = length(GFP_data), "WT" = length(WT_data), "MUT" = length(Mut2_data))
+
+#pulling out 'per segment' data from analysed CSVs
+GFP.per_seg = do.call(rbind, lapply(1:length(GFP_data), function(c){ df = GFP_data[[c]]$per_seg; df$cell = c; df$cond = "GFP"; df$exp = GFP_data[[c]]$experiment; return(df) }))
+Mut2.per_seg = do.call(rbind, lapply(1:length(Mut2_data), function(c){ df = Mut2_data[[c]]$per_seg; df$cell = c; df$cond = "MUT"; df$exp = Mut2_data[[c]]$experiment; return(df) }))
+WT.per_seg = do.call(rbind, lapply(1:length(WT_data), function(c){ df = WT_data[[c]]$per_seg; df$cell = c; df$cond = "WT"; df$exp = WT_data[[c]]$experiment; return(df) }))
+
+#combining data from all conditions and calculating net distance
+per_seg = rbind(GFP.per_seg, Mut2.per_seg, WT.per_seg)
+per_seg$net_dist = abs(per_seg$distance)
+
+
+#ORDERING
+per_seg$cond = factor(per_seg$cond, levels = c("GFP", "WT", "MUT"), labels = c("Control", "WT", "Active"))
+```
+
+```{r warning=FALSE}
+per_seg.per_cell = summarise(per_seg %>% group_by(cond, cell, direction, exp), count = n())
+#fill in 'missing' values - e.g. count 0 for cells with no anterograde traces
+#TODO - need to fill in experiment as well
+per_seg.per_cell$cellID = paste0(per_seg.per_cell$exp, per_seg.per_cell$cond, per_seg.per_cell$cell)
+
+directions = c('anterograde', 'retrograde', 'static')
+missing_conditions = do.call(rbind, lapply(unique(per_seg.per_cell$cellID), function(c){
+  df = per_seg.per_cell[per_seg.per_cell$cellID == c,]
+  missing = setdiff(directions, df$direction)
+  to_add = data.frame(cond = rep(df$cond[1], length(missing)), 
+                      cell = rep(df$cell[1], length(missing)),
+                      direction = missing,
+                      exp = rep(df$exp[1], length(missing)),
+                      count = rep(0, length(missing)),
+                      cellID = rep(c, length(missing))
+  )
+}))
+
+per_seg.per_cell = bind_rows(per_seg.per_cell, missing_conditions)
+
+```
+
+# Plots
+
+### Average number of particle movements per cell imaged
+
+Dotplot
+```{r LAMP1_mov_dot}
+#TODO - fix labels
+LAMP1_mov_dot = ggplot(per_seg.per_cell[per_seg.per_cell$direction != "static",], aes(x = cond, y = count, fill = cond)) + 
+  facet_wrap(~direction, strip.position = 'top') + 
+  geom_dotplot(binaxis = "y", position = "dodge", stackdir = "center", width = 0.5, color = NA, dotsize = 1)  + 
+  geom_boxplot(alpha = 0, width = 0.5, position = position_dodge(0.9), show.legend = F) + 
+  labs(x = "", y = "LAMP1 movements per cell") + 
+  d_format + 
+  report_theme + theme(legend.position = 'none') + 
+  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell[per_seg.per_cell$direction != "static",]$count), 25, ceiling), size = 3.5)
+
+plot(LAMP1_mov_dot)
+```
+analysis validation
+```{r}
+car::leveneTest(count~cond, data = per_seg.per_cell[per_seg.per_cell$direction == 'anterograde',])
+car::leveneTest(count~cond, data = per_seg.per_cell[per_seg.per_cell$direction == 'retrograde',])
+#both p > 0.05; no significant variance
+
+antero.aov = aov(count~cond, data = per_seg.per_cell[per_seg.per_cell$direction == 'anterograde',])
+retro.aov = aov(count~cond, data = per_seg.per_cell[per_seg.per_cell$direction == 'retrograde',])
+
+summary(antero.aov)
+summary(retro.aov)
+
+shapiro.test(per_seg.per_cell[per_seg.per_cell$direction == 'anterograde',]$count)
+shapiro.test(per_seg.per_cell[per_seg.per_cell$direction == 'retrograde',]$count)
+#both p < 0.05 - NOT NORMAL - Kruskal-Wallis instead of ANOVA
+```
+
+
+
+### 'Run length' plot
+
+Run length violin
+```{r run_length_violin}
+run_length_violin = ggplot(per_seg[per_seg$direction!= 'static',], aes(x = cond, y = net_dist, fill = cond, color = cond)) + 
+  facet_wrap(~direction, strip.position = 'top') + 
+  geom_violin(alpha = 1) + 
+  geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
+  d_format + report_theme + theme(legend.position = "none") + 
+  stat_compare_means(label.y = plyr::round_any(max(per_seg[per_seg$direction!= 'static',]$net_dist), 50, ceiling))
+
+plot(run_length_violin)
+```
+analysis valiadtion - CHECK WITH STATS CLINIC
+```{r}
+#too far off normal for levene test
+fligner.test(net_dist~cond, data = per_seg[per_seg$direction == 'anterograde',])
+#p < 0.05
+fligner.test(net_dist~cond, data = per_seg[per_seg$direction == 'retrograde',])
+#p > 0.05
+
+# antero.aov = aov(net_dist~cond, data = per_seg[per_seg$direction == 'anterograde',])
+# retro.aov = aov(net_dist~cond, data = per_seg[per_seg$direction == 'retrograde',])
+# 
+# summary(antero.aov)
+# summary(retro.aov)
+# 
+shapiro.test(per_seg[per_seg$direction == 'anterograde',]$net_dist)
+#p < 0.05 - NOT NORMAL
+# shapiro.test(per_seg[per_seg$direction == 'retrograde',]$net_dist)#TOO LARGE FOR SHAPIRO TEST, but pretty clearly not normal
+#Kruskal-Wallis instead of ANOVA
+```
+
+
+
+Look at overall number of traces per video - might be skewed by incomplete traces, but large variations should be legitimate.
+```{r}
+GFP_traces = unlist(sapply(GFP_data, function(d){ d$num_traces }))
+Mut2_traces = unlist(sapply(Mut2_data, function(d){ d$num_traces }))
+WT_traces = unlist(sapply(WT_data, function(d){ d$num_traces }))
+
+traces.df = data.frame(cond = c(rep("GFP", length(GFP_traces)), rep("MUT", length(Mut2_traces)), rep("WT", length(WT_traces))),
+                       traces = c(GFP_traces, Mut2_traces, WT_traces), exp = c(unlist(sapply(GFP_data, function(d){ d$experiment })),
+                                                                               unlist(sapply(WT_data, function(d){ d$experiment })),
+                                                                               unlist(sapply(Mut2_data, function(d){ d$experiment }))))
+
+# traces.sum.df = data.frame(cond = c("GFP", "Mut2", "WT"),
+#                            mean_traces = c(mean(GFP_traces), mean(Mut2_traces), mean(WT_traces)),
+#                            sd_traces = c(sd(GFP_traces), sd(Mut2_traces), sd(WT_traces)))
+
+#ordering
+traces.df$cond = factor(traces.df$cond, levels = c("GFP", "WT", "MUT"), labels = c("Control", "WT", "Active"))
+
+```
+
+### Plots of trace #
+
+Dotplot
+```{r LAMP1_trace_dot}
+LAMP1_trace_dot = ggplot(traces.df, aes(x = cond, y = traces, fill = cond)) + 
+  geom_dotplot(binaxis = 'y', stackdir = 'center', color = NA) + 
+  geom_boxplot(alpha = 0, position = position_dodge(width = 0.9), width = 0.2, show.legend = FALSE) + 
+  labs(x = "", y = "Total number of lysosomes", fill = "") + 
+  d_format + report_theme + theme(legend.position = "none") + 
+  stat_compare_means(label.y = plyr::round_any(max(traces.df$traces), 10, ceiling), size = 3.5)
+
+plot(LAMP1_trace_dot)
+```
+analysis validation
+```{r}
+car::leveneTest(traces~cond, data = traces.df)
+car::leveneTest(traces~cond, data = traces.df)
+#both p > 0.05; no significant variance
+
+
+shapiro.test(traces.df$traces)
+shapiro.test(traces.df$traces)
+#both p < 0.05 - NOT NORMAL - Kruskal-Wallis instead of ANOVA
+
+```
+
+
+
+### Velocity
+
+
+Velocity violin
+```{r velocity_violin}
+
+velocity_violin = ggplot(per_seg[(abs(per_seg$velocity) < 1000) & per_seg$direction!= "static",], aes(x = cond, fill = cond, y = abs(velocity), colour = cond)) + 
+  facet_wrap(~direction) + 
+  geom_violin() + 
+  geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) +
+  ylim(0, 275) + #automatic?
+  d_format + report_theme + theme(legend.position = "none") + 
+  stat_compare_means(label = 'p.signif', comparisons = list(c("Control", "WT"), c("Control", "MUT")))
+
+plot(velocity_violin)
+
+```
+
+analysis
+```{r}
+#too far off normal for levene test
+fligner.test(abs(velocity)~cond, data = per_seg[(abs(per_seg$velocity) < 1000) & per_seg$direction!= "static",])
+fligner.test(abs(velocity)~cond, data = per_seg[(abs(per_seg$velocity) < 1000) & per_seg$direction!= "static",])
+#p < 0.05 both - significantly different variance - NEED TO LOOK @ MEAN PER CELL
+
+```
+
+
+## Per segment analysis --> comparing means per cell
+
+```{r}
+per_seg.per_cell.means = do.call(rbind, lapply(1:nrow(per_seg.per_cell), function(i){
+  row = per_seg.per_cell[i,];
+  all = per_seg[per_seg$cell == row$cell & per_seg$cond == row$cond & per_seg$direction == row$direction,];
+  row$mean_dist = mean(all$net_dist);
+  row$mean_speed = mean(abs(all$velocity));
+  return(row);
+}))
+
+#Remove rows with NaN means - 0 cells for condition/direction
+per_seg.per_cell.means = per_seg.per_cell.means[!is.nan(per_seg.per_cell.means$mean_dist) & !is.nan(per_seg.per_cell.means$mean_speed),]
+```
+
+Distance
+```{r LAMP1_mean_run_length}
+LAMP1_mean_run_length = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',], aes(x = cond, y = mean_dist, fill = cond, color = cond)) + 
+  facet_wrap(~direction, strip.position = 'top') + 
+  geom_dotplot(binaxis = 'y', stackdir = 'center', color = NA) + 
+  geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
+  d_format + report_theme + theme(legend.position = "none") + 
+  labs(x = "", y = "Mean run length") + 
+  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_dist), 30, ceiling), size = 3.5)
+
+plot(LAMP1_mean_run_length)
+
+
+```
+analysis valiadtion
+```{r}
+car::leveneTest(mean_dist~cond, data = per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',])
+car::leveneTest(mean_dist~cond, data = per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',])
+#both p > 0.05; no significant variance
+
+
+shapiro.test(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_dist)
+shapiro.test(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_dist)
+#both p < 0.05 - NOT NORMAL - Kruskal-Wallis instead of ANOVA
+```
+
+
+Velocity
+
+```{r LAMP1_mean_run_velocity}
+#first pass showing K-E p < 0.05 for anterograde only - getting p values for Dunn's test to plot
+# ant = data.frame(cond = per_seg.per_cell.means[per_seg.per_cell.means$direction == 'anterograde',]$cond,
+#                  mean_speed = per_seg.per_cell.means[per_seg.per_cell.means$direction == 'anterograde',]$mean_speed,
+#                  direction = per_seg.per_cell.means[per_seg.per_cell.means$direction == 'anterograde',]$direction)#shouldn't be necessary, but fixes column not found error in dunn_test
+
+ant = per_seg.per_cell.means[per_seg.per_cell.means$direction== 'anterograde',]
+test <- ant %>% group_by(direction) %>% select(mean_speed, cond)
+LAMP1_mean_run_velocity.dunn = dunn_test(test, mean_speed ~ cond, p.adjust.method = 'bonferroni')
+LAMP1_mean_run_velocity.dunn = add_xy_position(LAMP1_mean_run_velocity.dunn, x = "cond")
+LAMP1_mean_run_velocity.dunn$p.adj.rounded = sapply(LAMP1_mean_run_velocity.dunn$p.adj, function(p){round(p, digits = 3)})
+
+
+LAMP1_mean_run_velocity = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',], aes(x = cond, y = mean_speed)) + 
+  facet_wrap(~direction, strip.position = 'top') + 
+  geom_dotplot(aes(fill = cond, color = cond), binaxis = 'y', stackdir = 'center') + 
+  geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
+  d_format + report_theme + theme(legend.position = "none") + 
+  labs(x = "", y = "Mean velocity") + 
+  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed), 12, ceiling), size = 3.5) +
+  stat_pvalue_manual(LAMP1_mean_run_velocity.dunn, hide.ns = TRUE, label = 'p.adj.rounded', step.increase = 0.1)
+
+plot(LAMP1_mean_run_velocity)
+
+```
+
+analysis valiadtion
+```{r}
+car::leveneTest(mean_speed~cond, data = per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',])
+car::leveneTest(mean_speed~cond, data = per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',])
+#both p > 0.05; no significant variance
+
+
+shapiro.test(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed)
+shapiro.test(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed)
+#both p < 0.05 - NOT NORMAL - Kruskal-Wallis instead of ANOVA
+```
+
+
+## Combined figure
+```{r LAMP1_full_figure, fig.width = 16, fig.height = 4}
+LAMP1_mov_dot + #trace_dot 
+LAMP1_mean_run_length + LAMP1_mean_run_velocity + 
+  plot_annotation(tag_levels = 'A') & 
+  theme_bw() & 
+  theme(legend.position = 'none', 
+        panel.background = element_rect(fil = "#FDFDFD"), #custom bg for slide format
+        plot.background = element_rect(fil = "#FDFDFD", colour = "#FDFDFD"), 
+        legend.background = element_rect(fil = "#FDFDFD"),
+        axis.text.x = element_text(size = 14),
+        axis.title.y = element_text(size = 14, margin = margin(r = 5)),
+        strip.text = element_text(size = 12),
+        plot.tag = element_text(size = 18, face = 'bold'))
+```
+
+#---------------------------------------------------------------
+#-----------OVERALL VALIDATION - DIFFERENCES BY CNC #-----------
+#---------------------------------------------------------------
+
+
+```{r}
+mov.df = per_seg.per_cell[,c('cond', 'direction', 'exp', 'count')] %>% dplyr::group_by(cond, exp, direction) %>% dplyr::summarise(mov = mean(count))
+tr.df = traces.df %>% dplyr::group_by(cond, exp) %>% dplyr::summarise(tr = mean(traces))
+run_vel.df = per_seg.per_cell.means[,c('cond', 'direction', 'exp', 'mean_dist', 'mean_speed')]%>% dplyr::group_by(cond, exp, direction) %>% dplyr::summarise(run = mean(mean_dist), vel = mean(mean_speed))
+```
+
+```{r fridman_mov}
+
+mov.mat.antero = acast(mov.df[mov.df$direction == "anterograde", ], formula = cond ~ exp)
+mov.mat.retro = acast(mov.df[mov.df$direction == "retrograde", ], formula = cond ~ exp)
+mov.mat.static = acast(mov.df[mov.df$direction == "static", ], formula = cond ~ exp)
+
+friedman.test(mov.mat.antero)
+friedman.test(mov.mat.retro)
+friedman.test(mov.mat.static)
+
+#none significant
+```
+
+```{r friedman_tr}
+tr.mat = acast(tr.df, formula = cond ~ exp)
+
+friedman.test(tr.mat)
+```
+
+```{r friedman_run}
+run.mat.antero = acast(run_vel.df[run_vel.df$direction == 'anterograde',], formula = cond ~ exp, value.var = 'run')
+run.mat.retro = acast(run_vel.df[run_vel.df$direction == 'retrograde',], formula = cond ~ exp, value.var = 'run')
+run.mat.static = acast(run_vel.df[run_vel.df$direction == 'static',], formula = cond ~ exp, value.var = 'run')
+
+friedman.test(run.mat.antero)
+friedman.test(run.mat.retro)
+friedman.test(run.mat.static)
+
+#run.mat.retro p = 0.02929
+frdAllPairsNemenyiTest(run.mat.retro) #CNC20/CNC26 p = 0.023 #TODO - how to handle? exclude CNC20?
+```
+
+```{r friedman_vel}
+vel.mat.antero = acast(run_vel.df[run_vel.df$direction == 'anterograde',], formula = cond ~ exp, value.var = 'vel')
+vel.mat.retro = acast(run_vel.df[run_vel.df$direction == 'retrograde',], formula = cond ~ exp, value.var = 'vel')
+vel.mat.static = acast(run_vel.df[run_vel.df$direction == 'static',], formula = cond ~ exp, value.var = 'vel')
+
+friedman.test(vel.mat.antero)
+friedman.test(vel.mat.retro)
+friedman.test(vel.mat.static)
+
+#vel.mat.static p = 0.04205
+frdAllPairsNemenyiTest(vel.mat.static) #none significant, CNC20/CNC26 p = 0.055
+```
+
+# Repetition of analysis excluding CNC20
+
+Quickly checked by commenting out, mean speed for retrograde transport becomes significant (K.W. p = 0.0071), all others n.s.
+GFP-WT - p = 0.048
+GFP-MUT - p = 0.0013
+
+Not sure if enough evidence to exclude CNC20
+Check at next stats clinic?
+
+Repeat with mCherry Ptdn constructs and LAMP1-mNeonGreen to compare
+
+
+
+
+
+
+
+
+
+
+
+
+# FULL FIGURE
+
+Import representative kymographs
+```{r}
+# GFP_example = read.bitmap("C:\\Users\\fl299\\PhD\\Presentations\\Third\ year\ seminar\\Ptdn_LAMP1_representative_kymographs\\CNC32_GFP_C2.png")
+# WT_example = read.bitmap("C:\\Users\\fl299\\PhD\\Presentations\\Third\ year\ seminar\\Ptdn_LAMP1_representative_kymographs\\CNC32_WT_C8.png")
+# Mut_example = read.bitmap("C:\\Users\\fl299\\PhD\\Presentations\\Third\ year\ seminar\\Ptdn_LAMP1_representative_kymographs\\CNC32_MUT_C4.png")
+# 
+# GFP_LAMP1_example.gg = image_as_ggplot(GFP_example) + labs(title = "    Control")
+# WT_LAMP1_example.gg = image_as_ggplot(WT_example) + labs(title = "    WT Protrudin")
+# Mut_LAMP1_example.gg = image_as_ggplot(Mut_example) + labs(title = "    Active Protrudin")
+LAMP1_kymo_panel = image_as_ggplot(read.bitmap('C:\\Users\\fl299\\PhD\\LAMP1_kymo_panel.png'))
+```
+
+Patchwork
+```{r LAMP1_full_figure, fig.width = 16, fig.height = 8, fig.path = "figures/full/"}
+  LAMP1_kymo_panel/
+  (LAMP1_trace_dot + LAMP1_mean_run_length + LAMP1_mean_run_velocity) + 
+  plot_annotation(tag_levels = 'A')
+```
+
+#Edited for Richard's Karolinska seminar
+```{r Karolinska_LAMP1, fig.width = 16, fig.height = 9, eval = FALSE}
+  (GFP_LAMP1_example.gg + WT_LAMP1_example.gg + Mut_LAMP1_example.gg)/
+  (LAMP1_trace_dot + LAMP1_mean_run_length + LAMP1_mean_run_velocity) &
+  theme(legend.position = 'none', 
+        axis.text.x = element_text(size = 14),
+        axis.title.y = element_text(size = 16, margin = margin(r = 5)),
+        strip.text = element_text(size = 16),
+        panel.grid.major = element_blank(),panel.grid.minor = element_blank(),
+        plot.title = element_text(size = 18),
+        plot.tag = element_text(size = 18, face = 'bold'),
+        plot.margin = unit(c(5.5, 5.5, 5.5, 5.5), "points"))
+
+
+```

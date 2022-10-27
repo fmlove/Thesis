@@ -1,0 +1,411 @@
+# Setup
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+dir.create("./figures/")
+knitr::opts_chunk$set(fig.path = "figures/")
+
+
+source('C:\\Users\\fl299\\GitHub\\kymograph-analysis\\Kymograph_trace_analysis.R')
+source('C:\\Users\\fl299\\GitHub\\first-year-report\\data_analysis\\report_setup.R')
+# GFP #8AC926
+# WT #19647E
+# MUT #FF595E
+d_format = list(scale_colour_manual(values = c('control' = '#8AC926', 'WT' = '#19647E', 'Active' = '#FF595E')),
+                 scale_fill_manual(values = c('control' = '#8AC926', 'WT' = '#19647E', 'Active' = '#FF595E')))
+#from palette - https://coolors.co/1f2041-4b3f72-ffc857-1982c4-119da4-19647e-ff595e-8ac926
+
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
+#library(plyr) #calling explicitly to avoid conflict with dplyr
+library(ggpubr)
+library(reshape2)
+library(PMCMRplus)
+
+library(readbitmap)
+library(patchwork)
+```
+
+# Data handling
+```{r csv_selection}
+
+CNC57 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC57"
+CNC58_59 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC58-59"
+CNC59 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC59"
+CNC61 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC61"
+
+#keeping experiments separate because of frame rate differences
+
+
+mCherry_CSVs_58 = list.files(CNC58_59, pattern = "^MCR_.+\\.csv$", full.names = TRUE)
+WT_CSVs_58 = list.files(CNC58_59, pattern = "^WTR_.+\\.csv$", full.names = TRUE)
+MUT2_CSVs_58 = list.files(CNC58_59, pattern = "^MR_.+\\.csv$", full.names = TRUE)
+
+
+mCherry_CSVs_59 = list.files(CNC59, pattern = "^MCR_.+\\.csv$", full.names = TRUE)
+WT_CSVs_59 = list.files(CNC59, pattern = "^WTR_.+\\.csv$", full.names = TRUE)
+MUT2_CSVs_59 = list.files(CNC59, pattern = "^MR_.+\\.csv$", full.names = TRUE)
+
+mCherry_CSVs_61 = list.files(CNC61, pattern = "^MCR_.+\\.csv$", full.names = TRUE)
+WT_CSVs_61 = list.files(CNC61, pattern = "^WTR_.+\\.csv$", full.names = TRUE)
+MUT2_CSVs_61 = list.files(CNC61, pattern = "^M2R_.+\\.csv$", full.names = TRUE)
+
+
+```
+
+
+```{r analyse_traces}
+#TODO - fix frame rates to CSV for each stack
+
+
+mCherry_data_58 = lapply(mCherry_CSVs_58, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.56, mov_threshold = 5)
+  traces$experiment = "CNC58"
+  return(traces)
+})
+WT_data_58 = lapply(WT_CSVs_58, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.56, mov_threshold = 5)
+  traces$experiment = "CNC58"
+  return(traces)
+})
+MUT2_data_58 = lapply(MUT2_CSVs_58, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.56, mov_threshold = 5)
+  traces$experiment = "CNC58"
+  return(traces)
+})
+
+mCherry_data_59 = lapply(mCherry_CSVs_59, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.56, mov_threshold = 5)
+  traces$experiment = "CNC59"
+  return(traces)
+})
+WT_data_59 = lapply(WT_CSVs_59, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.56, mov_threshold = 5)
+  traces$experiment = "CNC59"
+  return(traces)
+})
+MUT2_data_59 = lapply(MUT2_CSVs_59, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.56, mov_threshold = 5)
+  traces$experiment = "CNC59"
+  return(traces)
+})
+
+mCherry_data_61 = lapply(mCherry_CSVs_61, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.56, mov_threshold = 5)
+  traces$experiment = "CNC61"
+  return(traces)
+})
+WT_data_61 = lapply(WT_CSVs_61, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.56, mov_threshold = 5)
+  traces$experiment = "CNC61"
+  return(traces)
+})
+MUT2_data_61 = lapply(MUT2_CSVs_61, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.56, mov_threshold = 5)
+  traces$experiment = "CNC61"
+  return(traces)
+})
+
+
+
+
+
+#combine
+
+
+mCherry_Rab7_data = c(mCherry_data_58, mCherry_data_59, mCherry_data_61)
+WT_Rab7_data = c(WT_data_58, WT_data_59, WT_data_61)
+MUT2_Rab7_data = c(MUT2_data_58, MUT2_data_59, MUT2_data_61)
+
+
+
+```
+
+
+Basic analysis
+```{r}
+#all one video per cell in this case - don't need separate count and can number sequentially - LEAVING ARL8 FOR NOW
+n_cells = list(mCherry = length(mCherry_Rab7_data), WT = length(WT_Rab7_data), MUT2 = length(MUT2_Rab7_data))
+
+#pulling out 'per segment' data from analysed CSVs
+mCherry.per_seg = do.call(rbind, lapply(1:length(mCherry_Rab7_data), function(c){ df = mCherry_Rab7_data[[c]]$per_seg; df$cell = c; df$cond = "mCherry"; df$exp = mCherry_Rab7_data[[c]]$experiment; return(df) }))
+WT.per_seg = do.call(rbind, lapply(1:length(WT_Rab7_data), function(c){ df = WT_Rab7_data[[c]]$per_seg; df$cell = c; df$cond = "WT"; df$exp = WT_Rab7_data[[c]]$experiment; return(df) }))
+MUT2.per_seg = do.call(rbind, lapply(1:length(MUT2_Rab7_data), function(c){ df = MUT2_Rab7_data[[c]]$per_seg; df$cell = c; df$cond = "MUT2"; df$exp = MUT2_Rab7_data[[c]]$experiment; return(df) }))
+
+
+#combining data from all conditions and calculating net distance
+per_seg = rbind(mCherry.per_seg, MUT2.per_seg, WT.per_seg)
+per_seg$net_dist = abs(per_seg$distance)
+
+#calculating mean and sd of per-segment data
+# per_seg.mean.df = aggregate(per_seg[,c("velocity", "distance", "net_dist")], by = list(per_seg$cond), FUN = mean)
+# per_seg.sd.df = aggregate(per_seg[,c("velocity", "distance", "net_dist")], by = list(per_seg$cond), FUN = sd)
+# per_seg.sem.df = aggregate(per_seg[,c("velocity", "distance", "net_dist")], by = list(per_seg$cond), FUN = function(x){sqrt(var(x)/length(x))})
+
+#calculating mean and sd of per-segment data CATEGORISED BY TYPE OF MOVEMENT (i.e. anterograde/retrograde/static)...
+# per_seg.cat_mean.df = aggregate(per_seg[,c("velocity", "distance", "net_dist")], by = list(per_seg$cond, per_seg$direction), FUN = mean)
+# per_seg.cat_sd.df = aggregate(per_seg[,c("velocity", "distance", "net_dist")], by = list(per_seg$cond, per_seg$direction), FUN = sd)
+# per_seg.cat_sem.df = aggregate(per_seg[,c("velocity", "distance", "net_dist")], by = list(per_seg$cond, per_seg$direction), FUN = function(x){sqrt(var(x)/length(x))})
+# #...and combining into a single data frame
+# per_seg.categorised = full_join(per_seg.cat_mean.df, per_seg.cat_sd.df, by = c("Group.1", "Group.2"))
+# per_seg.categorised = full_join(per_seg.categorised, per_seg.cat_sem.df, by = c("Group.1", "Group.2"))
+# names(per_seg.categorised) = c("cond", "direction", "velocity_m", "distance_m", "net_dist_m", "velocity_sd", "distance_sd", "net_dist_sd", "velocity_sem", "distance_sem", "net_dist_sem")
+
+# #counting number of categorised movements in each direction and calculating anterograde/retrograde ratio
+# counts = summarise(group_by(per_seg, cond, direction),count = n())
+# ar_ratios = sapply(unique(counts$cond), function(c){ counts[counts$cond == c & counts$direction == "anterograde", "count"]/counts[counts$cond == c & counts$direction == "retrograde", "count"] })
+# 
+# #counts skewed by unequal # cells imaged - normalise to number of cells
+# #TODO - account for varying length of axon imaged (or at least calculate range)
+# counts$norm = unlist(lapply(unique(counts$cond), function(c){ counts[counts$cond == c, "count"]/length(get(paste0(c, "_data"))) }))
+
+#ORDERING
+# counts$cond = factor(counts$cond, levels = c("GFP", "WT", "MUT"))
+# per_seg.categorised$cond = factor(per_seg.categorised$cond, levels = c("GFP", "WT", "MUT"))
+per_seg$cond = factor(per_seg$cond, levels = c("mCherry", "WT", "MUT2"), labels = c("control", "WT", "Active"))
+```
+
+```{r warning=FALSE}
+per_seg.per_cell = summarise(per_seg %>% group_by(cond, cell, direction, exp), count = n())
+#fill in 'missing' values - e.g. count 0 for cells with no anterograde traces
+#TODO - need to fill in experiment as well
+per_seg.per_cell$cellID = paste0(per_seg.per_cell$exp, per_seg.per_cell$cond, per_seg.per_cell$cell)
+
+directions = c('anterograde', 'retrograde', 'static')
+missing_conditions = do.call(rbind, lapply(unique(per_seg.per_cell$cellID), function(c){
+  df = per_seg.per_cell[per_seg.per_cell$cellID == c,]
+  missing = setdiff(directions, df$direction)
+  to_add = data.frame(cond = rep(df$cond[1], length(missing)), 
+                      cell = rep(df$cell[1], length(missing)),
+                      direction = missing,
+                      exp = rep(df$exp[1], length(missing)),
+                      count = rep(0, length(missing)),
+                      cellID = rep(c, length(missing))
+  )
+}))
+
+per_seg.per_cell = bind_rows(per_seg.per_cell, missing_conditions)
+
+#ordering
+#per_seg.per_cell$cond = factor(per_seg.per_cell$cond, levels = c("GFP", "WT", "MUT"), labels = c("GFP", "WT", "Active")) #already done on per_seg
+```
+
+Look at overall number of traces per video - might be skewed by incomplete traces, but large variations should be legitimate (?)
+```{r}
+mCherry_traces = unlist(sapply(mCherry_Rab7_data, function(d){ d$num_traces }))
+Mut2_traces = unlist(sapply(MUT2_Rab7_data, function(d){ d$num_traces }))
+WT_traces = unlist(sapply(WT_Rab7_data, function(d){ d$num_traces }))
+
+rab7.traces.df = data.frame(cond = c(rep("mCherry", length(mCherry_traces)), rep("MUT", length(Mut2_traces)), rep("WT", length(WT_traces))),
+                       traces = c(mCherry_traces, Mut2_traces, WT_traces), exp = c(unlist(sapply(mCherry_Rab7_data, function(d){ d$experiment })),
+                                                                               unlist(sapply(WT_Rab7_data, function(d){ d$experiment })),
+                                                                               unlist(sapply(MUT2_Rab7_data, function(d){ d$experiment }))))
+
+
+#ordering
+rab7.traces.df$cond = factor(rab7.traces.df$cond, levels = c("mCherry", "WT", "MUT"), labels = c("control", "WT", "Active"))
+
+```
+
+
+# Plots
+
+### Average number of particle movements per cell imaged
+
+Dotplot
+```{r Rab7_total_movement}
+#TODO - fix labels
+mov_dot = ggplot(per_seg.per_cell[per_seg.per_cell$direction != "static",], aes(x = cond, y = count, fill = cond)) + 
+  facet_wrap(~direction, strip.position = 'top') + 
+  geom_dotplot(binaxis = "y", position = "dodge", stackdir = "center", width = 0.5, color = NA, dotsize = 1)  + 
+  geom_boxplot(alpha = 0, width = 0.5, position = position_dodge(0.9), show.legend = F) + 
+  labs(x = "", y = "Rab7 movements per cell") + 
+  d_format + 
+  report_theme + theme(legend.position = 'none') + 
+  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell[per_seg.per_cell$direction != "static",]$count), 290, ceiling), size = 3.5)
+
+plot(mov_dot)
+
+
+#checking p value
+d = per_seg.per_cell[per_seg.per_cell$direction == 'anterograde',] %>% group_by(direction)
+kruskal.test(count ~ cond, data = d)
+```
+### LE traces plot
+```{r Rab7_trace_dot}
+Rab7_trace_dot = ggplot(rab7.traces.df, aes(x = cond, y = traces, fill = cond)) + 
+  geom_dotplot(binaxis = 'y', stackdir = 'center', color = NA) + 
+  geom_boxplot(alpha = 0, position = position_dodge(width = 0.9), width = 0.2, show.legend = FALSE) + 
+  labs(x = "", y = "Total number of LEs", fill = "") + 
+  d_format + report_theme + theme(legend.position = "none") + 
+  stat_compare_means(label.y = plyr::round_any(max(rab7.traces.df$traces), 10, ceiling), size = 3.5)
+
+plot(Rab7_trace_dot)
+```
+
+### 'Run length' plot
+
+Run length violin
+```{r run_length_violin, eval = FALSE, echo = FALSE}
+run_length_violin = ggplot(per_seg[per_seg$direction!= 'static',], aes(x = cond, y = net_dist, fill = cond, color = cond)) + 
+  facet_wrap(~direction, strip.position = 'top') + 
+  geom_violin(alpha = 1) + 
+  geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
+  #d_format + 
+  report_theme + theme(legend.position = "none") + 
+  stat_compare_means(label.y = plyr::round_any(max(per_seg[per_seg$direction!= 'static',]$net_dist), 50, ceiling))
+
+plot(run_length_violin)
+```
+
+### Velocity
+
+
+Velocity violin
+```{r velocity_violin, eval = FALSE, echo = FALSE}
+
+velocity_violin = ggplot(per_seg[(abs(per_seg$velocity) < 1000) & per_seg$direction!= "static",], aes(x = cond, fill = cond, y = abs(velocity), colour = cond)) + 
+  facet_wrap(~direction) + 
+  geom_violin() + 
+  geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) +
+  #ylim(0, 275) + #automatic?
+  #d_format + 
+  report_theme + theme(legend.position = "none") + 
+  stat_compare_means(label = 'p.signif', comparisons = list(c("control", "WT"), c("control", "MUT2")))
+
+plot(velocity_violin)
+
+```
+
+
+## Per segment analysis --> comparing means per cell
+
+```{r}
+per_seg.per_cell.means = do.call(rbind, lapply(1:nrow(per_seg.per_cell), function(i){
+  row = per_seg.per_cell[i,];
+  all = per_seg[per_seg$cell == row$cell & per_seg$cond == row$cond & per_seg$direction == row$direction,];
+  row$mean_dist = mean(all$net_dist);
+  row$mean_speed = mean(abs(all$velocity));
+  return(row);
+}))
+
+#Remove rows with NaN means - 0 cells for condition/direction
+per_seg.per_cell.means = per_seg.per_cell.means[!is.nan(per_seg.per_cell.means$mean_dist) & !is.nan(per_seg.per_cell.means$mean_speed),]
+```
+
+Distance
+```{r Rab7_mean_run_length}
+mean_run_length = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',], aes(x = cond, y = mean_dist, fill = cond, color = cond)) + 
+  facet_wrap(~direction, strip.position = 'top') + 
+  geom_dotplot(binaxis = "y", position = "dodge", stackdir = "center", width = 0.5, color = NA, dotsize = 1) + 
+  geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
+  d_format + 
+  report_theme + theme(legend.position = "none") + 
+  labs(x = "", y = "Mean run length") + 
+  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_dist), 1, ceiling), size = 3.5)
+
+plot(mean_run_length)
+
+
+```
+
+
+Velocity means
+```{r Rab7_mean_velocity}
+velocity_box = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$direction!= "static",], aes(x = cond, fill = cond, y = mean_speed, colour = cond)) + 
+  facet_wrap(~direction) + 
+  geom_dotplot(binaxis = "y", position = "dodge", stackdir = "center", width = 0.5, color = NA, dotsize = 1) + 
+  geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) +
+  labs(x = "", y = "Mean velocity") +
+  #ylim(0, 275) + #automatic?
+  d_format + 
+  report_theme + theme(legend.position = "none") + 
+  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction != "static",]$mean_speed), 1, ceiling), size = 3.5)
+
+plot(velocity_box)
+
+```
+
+
+
+
+COMBINED PLOT
+```{r Rab7_full_figure, fig.width = 16, fig.height = 4}
+mov_dot + mean_run_length + velocity_box + 
+  plot_annotation(tag_levels = 'A') & 
+  theme_bw() & 
+  theme(legend.position = 'none', 
+        panel.background = element_rect(fil = "#FDFDFD"), #custom bg for slide format
+        plot.background = element_rect(fil = "#FDFDFD", colour = "#FDFDFD"), 
+        legend.background = element_rect(fil = "#FDFDFD"),
+        axis.text.x = element_text(size = 14),
+        axis.title.y = element_text(size = 14, margin = margin(r = 5)),
+        strip.text = element_text(size = 12),
+        plot.tag = element_text(size = 18, face = 'bold'))
+```
+
+
+
+
+# FULL FIGURE
+
+Import representative kymographs
+```{r}
+#TODO - crop to consistent widths for plot
+#normalise measurements to axon length?
+
+mCherry_Rab7_example = read.bitmap("C:\\Users\\fl299\\PhD\\Presentations\\Third\ year\ seminar\\Ptdn_Rab7_representative_kymographs\\CNC61_mCherry_C1.png")
+WT_Rab7_example = read.bitmap("C:\\Users\\fl299\\PhD\\Presentations\\Third\ year\ seminar\\Ptdn_Rab7_representative_kymographs\\CNC61_WT_C2.png")
+Mut_Rab7_example = read.bitmap("C:\\Users\\fl299\\PhD\\Presentations\\Third\ year\ seminar\\Ptdn_Rab7_representative_kymographs\\CNC61_MUT_C6.png")
+
+mCherry_example.gg = image_as_ggplot(mCherry_Rab7_example) + labs(title = "    Control")
+WT_example.gg = image_as_ggplot(WT_Rab7_example) + labs(title = "    WT Protrudin")
+Mut_example.gg = image_as_ggplot(Mut_Rab7_example) + labs(title = "    Active Protrudin")
+```
+
+Patchwork
+```{r Rab7_full_kymographs, fig.width = 16, fig.height = 8}
+  (mCherry_example.gg + WT_example.gg + Mut_example.gg)/
+  (Rab7_trace_dot + mean_run_length + velocity_box) + 
+  plot_annotation(tag_levels = 'A') & 
+  report_theme & 
+  theme(legend.position = 'none', 
+        # panel.background = element_rect(fill = "#FDFDFD", colour = "#FDFDFD"), #custom bg for slide format
+        # plot.background = element_rect(fill = "#FDFDFD", colour = "#FDFDFD"), 
+        # legend.background = element_rect(fill = "#FDFDFD"),
+        axis.text.x = element_text(size = 14),
+        axis.title.y = element_text(size = 16, margin = margin(r = 5)),
+        strip.text = element_text(size = 16),
+        plot.tag = element_text(size = 18, face = 'bold'))
+
+```
+
+
+
+#Edited for Richard's Karolinska seminar
+```{r Karolinska_Rab7, fig.width = 16, fig.height = 9}
+
+(mCherry_example.gg + WT_example.gg + Mut_example.gg + plot_layout(widths = c(ncol(mCherry_Rab7_example)/nrow(mCherry_example),
+                                                                                     ncol(WT_Rab7_example)/nrow(WT_example),
+                                                                                     ncol(Mut_Rab7_example)/nrow(Mut_example))))/
+  (Rab7_trace_dot + mean_run_length + velocity_box) & 
+  theme(legend.position = 'none', 
+        axis.text.x = element_text(size = 14),
+        axis.title.y = element_text(size = 16, margin = margin(r = 5)),
+        strip.text = element_text(size = 16),
+        panel.grid.major = element_blank(),panel.grid.minor = element_blank(),
+        plot.title = element_text(size = 18),
+        plot.tag = element_text(size = 18, face = 'bold'),
+        plot.margin = unit(c(5.5, 5.5, 5.5, 5.5), "points"))
+
+
+  # (GFP_LAMP1_example.gg + WT_LAMP1_example.gg + Mut_LAMP1_example.gg)/
+  # (LAMP1_mov_dot + LAMP1_mean_run_length + LAMP1_mean_run_velocity) &
+  # theme(legend.position = 'none', 
+  #       axis.text.x = element_text(size = 14),
+  #       axis.title.y = element_text(size = 16, margin = margin(r = 5)),
+  #       strip.text = element_text(size = 16),
+  #       plot.tag = element_text(size = 18, face = 'bold'))
+
+
+```
