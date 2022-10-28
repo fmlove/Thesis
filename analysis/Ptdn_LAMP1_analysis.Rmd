@@ -294,9 +294,9 @@ velocity_violin = ggplot(per_seg[(abs(per_seg$velocity) < 1000) & per_seg$direct
   facet_wrap(~direction) + 
   geom_violin() + 
   geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) +
-  ylim(0, 275) + #automatic?
+  #ylim(0, 275) + #automatic?
   d_format + report_theme + theme(legend.position = "none") + 
-  stat_compare_means(label = 'p.signif', comparisons = list(c("Control", "WT"), c("Control", "MUT")))
+  stat_compare_means(label = 'p.signif', comparisons = list(c("Control", "WT"), c("Control", "Active")))
 
 plot(velocity_violin)
 
@@ -341,7 +341,7 @@ plot(LAMP1_mean_run_length)
 
 
 ```
-analysis valiadtion
+analysis validation
 ```{r}
 car::leveneTest(mean_dist~cond, data = per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',])
 car::leveneTest(mean_dist~cond, data = per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',])
@@ -363,7 +363,7 @@ Velocity
 #                  direction = per_seg.per_cell.means[per_seg.per_cell.means$direction == 'anterograde',]$direction)#shouldn't be necessary, but fixes column not found error in dunn_test
 
 ant = per_seg.per_cell.means[per_seg.per_cell.means$direction== 'anterograde',]
-test <- ant %>% group_by(direction) %>% select(mean_speed, cond)
+test <- ant %>% group_by(direction) %>% dplyr::select(mean_speed, cond)#needs dplyr to work - clash with another package?
 LAMP1_mean_run_velocity.dunn = dunn_test(test, mean_speed ~ cond, p.adjust.method = 'bonferroni')
 LAMP1_mean_run_velocity.dunn = add_xy_position(LAMP1_mean_run_velocity.dunn, x = "cond")
 LAMP1_mean_run_velocity.dunn$p.adj.rounded = sapply(LAMP1_mean_run_velocity.dunn$p.adj, function(p){round(p, digits = 3)})
@@ -373,7 +373,7 @@ LAMP1_mean_run_velocity = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$d
   facet_wrap(~direction, strip.position = 'top') + 
   geom_dotplot(aes(fill = cond, color = cond), binaxis = 'y', stackdir = 'center') + 
   geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
-  d_format + report_theme + theme(legend.position = "none") + 
+  d_format + report_theme + 
   labs(x = "", y = "Mean velocity") + 
   stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed), 12, ceiling), size = p_fs) +
   stat_pvalue_manual(LAMP1_mean_run_velocity.dunn, hide.ns = TRUE, label = 'p.adj.rounded', step.increase = 0.1)
