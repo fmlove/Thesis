@@ -4,9 +4,10 @@ output: pdf_document
 ---
 
 ```{r setup, echo = F}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, fig.width = 4.75)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, dev = 'png')
+knitr::opts_chunk$set(fig.path = "../figures/")
 
-source(here::here('./style/thesis_setup.R'))
+source('../style/thesis_setup.R')
 
 
 library(here)
@@ -24,6 +25,8 @@ library(limma)
 
 #for calls to uniprot REST API
 library(httr)
+
+library(patchwork)
 ```
 
 
@@ -130,9 +133,9 @@ hashimoto = hashimoto[!duplicated(hashimoto$SYMBOL),]#CHECK MANUALLY
 
 ```{r combining lists}
 
-all_sets = list(`Elbaz-Alon et al. 2020 (human)` = elbaz_alon$SYMBOL,
-                   `Matsuzaki et al. 2011 (mouse)` = toupper(matsuzaki$SYMBOL),
-                   `Hashimoto et al. 2014 (mouse)` = hashimoto$SYMBOL)
+all_sets = list(`Elbaz-Alon et al. 2020` = elbaz_alon$SYMBOL,#human
+                   `Matsuzaki et al. 2011` = toupper(matsuzaki$SYMBOL),#mouse
+                   `Hashimoto et al. 2014` = hashimoto$SYMBOL)#mouse
                    #`Uniprot (human)` = uniprot$SYMBOL)
 #excluding uniprot - focus on overlap in non-biased data sets
 
@@ -141,9 +144,11 @@ all_sets = list(`Elbaz-Alon et al. 2020 (human)` = elbaz_alon$SYMBOL,
 
 
 
-```{r venn, fig.width=12, fig.height=12}
-ggvenn(all_sets, fill_color = viridis(length(all_sets)), set_name_size = 6, text_size = 7, show_percentage = FALSE) #+ theme(plot.background = element_rect(fill = "#FDFDFD", colour = NA))
-#TODO - report theme
+```{r venn, fig.width=6, fig.height=6}
+
+venn = ggvenn(all_sets, fill_color = viridis(length(all_sets)), set_name_size = 3, text_size = 6.5, show_percentage = FALSE) + report_blank
+
+venn
 ```
 
 
@@ -177,9 +182,13 @@ bio_proc$Term = factor(bio_proc$Term, levels = rev(bio_proc$Term))#I'm not 100% 
 
 ```
 
-```{r GO_plots, fig.width = 4.75, fig.height = 3}
+```{r GO_plots, fig.width = 10, fig.height = 6}
 
-ggplot(bio_proc, aes(x = Term, y = n_log)) + geom_bar(stat='identity', fill = viridis(1)) + coord_flip() + labs(x = '', y = expression(-log[10] ~ "(p-value)"), title = "GO Biological Process") + report_theme + theme(legend.position = 'none', text = element_text(size = 8), plot.title = element_text(hjust = 0.75), plot.title.position = "plot") 
+GO_plot = ggplot(bio_proc, aes(x = Term, y = n_log)) + geom_bar(stat='identity', fill = viridis(1)) + coord_flip() + labs(x = '', y = expression(-log[10] ~ "(p-value)"), title = "GO Biological Process") + report_theme + theme(plot.title = element_text(hjust = 0.75), plot.title.position = "plot") 
 
+GO_plot
+```
 
+```{r proteomics_full, fig.width = 16, fig.height = 6, fig.path = "../figures/full/"}
+venn + GO_plot + plot_annotation(tag_levels = 'A')
 ```

@@ -1,6 +1,6 @@
 # Setup
 ```{r setup}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, dev = 'png')
 knitr::opts_chunk$set(fig.path = '../figures/')
 
 
@@ -178,7 +178,7 @@ LAMP1_mov_dot = ggplot(per_seg.per_cell[per_seg.per_cell$direction != "static",]
   labs(x = "", y = "LAMP1 movements per cell") + 
   d_format + 
   report_theme + theme(legend.position = 'none') + 
-  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell[per_seg.per_cell$direction != "static",]$count), 25, ceiling), size = 3.5)
+  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell[per_seg.per_cell$direction != "static",]$count), 25, ceiling), size = p_fs)
 
 plot(LAMP1_mov_dot)
 ```
@@ -265,7 +265,7 @@ LAMP1_trace_dot = ggplot(traces.df, aes(x = cond, y = traces, fill = cond)) +
   geom_boxplot(alpha = 0, position = position_dodge(width = 0.9), width = 0.2, show.legend = FALSE) + 
   labs(x = "", y = "Total number of lysosomes", fill = "") + 
   d_format + report_theme + theme(legend.position = "none") + 
-  stat_compare_means(label.y = plyr::round_any(max(traces.df$traces), 10, ceiling), size = 3.5)
+  stat_compare_means(label.y = plyr::round_any(max(traces.df$traces), 10, ceiling), size = p_fs)
 
 plot(LAMP1_trace_dot)
 ```
@@ -335,7 +335,7 @@ LAMP1_mean_run_length = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$dir
   geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
   d_format + report_theme + theme(legend.position = "none") + 
   labs(x = "", y = "Mean run length") + 
-  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_dist), 30, ceiling), size = 3.5)
+  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_dist), 30, ceiling), size = p_fs)
 
 plot(LAMP1_mean_run_length)
 
@@ -375,7 +375,7 @@ LAMP1_mean_run_velocity = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$d
   geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
   d_format + report_theme + theme(legend.position = "none") + 
   labs(x = "", y = "Mean velocity") + 
-  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed), 12, ceiling), size = 3.5) +
+  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed), 12, ceiling), size = p_fs) +
   stat_pvalue_manual(LAMP1_mean_run_velocity.dunn, hide.ns = TRUE, label = 'p.adj.rounded', step.increase = 0.1)
 
 plot(LAMP1_mean_run_velocity)

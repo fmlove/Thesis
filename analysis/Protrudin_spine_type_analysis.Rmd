@@ -1,4 +1,9 @@
-
+---
+title: "Protrudin_spine_type_analysis"
+output:
+  pdf_document:
+    latex_engine: xelatex
+---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, dev = 'png', message = FALSE)
 knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80),tidy=TRUE)

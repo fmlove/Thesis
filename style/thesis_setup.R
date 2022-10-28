@@ -43,17 +43,22 @@ colours["DIV15"] = '#4B3F72'
 custom_add = theme(legend.background = element_rect(fill = "#FFFFFF00"),
                    text = element_text(family = "Readex Pro"),
                    plot.tag = element_text(size = rel(2)),
-                   legend.position = 'none')
+                   legend.position = 'none',
+                   strip.background = element_blank())
 
-report_theme = theme_classic(base_size = 18) + custom_add
+report_theme = theme_classic(base_size = 12) + custom_add
 
-report_blank = theme_void(base_size = 18) + custom_add
+report_blank = theme_void(base_size = 12) + custom_add
 
-#TODO - change discrete palette for grayscale print-friendliness
+#plot palettes
 d_format = list(scale_colour_manual(values = colours),
                  scale_fill_manual(values = colours))
 c_format = list(scale_colour_viridis_c(),
                 scale_fill_viridis_c())
+
+#font size for p values
+p_fs = 2
+
 
 
 image_as_ggplot <- function(img){#read in image using readbitmap::read.bitmap
