@@ -1,0 +1,472 @@
+---
+title: "ER-Golgi localisation"
+output: pdf_document
+---
+
+# Setup
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE, dev = 'png', message = FALSE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80),tidy=TRUE)
+knitr::opts_chunk$set(fig.path = "../figures/")
+
+source('../style/thesis_setup.R')
+
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(ggpubr)
+library(rstatix)
+library(patchwork)
+
+```
+
+#Read in CSVs
+```{r}
+#maximum intensity quantification
+
+max_dir = c('C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC97-98_analysis_temp\\max_intensity_quantification',
+            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC105-110_analysis_temp\\MAX_fluorescence_quantification',
+            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC111_timepoints_analysis\\MAX_fluorescence_quantification',
+            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC68_DIV15',#SLC38A1 corrections
+            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC97_DIV15',
+            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC105_DIV3',
+            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC108_DIV15',
+            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC113_DIV3',
+            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC116_DIV3')
+
+
+ptdn_max_dir = c('C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC84-100-101_Ptdn_analysis_temp\\max_intensity_quantification',
+                 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC113_Ptdn_analysis\\MAX_fluorescence_quantification',
+                 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC114_Ptdn_analysis\\MAX_fluorescence_quantification',
+                 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC112_Ptdn_analysis_SLC38A1\\MAX_fluorescence_quantification')
+
+i3_max_dir = c('C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\i3-10_analysis\\MAX_fluorescence_quantification',
+               'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\i3-11-12_analysis\\MAX_fluorescence_quantification',
+               'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\i3-10')
+
+
+#pull CSVs only
+pull_result_csvs <- function (dir){
+  return(list.files(dir, pattern = "\\_Results\\.csv$", full.names = TRUE))
+}
+
+max.csvs = pull_result_csvs(max_dir)
+ptdn_max.csvs = pull_result_csvs(ptdn_max_dir)
+i3_max.csvs = pull_result_csvs(i3_max_dir)
+
+
+read_fluor_data <- function(csv_list, batch, cell_type){
+  data = do.call(bind_rows, lapply(csv_list, function(c){#bind_rows instead of rbind to handle varying columns
+    df = read.csv(c, stringsAsFactors = F)
+    df$file = rep_len(c, nrow(df))
+    df$batch = rep_len(batch, nrow(df))
+    df$cell_type = rep_len(cell_type, nrow(df))
+    return(df)
+    
+  }))
+  
+  return (data)
+}
+
+#read data
+#TODO - find a neater way to do this
+
+
+max.data = bind_rows(read_fluor_data(max.csvs[grepl("CNC97-98", max.csvs)], batch = "CNC97-98", cell_type = "rat cortical"),
+                 read_fluor_data(max.csvs[grepl("CNC105-110", max.csvs)], batch = "CNC105-110", cell_type = "rat cortical"),
+                 read_fluor_data(max.csvs[grepl("CNC111", max.csvs)], batch = "CNC111", cell_type = "rat cortical"),
+                 read_fluor_data(max.csvs[grepl("CNC68", max.csvs)], batch = "CNC68", cell_type = "rat cortical"),
+                 read_fluor_data(max.csvs[grepl("CNC97_", max.csvs)], batch = "CNC97", cell_type = "rat cortical"),
+                 read_fluor_data(max.csvs[grepl("CNC105", max.csvs)], batch = "CNC105", cell_type = "rat cortical"),
+                 read_fluor_data(max.csvs[grepl("CNC108", max.csvs)], batch = "CNC108", cell_type = "rat cortical"),
+                 read_fluor_data(max.csvs[grepl("CNC113", max.csvs)], batch = "CNC113", cell_type = "rat cortical"),
+                 read_fluor_data(max.csvs[grepl("CNC116", max.csvs)], batch = "CNC116", cell_type = "rat cortical"))
+
+
+ptdn_max.data = bind_rows(read_fluor_data(ptdn_max.csvs[grepl("CNC84-100-101", ptdn_max.csvs)], batch = "CNC84-100-101", cell_type = "rat cortical"),#TODO - SLC38A1 correction
+                          read_fluor_data(ptdn_max.csvs[grepl("CNC113", ptdn_max.csvs)], batch = "CNC113", cell_type = "rat cortical"),
+                          read_fluor_data(ptdn_max.csvs[grepl("CNC112", ptdn_max.csvs)], batch = "CNC112", cell_type = "rat cortical"),
+                          read_fluor_data(ptdn_max.csvs[grepl("CNC114", ptdn_max.csvs)], batch = "CNC114", cell_type = "rat cortical"))
+
+i3_max.data = read_fluor_data(i3_max.csvs, batch = '', cell_type = "i3")#extra columns with dot dendrites
+
+
+```
+
+```{r}
+#condition parsing
+#TODO - function?
+
+
+max.data = do.call(rbind, lapply(1:nrow(max.data), function(i){
+  row = max.data[i,]
+  filename = last(strsplit(row$file, "/", fixed = T)[[1]])
+  
+  #file name format condition_age_cellno_part
+  row$cond = str_match_all(filename, "[-A-Za-z\\d]+")[[1]][1]
+  row$age = str_match_all(filename, "[-A-Za-z\\d]+")[[1]][2]
+  row$transf = ifelse(row$age == "DIV3", "untransfected", "dGFP")
+  row$cell_no = str_match_all(filename, "[-A-Za-z\\d]+")[[1]][3]
+  row$part = str_match_all(filename, "[-A-Za-z\\d]+")[[1]][4]
+  
+  #parse result row labels
+  row$measure = str_match(row$Label, ":([A-Za-z\ \\d]+):")[2]
+  
+  return(row)
+  
+}))
+
+
+
+ptdn_max.data = do.call(rbind, lapply(1:nrow(ptdn_max.data), function(i){
+  row = ptdn_max.data[i,]
+  filename = last(strsplit(row$file, "/", fixed = T)[[1]])
+  
+  #file name format condition_age_cellno_part
+  row$cond = str_match_all(filename, "[-A-Za-z\\d]+")[[1]][1]
+  row$age = "DIV15"
+  row$transf = str_match_all(filename, "[-A-Za-z\\d]+")[[1]][2]
+  row$cell_no = str_match_all(filename, "[-A-Za-z\\d]+")[[1]][3]
+  row$part = str_match_all(filename, "[-A-Za-z\\d]+")[[1]][4]
+  
+  #parse result row labels
+  row$measure = str_match(row$Label, ":([A-Za-z\ \\d]+):")[2]
+  
+  return(row)
+  
+}))
+
+i3_max.data = do.call(rbind, lapply(1:nrow(i3_max.data), function(i){
+  row = i3_max.data[i,]
+  filename = last(strsplit(row$file, "/", fixed = T)[[1]])
+  
+  #file name format batch_condition_age_cellno_part
+  row$batch = str_match_all(filename, "([-A-Za-z\\d]+)")[[1]][1]
+  row$cond = str_match_all(filename, "([-A-Za-z\\d]+)")[[1]][2]
+  row$age = "DIV1"
+  row$transf = "untranfected"
+  row$cell_no = str_match_all(filename, "[-A-Za-z\\d]+")[[1]][3]
+  row$part = str_match_all(filename, "[-A-Za-z\\d]+")[[1]][4]
+  
+  #parse result row labels
+  row$measure = str_match(row$Label, ":([A-Za-z\ \\d]+):")[2]
+  
+  return(row)
+  
+}))
+
+
+
+#unique cell IDs for processing
+max.data$cell_id = paste0(max.data$batch, "_", max.data$cond, "_", max.data$age,"_", max.data$transf, "_", max.data$cell_no)
+ptdn_max.data$cell_id = paste0(ptdn_max.data$batch, "_", ptdn_max.data$cond, "_", ptdn_max.data$age,"_", ptdn_max.data$transf, "_", ptdn_max.data$cell_no)
+i3_max.data$cell_id = paste0(i3_max.data$batch, "_", i3_max.data$cond, "_", i3_max.data$age,"_", i3_max.data$transf, "_", i3_max.data$cell_no)
+
+```
+
+Background correction, trimming, etc.
+```{r}
+
+#TODO - CONVERT MISSING/POINT DENDRITES (LENGTH = 0) TO NA OR DELETE
+#TODO - cell type
+
+#start with cytoplasm rows
+max.gc_cyto = max.data[max.data$measure == 'cytoplasm', c('Area', 'Mean', 'IntDen', 'RawIntDen', 'batch', 'cond', 'age', 'transf', 'measure', 'cell_id')]
+#add GC rows with bg subtracted
+temp.df = max.data[max.data$measure %in% c('growth cone', 'growth cone background'), c('Area', 'Mean', 'IntDen', 'RawIntDen', 'batch', 'cond', 'age', 'transf', 'measure', 'cell_id')]
+temp.df.gc = do.call(rbind, lapply(unique(temp.df$cell_id), function(c){ 
+    section = temp.df[temp.df$cell_id == c,]
+    gc_row <- section[section$measure == 'growth cone',][1,]
+    bg_row <- section[section$measure == 'growth cone background',][1,]
+    #TODO - check if too many
+    new_row <- data.frame(Area = gc_row$Area,
+                         Mean = gc_row$Mean - bg_row$Mean,
+                         IntDen = gc_row$IntDen - bg_row$IntDen,
+                         RawIntDen = gc_row$RawIntDen - bg_row$RawIntDen,
+                         batch = gc_row$batch,
+                         cond = gc_row$cond,
+                         age = gc_row$age,
+                         transf = gc_row$transf,
+                         measure = gc_row$measure,
+                         cell_id = gc_row$cell_id)
+    return(new_row)
+  }))
+  
+max.gc_cyto = rbind(max.gc_cyto, temp.df.gc)
+max.gc_cyto$age = factor(max.gc_cyto$age, levels = c('DIV3', 'DIV15'))
+max.gc_cyto$transf = factor(max.gc_cyto$transf, levels = c('untransfected', 'dGFP', 'Control', 'WT', 'Active'))
+
+
+
+
+max.gc_cyto.ratio = do.call(rbind, lapply(unique(max.gc_cyto$cell_id), function(c){
+  cyto_row <- max.gc_cyto[max.gc_cyto$cell_id == c & max.gc_cyto$measure == 'cytoplasm',][1,]
+  gc_row <- max.gc_cyto[max.gc_cyto$cell_id == c & max.gc_cyto$measure == 'growth cone',][1,]
+  new_row <- data.frame(ratio = gc_row$IntDen/cyto_row$IntDen,
+                        ratio_mean = gc_row$Mean/cyto_row$Mean,
+                        batch = cyto_row$batch,#this and following should always be the same between rows
+                        cond = cyto_row$cond,
+                        age = cyto_row$age,
+                        transf = cyto_row$transf,
+                        cell_id = cyto_row$cell_id)
+  return(new_row)
+}))
+max.gc_cyto.ratio = na.omit(max.gc_cyto.ratio)
+
+max.gc_cyto.ratio$age = factor(max.gc_cyto.ratio$age, levels = c('DIV3', 'DIV15'))
+max.gc_cyto.ratio$transf = factor(max.gc_cyto.ratio$transf, levels = c('untransfected', 'dGFP', 'GFP', 'WT', 'Mut2'),
+                                  labels = c('-', 'dGFP', 'Control', 'WT', 'Active'))
+
+max.gc_cyto$measure = factor(max.gc_cyto$measure, levels = c('growth cone', 'cytoplasm'), labels = c('axon terminal', 'soma'))
+
+
+
+#PROTRUDIN
+#start with cytoplasm rows
+ptdn_max.gc_cyto = ptdn_max.data[ptdn_max.data$measure == 'cytoplasm', c('Area', 'Mean', 'IntDen', 'RawIntDen', 'batch', 'cond', 'age', 'transf', 'measure', 'cell_id')]
+#add GC rows with bg subtracted
+ptdn_temp.df = ptdn_max.data[ptdn_max.data$measure %in% c('growth cone', 'growth cone background'), c('Area', 'Mean', 'IntDen', 'RawIntDen', 'batch', 'cond', 'age', 'transf', 'measure', 'cell_id')]
+ptdn_temp.df.gc = do.call(rbind, lapply(unique(ptdn_temp.df$cell_id), function(c){ 
+    section = ptdn_temp.df[ptdn_temp.df$cell_id == c,]
+    gc_row <- section[section$measure == 'growth cone',][1,]
+    bg_row <- section[section$measure == 'growth cone background',][1,]
+    #TODO - check if too many
+    new_row <- data.frame(Area = gc_row$Area,
+                         Mean = gc_row$Mean - bg_row$Mean,
+                         IntDen = gc_row$IntDen - bg_row$IntDen,
+                         RawIntDen = gc_row$RawIntDen - bg_row$RawIntDen,
+                         batch = gc_row$batch,
+                         cond = gc_row$cond,
+                         age = gc_row$age,
+                         transf = gc_row$transf,
+                         measure = gc_row$measure,
+                         cell_id = gc_row$cell_id)
+    return(new_row)
+  }))
+  
+ptdn_max.gc_cyto = rbind(ptdn_max.gc_cyto, ptdn_temp.df.gc)
+ptdn_max.gc_cyto$age = factor(ptdn_max.gc_cyto$age, levels = c('DIV3', 'DIV15'))
+ptdn_max.gc_cyto$transf = factor(ptdn_max.gc_cyto$transf, levels = c('GFP', 'WT', 'Mut2'), 
+                                 labels = c('Control', 'WT', 'Active'))
+
+
+
+
+ptdn_max.gc_cyto.ratio = do.call(rbind, lapply(unique(ptdn_max.gc_cyto$cell_id), function(c){
+  cyto_row <- ptdn_max.gc_cyto[ptdn_max.gc_cyto$cell_id == c & ptdn_max.gc_cyto$measure == 'cytoplasm',][1,]
+  gc_row <- ptdn_max.gc_cyto[ptdn_max.gc_cyto$cell_id == c & ptdn_max.gc_cyto$measure == 'growth cone',][1,]
+  new_row <- data.frame(ratio = gc_row$IntDen/cyto_row$IntDen,
+                        ratio_mean = gc_row$Mean/cyto_row$Mean,
+                        batch = cyto_row$batch,#this and following should always be the same between rows
+                        cond = cyto_row$cond,
+                        age = cyto_row$age,
+                        transf = cyto_row$transf,
+                        cell_id = cyto_row$cell_id)
+  return(new_row)
+}))
+ptdn_max.gc_cyto.ratio = na.omit(ptdn_max.gc_cyto.ratio)
+
+ptdn_max.gc_cyto.ratio$age = factor(ptdn_max.gc_cyto.ratio$age, levels = c('DIV3', 'DIV15'))
+
+ptdn_max.gc_cyto$measure = factor(ptdn_max.gc_cyto$measure, levels = c('growth cone', 'cytoplasm'), labels = c('axon terminal', 'soma'))
+
+
+
+
+
+
+
+
+
+#start with cytoplasm rows
+i3_max.gc_cyto = i3_max.data[i3_max.data$measure == 'cytoplasm', c('Area', 'Mean', 'IntDen', 'RawIntDen', 'batch', 'cond', 'age', 'transf', 'measure', 'cell_id')]
+#add GC rows with bg subtracted
+i3_temp.df = i3_max.data[i3_max.data$measure %in% c('growth cone', 'growth cone background'), c('Area', 'Mean', 'IntDen', 'RawIntDen', 'batch', 'cond', 'age', 'transf', 'measure', 'cell_id')]
+i3_temp.df.gc = do.call(rbind, lapply(unique(i3_temp.df$cell_id), function(c){ 
+    section = i3_temp.df[i3_temp.df$cell_id == c,]
+    gc_row <- section[section$measure == 'growth cone',][1,]
+    bg_row <- section[section$measure == 'growth cone background',][1,]
+    #TODO - check if too many
+    new_row <- data.frame(Area = gc_row$Area,
+                         Mean = gc_row$Mean - bg_row$Mean,
+                         IntDen = gc_row$IntDen - bg_row$IntDen,
+                         RawIntDen = gc_row$RawIntDen - bg_row$RawIntDen,
+                         batch = gc_row$batch,
+                         cond = gc_row$cond,
+                         age = 'DIV1',
+                         transf = 'untransf',
+                         measure = gc_row$measure,
+                         cell_id = gc_row$cell_id)
+    return(new_row)
+  }))
+  
+i3_max.gc_cyto = rbind(i3_max.gc_cyto, i3_temp.df.gc)
+#i3_max.gc_cyto$age = factor(i3_max.gc_cyto$age, levels = c('DIV3', 'DIV15'))
+i3_max.gc_cyto$transf = factor(i3_max.gc_cyto$transf, levels = c('untransfected', 'dGFP', 'Control', 'WT', 'Active'))
+
+
+
+
+i3_max.gc_cyto.ratio = do.call(rbind, lapply(unique(i3_max.gc_cyto$cell_id), function(c){
+  cyto_row <- i3_max.gc_cyto[i3_max.gc_cyto$cell_id == c & i3_max.gc_cyto$measure == 'cytoplasm',][1,]
+  gc_row <- i3_max.gc_cyto[i3_max.gc_cyto$cell_id == c & i3_max.gc_cyto$measure == 'growth cone',][1,]
+  new_row <- data.frame(ratio = gc_row$IntDen/cyto_row$IntDen,
+                        ratio_mean = gc_row$Mean/cyto_row$Mean,
+                        batch = cyto_row$batch,#this and following should always be the same between rows
+                        cond = cyto_row$cond,
+                        age = 'DIV1',
+                        transf = 'untransf',
+                        cell_id = cyto_row$cell_id)
+  return(new_row)
+}))
+i3_max.gc_cyto.ratio = na.omit(i3_max.gc_cyto.ratio)
+
+#i3_max.gc_cyto.ratio$age = factor(i3_max.gc_cyto.ratio$age, levels = c('DIV3', 'DIV15'))
+i3_max.gc_cyto.ratio$transf = factor(i3_max.gc_cyto.ratio$transf, levels = c('untransfected', 'dGFP', 'GFP', 'WT', 'Mut2'), 
+                                       labels = c('-', 'dGFP', 'Control', 'WT', 'Active'))
+
+
+
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+## Plots
+
+Max intensity - GC/soma (cytoplasm) ratio at DIV3 vs DIV15
+```{r max_ratio_plot, fig.width = 16}
+max_ratio_plot = ggplot(max.gc_cyto.ratio[max.gc_cyto.ratio$cond!= 'BCAP31',], aes(x = age, y = ratio_mean, group = age)) + 
+  geom_dotplot(aes(fill = age, colour = age), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.5) + 
+  geom_boxplot(fill = NA, colour = 'black', outlier.color = NA) +
+  facet_wrap(~cond, ncol = 4) + 
+  labs(x = 'Age', y = 'GC to soma intensity ratio') + 
+  d_format + report_theme +
+  stat_compare_means(paired = F, label.y = max(max.gc_cyto.ratio[max.gc_cyto.ratio$cond!= 'BCAP31',]$ratio_mean) + 0.1)
+
+max_ratio_plot
+```
+
+```{r ptdn_max_ratio_plot, fig.height = 8, fig.width = 12}
+#ERGIC significant - post-hoc test
+ptdn_ratio_test <- ptdn_max.gc_cyto.ratio %>% group_by(cond) %>% dplyr::select(ratio_mean, transf)
+ptdn_max.gc_cyto.ratio.dunn = dunn_test(ptdn_ratio_test, ratio_mean ~ transf, p.adjust.method = 'bonferroni')
+ptdn_max.gc_cyto.ratio.dunn = add_xy_position(ptdn_max.gc_cyto.ratio.dunn, x = 'transf')
+ptdn_max.gc_cyto.ratio.dunn$p.adj.rounded = sapply(ptdn_max.gc_cyto.ratio.dunn$p.adj, function(p){round(p, digits = 3)})
+
+ptdn_max_ratio_plot = ggplot(ptdn_max.gc_cyto.ratio, aes(x = transf, y = ratio_mean, group = transf)) + 
+  geom_dotplot(aes(color = transf, fill = transf), binaxis = "y", stackdir = "center", position = "dodge") + 
+  geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) +
+  facet_wrap(~cond) + 
+  labs(x = '', y = 'GC to soma intensity ratio') + 
+  ylim(-0.2, 1.4) +
+  report_theme + d_format +
+  stat_compare_means() + stat_pvalue_manual(ptdn_max.gc_cyto.ratio.dunn, hide.ns = TRUE, label = 'p.adj.rounded')
+  
+
+
+ptdn_max_ratio_plot
+
+
+```
+
+
+
+
+
+
+
+
+Max - GC intensity
+```{r max_GC_plot}
+max_GC_plot = ggplot(max.gc_cyto[max.gc_cyto$measure == 'axon terminal',], aes(x = age, y = Mean, group = age)) + 
+  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge") + 
+  facet_wrap(~cond, scale = 'free_y') + 
+  labs(x = 'Age', y = 'GC average intensity') + #
+  stat_compare_means()
+
+max_GC_plot
+```
+```{r ptdn_max_GC_plot, fig.height = 8, fig.width = 12}
+#ERGIC, SURF4 significant - post-hoc test
+ptdn_test <- ptdn_max.gc_cyto %>% group_by(cond, measure) %>% dplyr::select(Mean, transf)
+ptdn_max.gc_cyto.dunn = dunn_test(ptdn_test, Mean ~ transf, p.adjust.method = 'bonferroni')
+ptdn_max.gc_cyto.dunn = add_xy_position(ptdn_max.gc_cyto.dunn, x = 'transf')
+ptdn_max.gc_cyto.dunn$p.adj.rounded = sapply(ptdn_max.gc_cyto.dunn$p.adj, function(p){round(p, digits = 3)})
+
+ptdn_max_GC_plot = ggplot(ptdn_max.gc_cyto[ptdn_max.gc_cyto$measure == 'axon terminal',], aes(x = transf, y = Mean, group = transf)) + 
+  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge") + 
+  facet_wrap(~cond, scales = 'free_y') + 
+  labs(x = '', y = 'GC average intensity') + 
+  stat_compare_means() + 
+  stat_pvalue_manual(ptdn_max.gc_cyto.dunn[ptdn_max.gc_cyto.dunn$group1 == 'control' & ptdn_max.gc_cyto.dunn$measure == 'axon terminal',], hide.ns = TRUE, label = 'p.adj.rounded', step.increase = 0.1)
+
+ptdn_max_GC_plot
+```
+Intensity in axon terminals stays level or decreases with age
+
+
+Max - soma (cytoplasm) intensity
+```{r max_cyto_plot}
+max_cyto_plot = ggplot(max.gc_cyto[max.gc_cyto$measure == 'soma',], aes(x = age, y = Mean, group = age)) + 
+  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge") + 
+  facet_wrap(~cond, scale = 'free_y') + 
+  labs(x = 'Age', y = 'soma average intensity') + 
+  stat_compare_means()
+
+max_cyto_plot
+```
+```{r ptdn_max_cyto_plot}
+#ERGIC, SURF4 significant - post-hoc test
+# soma_test <- ptdn_max.gc_cyto[ptdn_max.gc_cyto$measure == 'cytoplasm',] %>% group_by(cond) %>% select(Mean, transf)
+# ptdn_max.gc_cyto.soma.dunn = dunn_test(soma_test, Mean ~ transf, p.adjust.method = 'bonferroni')
+# ptdn_max.gc_cyto.soma.dunn = add_xy_position(ptdn_max.gc_cyto.soma.dunn, x = 'transf')
+# ptdn_max.gc_cyto.soma.dunn$p.adj.rounded = sapply(ptdn_max.gc_cyto.soma.dunn$p.adj, function(p){round(p, digits = 3)})
+
+ptdn_max_cyto_plot = ggplot(ptdn_max.gc_cyto[ptdn_max.gc_cyto$measure == 'soma',], aes(x = transf, y = Mean, group = transf)) + 
+  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge") + 
+  facet_wrap(~cond, scales = 'free_y') + 
+  labs(x = 'Age', y = 'soma average intensity') + 
+  stat_compare_means() + 
+  stat_pvalue_manual(ptdn_max.gc_cyto.dunn[ptdn_max.gc_cyto.dunn$group1 == 'control' & ptdn_max.gc_cyto.dunn$measure == 'soma',], hide.ns = TRUE, label = 'p.adj.rounded', step.increase = 0.1)
+
+ptdn_max_cyto_plot
+```
+
+
+
+
+
+```{r i3_max_ratio_plot}
+i3_max_ratio_plot = ggplot(i3_max.gc_cyto.ratio, aes(x = cond, y = ratio_mean, group = cond)) + 
+  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge") + 
+  labs(x = '', y = 'GC to soma intensity ratio')
+
+i3_max_ratio_plot
+
+
+```
+
+```{r CNC_vs_i3_ratio_plot}
+CNC_i3_max_ratio_plot = ggplot(rbind(i3_max.gc_cyto.ratio, max.gc_cyto.ratio), aes(x = transf, y = ratio_mean, group = transf)) + 
+  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge") + 
+  facet_wrap(~cond) + 
+  labs(x = '', y = 'GC to soma intensity ratio')
+
+CNC_i3_max_ratio_plot
+```
+
+
+
+
+

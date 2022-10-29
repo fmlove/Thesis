@@ -5,7 +5,7 @@ output:
     latex_engine: xelatex
 ---
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, dev = 'png', message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, dev = 'png', message = FALSE, warning = FALSE)
 knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80),tidy=TRUE)
 knitr::opts_chunk$set(fig.path = "../figures/")
 
@@ -19,6 +19,7 @@ Loading R packages used in this file
 library(stringr)
 library(reshape2)
 library(ggplot2)
+library(rstatix)
 library(ggpubr)
 library(patchwork)
 ```
@@ -82,7 +83,7 @@ CNC78.csvs = lapply(list.files(path = CNC78.dir, pattern = '\\.csv$'),
                                 df$file = rep(f, nrow(df));
                                 return(df);
                               })
-#remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
+#remove key.csvs if present - assuming that these will be fewer than desired spine length CSVs
 colnames = unique(lapply(CNC78.csvs, colnames))
 colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC78.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
 colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
@@ -126,11 +127,18 @@ spine_counts.df$cond = factor(spine_counts.df$cond, levels = c('mCh', 'WT', 'Mut
 ```
 
 ```{r spine_counts_plot}
-counts.plot = ggplot(spine_counts.df, aes(x = cond, y = Freq, fill = cond, colour = cond)) + 
-  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + 
-  geom_boxplot(fill = NA, colour = 'black') + labs(title = 'Spinning disc') + 
+#dunn test for p values
+spinningdisc.dunn = dunn_test(spine_counts.df, Freq ~ cond, p.adjust.method = 'bonferroni')
+spinningdisc.dunn = add_xy_position(spinningdisc.dunn, x = "cond")
+spinningdisc.dunn = add_y_position(spinningdisc.dunn, step.increase = 0.01)
+spinningdisc.dunn$p.adj.rounded = sapply(spinningdisc.dunn$p.adj, function(p){round(p, digits = 3)})
+
+counts.plot = ggplot(spine_counts.df, aes(x = cond, y = Freq)) + 
+  geom_dotplot(aes(fill = cond, colour = cond), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7, binwidth = 1) + 
+  geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
+  labs(title = 'Replicate 1', x = '', y = paste0('Number of spines in 20', '\U03BC', 'm section')) + 
   d_format + report_theme +
-  stat_compare_means(label = 'p.signif', ref.group = 'Control', hide.ns = F)
+  stat_compare_means() + stat_pvalue_manual(spinningdisc.dunn, hide.ns = T, label = 'p.adj.rounded', step.increase = 0.01)
 
 counts.plot
 ```
@@ -143,11 +151,18 @@ spine_lengths.melt$cond = factor(spine_lengths.melt$cond, levels = c('mCh', 'WT'
 ```
 
 ```{r spine_length_plots}
-lengths.plot = ggplot(spine_lengths.melt, aes(x = cond, y = value, fill = cond, colour = cond)) + 
-  geom_violin(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.2) + 
-  geom_boxplot(fill = NA, width = 0.2, outlier.shape = NA)  + labs(title = 'Spinning disc') + 
+#dunn test for p values
+lengths.dunn = dunn_test(spine_lengths.melt, value ~ cond, p.adjust.method = 'bonferroni')
+lengths.dunn = add_xy_position(lengths.dunn, x = "cond")
+lengths.dunn = add_y_position(lengths.dunn, step.increase = 0.1)
+lengths.dunn$p.adj.rounded = sapply(lengths.dunn$p.adj, function(p){signif(p, digits = 3)})#signif instead of round for small p values
+
+
+lengths.plot = ggplot(spine_lengths.melt, aes(x = cond, y = value, colour = cond)) + 
+  geom_violin() + geom_boxplot(fill = NA, width = 0.2, outlier.shape = NA)  + 
+  labs(title = 'Replicate 1', x = '', y = paste0('Spine length (', '\U03BC', 'm)')) + 
   d_format + report_theme +
-  stat_compare_means(label = 'p.signif', ref.group = 'Control', hide.ns = F)
+  stat_compare_means() + stat_pvalue_manual(lengths.dunn, hide.ns = TRUE, label = 'p.adj.rounded', bracket.nudge.y = -2)
 
 lengths.plot
 ```
@@ -294,11 +309,17 @@ spine_counts_confocal.df$cond = factor(spine_counts_confocal.df$cond, levels = c
 ```
 
 ```{r spine_counts_confocal_plot}
-counts_confocal.plot= ggplot(spine_counts_confocal.df, aes(x = cond, y = Freq, fill = cond, colour = cond)) + 
-  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + 
-  geom_boxplot(fill = NA, colour = 'black') + labs(title = 'Confocal') + 
+#dunn test for p values
+confocal.dunn = dunn_test(spine_counts_confocal.df, Freq ~ cond, p.adjust.method = 'bonferroni')
+confocal.dunn = add_xy_position(confocal.dunn, x = "cond")
+confocal.dunn$p.adj.rounded = sapply(confocal.dunn$p.adj, function(p){round(p, digits = 3)})
+#result - no individual comparisons are significant
+
+counts_confocal.plot= ggplot(spine_counts_confocal.df, aes(x = cond, y = Freq)) + 
+  geom_dotplot(aes(fill = cond, colour = cond), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 1, binwidth = 1) + 
+  geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + labs(x = '', y = paste0('Number of spines in 20', '\U03BC', 'm section'), title = 'Replicate 2') + 
   d_format + report_theme +
-  stat_compare_means(label = 'p.signif', ref.group = 'Control', hide.ns = F)
+  stat_compare_means() + stat_pvalue_manual(confocal.dunn, hide.ns = T, label = 'p.adj.rounded', step.increase = 0.1)
 
 counts_confocal.plot
 ```
@@ -312,19 +333,25 @@ spine_lengths_confocal.melt$cond = factor(spine_lengths_confocal.melt$cond, leve
 ```
 
 ```{r spine_length_plots_confocal}
-lengths_confocal.plot = ggplot(spine_lengths_confocal.melt, aes(x = cond, y = value, fill = cond)) + 
-  geom_violin(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.2) + 
-  geom_boxplot(fill = NA, width = 0.2, outlier.shape = NA) + labs(title = 'Confocal') + 
+#dunn test for p values
+lengths_confocal.dunn = dunn_test(spine_lengths_confocal.melt, value ~ cond, p.adjust.method = 'bonferroni')
+lengths_confocal.dunn = add_xy_position(lengths_confocal.dunn, x = "cond")
+lengths_confocal.dunn = add_y_position(lengths_confocal.dunn, step.increase = 0.02)
+lengths_confocal.dunn$p.adj.rounded = sapply(lengths_confocal.dunn$p.adj, function(p){round(p, digits = 3)})
+
+lengths_confocal.plot = ggplot(spine_lengths_confocal.melt, aes(x = cond, y = value, colour = cond)) + 
+  geom_violin() + geom_boxplot(fill = NA, width = 0.2, outlier.shape = NA) + 
+  labs(title = 'Replicate 2', x = '', y = paste0('Spine length (', '\U03BC', 'm)')) + 
   d_format + report_theme +
-  stat_compare_means(label = 'p.signif', ref.group = 'Control', hide.ns = F)
+  stat_compare_means() + stat_pvalue_manual(lengths_confocal.dunn, hide.ns = TRUE, label = 'p.adj.rounded')
 
 lengths_confocal.plot
 ```
 
 # Combined plots
 
-```{r combo_plots, fig.height=12, fig.width=16}
-(counts.plot + counts_confocal.plot) / (lengths.plot + lengths_confocal.plot)
+```{r spine_lengths_full_figure, fig.height=12, fig.width=16, fig.path = '../figures/full/'}
+(counts.plot + counts_confocal.plot) / (lengths.plot + lengths_confocal.plot) + plot_annotation(tag_levels = 'A')
 
 ```
 
