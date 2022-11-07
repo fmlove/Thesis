@@ -1,3 +1,10 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
 # Introduction {.unnumbered #INTRODUCTION}
 
 ```{=latex}
@@ -44,4 +51,55 @@ While much research into myelin and axon regeneration has focused on the presenc
 
 
 ### Intrinsic factors
+
+In addition to environmental factors, there are a number of intrinsic barriers to successful axon regeneration.  As the cells mature from a developmental, growth-permissive state into mature, synaptically active neurons, they undergo structural and functional changes that must be considered in the development of regenerative therapies.
+
+#### Cytoskeleton
+
+#### Signalling
+##### PTEN and mTOR
+##### Other signalling pathways
+
+#### Epigenetic and transcriptomic regulation
+##### Conditioning lesion effect
+
+#### Local translation
+
+#### Intracellular transport
+##### Recycling endosomes
+##### Lysosomes and late endosomes
+##### Other organelles
+###### Mitochondria
+##### Signalling
+
+
+### Protrudin
+
+Protrudin is an interesting protein in the context of axon regeneration because it sits at the nexus of many of these intrinsic and extrinsic functions.  As a result, it has the potential to substantially influence a neuron's regenerative capacity.
+
+#### Cellular outgrowth, migration, and invasion
+
+Protrudin, otherwise known as ZFYVE27, is so named because its overexpression induces the growth of long cellular protrusions in HeLa cells [@shiraneProtrudinInducesNeurite2006].  Subsequent work has shown similar effects on a number of cell types [@zhangRoleSpastinProtrudin2012], and indicated a role for protrudin in outgrowth-dependent processes, such as migration and cancer cell invasion [@aroraProtrudinRegulatesFAK2022] [@pedersenProtrudinmediatedEREndosome2020].  However, the underlying mechanisms of these effects are not fully understood, and there are a number of potential pathways that could contribute.
+
+#### Transport
+
+Protrudin contains a kinesin binding site, indicating a role in mediating motor protein-mediated transport.  In particular, this would promote plus-end directed transport, which is essential for delivering cargo into the long axons of CNS neurons.  Matsuzaki et al. [@matsuzakiProtrudinServesAdaptor2011] studied this in some depth, and found that protrudin's outgrowth-promoting effect in HeLa cells is attenuated if KIF5 is inhibited, and increased if KIF5 is also overexpressed.  They found evidence for direct protrudin-KIF5 interaction in mouse brains, and identified protrudin as the KIF5 adaptor for SURF4, Rab11, VAPA/B, and RTN3.  As these proteins are essential for ER function, contact site formation, protein transport, and a number of other processes, this suggests that, even at the low levels found endogenously in CNS neurons (CITE), protrudin plays an important role in normal axonal function.
+
+Petrova et al. [@petrovaProtrudinFunctionsEndoplasmic2020], which I contributed to during the first year of my PhD, looked at protrudin specifically in the context of integrin transport.  In particular, integrin $\alpha9$, which is capable of promoting axon growth in the mature spinal cord [], is a cargo of Rab11 endosomes [].  We found that protrudin overexpression had a small effect on developmental neurite outgrowth, but strongly promoted axon regrowth after axotomy *in vitro*.  In addition, protrudin prevented retinal ganglion cell death after an axon crush injury *in vivo*, and allowed axons to regrow past the injury site.  I discuss this result further in (CROSS-REFERENCE).
+
+In contrast, Raiborg et al. [@raiborgRepeatedEREndosome2015] looked at protrudin's effect on late endosome transport.  Using PC12 cells, they found that protrudin *indirectly* promoted late endosome transport, forming transient ER-late endosome contacts at which a separate adaptor, FYCO1, was able to bind Rab7 and KIF5 to move late endosomes down the axon.
+
+#### ER contact sites
+
+Other studies have indicated a direct role for protrudin at ER-organelle membrane contact sites (MCSs).  
+
+##### Axonal ER
+
+The axonal ER is comprised of only a few very narrow, continuous tubules, and yet is essential for normal axonal function.  As protrudin localises to ER tubules, it can be found in the axon, although in mature neurons it is more abundant in the cell body and dendrites.  However, it is not excluded from the axon, as it readily moves into the axon if overexpressed [@petrovaProtrudinFunctionsEndoplasmic2020].
+
+
+
+
+##### Mitochondria
+
 
