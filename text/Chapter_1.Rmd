@@ -102,7 +102,7 @@ kable(#TODO - table styles
 
 Mice received intravitreal injections of AAV2 protrudin constructs, followed two weeks later by a unilateral optic nerve crush.  Two weeks post-crush, the mice were perfused, and eyes and optic nerves were collected.  RBPMS staining of retinal flat mounts showed a significant increase in RGC survival with expression of the active protrudin construct (Figure \@ref(fig:ONC_figure))[@petrovaProtrudinFunctionsEndoplasmic2020].  
 
-```{r ONC_figure, echo = F, fig.path = '~/figures/full/', fig.width = 16, fig.height = 6, fig.cap='Reproduced from Petrova et al. 2020.  A) Representative images of RBPMS-stained retinal whole mounts.  B) Quantification of surviving RGCs.'}
+```{r ONC_figure, echo = F, fig.path = '../figures/full/', fig.width = 16, fig.height = 6, fig.cap='Reproduced from Petrova et al. 2020.  A) Representative images of RBPMS-stained retinal whole mounts.  B) Quantification of surviving RGCs.'}
 #TODO - detail on which eye was injected and virus structure.  Plasmid map?
 
 ONC_figure
@@ -113,7 +113,7 @@ ONC_figure
 
 Based on the findings in [@raiborgRepeatedEREndosome2015], I set out to see if protrudin could be increasing the anterograde transport of late endosomes or lysosomes into the distal axon.  Cortical neurons were transfected to co-express LAMP1 and either EGFP of EGFP-tagged protrudin, and LAMP1 transport in the distal axon was imaged using spinning disc miscroscopy.  Overexpression of either wild type or active protrudin had no significant effect on the number or direction of travel of lysosomes in the distal axon.  A very slight decrease in anterograde speed was observed in cells expressing active protrudin.
 
-```{r LAMP1_full_figure, echo = F, fig.width = 16, fig.height = 8, fig.path = '~/figures/full/', fig.cap="A) Representative axon image and kymographs showing LAMP1 transport in the distal axon of cortical neurons expressing either EGFP or EGFP-tagged protrudin constructs.  B) Total number of LAMP1-labelled organelles in each cell imaged.  C) Average run length (per cell) of moving lysosomes.  Anterograde and retrograde were defined as continuous movements of at least 5μm away from or towards the cell body, respectively.  D) Average lysosome velocity (per cell).  P-values are from Kruskal-Wallis test, followed by Dunn's post-hoc test with Bonfferoni correction for multiple comparisions."}
+```{r LAMP1_full_figure, echo = F, fig.width = 16, fig.height = 8, fig.path = '../figures/full/', fig.cap="A) Representative axon image and kymographs showing LAMP1 transport in the distal axon of cortical neurons expressing either EGFP or EGFP-tagged protrudin constructs.  B) Total number of LAMP1-labelled organelles in each cell imaged.  C) Average run length (per cell) of moving lysosomes.  Anterograde and retrograde were defined as continuous movements of at least 5μm away from or towards the cell body, respectively.  D) Average lysosome velocity (per cell).  P-values are from Kruskal-Wallis test, followed by Dunn's post-hoc test with Bonfferoni correction for multiple comparisions."}
 
 LAMP1_full
 ```
@@ -121,7 +121,7 @@ LAMP1_full
 The experiment was then repeated using Rab7 instead of LAMP1 as a more specific marker of late endosomes.  As the mechanism set out in [@raiborgRepeatedEREndosome2015] suggests that Rab7 is directly involved in protrudin-facilitated transport of late endosomes, this should label only the exact population of organelles that are involved in this process.  While overexpression of Rab7 could potentially amplify any effect of protrudin overexpression on this system, this effect should be consistent between control and protrudin conditions.  However, this showed no significant effect of protrudin on lysosome number, speed, or run length.
 
 
-```{r Rab7_full_figure, echo = F, fig.width = 16, fig.height = 8, fig.path = '~/figures/full/', fig.cap="A) Representative axon image and kymographs showing Rab7 transport in the distal axon of cortical neurons expressing either EGFP or EGFP-tagged protrudin constructs.  B) Total number of Rab7-labelled organelles in each cell imaged.  C) Average run length (per cell) of moving late endosomes.  Anterograde and retrograde were defined as continuous movements of at least 5μm away from or towards the cell body, respectively.  D) Average late endosome velocity (per cell).  P-values are from Kruskal-Wallis test, followed by Dunn's post-hoc test with Bonfferoni correction for multiple comparisions."}
+```{r Rab7_full_figure, echo = F, fig.width = 16, fig.height = 8, fig.path = '../figures/full/', fig.cap="A) Representative axon image and kymographs showing Rab7 transport in the distal axon of cortical neurons expressing either EGFP or EGFP-tagged protrudin constructs.  B) Total number of Rab7-labelled organelles in each cell imaged.  C) Average run length (per cell) of moving late endosomes.  Anterograde and retrograde were defined as continuous movements of at least 5μm away from or towards the cell body, respectively.  D) Average late endosome velocity (per cell).  P-values are from Kruskal-Wallis test, followed by Dunn's post-hoc test with Bonfferoni correction for multiple comparisions."}
 
 Rab7_full
 ```
