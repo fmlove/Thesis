@@ -9,5 +9,5 @@
 
 
 ### Analysis of published protrudin proteomics
-```{r child='text/Chapters/Chapter_2/Protrudin_proteomics.Rmd'}
+```{r}
 ```

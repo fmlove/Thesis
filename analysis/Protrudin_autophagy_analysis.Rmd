@@ -1,0 +1,47 @@
+---
+title: "Protrudin_autophagy_analysis"
+output: pdf_document
+---
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(dplyr)
+library(ggplot2)
+```
+
+Load in count CSVs
+```{r}
+CNC100 = read.csv('C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning\ Disc\\270422_cnc100\\CNC100_LC3_dist.csv')
+CNC101 = read.csv('C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\040522_cnc101\\CNC101_LC3_dist.csv')
+
+CNC100$expt = rep('CNC100', nrow(CNC100))
+CNC101$expt = rep('CNC101', nrow(CNC101))
+
+LC3_dist.df = rbind(CNC100, CNC101)
+```
+
+Combine experiments
+```{r}
+LC3_dist.simple = LC3_dist.df %>% group_by(condition, distribution) %>% summarise(count = sum(number))
+LC3_dist.simple$condition = factor(LC3_dist.simple$condition, levels = c('GFP', 'WT', 'Mut2'), labels = c('Control', 'WT', 'Active'))
+
+```
+
+Plot
+```{r}
+ggplot(LC3_dist.simple[LC3_dist.simple$condition %in% c('Control', 'WT'),], aes(group = condition, fill = condition, y = count, x = distribution)) + geom_bar(stat = 'identity', position = 'dodge') + report_theme + scale_fill_manual(values = c('#8AC926', '#FF595E')) + labs(x = 'LC3 localisation', y = 'Number of cells', fill = '' )
+
+```
+
+```{r}
+ggplot(LC3_dist.simple, aes(group = condition, fill = condition, y = count, x = distribution)) + geom_bar(stat = 'identity', position = 'dodge') + report_theme + labs(x = 'LC3 localisation', y = 'Number of cells', fill = '' )
+
+```
+
+```{r LC3_dist_plot}
+ggplot(LC3_dist.simple, aes(x = condition, fill = distribution, y = count)) + 
+  geom_bar(stat = 'identity', position = 'stack') + 
+  labs(y = 'Number of cells', x = '', fill = 'LC3 distribution') + 
+  report_theme + scale_fill_viridis_d() + theme (legend.position = 'right')
+```

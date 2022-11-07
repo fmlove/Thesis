@@ -26,7 +26,7 @@ library(patchwork)
 ```
 
 # Data handling
-```{r csv_selection}
+```{r Rab7_csv_selection}
 
 CNC57 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC57"
 CNC58_59 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC58-59"
@@ -53,7 +53,7 @@ MUT2_CSVs_61 = list.files(CNC61, pattern = "^M2R_.+\\.csv$", full.names = TRUE)
 ```
 
 
-```{r analyse_traces}
+```{r analyse_Rab7_traces}
 #TODO - fix frame rates to CSV for each stack
 
 
@@ -218,7 +218,7 @@ plot(Rab7_trace_dot)
 ### 'Run length' plot
 
 Run length violin
-```{r run_length_violin, eval = FALSE, echo = FALSE}
+```{r Rab7_run_length_violin, eval = FALSE, echo = FALSE}
 run_length_violin = ggplot(per_seg[per_seg$direction!= 'static',], aes(x = cond, y = net_dist, fill = cond, color = cond)) + 
   facet_wrap(~direction, strip.position = 'top') + 
   geom_violin(alpha = 1) + 
@@ -234,7 +234,7 @@ plot(run_length_violin)
 
 
 Velocity violin
-```{r velocity_violin, eval = FALSE, echo = FALSE}
+```{r Rab7_velocity_violin, eval = FALSE, echo = FALSE}
 
 velocity_violin = ggplot(per_seg[(abs(per_seg$velocity) < 1000) & per_seg$direction!= "static",], aes(x = cond, fill = cond, y = abs(velocity), colour = cond)) + 
   facet_wrap(~direction) + 
@@ -327,10 +327,12 @@ Rab7_kymo_panel = image_as_ggplot(read.bitmap('C:\\Users\\fl299\\PhD\\Rab7_kymo_
 ```
 
 Patchwork
-```{r Rab7_full_figure, fig.width = 16, fig.height = 8, fig.path = "../figures/full/"}
-  Rab7_kymo_panel/
+```{r Rab7_full_figure_def}
+Rab7_full = Rab7_kymo_panel/
   (Rab7_trace_dot + mean_run_length + velocity_box) + 
   plot_annotation(tag_levels = 'A')
+
+Rab7_full
 ```
 
 

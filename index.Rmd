@@ -21,7 +21,6 @@ output:
     #toc_bib: TRUE
     citation_package: natbib
     geometry: a4paper #not working - PDF still showing as 8.5x11
-
 bibliography: bib/THESIS.bib
 csl: bib/plos.csl
 ---

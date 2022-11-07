@@ -1,0 +1,25 @@
+---
+title: "ONC figure"
+output: pdf_document
+---
+
+# Setup
+```{r ONC_setup}
+knitr::opts_chunk$set(echo = TRUE, dev = 'png')
+knitr::opts_chunk$set(fig.path = '../figures/')
+
+source('../style/thesis_setup.R')
+
+library(readbitmap)
+library(patchwork)
+```
+
+```{r ONC_figure_def}
+RBPMS = image_as_ggplot(read.bitmap('../images/published_panels/petrova_ONC_RBPMS.png'))
+quant = image_as_ggplot(read.bitmap('../images/published_panels/petrova_ONC_quant.png'))
+
+ONC_layout = 'AAABB'
+
+ONC_figure = RBPMS + quant + plot_layout(design = ONC_layout) + plot_annotation(tag_levels = 'A')
+ONC_figure
+```

@@ -1,0 +1,344 @@
+---
+title: "Protrudin-St3Gal5 analysis"
+output: pdf_document
+---
+
+# Setup
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE, dev = 'png')
+knitr::opts_chunk$set(fig.path = '../figures/')
+
+
+source('C:\\Users\\fl299\\GitHub\\kymograph-analysis\\Kymograph_trace_analysis.R')
+source('../style/thesis_setup.R')
+
+library(stringr)
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
+#library(plyr) #calling explicitly to avoid conflict with dplyr
+library(ggpubr)
+library(reshape2)
+library(PMCMRplus)
+library(rstatix)
+
+library(readbitmap)
+library(patchwork)
+```
+
+```{r read_data}
+trace_dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning\ Disc\\Kymographs\ and\ Traces\\traced\\CNC114-116'
+CSVs = list.files(trace_dir, pattern = "^CNC\\d+_.+\\.csv$", full.names = TRUE)
+
+trace_data = lapply(CSVs, function(c){
+  traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 0.53)#TODO - fix scales
+  return(traces)
+})
+names(trace_data) = sapply(CSVs, function(c){last(strsplit(c, "/", fixed = T)[[1]])})
+
+
+#removing single trace with dodgy-looking velocity outlier
+trace_data[['CNC114_WT-S3G5_C9_01_W1491 BP_T.stk_kymograph.tif_traces.csv']][['num_traces']] = trace_data[['CNC114_WT-S3G5_C9_01_W1491 BP_T.stk_kymograph.tif_traces.csv']][['num_traces']] - 1
+
+outlier.index = which(trace_data[['CNC114_WT-S3G5_C9_01_W1491 BP_T.stk_kymograph.tif_traces.csv']][['per_trace.net_velocity']] < -90)
+trace_data[['CNC114_WT-S3G5_C9_01_W1491 BP_T.stk_kymograph.tif_traces.csv']][['per_trace.net_velocity']] = trace_data[['CNC114_WT-S3G5_C9_01_W1491 BP_T.stk_kymograph.tif_traces.csv']][['per_trace.net_velocity']][-outlier.index]
+trace_data[['CNC114_WT-S3G5_C9_01_W1491 BP_T.stk_kymograph.tif_traces.csv']][['per_trace.net_distance']] = trace_data[['CNC114_WT-S3G5_C9_01_W1491 BP_T.stk_kymograph.tif_traces.csv']][['per_trace.net_distance']][-outlier.index]
+
+df = trace_data[['CNC114_WT-S3G5_C9_01_W1491 BP_T.stk_kymograph.tif_traces.csv']][['per_trace']]
+df = df[[df$ROI != outlier.index,]]
+trace_data[['CNC114_WT-S3G5_C9_01_W1491 BP_T.stk_kymograph.tif_traces.csv']][['per_trace']] = df
+
+
+```
+
+```{r parsing}
+per_cell.df = data.frame(
+  experiment = str_match(names(trace_data), '^(CNC\\d+)_')[,2],
+  condition = str_match(names(trace_data), '^CNC\\d+_([A-Za-z\\d]+)')[,2],
+  cell = str_match(names(trace_data), '^CNC\\d+_[A-Za-z\\d]+[-_].*(C\\d+)')[,2],
+  traces = sapply(trace_data, function(t){ t$num_traces }),
+  stringsAsFactors = F#temporary
+)
+
+#replace 'GFP' with 'MCH' - typo when saving files
+per_cell.df$condition = replace(per_cell.df$condition, per_cell.df$condition == 'GFP', 'MCH')
+
+#appropriate strings to factors
+per_cell.df$condition = factor(per_cell.df$condition, levels = c('MCH', 'WT', 'MUT2'), labels = c('Control', 'WT', 'Active'))
+```
+
+
+```{r trace_plot}
+trace_plot = ggplot(per_cell.df, aes(x = condition, y = traces)) + 
+  geom_dotplot(aes(colour = condition, fill = condition), binaxis = 'y', stackdir = 'center', color = NA) + 
+  geom_boxplot(alpha = 0, position = position_dodge(width = 0.9), width = 0.2, show.legend = FALSE) + 
+  labs(x = "", y = "Total number of Golgi satellites", fill = "") + 
+  d_format + report_theme + 
+  stat_compare_means(size = p_fs)
+
+trace_plot
+```
+
+
+```{r per_segment_data}
+#pulling out 'per segment' data from analysed CSVs
+per_seg = do.call(rbind, lapply(1:length(trace_data), function(c){ 
+  df = trace_data[[c]]$per_seg; 
+  filename = names(trace_data)[c];
+  df$experiment = str_match(filename, '^(CNC\\d+)_')[,2];
+  df$condition = str_match(filename, '^CNC\\d+_([A-Za-z\\d]+)')[,2];
+  df$cell = str_match(filename, '^CNC\\d+_[A-Za-z\\d]+[-_].*(C\\d+)')[,2];
+  return(df) }))
+
+#replace 'GFP' with 'MCH' - typo when saving files
+per_seg$condition = replace(per_seg$condition, per_seg$condition == 'GFP', 'MCH')
+
+#appropriate strings to factors
+per_seg$condition = factor(per_seg$condition, levels = c('MCH', 'WT', 'MUT2'), labels = c('Control', 'WT', 'Active'))
+```
+```{r per_seg_summarised}
+per_seg.per_cell = summarise(per_seg %>% group_by(condition, cell, direction, experiment), count = n())
+#fill in 'missing' values - e.g. count 0 for cells with no anterograde traces
+#TODO - need to fill in experiment as well
+per_seg.per_cell$cellID = paste0(per_seg.per_cell$experiment, per_seg.per_cell$condition, per_seg.per_cell$cell)
+
+directions = c('anterograde', 'retrograde', 'static')
+missing_conditions = do.call(rbind, lapply(unique(per_seg.per_cell$cellID), function(c){
+  df = per_seg.per_cell[per_seg.per_cell$cellID == c,]
+  missing = setdiff(directions, df$direction)
+  to_add = data.frame(condition = rep(df$condition[1], length(missing)), 
+                      cell = rep(df$cell[1], length(missing)),
+                      direction = missing,
+                      experiment = rep(df$experiment[1], length(missing)),
+                      count = rep(0, length(missing)),
+                      cellID = rep(c, length(missing))
+  )
+}))
+
+per_seg.per_cell = bind_rows(per_seg.per_cell, missing_conditions)
+```
+```{r}
+per_seg.per_cell.means = do.call(rbind, lapply(1:nrow(per_seg.per_cell), function(i){
+  row = per_seg.per_cell[i,];
+  all = per_seg[per_seg$cell == row$cell & per_seg$condition == row$condition & per_seg$experiment == row$experiment & per_seg$direction == row$direction,];
+  row$mean_dist = mean(abs(all$distance));
+  row$mean_speed = mean(abs(all$velocity));
+  return(row);
+}))
+
+#Remove rows with NaN means - 0 cells for condition/direction
+per_seg.per_cell.means = per_seg.per_cell.means[!is.nan(per_seg.per_cell.means$mean_dist) & !is.nan(per_seg.per_cell.means$mean_speed),]
+```
+
+```{r GS_mov_dot}
+#TODO - fix labels
+GS_mov_dot = ggplot(per_seg.per_cell[per_seg.per_cell$direction != "static",], aes(x = condition, y = count, fill = condition)) + 
+  facet_wrap(~direction, strip.position = 'top') + 
+  geom_dotplot(binaxis = "y", position = "dodge", stackdir = "center", width = 0.5, color = NA, dotsize = 1)  + 
+  geom_boxplot(alpha = 0, width = 0.5, position = position_dodge(0.9), show.legend = F) + 
+  labs(x = "", y = "GS movements per cell") + 
+  d_format + report_theme + 
+  stat_compare_means(size = p_fs)
+
+plot(GS_mov_dot)
+
+# 
+# GS_move_dot.combined = ggplot(per_seg.per_cell[per_seg.per_cell$direction != "static",], aes(x = condition, y = count, fill = condition)) + 
+#   geom_dotplot(binaxis = "y", position = "dodge", stackdir = "center", width = 0.5, color = NA, dotsize = 1)  + 
+#   geom_boxplot(alpha = 0, width = 0.5, position = position_dodge(0.9), show.legend = F) + 
+#   labs(x = "", y = "GS movements per cell") + 
+#   d_format + report_theme + 
+#   stat_compare_means()
+# 
+# plot(GS_move_dot.combined) # not significant
+
+```
+
+```{r GS_mean_run_length}
+GS_mean_run_length = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',], aes(x = condition, y = mean_dist)) + 
+  facet_wrap(~direction, strip.position = 'top') + 
+  geom_dotplot(aes(colour = condition, fill = condition), binaxis = 'y', stackdir = 'center', color = NA) + 
+  geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
+  d_format + report_theme + 
+  labs(x = "", y = "Mean run length") + 
+  stat_compare_means(size = p_fs)
+
+plot(GS_mean_run_length)
+
+
+```
+
+```{r GS_mean_run_velocity}
+#first pass showing K-W p < 0.05 for both - getting p values for Dunn's test to plot
+test <- per_seg.per_cell.means[per_seg.per_cell.means$direction != 'static',] %>% group_by(direction) %>% dplyr::select(mean_speed, condition)
+GS_mean_run_velocity.dunn = dunn_test(test, mean_speed ~ condition, p.adjust.method = 'bonferroni')
+GS_mean_run_velocity.dunn = add_xy_position(GS_mean_run_velocity.dunn, x = "condition")
+GS_mean_run_velocity.dunn$p.adj.rounded = sapply(GS_mean_run_velocity.dunn$p.adj, function(p){round(p, digits = 3)})
+
+
+GS_mean_run_velocity = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',], aes(x = condition, y = mean_speed)) + 
+  facet_wrap(~direction, strip.position = 'top') + 
+  geom_dotplot(aes(fill = condition, color = condition), binaxis = 'y', stackdir = 'center') + 
+  geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
+  d_format + report_theme + 
+  labs(x = "", y = "Mean velocity") + 
+  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed), 12, ceiling), size = p_fs) +
+  stat_pvalue_manual(GS_mean_run_velocity.dunn, hide.ns = TRUE, label = 'p.adj.rounded', step.increase = 0.1)
+
+plot(GS_mean_run_velocity)
+
+```
+
+```{r St3Gal5_full_figure, fig.width = 16, fig.height = 8, fig.path = '../figures/full/'}
+St3Gal5_kymo_panel = image_as_ggplot(read.bitmap('C:\\Users\\fl299\\PhD\\St3Gal5_kymo_panel.png'))
+
+
+St3Gal5_kymo_panel/
+  (trace_plot + GS_mean_run_length + GS_mean_run_velocity) +
+  plot_annotation(tag_levels = 'A')
+
+```
+
+
+```{r scatters_per_cell}
+ggplot(per_seg.per_cell.means[per_seg.per_cell.means$direction != 'static',], aes(x = count, y = mean_speed, color = condition, fill = condition)) + 
+  geom_point()
+
+ggplot(per_seg.per_cell.means[per_seg.per_cell.means$direction != 'static',], aes(x = count, y = mean_dist, color = condition, fill = condition)) + 
+  geom_point()
+
+ggplot(per_seg.per_cell.means[per_seg.per_cell.means$direction != 'static',], aes(x = mean_dist, y = mean_speed, color = condition, fill = condition)) + 
+  geom_point()
+
+#nothing notable
+```
+
+```{r split_means}
+ret = per_seg.per_cell[per_seg.per_cell$direction == 'retrograde',]
+ant = per_seg.per_cell[per_seg.per_cell$direction == 'anterograde',]
+
+per_seg$cellID = paste0(per_seg$experiment, per_seg$condition, per_seg$cell)
+
+
+per_seg.per_cell.retrograde = do.call(rbind, lapply(1:nrow(ret), function(i){
+  row = ret[i,];
+  all = per_seg[per_seg$cellID == row$cellID & per_seg$direction == 'retrograde',];
+  row$mean_dist = mean(abs(all$distance));
+  row$mean_speed = mean(abs(all$velocity));
+  return(row);
+}))
+
+per_seg.per_cell.anterograde = do.call(rbind, lapply(1:nrow(ret), function(i){
+  row = ret[i,];
+  all = per_seg[per_seg$cellID == row$cellID & per_seg$direction == 'anterograde',];
+  row$mean_dist = mean(abs(all$distance));
+  row$mean_speed = mean(abs(all$velocity));
+  return(row);
+}))
+
+#Remove rows with NaN means - 0 cells for condition/direction
+per_seg.per_cell.retrograde = per_seg.per_cell.retrograde[!is.nan(per_seg.per_cell.retrograde$mean_dist) & !is.nan(per_seg.per_cell.retrograde$mean_speed),]
+per_seg.per_cell.anterograde = per_seg.per_cell.anterograde[!is.nan(per_seg.per_cell.anterograde$mean_dist) & !is.nan(per_seg.per_cell.anterograde$mean_speed),]
+
+```
+
+```{r split_scatters}
+ggplot(per_seg.per_cell.retrograde[per_seg.per_cell.retrograde$direction != 'static',], aes(x = count, y = mean_speed, color = condition, fill = condition)) + 
+  geom_point()
+
+ggplot(per_seg.per_cell.retrograde[per_seg.per_cell.retrograde$direction != 'static',], aes(x = count, y = mean_dist, color = condition, fill = condition)) + 
+  geom_point()
+
+ggplot(per_seg.per_cell.retrograde[per_seg.per_cell.retrograde$direction != 'static',], aes(x = mean_dist, y = mean_speed, color = condition, fill = condition)) + 
+  geom_point()
+
+
+
+ggplot(per_seg.per_cell.anterograde[per_seg.per_cell.anterograde$direction != 'static',], aes(x = count, y = mean_speed, color = condition, fill = condition)) + 
+  geom_point()
+
+ggplot(per_seg.per_cell.anterograde[per_seg.per_cell.anterograde$direction != 'static',], aes(x = count, y = mean_dist, color = condition, fill = condition)) + 
+  geom_point()
+
+ggplot(per_seg.per_cell.anterograde[per_seg.per_cell.anterograde$direction != 'static',], aes(x = mean_dist, y = mean_speed, color = condition, fill = condition)) + 
+  geom_point()
+
+#nothing notable between conditions
+```
+
+
+
+```{r per_trace}
+#TODO - rewrite when kymo analysis code updated to return df
+
+per_trace = do.call(rbind, lapply(1:length(trace_data), function(c){ 
+  filename = names(trace_data)[c];
+  df = data.frame( net_distance = trace_data[[c]]$per_trace.net_distance);
+  df$net_velocity = trace_data[[c]]$per_trace.net_velocity;
+  df$experiment = str_match(filename, '^(CNC\\d+)_')[,2];
+  df$condition = str_match(filename, '^CNC\\d+_([A-Za-z\\d]+)')[,2];
+  df$cell = str_match(filename, '^CNC\\d+_[A-Za-z\\d]+[-_].*(C\\d+)')[,2];
+  
+  #number of segments per trace
+  df$segments = sapply(1:nrow(df), function(r){nrow(trace_data[[c]]$per_seg[trace_data[[c]]$per_seg$ROI == r,])})
+  
+  return(df) }))
+
+#fix GFP
+#replace 'GFP' with 'MCH' - typo when saving files
+per_trace$condition = replace(per_trace$condition, per_trace$condition == 'GFP', 'MCH')
+
+per_trace$cellID = paste0(per_trace$experiment, per_trace$condition, per_trace$cell)
+
+per_trace$direction = sapply(per_trace$net_distance, function(d){ if(d < -20){return('retrograde')}
+                                                                    else if(d > 20){return('anterograde')}
+                                                                    else{return('static')}})
+
+
+#appropriate strings to factors
+per_trace$condition = factor(per_trace$condition, levels = c('MCH', 'WT', 'MUT2'), labels = c('Control', 'WT', 'Active'))
+
+
+```
+
+
+```{r big_scatter}
+ggplot(per_trace, aes(x = net_distance, y = net_velocity, fill = condition, color = condition)) + 
+  geom_point()
+#add side distributions?
+
+ggplot(per_trace[per_trace$direction == 'anterograde',], aes(x = net_distance, y = net_velocity, fill = condition, color = condition)) + geom_point()
+ggplot(per_trace[per_trace$direction == 'retrograde',], aes(x = net_distance, y = net_velocity, fill = condition, color = condition)) + geom_point()
+
+
+ggplot(per_trace[per_trace$direction == 'anterograde',], aes(x = segments, y = net_velocity, fill = condition, color = condition)) + geom_point()
+ggplot(per_trace[per_trace$direction == 'retrograde',], aes(x = segments, y = net_velocity, fill = condition, color = condition)) + geom_point()
+#fewer segments on retrograde?
+```
+```{r per_trace_velocity, fig.width = 16}
+per_trace.velocity.test <- per_trace %>% group_by(direction) %>% dplyr::select(net_velocity, condition)
+per_trace.velocity.dunn = dunn_test(per_trace.velocity.test, net_velocity ~ condition, p.adjust.method = 'bonferroni')
+per_trace.velocity.dunn = add_xy_position(per_trace.velocity.dunn, x = "condition")
+per_trace.velocity.dunn = add_y_position(per_trace.velocity.dunn, step.increase = 1)
+per_trace.velocity.dunn$p.adj.rounded = sapply(per_trace.velocity.dunn$p.adj, function(p){signif(p, digits = 3)})#signif instead of round for small p values
+
+ggplot(per_trace, aes(x = condition, y = abs(net_velocity), colour = condition)) + 
+   geom_violin() + geom_boxplot(fill = NA, width = 0.2, outlier.shape = NA) + 
+  facet_wrap(~direction) + stat_compare_means() + stat_pvalue_manual(per_trace.velocity.dunn, hide.ns = TRUE, label = 'p.adj.rounded')
+
+```
+
+```{r per_trace_segments, fig.width = 16}
+per_trace.segments.test <- per_trace %>% group_by(direction) %>% dplyr::select(segments, condition)
+per_trace.segments.dunn = dunn_test(per_trace.segments.test, segments ~ condition, p.adjust.method = 'bonferroni')
+per_trace.segments.dunn = add_xy_position(per_trace.segments.dunn, x = "condition")
+per_trace.segments.dunn = add_y_position(per_trace.segments.dunn, step.increase = 1)
+per_trace.segments.dunn$p.adj.rounded = sapply(per_trace.segments.dunn$p.adj, function(p){signif(p, digits = 3)})#signif instead of round for small p values
+
+ggplot(per_trace, aes(x = condition, y = segments, colour = condition)) + 
+   geom_violin() + geom_boxplot(fill = NA, width = 0.2, outlier.shape = NA) + 
+  facet_wrap(~direction) + stat_compare_means() + stat_pvalue_manual(per_trace.segments.dunn, hide.ns = TRUE, label = 'p.adj.rounded')
+
+```
+
+

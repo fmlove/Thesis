@@ -1,6 +1,6 @@
 # Setup
-```{r setup}
-knitr::opts_chunk$set(echo = TRUE, dev = 'png')
+```{r LAMP1_setup}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, dev = 'png')
 knitr::opts_chunk$set(fig.path = '../figures/')
 
 
@@ -21,7 +21,7 @@ library(patchwork)
 ```
 
 # Data handling
-```{r csv_selection}
+```{r LAMP1_csv_selection}
 
 CNC20 = "C:\\Users\\fl299\\GitHub\\first-year-report\\data_analysis\\data\\CNC20_kymo_analysis"
 CNC25 = "C:\\Users\\fl299\\GitHub\\first-year-report\\data_analysis\\data\\CNC25_kymo_analysis"
@@ -50,7 +50,7 @@ WT_CSVs_32 = list.files(CNC32, pattern = "^WT_.+\\.csv$", full.names = TRUE)
 
 
 Parse CSVs
-```{r analyse_traces}
+```{r analyse_LAMP1_traces}
 GFP_data_20 = lapply(GFP_CSVs_20, function(c){
   traces = analyse_traces(csv_path = c, x_scale = 0.16, y_scale = 1.1)
   traces$experiment = "CNC20"
@@ -204,7 +204,7 @@ shapiro.test(per_seg.per_cell[per_seg.per_cell$direction == 'retrograde',]$count
 ### 'Run length' plot
 
 Run length violin
-```{r run_length_violin}
+```{r LAMP1_run_length_violin}
 run_length_violin = ggplot(per_seg[per_seg$direction!= 'static',], aes(x = cond, y = net_dist, fill = cond, color = cond)) + 
   facet_wrap(~direction, strip.position = 'top') + 
   geom_violin(alpha = 1) + 
@@ -288,7 +288,7 @@ shapiro.test(traces.df$traces)
 
 
 Velocity violin
-```{r velocity_violin}
+```{r LAMP1_velocity_violin}
 
 velocity_violin = ggplot(per_seg[(abs(per_seg$velocity) < 1000) & per_seg$direction!= "static",], aes(x = cond, fill = cond, y = abs(velocity), colour = cond)) + 
   facet_wrap(~direction) + 
@@ -422,7 +422,7 @@ tr.df = traces.df %>% dplyr::group_by(cond, exp) %>% dplyr::summarise(tr = mean(
 run_vel.df = per_seg.per_cell.means[,c('cond', 'direction', 'exp', 'mean_dist', 'mean_speed')]%>% dplyr::group_by(cond, exp, direction) %>% dplyr::summarise(run = mean(mean_dist), vel = mean(mean_speed))
 ```
 
-```{r fridman_mov}
+```{r LAMP1_fridman_mov}
 
 mov.mat.antero = acast(mov.df[mov.df$direction == "anterograde", ], formula = cond ~ exp)
 mov.mat.retro = acast(mov.df[mov.df$direction == "retrograde", ], formula = cond ~ exp)
@@ -435,13 +435,13 @@ friedman.test(mov.mat.static)
 #none significant
 ```
 
-```{r friedman_tr}
+```{r LAMP1_friedman_tr}
 tr.mat = acast(tr.df, formula = cond ~ exp)
 
 friedman.test(tr.mat)
 ```
 
-```{r friedman_run}
+```{r LAMP1_friedman_run}
 run.mat.antero = acast(run_vel.df[run_vel.df$direction == 'anterograde',], formula = cond ~ exp, value.var = 'run')
 run.mat.retro = acast(run_vel.df[run_vel.df$direction == 'retrograde',], formula = cond ~ exp, value.var = 'run')
 run.mat.static = acast(run_vel.df[run_vel.df$direction == 'static',], formula = cond ~ exp, value.var = 'run')
@@ -454,7 +454,7 @@ friedman.test(run.mat.static)
 frdAllPairsNemenyiTest(run.mat.retro) #CNC20/CNC26 p = 0.023 #TODO - how to handle? exclude CNC20?
 ```
 
-```{r friedman_vel}
+```{r LAMP1_friedman_vel}
 vel.mat.antero = acast(run_vel.df[run_vel.df$direction == 'anterograde',], formula = cond ~ exp, value.var = 'vel')
 vel.mat.retro = acast(run_vel.df[run_vel.df$direction == 'retrograde',], formula = cond ~ exp, value.var = 'vel')
 vel.mat.static = acast(run_vel.df[run_vel.df$direction == 'static',], formula = cond ~ exp, value.var = 'vel')
@@ -497,9 +497,11 @@ LAMP1_kymo_panel = image_as_ggplot(read.bitmap('C:\\Users\\fl299\\PhD\\LAMP1_kym
 ```
 
 Patchwork
-```{r LAMP1_full_figure, fig.width = 16, fig.height = 8, fig.path = '../figures/full/'}
-  LAMP1_kymo_panel/
+```{r LAMP1_full_figure_def}
+  LAMP1_full = LAMP1_kymo_panel/
   (LAMP1_trace_dot + LAMP1_mean_run_length + LAMP1_mean_run_velocity) + 
   plot_annotation(tag_levels = 'A')
+
+LAMP1_full
 ```
 

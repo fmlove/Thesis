@@ -6,7 +6,7 @@ output: pdf_document
 # Setup
 ```{r setup}
 knitr::opts_chunk$set(echo = TRUE, dev = 'png', message = FALSE)
-knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80),tidy=TRUE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80))
 knitr::opts_chunk$set(fig.path = "../figures/")
 
 source('../style/thesis_setup.R')
@@ -16,6 +16,7 @@ library(stringr)
 library(ggplot2)
 library(ggpubr)
 library(rstatix)
+library(readbitmap)
 library(patchwork)
 
 ```
@@ -168,7 +169,22 @@ Background correction, trimming, etc.
 ```{r}
 
 #TODO - CONVERT MISSING/POINT DENDRITES (LENGTH = 0) TO NA OR DELETE
-#TODO - cell type
+
+#FACTORS - all in one place
+transf.levels = c('GFP', 'WT', 'Mut2', 'untransfected', 'dGFP')
+transf.labels = c('Control', 'WT', 'Active', '-', 'dGFP')
+
+age.levels = c('DIV1', 'DIV3', 'DIV15')
+age.labels = c('DIV1', 'DIV3', 'DIV15')
+
+measure.levels = c('growth cone', 'cytoplasm')
+measure.labels = c('axon terminal', 'soma')
+
+cell_type.levels = c('i3', 'rat cortical')
+cell_type.labels = c('i3', 'rat cortical')
+
+cond.levels = c('BCAP31', 'BCAP31-biotin', 'SURF4', 'ERGIC53', 'SLC38A1')
+cond.labels = c('if youre reading this I coded it wrong', 'BCAP31', 'SURF4', 'ERGIC53', 'SLC38A1')
 
 #start with cytoplasm rows
 max.gc_cyto = max.data[max.data$measure == 'cytoplasm', c('Area', 'Mean', 'IntDen', 'RawIntDen', 'batch', 'cond', 'age', 'transf', 'measure', 'cell_type', 'cell_id')]
@@ -194,10 +210,12 @@ temp.df.gc = do.call(rbind, lapply(unique(temp.df$cell_id), function(c){
   }))
   
 max.gc_cyto = rbind(max.gc_cyto, temp.df.gc)
-max.gc_cyto$age = factor(max.gc_cyto$age, levels = c('DIV3', 'DIV15'))
-max.gc_cyto$transf = factor(max.gc_cyto$transf, levels = c('untransfected', 'dGFP', 'Control', 'WT', 'Active'))
+max.gc_cyto$age = factor(max.gc_cyto$age, levels = age.levels, labels = age.labels)
+max.gc_cyto$transf = factor(max.gc_cyto$transf, levels = transf.levels, labels = transf.labels)
+max.gc_cyto$cell_type = factor(max.gc_cyto$cell_type, levels = cell_type.levels, labels = cell_type.labels)
 
-
+max.gc_cyto = max.gc_cyto[max.gc_cyto$cond != 'BCAP31',]
+max.gc_cyto$cond = factor(max.gc_cyto$cond, levels = cond.levels, labels = cond.labels)
 
 
 max.gc_cyto.ratio = do.call(rbind, lapply(unique(max.gc_cyto$cell_id), function(c){
@@ -215,11 +233,10 @@ max.gc_cyto.ratio = do.call(rbind, lapply(unique(max.gc_cyto$cell_id), function(
 }))
 max.gc_cyto.ratio = na.omit(max.gc_cyto.ratio)
 
-max.gc_cyto.ratio$age = factor(max.gc_cyto.ratio$age, levels = c('DIV3', 'DIV15'))
-max.gc_cyto.ratio$transf = factor(max.gc_cyto.ratio$transf, levels = c('untransfected', 'dGFP', 'GFP', 'WT', 'Mut2'),
-                                  labels = c('-', 'dGFP', 'Control', 'WT', 'Active'))
+max.gc_cyto.ratio$age = factor(max.gc_cyto.ratio$age, levels = age.levels, labels = age.labels)
+max.gc_cyto.ratio$transf = factor(max.gc_cyto.ratio$transf, levels = transf.levels, labels = transf.labels)
 
-max.gc_cyto$measure = factor(max.gc_cyto$measure, levels = c('growth cone', 'cytoplasm'), labels = c('axon terminal', 'soma'))
+max.gc_cyto$measure = factor(max.gc_cyto$measure, levels = measure.levels, labels = measure.labels)
 
 
 
@@ -248,11 +265,12 @@ ptdn_temp.df.gc = do.call(rbind, lapply(unique(ptdn_temp.df$cell_id), function(c
   }))
   
 ptdn_max.gc_cyto = rbind(ptdn_max.gc_cyto, ptdn_temp.df.gc)
-ptdn_max.gc_cyto$age = factor(ptdn_max.gc_cyto$age, levels = c('DIV3', 'DIV15'))
-ptdn_max.gc_cyto$transf = factor(ptdn_max.gc_cyto$transf, levels = c('GFP', 'WT', 'Mut2'), 
-                                 labels = c('Control', 'WT', 'Active'))
+ptdn_max.gc_cyto$age = factor(ptdn_max.gc_cyto$age, levels = age.levels, labels = age.labels)
+ptdn_max.gc_cyto$transf = factor(ptdn_max.gc_cyto$transf, levels = transf.levels, labels = transf.labels)
+ptdn_max.gc_cyto$cell_type = factor(ptdn_max.gc_cyto$cell_type, levels = cell_type.levels, labels = cell_type.labels)
 
-
+ptdn_max.gc_cyto = ptdn_max.gc_cyto[ptdn_max.gc_cyto$cond != 'BCAP31',]
+ptdn_max.gc_cyto$cond = factor(ptdn_max.gc_cyto$cond, levels = cond.levels, labels = cond.labels)
 
 
 ptdn_max.gc_cyto.ratio = do.call(rbind, lapply(unique(ptdn_max.gc_cyto$cell_id), function(c){
@@ -270,9 +288,9 @@ ptdn_max.gc_cyto.ratio = do.call(rbind, lapply(unique(ptdn_max.gc_cyto$cell_id),
 }))
 ptdn_max.gc_cyto.ratio = na.omit(ptdn_max.gc_cyto.ratio)
 
-ptdn_max.gc_cyto.ratio$age = factor(ptdn_max.gc_cyto.ratio$age, levels = c('DIV3', 'DIV15'))
+ptdn_max.gc_cyto.ratio$age = factor(ptdn_max.gc_cyto.ratio$age, levels = age.levels, labels = age.labels)
 
-ptdn_max.gc_cyto$measure = factor(ptdn_max.gc_cyto$measure, levels = c('growth cone', 'cytoplasm'), labels = c('axon terminal', 'soma'))
+ptdn_max.gc_cyto$measure = factor(ptdn_max.gc_cyto$measure, levels = measure.levels, labels = measure.labels)
 
 
 
@@ -306,10 +324,12 @@ i3_temp.df.gc = do.call(rbind, lapply(unique(i3_temp.df$cell_id), function(c){
   }))
   
 i3_max.gc_cyto = rbind(i3_max.gc_cyto, i3_temp.df.gc)
-#i3_max.gc_cyto$age = factor(i3_max.gc_cyto$age, levels = c('DIV3', 'DIV15'))
-i3_max.gc_cyto$transf = factor(i3_max.gc_cyto$transf, levels = c('untransfected', 'dGFP', 'Control', 'WT', 'Active'))
+#i3_max.gc_cyto$age = factor(i3_max.gc_cyto$age, levels = age.levels, labels = age.labels)
+i3_max.gc_cyto$transf = factor(i3_max.gc_cyto$transf, levels = transf.levels, labels = transf.labels)
+i3_max.gc_cyto$cell_type = factor(i3_max.gc_cyto$cell_type, levels = cell_type.levels, labels = cell_type.labels)
 
-
+i3_max.gc_cyto = i3_max.gc_cyto[i3_max.gc_cyto$cond != 'BCAP31',]
+i3_max.gc_cyto$cond = factor(i3_max.gc_cyto$cond, levels = cond.levels, labels = cond.labels)
 
 
 i3_max.gc_cyto.ratio = do.call(rbind, lapply(unique(i3_max.gc_cyto$cell_id), function(c){
@@ -327,9 +347,8 @@ i3_max.gc_cyto.ratio = do.call(rbind, lapply(unique(i3_max.gc_cyto$cell_id), fun
 }))
 i3_max.gc_cyto.ratio = na.omit(i3_max.gc_cyto.ratio)
 
-#i3_max.gc_cyto.ratio$age = factor(i3_max.gc_cyto.ratio$age, levels = c('DIV3', 'DIV15'))
-i3_max.gc_cyto.ratio$transf = factor(i3_max.gc_cyto.ratio$transf, levels = c('untransfected', 'dGFP', 'GFP', 'WT', 'Mut2'), 
-                                       labels = c('-', 'dGFP', 'Control', 'WT', 'Active'))
+#i3_max.gc_cyto.ratio$age = factor(i3_max.gc_cyto.ratio$age, levels = age.levels, labels = age.labels)
+i3_max.gc_cyto.ratio$transf = factor(i3_max.gc_cyto.ratio$transf, levels = transf.levels, labels = transf.labels)
 
 
 
@@ -352,13 +371,13 @@ i3_max.gc_cyto.ratio$transf = factor(i3_max.gc_cyto.ratio$transf, levels = c('un
 
 Max intensity - GC/soma (cytoplasm) ratio at DIV3 vs DIV15
 ```{r max_ratio_plot, fig.width = 16, fig.height = 4}
-max_ratio_plot = ggplot(max.gc_cyto.ratio[max.gc_cyto.ratio$cond!= 'BCAP31',], aes(x = age, y = ratio_mean)) + 
+max_ratio_plot = ggplot(max.gc_cyto.ratio, aes(x = age, y = ratio_mean)) + 
   geom_dotplot(aes(fill = age, colour = age), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 1) + 
   geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = position_dodge(width = 0.9), width = 0.5) +#change colour?
   facet_wrap(~cond, ncol = 4) + 
   labs(x = '', y = 'Axon terminal:soma intensity ratio') + 
   d_format + report_theme +
-  stat_compare_means(paired = F, label.y = max(max.gc_cyto.ratio[max.gc_cyto.ratio$cond!= 'BCAP31',]$ratio_mean) + 0.1)
+  stat_compare_means(paired = F, label.y = max(max.gc_cyto.ratio$ratio_mean) + 0.1)
 
 max_ratio_plot
 ```
@@ -371,18 +390,25 @@ ptdn_max.gc_cyto.ratio.dunn = add_xy_position(ptdn_max.gc_cyto.ratio.dunn, x = '
 ptdn_max.gc_cyto.ratio.dunn = add_y_position(ptdn_max.gc_cyto.ratio.dunn, step.increase = 0.1)
 ptdn_max.gc_cyto.ratio.dunn$p.adj.rounded = sapply(ptdn_max.gc_cyto.ratio.dunn$p.adj, function(p){round(p, digits = 3)})
 
-ptdn_max_ratio_plot = ggplot(ptdn_max.gc_cyto.ratio, aes(x = transf, y = ratio_mean, group = transf)) + 
+ptdn_ratio.plotlist = lapply(cond.labels, function(l){ggplot(ptdn_max.gc_cyto.ratio[ptdn_max.gc_cyto.ratio$cond == l,], aes(x = transf, y = ratio_mean)) + 
   geom_dotplot(aes(color = transf, fill = transf), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 1) + 
   geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5) +
-  facet_wrap(~cond, ncol = 4) + 
   labs(x = '', y = 'Axon terminal:soma intensity ratio') + 
   ylim(-0.1, 1.4) +
   report_theme + d_format +
-  stat_compare_means() + stat_pvalue_manual(ptdn_max.gc_cyto.ratio.dunn, hide.ns = TRUE, label = 'p.adj.rounded')
-  
+  stat_compare_means() + stat_pvalue_manual(ptdn_max.gc_cyto.ratio.dunn[ptdn_max.gc_cyto.ratio.dunn$cond == l,], hide.ns = TRUE, label = 'p.adj.rounded')})
+names(ptdn_ratio.plotlist) = cond.labels
 
-
-ptdn_max_ratio_plot
+# ptdn_max_ratio_plot = ggplot(ptdn_max.gc_cyto.ratio, aes(x = transf, y = ratio_mean, group = transf)) + 
+#   geom_dotplot(aes(color = transf, fill = transf), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 1) + 
+#   geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5) +
+#   facet_wrap(~cond, ncol = 4) + 
+#   labs(x = '', y = 'Axon terminal:soma intensity ratio') + 
+#   ylim(-0.1, 1.4) +
+#   report_theme + d_format +
+#   stat_compare_means() + stat_pvalue_manual(ptdn_max.gc_cyto.ratio.dunn, hide.ns = TRUE, label = 'p.adj.rounded')
+#   
+# ptdn_max_ratio_plot
 
 
 ```
@@ -414,22 +440,24 @@ ptdn_max.gc_cyto.at.dunn = dunn_test(ptdn_test.at, Mean ~ transf, p.adjust.metho
 ptdn_max.gc_cyto.at.dunn = add_xy_position(ptdn_max.gc_cyto.at.dunn, x = 'transf')
 ptdn_max.gc_cyto.at.dunn$p.adj.rounded = sapply(ptdn_max.gc_cyto.at.dunn$p.adj, function(p){round(p, digits = 3)})
 
-ptdn_max_GC_plot = ggplot(ptdn_max.gc_cyto[ptdn_max.gc_cyto$measure == 'axon terminal',], aes(x = transf, y = Mean)) + 
+
+ptdn_GC.plotlist = lapply(cond.labels, function(l){ggplot(ptdn_max.gc_cyto[ptdn_max.gc_cyto$measure == 'axon terminal' & ptdn_max.gc_cyto$cond == l,], aes(x = transf, y = Mean)) + 
   geom_dotplot(aes(colour = transf, fill = transf), binaxis = "y", stackdir = "center", position = "dodge") + 
   geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = position_dodge(width = 0.9), width = 0.5) +
-  facet_wrap(~cond, scales = 'free_y', ncol = 4) + 
-  labs(x = '', y = 'GC average intensity') + 
+  labs(x = '', y = 'Axon terminal average intensity') + 
   report_theme + d_format +
-  stat_compare_means(position = position_nudge(y = 5)) + stat_pvalue_manual(ptdn_max.gc_cyto.at.dunn, hide.ns = TRUE, label = 'p.adj.rounded', position = position_nudge(y = -2))
-  
-#*************
-#**TODO - SURF4 scales**
-#*#****************
-#*
+  stat_compare_means(position = position_nudge(y = 5)) + stat_pvalue_manual(ptdn_max.gc_cyto.at.dunn[ptdn_max.gc_cyto.at.dunn$cond == l,], hide.ns = TRUE, label = 'p.adj.rounded', position = position_nudge(y = -2))})
+names(ptdn_GC.plotlist) = cond.labels
 
-
-
-ptdn_max_GC_plot
+# ptdn_max_GC_plot = ggplot(ptdn_max.gc_cyto[ptdn_max.gc_cyto$measure == 'axon terminal',], aes(x = transf, y = Mean)) + 
+#   geom_dotplot(aes(colour = transf, fill = transf), binaxis = "y", stackdir = "center", position = "dodge") + 
+#   geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = position_dodge(width = 0.9), width = 0.5) +
+#   facet_wrap(~cond, scales = 'free_y', ncol = 4) + 
+#   labs(x = '', y = 'GC average intensity') + 
+#   report_theme + d_format +
+#   stat_compare_means(position = position_nudge(y = 5)) + stat_pvalue_manual(ptdn_max.gc_cyto.at.dunn, hide.ns = TRUE, label = 'p.adj.rounded', position = position_nudge(y = -2))
+# 
+# ptdn_max_GC_plot
 ```
 Intensity in axon terminals stays level or decreases with age
 
@@ -454,17 +482,23 @@ ptdn_max.gc_cyto.soma.dunn = add_xy_position(ptdn_max.gc_cyto.soma.dunn, x = 'tr
 ptdn_max.gc_cyto.soma.dunn = add_y_position(ptdn_max.gc_cyto.soma.dunn, step.increase = -0.001)
 ptdn_max.gc_cyto.soma.dunn$p.adj.rounded = sapply(ptdn_max.gc_cyto.soma.dunn$p.adj, function(p){round(p, digits = 3)})
 
-ptdn_max_cyto_plot = ggplot(ptdn_max.gc_cyto[ptdn_max.gc_cyto$measure == 'soma',], aes(x = transf, y = Mean)) + 
+ptdn_soma.plotlist = lapply(cond.labels, function(l){ ggplot(ptdn_max.gc_cyto[ptdn_max.gc_cyto$measure == 'soma' & ptdn_max.gc_cyto$cond == l,], aes(x = transf, y = Mean)) + 
   geom_dotplot(aes(colour = transf, fill = transf), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 1) + 
   geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = position_dodge(width = 0.9), width = 0.5) +
-  facet_wrap(~cond, scales = 'free_y', ncol = 4) + 
   labs(x = '', y = 'Soma average intensity') + 
   d_format + report_theme +
-  stat_compare_means(position = position_nudge(y = 8)) + stat_pvalue_manual(ptdn_max.gc_cyto.soma.dunn, hide.ns = TRUE, label = 'p.adj.rounded', position = position_nudge(y = 3))
+  stat_compare_means(position = position_nudge(y = 8)) + stat_pvalue_manual(ptdn_max.gc_cyto.soma.dunn[ptdn_max.gc_cyto.soma.dunn$cond == l,], hide.ns = TRUE, label = 'p.adj.rounded', position = position_nudge(y = 3)) })
+names(ptdn_soma.plotlist) = cond.labels
 
-
-
-ptdn_max_cyto_plot
+# ptdn_max_cyto_plot = ggplot(ptdn_max.gc_cyto[ptdn_max.gc_cyto$measure == 'soma',], aes(x = transf, y = Mean)) + 
+#   geom_dotplot(aes(colour = transf, fill = transf), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 1) + 
+#   geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = position_dodge(width = 0.9), width = 0.5) +
+#   facet_wrap(~cond, scales = 'free_y', ncol = 4) + 
+#   labs(x = '', y = 'Soma average intensity') + 
+#   d_format + report_theme +
+#   stat_compare_means(position = position_nudge(y = 8)) + stat_pvalue_manual(ptdn_max.gc_cyto.soma.dunn, hide.ns = TRUE, label = 'p.adj.rounded', position = position_nudge(y = 3))
+# 
+# ptdn_max_cyto_plot
 ```
 
 
@@ -482,19 +516,159 @@ i3_max_ratio_plot
 
 ```
 
-```{r CNC_vs_i3_ratio_plot, fig.height = 6, fig.width=16}
-CNC_i3_max_ratio_plot = ggplot(rbind(i3_max.gc_cyto.ratio, max.gc_cyto.ratio[max.gc_cyto.ratio$age == 'DIV3',]), aes(x = cell_type, y = ratio_mean, group = cell_type)) + 
-  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) +
+
+# FULL FIGURES
+
+```{r CNC_vs_i3_ratio_full, fig.height = 10, fig.width=16, fig.path="../figures/full/"}
+
+i3.BCAP31 = image_as_ggplot(read.bitmap('../images/microscopy/i3/i3-BCAP31.png'))
+i3.SURF4 = image_as_ggplot(read.bitmap('../images/microscopy/i3/i3-SURF4.png'))
+i3.ERGIC53 = image_as_ggplot(read.bitmap('../images/microscopy/i3/i3-ERGIC53.png'))
+i3.SLC38A1 = image_as_ggplot(read.bitmap('../images/microscopy/i3/i3-SLC38A1.png'))
+
+
+CNC_i3_max_ratio_plot = ggplot(rbind(i3_max.gc_cyto.ratio, max.gc_cyto.ratio[max.gc_cyto.ratio$age == 'DIV3',]), aes(x = cell_type, y = ratio_mean)) + 
+  geom_dotplot(aes(fill = cell_type, colour = cell_type), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) +
   geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = position_dodge(width = 0.9), width = 0.5) +
   facet_wrap(~cond, ncol = 4) + 
-  labs(x = '', y = 'GC to soma intensity ratio') +
+  labs(x = '', y = 'Axon terminal:soma intensity ratio') +
   d_format + report_theme +
   stat_compare_means(position = position_nudge(y = 0.1))
 
-CNC_i3_max_ratio_plot
+i3.layout = 'AAAA
+              BCDE'
+
+CNC_i3_max_ratio_plot +
+  i3.BCAP31 + i3.SURF4 + i3.ERGIC53 + i3.SLC38A1 +
+  plot_annotation(tag_levels = 'A') + plot_layout(design = i3.layout)
 ```
 
 
 
 
+
+
+
+```{r dev_changes_ratio_full_figure, fig.width=16, fig.height=16, fig.path = "../figures/full/"}
+BCAP31.DIV3 = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/BCAP31-DIV3.png'))
+SURF4.DIV3 = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/SURF4-DIV3.png'))
+ERGIC53.DIV3 = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/ERGIC53-DIV3.png'))
+SLC38A1.DIV3 = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/SLC38A1-DIV3.png'))
+
+BCAP31.DIV15_soma = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/BCAP31-DIV15_soma.png'))
+SURF4.DIV15_soma = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/SURF4-DIV15_soma.png'))
+ERGIC53.DIV15_soma = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/ERGIC53-DIV15_soma.png'))
+SLC38A1.DIV15_soma = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/SLC38A1-DIV15_soma.png'))
+
+BCAP31.DIV15_GC = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/BCAP31-DIV15_GC.png'))
+SURF4.DIV15_GC = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/SURF4-DIV15_GC.png'))
+ERGIC53.DIV15_GC = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/ERGIC53-DIV15_GC.png'))
+SLC38A1.DIV15_GC = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/SLC38A1-DIV15_GC.png'))
+
+layout = 'AAAA
+          BCDE
+          FGHI
+          JKLM'
+
+max_ratio_plot + 
+  BCAP31.DIV3 + SURF4.DIV3 + ERGIC53.DIV3 + SLC38A1.DIV3 +
+  BCAP31.DIV15_soma + SURF4.DIV15_soma + ERGIC53.DIV15_soma + SLC38A1.DIV15_soma +
+  BCAP31.DIV15_GC + SURF4.DIV15_GC + ERGIC53.DIV15_GC + SLC38A1.DIV15_GC +
+  plot_annotation(tag_levels = 'A') + plot_layout(design = layout)
+```
+
+```{r protrudin_images}
+BCAP31.GFP.soma = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/BCAP31_GFP_soma.png'))
+BCAP31.GFP.GC = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/BCAP31_GFP_GC.png'))
+BCAP31.WT.soma = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/BCAP31_WT_soma.png'))
+BCAP31.WT.GC = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/BCAP31_WT_GC.png'))
+BCAP31.Mut2.soma = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/BCAP31_Mut2_soma.png'))
+BCAP31.Mut2.GC = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/BCAP31_Mut2_GC.png'))
+
+SURF4.GFP.soma = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/SURF4_GFP_soma.png'))
+SURF4.GFP.GC = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/SURF4_GFP_GC.png'))
+SURF4.WT.soma = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/SURF4_WT_soma.png'))
+SURF4.WT.GC = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/SURF4_WT_GC.png'))
+SURF4.Mut2.soma = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/SURF4_Mut2_soma.png'))
+SURF4.Mut2.GC = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/SURF4_Mut2_GC.png'))
+
+ERGIC53.GFP.soma = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/ERGIC53_GFP_soma.png'))
+ERGIC53.GFP.GC = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/ERGIC53_GFP_GC.png'))
+ERGIC53.WT.soma = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/ERGIC53_WT_soma.png'))
+ERGIC53.WT.GC = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/ERGIC53_WT_GC.png'))
+ERGIC53.Mut2.soma = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/ERGIC53_Mut2_soma.png'))
+ERGIC53.Mut2.GC = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/ERGIC53_Mut2_GC.png'))
+
+SLC38A1.GFP.soma = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/SLC38A1_GFP_soma.png'))
+SLC38A1.GFP.GC = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/SLC38A1_GFP_GC.png'))
+SLC38A1.WT.soma = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/SLC38A1_WT_soma.png'))
+SLC38A1.WT.GC = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/SLC38A1_WT_GC.png'))
+SLC38A1.Mut2.soma = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/SLC38A1_Mut2_soma.png'))
+SLC38A1.Mut2.GC = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_staining/SLC38A1_Mut2_GC.png'))
+
+# layout = 'AAAA
+#           BCDE
+#           FGHI
+#           JKLM
+#           NOPQ
+#           RSTU
+#           VWXY'
+#   
+# ptdn_max_ratio_plot + 
+#   BCAP31.GFP.soma + SURF4.GFP.soma + ERGIC53.GFP.soma + SLC38A1.GFP.soma +
+#   BCAP31.GFP.GC + SURF4.GFP.GC + ERGIC53.GFP.GC + SLC38A1.GFP.GC +
+#   BCAP31.WT.soma + SURF4.WT.soma + ERGIC53.WT.soma + SLC38A1.WT.soma +
+#   BCAP31.WT.GC + SURF4.WT.GC + ERGIC53.WT.GC + SLC38A1.WT.GC +
+#   BCAP31.Mut2.soma + SURF4.Mut2.soma + ERGIC53.Mut2.soma + SLC38A1.Mut2.soma +
+#   BCAP31.Mut2.GC + SURF4.Mut2.GC + ERGIC53.Mut2.GC + SLC38A1.Mut2.GC + 
+#   plot_annotation(tag_levels = 'A') + plot_layout(design = layout)
+```
+
+```{r protrudin_BCAP31_full, fig.width = 16, fig.height = 16, fig.path = "../figures/full/"}
+BCAP31.layout = 'ABC
+                  DEF
+                  GHI'
+
+
+BCAP31.GFP.soma + BCAP31.WT.soma + BCAP31.Mut2.soma + 
+  BCAP31.GFP.GC + BCAP31.WT.GC + BCAP31.Mut2.GC +
+  ptdn_ratio.plotlist[['BCAP31']] + ptdn_soma.plotlist[['BCAP31']] + ptdn_GC.plotlist[['BCAP31']] + 
+  plot_annotation(tag_levels = 'A') + plot_layout(design = BCAP31.layout)
+```
+
+```{r protrudin_SURF4_full, fig.width = 16, fig.height = 16, fig.path = "../figures/full/"}
+SURF4.layout = 'ABC
+                  DEF
+                  GHI'
+
+
+SURF4.GFP.soma + SURF4.WT.soma + SURF4.Mut2.soma + 
+  SURF4.GFP.GC + SURF4.WT.GC + SURF4.Mut2.GC +
+  ptdn_ratio.plotlist[['SURF4']] + ptdn_soma.plotlist[['SURF4']] + ptdn_GC.plotlist[['SURF4']] + 
+  plot_annotation(tag_levels = 'A') + plot_layout(design = SURF4.layout)
+```
+
+```{r protrudin_ERGIC53_full, fig.width = 16, fig.height = 16, fig.path = "../figures/full/"}
+ERGIC53.layout = 'ABC
+                  DEF
+                  GHI'
+
+
+ERGIC53.GFP.soma + ERGIC53.WT.soma + ERGIC53.Mut2.soma + 
+  ERGIC53.GFP.GC + ERGIC53.WT.GC + ERGIC53.Mut2.GC +
+  ptdn_ratio.plotlist[['ERGIC53']] + ptdn_soma.plotlist[['ERGIC53']] + ptdn_GC.plotlist[['ERGIC53']] + 
+  plot_annotation(tag_levels = 'A') + plot_layout(design = ERGIC53.layout)
+```
+
+```{r protrudin_SLC38A1_full, fig.width = 16, fig.height = 16, fig.path = "../figures/full/"}
+SLC38A1.layout = 'ABC
+                  DEF
+                  GHI'
+
+
+SLC38A1.GFP.soma + SLC38A1.WT.soma + SLC38A1.Mut2.soma + 
+  SLC38A1.GFP.GC + SLC38A1.WT.GC + SLC38A1.Mut2.GC +
+  ptdn_ratio.plotlist[['SLC38A1']] + ptdn_soma.plotlist[['SLC38A1']] + ptdn_GC.plotlist[['SLC38A1']] + 
+  plot_annotation(tag_levels = 'A') + plot_layout(design = SLC38A1.layout)
+```
 

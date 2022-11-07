@@ -38,6 +38,13 @@ colours["filopodia"] = '#697A21' #'#7B9E87'
 colours["DIV3"] = '#119DA4'
 colours["DIV15"] = '#4B3F72'
 
+colours["i3"] = '#390099'
+colours['rat cortical'] = '#9E0059'
+
+colours["ch1"] = 'magenta'
+colours["ch2"] = 'green'
+
+
 #ggplot2 theme
 
 custom_add = theme(legend.background = element_rect(fill = "#FFFFFF00"),
