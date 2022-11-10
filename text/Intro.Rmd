@@ -56,6 +56,10 @@ In addition to environmental factors, there are a number of intrinsic barriers t
 
 #### Cytoskeleton
 
+Neurons undergo dramatic morphological changes during development, eventually forming extremely long, thin, and complex structures that, in some cases, must be carefully maintained for the entire lifetime of the organism.  To make this possible, mature neurons have a dynamic but highly regulated cytoskeleton, particularly in the axon.  However, the structural requirements of the mature, signal-carrying axon are very different from a growing axon, and in the case of axon injury this can prevent successful regeneration.   
+A key feature of the neuronal cytoskeleton is the bundle of polarised microtubules that forms the backbone of the axon.  This structure is maintained by proteins such as Efa6, which truncates growing microtubules that leave the bundle to reach the axon periphery.  However, this can also inhibit axon outgrowth, which might limit regeneration [@quEfa6ProtectsAxons2019].
+
+
 #### Signalling
 ##### PTEN and mTOR
 ##### Other signalling pathways
@@ -87,7 +91,7 @@ Protrudin contains a kinesin binding site, indicating a role in mediating motor 
 
 Petrova et al. [@petrovaProtrudinFunctionsEndoplasmic2020], which I contributed to during the first year of my PhD, looked at protrudin specifically in the context of integrin transport.  In particular, integrin $\alpha9$, which is capable of promoting axon growth in the mature spinal cord [], is a cargo of Rab11 endosomes [].  We found that protrudin overexpression had a small effect on developmental neurite outgrowth, but strongly promoted axon regrowth after axotomy *in vitro*.  In addition, protrudin prevented retinal ganglion cell death after an axon crush injury *in vivo*, and allowed axons to regrow past the injury site.  I discuss this result further in (CROSS-REFERENCE).
 
-In contrast, Raiborg et al. [@raiborgRepeatedEREndosome2015] looked at protrudin's effect on late endosome transport.  Using PC12 cells, they found that protrudin *indirectly* promoted late endosome transport, forming transient ER-late endosome contacts at which a separate adaptor, FYCO1, was able to bind Rab7 and KIF5 to move late endosomes down the axon.
+In contrast, Raiborg et al. [@raiborgRepeatedEREndosome2015] looked at protrudin's effect on late endosome transport.  Using PC12 cells, they found that protrudin *indirectly* promoted late endosome transport, forming transient ER-late endosome contacts at which a separate adaptor, FYCO1 (ZFYVE7), was able to bind Rab7 and KIF5 to move late endosomes down the axon.
 
 #### ER contact sites
 

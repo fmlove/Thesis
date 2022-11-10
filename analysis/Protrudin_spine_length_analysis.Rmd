@@ -5,7 +5,7 @@ output:
     latex_engine: xelatex
 ---
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, dev = 'png', message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, dev = 'png')
 knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80),tidy=TRUE)
 knitr::opts_chunk$set(fig.path = "../figures/")
 
@@ -25,7 +25,7 @@ library(patchwork)
 ```
 
 Reading in CSV files
-```{r read_CSVs}
+```{r read_spine_type_CSVs}
 #CNC79 - copied and pasted for 80 and 78
 CNC79.dir = 'C:/Users/fl299/PhD/Data/Mine/Spinning\ Disc/070721_cnc79_dendrites/max_projections/GFP/dendrite_sections/spines/'
 CNC79.csvs = lapply(list.files(path = CNC79.dir, pattern = '\\.csv$'), 
@@ -350,8 +350,8 @@ lengths_confocal.plot
 
 # Combined plots
 
-```{r spine_lengths_full_figure, fig.height=12, fig.width=16, fig.path = '../figures/full/'}
-(counts.plot + counts_confocal.plot) / (lengths.plot + lengths_confocal.plot) + plot_annotation(tag_levels = 'A')
+```{r spine_lengths_full_figure, fig.height=14, fig.width=16, fig.path = '../figures/full/', dev = 'png'}
+(counts.plot + counts_confocal.plot) / (lengths.plot + lengths_confocal.plot) + plot_annotation(tag_levels = 'A') & theme(axis.text.x = element_text(angle = 45, hjust=1))
 
 ```
 

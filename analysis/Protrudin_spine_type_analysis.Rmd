@@ -4,22 +4,21 @@ output:
   pdf_document:
     latex_engine: xelatex
 ---
-```{r setup, include=FALSE}
+```{r spine_type_setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, dev = 'png', message = FALSE)
 knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80),tidy=TRUE)
 knitr::opts_chunk$set(fig.path = "../figures/")
 
 source('../style/thesis_setup.R')
-```
 
-# Setup and data handling
-
-Loading R packages used in this file
-```{r packages}
 library(stringr)
 library(reshape2)
+#library(dplyr) calling explicitly
 library(ggplot2)
+library(rstatix)
 library(ggpubr)
+library(readbitmap)
+library(patchwork)
 ```
 
 
@@ -108,6 +107,8 @@ spine_counts$cell_id = paste0(spine_counts$expt, spine_counts$age, spine_counts$
 spine_counts.normalised.melt = melt(spine_counts, id.vars = c('expt', 'age', 'cond', 'cell_id'), measure.vars = c('m_norm', 't_norm', 's_norm', 'f_norm'))
 spine_counts.melt = melt(spine_counts, id.vars = c('expt', 'age', 'cond', 'cell_id'), measure.vars = c('mushroom', 'thin', 'stubby', 'filopodia'))
 
+spine_counts.melt = spine_counts.melt %>% dplyr::rename(spine_type = variable)
+spine_counts.normalised.melt = spine_counts.normalised.melt %>% dplyr::rename(spine_type = variable)
 
 #converting condition columns to factors for plot ordering and labels
 spine_counts$cond = factor(spine_counts$cond, levels = c('mCh', 'WT', 'Mut2', 'ER', 'FFAT', 'RBD', 'KIF5', 'FYVE'), labels = c('Control', 'WT', 'Active', paste0('\U0394', 'ER'), paste0('\U0394', 'FFAT'), paste0('\U0394', 'RBD'), paste0('\U0394', 'KIF5'), paste0('\U0394', 'FYVE')), ordered = T)
@@ -115,7 +116,7 @@ spine_counts.normalised.melt$cond = factor(spine_counts.normalised.melt$cond, le
 spine_counts.melt$cond = factor(spine_counts.melt$cond, levels = c('mCh', 'WT', 'Mut2', 'ER', 'FFAT', 'RBD', 'KIF5', 'FYVE'), labels = c('Control', 'WT', 'Active', paste0('\U0394', 'ER'), paste0('\U0394', 'FFAT'), paste0('\U0394', 'RBD'), paste0('\U0394', 'KIF5'), paste0('\U0394', 'FYVE')), ordered = T)
 
 
-spine_counts.normalised.melt$variable = factor(spine_counts.normalised.melt$variable, levels = c('m_norm', 't_norm', 's_norm', 'f_norm'), labels = c('mushroom', 'thin', 'stubby', 'filopodia'))
+spine_counts.normalised.melt$spine_type = factor(spine_counts.normalised.melt$spine_type, levels = c('m_norm', 't_norm', 's_norm', 'f_norm'), labels = c('mushroom', 'thin', 'stubby', 'filopodia'))
 
 ```
 
@@ -127,13 +128,22 @@ I transfected cortical neurons at DIV10 and imaged dendritic spines at DIV15 in 
 
 ### Total number of spines
 Stats with respect to mCherry control...
-```{r DIV15_total_mCh_stat, fig.width=8, fig.height=6}
-ggplot(spine_counts[spine_counts$age == 'DIV15',], aes(x = cond, y = total, group = cond, fill = cond, colour = cond)) + 
-  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + 
+```{r DIV15_total_mCh_stat}
+DIV15.counts.dunn = dunn_test(spine_counts[spine_counts$age == 'DIV15',], total ~ cond, p.adjust.method = 'bonferroni')
+DIV15.counts.dunn = add_xy_position(DIV15.counts.dunn, x = 'cond')
+DIV15.counts.dunn = add_y_position(DIV15.counts.dunn, step.increase = 0.01)
+DIV15.counts.dunn$p.adj.rounded = sapply(DIV15.counts.dunn$p.adj, function(p){signif(p, digits = 3)})
+
+
+DIV15_count = ggplot(spine_counts[spine_counts$age == 'DIV15',], aes(x = cond, y = total)) + 
+  geom_dotplot(aes(fill = cond, colour = cond), binaxis = "y", stackdir = "center", position = "dodge", binwidth = 1, dotsize = 0.5) + 
   geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
-  stat_compare_means(label = 'p.signif', ref.group = 'Control', hide.ns = F) + 
-  labs(x = 'Condition', y = 'Number of spines in 20μm section', title = 'Dendritic spines at DIV15') +
+  stat_compare_means(label.x = 2) + stat_pvalue_manual(DIV15.counts.dunn, label = 'p.adj.rounded', hide.ns = T, position = position_nudge(y = -1)) + 
+  labs(x = '', y = 'Number of spines in 20μm section', title = 'DIV15') +
+  ylim(-1, 30) + 
   d_format + report_theme
+
+DIV15_count
 ```
 ...and the same again but with WT protrudin as the reference group
 ```{r DIV15_total_WT_stat, fig.width=8, fig.height=6}
@@ -152,7 +162,7 @@ Overall number of each type of spine, stats w.r.t. mCherry
 ```{r DIV15_type_absolute, fig.width=8, fig.height=6}
 ggplot(spine_counts.melt[spine_counts.melt$age == 'DIV15',], aes(x = cond, y = value, group = cond, fill = cond, colour = cond)) + 
   geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
-  facet_wrap(~variable) + 
+  facet_wrap(~spine_type) + 
   stat_compare_means(label = 'p.signif', ref.group = 'Control') + 
   labs(x = 'Condition', y = 'Number of spines in 20μm section', title = 'Dendritic spines at DIV15 by type') +
   d_format + report_theme
@@ -160,18 +170,28 @@ ggplot(spine_counts.melt[spine_counts.melt$age == 'DIV15',], aes(x = cond, y = v
 ```
 
 Normalised to total number of spines on each cell
-```{r DIV15_type_norm, fig.width=8, fig.height=6}
-ggplot(spine_counts.normalised.melt[spine_counts.normalised.melt$age == 'DIV15',], aes(x = cond, y = value, group = cond, fill = cond, colour = cond)) + 
-  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
-  facet_wrap(~variable) + 
-  stat_compare_means(label = 'p.signif', ref.group = 'Control') + 
-  labs(x = 'Condition', y = 'Number of spines/total spines in 20μm section', title = 'Normalised spines per cell at DIV15') +
+```{r DIV15_type_norm, fig.width = 8, fig.height=10}
+DIV15.test <- spine_counts.normalised.melt[spine_counts.normalised.melt$age == 'DIV15',] %>% group_by(spine_type) %>% dplyr::select(value, cond)
+DIV15.dunn = dunn_test(DIV15.test, value ~ cond, p.adjust.method = 'bonferroni')
+DIV15.dunn = add_xy_position(DIV15.dunn, x = 'cond')
+DIV15.dunn = add_y_position(DIV15.dunn, step.increase = 0.04)
+DIV15.dunn$p.adj.rounded = sapply(DIV15.dunn$p.adj, function(p){signif(p, digits = 3)})
+
+DIV15_type_norm = ggplot(spine_counts.normalised.melt[spine_counts.normalised.melt$age == 'DIV15',], aes(x = cond, y = value)) + 
+  geom_dotplot(aes(fill = cond, colour = cond), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 2, binwidth = 0.025) + 
+  geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
+  facet_wrap(~spine_type) + 
+  scale_y_continuous(limits = c(-0.05, 1.4), breaks = c(0.0, 0.5, 1.0)) + 
+  stat_compare_means(label.x = 1.5, label.y = 1.35) + stat_pvalue_manual(DIV15.dunn, hide.ns = TRUE, label = 'p.adj.rounded', position = position_nudge(y = -0.15)) + 
+  labs(x = '', y = 'Number of spines/total spines in 20μm section', title = 'DIV15') +
   d_format + report_theme
+
+DIV15_type_norm
 ```
 
 Another way of looking at percentages
 ```{r bar_fill_DIV15, fig.width=8, fig.height=6}
-ggplot(spine_counts.melt[spine_counts.melt$age == 'DIV15',], aes(x = cell_id, y = value, fill = variable)) + 
+ggplot(spine_counts.melt[spine_counts.melt$age == 'DIV15',], aes(x = cell_id, y = value, fill = spine_type)) + 
   geom_bar(position="fill", stat="identity") + 
   facet_wrap(~cond, scales = "free_x") + 
   labs(x = '', y = 'Spine type proportion', title = 'Spine type proportions at DIV15') + 
@@ -186,13 +206,22 @@ CNC #79 was left to grow to DIV21 and imaged again.  This is only one experiment
 
 ### Total number of spines
 Stats with respect to mCherry control...
-```{r DIV21_total_mCh_stat, fig.width=8, fig.height=6}
-ggplot(spine_counts[spine_counts$age == 'DIV21',], aes(x = cond, y = total, group = cond, fill = cond, colour = cond)) + 
-  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + 
+```{r DIV21_total_mCh_stat}
+DIV21.counts.dunn = dunn_test(spine_counts[spine_counts$age == 'DIV21',], total ~ cond, p.adjust.method = 'bonferroni')
+DIV21.counts.dunn = add_xy_position(DIV21.counts.dunn, x = 'cond')
+DIV21.counts.dunn = add_y_position(DIV21.counts.dunn, step.increase = 0)
+DIV21.counts.dunn$p.adj.rounded = sapply(DIV21.counts.dunn$p.adj, function(p){signif(p, digits = 3)})
+#individual comparisons non-significant
+
+DIV21_count = ggplot(spine_counts[spine_counts$age == 'DIV21',], aes(x = cond, y = total)) + 
+  geom_dotplot(aes(fill = cond, colour = cond), binaxis = "y", stackdir = "center", position = "dodge", binwidth = 1, dotsize = 0.5) + 
   geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
-  stat_compare_means(label = 'p.signif', ref.group = 'Control', hide.ns = F) + 
-  labs(x = 'Condition', y = 'Number of spines in 20μm section', title = 'Dendritic spines at DIV21') +
+  stat_compare_means(label.x = 2) + stat_pvalue_manual(DIV21.counts.dunn, label = 'p.adj.rounded', hide.ns = T) + 
+  labs(x = '', y = 'Number of spines in 20μm section', title = 'DIV21') +
+  ylim(-1, 30) + 
   d_format + report_theme
+
+DIV21_count
 ```
 ...and the same again but with WT protrudin as the reference group
 ```{r DIV21_total_WT_stat, fig.width=8, fig.height=6}
@@ -209,7 +238,7 @@ Overall number of each type of spine, stats w.r.t. mCherry
 ```{r DIV21_type_absolute, fig.width=8, fig.height=6}
 ggplot(spine_counts.melt[spine_counts.melt$age == 'DIV21',], aes(x = cond, y = value, group = cond, fill = cond, colour = cond)) + 
   geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
-  facet_wrap(~variable) + 
+  facet_wrap(~spine_type) + 
   stat_compare_means(label = 'p.signif', ref.group = 'Control') + 
   labs(x = 'Condition', y = 'Number of spines in 20μm section', title = 'Dendritic spines at DIV21 by type') +
   d_format + report_theme
@@ -217,18 +246,30 @@ ggplot(spine_counts.melt[spine_counts.melt$age == 'DIV21',], aes(x = cond, y = v
 ```
 
 Normalised to total number of spines on each cell
-```{r DIV21_type_norm, fig.width=8, fig.height=6}
-ggplot(spine_counts.normalised.melt[spine_counts.normalised.melt$age == 'DIV21',], aes(x = cond, y = value, group = cond, fill = cond, colour = cond)) + 
-  geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
-  facet_wrap(~variable) + 
-  stat_compare_means(label = 'p.signif', ref.group = 'Control') + 
-  labs(x = 'Condition', y = 'Number of spines/total spines in 20μm section', title = 'Normalised spines per cell at DIV15') +
+```{r DIV21_type_norm, fig.width=8, fig.height = 10}
+
+DIV21.test <- spine_counts.normalised.melt[spine_counts.normalised.melt$age == 'DIV21',] %>% group_by(spine_type) %>% dplyr::select(value, cond)
+DIV21.dunn = dunn_test(DIV21.test, value ~ cond, p.adjust.method = 'bonferroni')
+DIV21.dunn = add_xy_position(DIV21.dunn, x = 'cond')
+DIV21.dunn = add_y_position(DIV21.dunn, step.increase = 0)
+DIV21.dunn$p.adj.rounded = sapply(DIV21.dunn$p.adj, function(p){signif(p, digits = 3)})
+#non-significant
+
+DIV21_type_norm = ggplot(spine_counts.normalised.melt[spine_counts.normalised.melt$age == 'DIV21',], aes(x = cond, y = value)) + 
+  geom_dotplot(aes(fill = cond, colour = cond), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 2, binwidth = 0.025) + 
+  geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
+  facet_wrap(~spine_type) + 
+  scale_y_continuous(limits = c(-0.05, 1.4), breaks = c(0.0, 0.5, 1.0)) + 
+  stat_compare_means(label.x = 1.5, label.y = 1.35) +  stat_pvalue_manual(DIV21.dunn, label = 'p.adj.rounded', hide.ns = T) + 
+  labs(x = '', y = 'Number of spines/total spines in 20μm section', title = 'DIV21') +
   d_format + report_theme
+
+DIV21_type_norm
 ```
 
 Another way of looking at percentages
 ```{r bar_fill_DIV21, fig.width=8, fig.height=6}
-ggplot(spine_counts.melt[spine_counts.melt$age == 'DIV21',], aes(x = cell_id, y = value, fill = variable)) + 
+ggplot(spine_counts.melt[spine_counts.melt$age == 'DIV21',], aes(x = cell_id, y = value, fill = spine_type)) + 
   geom_bar(position="fill", stat="identity") + 
   facet_wrap(~cond, scales = "free_x") + 
   labs(x = '', y = 'Spine type proportion', title = 'Spine type proportions at DIV21') + 
@@ -237,3 +278,24 @@ ggplot(spine_counts.melt[spine_counts.melt$age == 'DIV21',], aes(x = cell_id, y 
 
 Maybe Mutant 2 has fewer filopodia at this stage, but it's too early to be sure.
 
+
+
+```{r spine_types_full_figure, fig.width = 16, fig.height = 22, fig.path='../figures/full/'}
+schematic = image_as_ggplot(read.bitmap('C:\\Users\\fl299\\PhD\\dendrite_section_schematic.png'))
+
+
+spine_type_layout = 'AABC
+                    AABC
+                    DDDD
+                    DDDD
+                    DDDD
+                    EEEE
+                    EEEE
+                    EEEE'
+
+spine_types_plot = schematic + DIV15_count + DIV21_count + DIV15_type_norm + DIV21_type_norm + plot_layout(design = spine_type_layout) + plot_annotation(tag_levels = 'A') & theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#ggsave('test.png', plot = spine_types_plot, device = 'png') - FINE - issue is with latex
+
+spine_types_plot
+```

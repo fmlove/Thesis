@@ -1,0 +1,73 @@
+---
+output:
+  pdf_document: 
+      latex_engine: xelatex
+  html_document: default
+  word_document: default
+bibliography: "`r here::here('bib/THESIS.bib')`"
+---
+
+# Protrudin's role in regeneration and endogenous functions
+
+```{r chapter_2_setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+knitr::knit_child(here::here("analysis/Protrudin_spine_type_analysis.Rmd"))
+knitr::knit_child(here::here("analysis/Protrudin_spine_length_analysis.Rmd"))
+
+
+library(knitr)
+
+```
+
+## Introduction
+As discussed previously (CROSS_REF TO INTRO), protrudin's array of binding domains allow it to participate in numerous cellular systems, with diverse effects.  I decided to take a broad approach, examining a number of different systems to identify how protrudin might influence survival and regeneration in neurons.
+
+
+### Cellular morphology
+Protrudin is known for its role in cellular outgrowth, but this is by no means limited to axon growth.  
+
+#### Dendrites
+Protrudin has been shown to play a functional role at dendritic spines, mediating long term depression by allowing internalised AMPA receptors to be removed from the spine through association with KIF5 [@brachetKinesin1protrudinComplex2021].  In addition, ER tubules (or the more complicated spine apparatus) have been observed either transiently or permanently in most spines on hippocampal neurons [@perez-alvarezEndoplasmicReticulumVisits2020], which suggests that protrudin is likely to be present in or near spines and could act on their morphology.
+
+### Proteomics and published interactions
+
+### Protrudin in HeLa cells
+
+
+## Methods
+
+General cell culture and microscopy methods can be found in section \@ref(METHODS).
+
+### Dendritic spine imaging and analysis
+
+### Gene ontology analysis
+
+### HeLa cell culture
+
+
+
+
+## Results
+### Protrudin's effect on dendritic spine number, length, and morphology
+I counted and manually classified dendritic spines on 20$\mu$m sections of dendrite from DIV15 (n = 30 cells per condition across three batches) or DIV21 neurons (n = 10 cells per condition, one batch) co-expressing an EGFP/Emerald filler with an mCherry-labelled protrudin construct (\@ref(fig:spine_type_full_figure)).  The DIV15 data suggests that WT protrudin might be associated with fewer, stubbier spines, although the significant comparisons varied for each spine classification, and is inconsistent with the DIV21 data.
+
+```{r spine_type_full_figure, echo = F, fig.width = 16, fig.height = 22, fig.path = '../figures/full/', fig.cap="A) Schematic showing selection of dendrite sections for analysis and basic spine morphology groups.  One dendrite section was analysed per cell.  Scale bar is 10$\\mu$m.  B-C) Total spine counts in 20$\\mu$m section for DIV15 and DIV21 groups.  D-E) Quantification of each spine type, normalised to the total number of spines in the section measured.  DIV15: n=30 cells per condition across three independent batches; DIV21: n=10 cells per condition in one batch."}
+spine_types_plot
+```
+
+As manual spine classification is an inherently subjective measure, and did not show any clear associations, I decided to look instead at spine length, which can be measured more objectively.  I re-analysed the initial DIV15 data, measuring the length of each spine from the edge of the dendrite.  The experiment was then repeated in full, and the second replicate analysed in the same way.   This also showed some significant differences, both in spine number and length, however these significant comparisons were wholly inconsistent between replicates.  
+
+Taken together, these results show that protrudin overexpression does not substantially impact dendritic spine number, length, or morphology.  These measurements were highly variable between cells and between replicates, and did not show any consistent patterns that would suggest that protrudin plays any role in controlling spine outgrowth.
+
+
+
+
+### Protrudin's interactions with other proteins in the cell
+
+
+### HeLa screen for changes in organelle distribution
+
+## Discussion
+### The ERES to Golgi pathway
+### Ceramides

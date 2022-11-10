@@ -11,6 +11,7 @@ source(here::here('./style/thesis_setup.R'))
 
 library(here)
 library(readbitmap)
+library(reshape2)
 library(patchwork)
 ```
 
@@ -46,4 +47,22 @@ layout = 'AFK
 #cowplot::plot_grid(SURF4, SEC31A, ERGIC53, MIA3, BCAP31, ACSL3, BODIPYceramide, GS28, GLG1, USO1, LC3, SLC38A1, Rab11, LAMP1, mTOR, ncol = 3, nrow = 5, labels = 'AUTO', byrow = FALSE)
 SURF4 + SEC31A + ERGIC53 + MIA3 + BCAP31 + ACSL3 + BODIPYceramide + GS28 + GLG1 + USO1 + LC3 + SLC38A1 + Rab11 + LAMP1 + mTOR +
   plot_layout(design = layout) & plot_annotation(tag_levels = 'A')
+```
+
+```{r HeLa_ceramide_full_figure, fig.width = 16, fig.height = 8, fig.path = "../figures/full/"}
+ceramide_profile.csv = read.csv("C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\HeLa14_BODIPY-ceramide_TIFs\\intensity_profiles\\WT3_ceramide.tif_profile.csv")
+ceramide_profile.csv.normalised = data.frame(X = ceramide_profile.csv$X,
+                                             ch1 = ceramide_profile.csv$Value_ch1/max(ceramide_profile.csv$Value_ch1),
+                                             ch2 = ceramide_profile.csv$Value_ch2/max(ceramide_profile.csv$Value_ch2))
+ceramide_profile.melt = melt(ceramide_profile.csv.normalised, measure.vars = c('ch1', 'ch2'))
+
+ceramide_profile = ggplot(ceramide_profile.melt, aes(x = X, y = value, group = variable)) + 
+  geom_area(aes(fill = variable), alpha = 0.25, position = 'dodge') +
+  geom_line(aes(colour = variable), size = 2) +
+  labs(y = 'Normalised fluorescence intensity', x = '') +
+  d_format + report_theme
+
+grid_panel = image_as_ggplot(read.bitmap(here("images/microscopy/HeLa_montages/C5-ceramide_WT_inset_grid.png")))
+
+grid_panel + ceramide_profile + plot_annotation(tag_level = 'A')
 ```
