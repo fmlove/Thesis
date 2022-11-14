@@ -5,3 +5,9 @@
 *.RData
 *.rdb
 *.rdx
+text/*.html
+text/*.log
+text/*.docx
+analysis/*.html
+analysis/*.log
+analysis/*.docx
