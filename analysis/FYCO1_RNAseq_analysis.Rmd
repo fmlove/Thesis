@@ -1,0 +1,266 @@
+---
+title: "FYCO1 RNAseq plots"
+output: pdf_document
+---
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE, dev = 'png', message = FALSE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80))
+knitr::opts_chunk$set(fig.path = "../figures/")
+
+source('../style/thesis_setup.R')
+
+library(dplyr)
+library(tidyr)
+library(here)
+library(ggplot2)
+library(readbitmap)
+library(patchwork)
+library(stringr)
+library(ggpubr)
+```
+
+
+List of genes to plot
+```{r}
+genes = c('Gapdh', 'Fyco1', 'Zfyve27')
+```
+
+
+
+## Koseki et al. gene plotter
+
+
+read in condensed CSV
+```{r}
+full.csv = read.csv('C:\\Users\\fl299\\PhD\\Data\\koseki_et_al_2017_data_condensed.csv', stringsAsFactors = F)
+```
+
+Subset to selected genes and remodel
+```{r}
+genes.csv = full.csv %>% filter(gene_short_name %in% genes)
+
+
+df = data.frame(gene = rep(genes, 5),#one entry for each day measured
+                day = rep(c(1, 4, 8, 16, 24), each = length(genes)))
+df$mean = sapply(1:nrow(df), function(i){
+  g = df$gene[i]
+  d = df$day[i]
+  return( genes.csv[genes.csv$gene_short_name == g, paste0("D", d, "_mean")] )
+})
+
+df$sd = sapply(1:nrow(df), function(i){
+  g = df$gene[i]
+  d = df$day[i]
+  return( genes.csv[genes.csv$gene_short_name == g, paste0("D", d, "_sd")] )
+})
+```
+
+Ordering
+```{r}
+df$gene = factor(df$gene, levels = c('Gapdh', 'Fyco1', 'Zfyve27'), labels = c('GAPDH', 'FYCO1', 'Protrudin'))
+```
+
+
+Plot
+```{r koseki_expression_plot, fig.width=8, fig.height=4}
+koseki = ggplot(df, aes(x = day, y = mean, color = gene)) + 
+  geom_line() + 
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 2) +
+  geom_point(aes(shape = gene), size = 3) + 
+  labs(x = expression("Days "~italic("in vitro")), y = "Gene expression (FPKM)", title = "Rat cortical neurons") + 
+  report_theme + scale_color_brewer(palette = "Dark2", labels = c('GAPDH', 'FYCO1', 'Protrudin'), name = "Gene") + scale_shape_discrete(labels = c('GAPDH', 'FYCO1', 'Protrudin'), name = "Gene")
+koseki
+
+legend = as_ggplot(get_legend(koseki))
+```
+
+## Tedeschi & Bradke
+
+read in CSV
+```{r}
+tb.csv = read.csv('C:\\Users\\fl299\\PhD\\Data\\Bradke Tedeschi DRG RNAseq.csv', stringsAsFactors = F)
+```
+
+Filter to selected genes
+```{r}
+genes.tb = tb.csv %>% filter(Gene.symbol %in% genes)
+```
+
+Split into experiment-specific dfs
+```{r}
+#DRC cell culture
+tb.DRG_culture = data.frame(gene = rep(genes, 4),#four timepoints
+                            hour = rep(c(6, 12, 24, 36), each = length(genes)))
+time_key = as.numeric(str_match(names(genes.tb), "X(\\d+)h")[,2])
+
+tb.DRG_culture$mean = numeric(length = nrow(tb.DRG_culture))
+tb.DRG_culture$sd = numeric(length = nrow(tb.DRG_culture))
+
+for(i in 1:nrow(tb.DRG_culture)){
+  g = tb.DRG_culture$gene[i]
+  h = tb.DRG_culture$hour[i]
+  
+  col = which(time_key == h)
+  
+  tb.DRG_culture[i, "mean"] = mean(t(genes.tb[genes.tb$Gene.symbol == g, col]))
+  tb.DRG_culture[i, "sd"] = sd(t(genes.tb[genes.tb$Gene.symbol == g, col]))
+  
+}
+
+#peripheral lesion vs sham
+tb.Injury = data.frame(gene = rep(genes, 2),#treatment & control
+                       condition = rep(c('lesion', 'sham'), each = length(genes)))
+tb.Injury$mean = numeric(length = nrow(tb.Injury))
+tb.Injury$sd = numeric(length = nrow(tb.Injury))
+
+for(i in 1:nrow(tb.Injury)){
+  g = tb.Injury$gene[i]
+  c = tb.Injury$condition[i]
+  
+  col = which(grepl(c, names(genes.tb), ignore.case = T))
+  
+  tb.Injury[i, "mean"] = mean(t(genes.tb[genes.tb$Gene.symbol == g, col]))
+  tb.Injury[i, "sd"] = sd(t(genes.tb[genes.tb$Gene.symbol == g, col]))
+}
+
+#Embryonic DRGs
+tb.DRG_vivo = data.frame(gene = rep(genes, 2),
+                         ED = rep(c(12.5, 17.5), each = length(genes)))
+ED_key = as.numeric(str_match(names(genes.tb), "E(\\d+.\\d)..")[,2])
+
+tb.DRG_vivo$mean = numeric(length = nrow(tb.DRG_vivo))
+tb.DRG_vivo$sd = numeric(length = nrow(tb.DRG_vivo))
+
+for(i in 1:nrow(tb.DRG_vivo)){
+  g = tb.DRG_vivo$gene[i]
+  d = tb.DRG_vivo$ED[i]
+  
+  col = which(ED_key == d)
+  
+  tb.DRG_vivo[i, "mean"] = mean(t(genes.tb[genes.tb$Gene.symbol == g, col]))
+  tb.DRG_vivo[i, "sd"] = sd(t(genes.tb[genes.tb$Gene.symbol == g, col]))
+}
+tb.DRG_vivo$ED = factor(tb.DRG_vivo$ED)
+```
+
+Factor ordering
+```{r}
+tb.DRG_culture$gene = factor(tb.DRG_culture$gene, levels = c('Gapdh', 'Fyco1', 'Zfyve27'), labels = c('GAPDH', 'FYCO1', 'Protrudin'))
+tb.Injury$gene = factor(tb.Injury$gene, levels = c('Gapdh', 'Fyco1', 'Zfyve27'), labels = c('GAPDH', 'FYCO1', 'Protrudin'))
+tb.DRG_vivo$gene = factor(tb.DRG_vivo$gene, levels = c('Gapdh', 'Fyco1', 'Zfyve27'), labels = c('GAPDH', 'FYCO1', 'Protrudin'))
+
+tb.Injury$condition = factor(tb.Injury$condition, levels = c('sham', 'lesion'))
+```
+
+
+## Zhang et al. 2016 (brainrnaseq.org)
+```{r}
+#25yo human cortical neuron data, FPKM
+z.csv = read.csv('C:\\Users\\fl299\\PhD\\Data\\Zhang_GSE73721_Human_and_mouse_table.csv', stringsAsFactors = F)
+genes.z =  z.csv %>% filter(Gene %in% genes)
+genes.z.neurons = data.frame(gene = genes.z$Gene,
+                             FPKM = genes.z$X25yo.ctx.neuron)
+genes.z.neurons$gene = factor(genes.z.neurons$gene, levels = c('Gapdh', 'Fyco1', 'Zfyve27'), labels = c('GAPDH', 'FYCO1', 'Protrudin'))
+
+zhang.bar = ggplot(genes.z.neurons, aes(x = gene, y = FPKM)) + 
+  geom_bar(aes(fill = gene), stat = 'identity') + 
+  geom_hline(yintercept = 1) + 
+  scale_y_log10() + 
+  labs(x = '', y = 'Gene expression (FPKM)', title = 'Human cortical neurons') + 
+  report_theme + 
+  scale_fill_brewer(palette = "Dark2")
+zhang.bar
+```
+
+
+Kelley et al. 2018 - gene fidelity (cell type specificity)
+```{r}
+kelley.csv = read.csv('C:\\Users\\fl299\\PhD\\Data\\Kelley_ALL_Fidelity.csv', stringsAsFactors = F)
+genes.kelley = kelley.csv[kelley.csv$Gene %in% c('FYCO1', 'ZFYVE27'),]
+
+genes.k = genes.kelley[,-which(names(genes.kelley) %in% c('Entrez', 'Alias', 'MeanExpression_Percentile'))] %>% pivot_longer(cols = 2:85, values_to = 'fidelity')
+genes.k$region = sapply(1:nrow(genes.k), function(r){ strsplit(genes.k$name[r], '_')[[1]][1] })
+genes.k$cell_type = sapply(1:nrow(genes.k), function(r){ strsplit(genes.k$name[r], '_')[[1]][2] })
+
+
+# 
+# ggplot(genes.k[genes.k$region != 'ALL',], aes(x = cell_type, y = fidelity)) +
+#   geom_violin() +
+#   geom_crossbar(data = genes.k[genes.k$region == 'ALL',], aes(x = cell_type, ymin = fidelity, ymax = fidelity)) +
+#   facet_wrap(~Gene)
+
+kelley.bar = ggplot(genes.k[genes.k$region == 'ALL',], aes(x = cell_type, y = ceiling(fidelity*4) / 4)) + #rounding up to nearest 0.25 to avoid empty bar for very small neuron value
+  geom_bar(aes(fill = Gene), stat = 'identity') + facet_wrap(~Gene) + report_theme + 
+  scale_fill_manual(values = c('#D95F02', '#7570B3')) + labs(x = '', y = 'Expression fidelity') + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+  
+#kelley_panel = image_as_ggplot(read.bitmap(here('figures/external/kelley_panel.png')))
+kelley.bar
+```
+
+
+
+
+
+PLOTS
+```{r}
+culture = ggplot(tb.DRG_culture, aes(x = hour, y = mean, color = gene)) + 
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 2) + 
+  geom_line() + geom_point(aes(shape = gene), size = 3) + 
+  labs(x = "Hours in vitro", y = "Normalised expression value", title = "Adult mouse DRG") + 
+  report_theme + scale_color_brewer(palette = 'Dark2')
+
+culture
+
+```
+```{r}
+injury = ggplot(tb.Injury, aes(x = condition, y = mean, color = gene, group = gene)) + 
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.15) + 
+  geom_line() + geom_point(aes(shape = gene), size = 3) + 
+  labs(x = "Treatment", y = "Normalised expression value", title = "Conditioning lesion") + 
+  report_theme + theme(legend.position = 'right') + scale_color_brewer(palette = 'Dark2')
+injury
+
+```
+```{r}
+vivo = ggplot(tb.DRG_vivo, aes(x = ED, y = mean, color = gene, group = gene)) + 
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.15) + 
+  geom_line() + geom_point(aes(shape = gene), size = 3) + 
+  labs(x = "Embryonic day", y = "Normalised expression value", title = "Embryonic mouse DRG") + 
+  report_theme + scale_color_brewer(palette = 'Dark2')
+vivo
+
+```
+
+
+
+
+Combo
+```{r fig.width=3, fig.height=5}
+Koseki.patch = koseki + plot_annotation(title = "Rat cortical neurons", caption = "Koseki et al. 2017, eLife")
+```
+```{r}
+Zhang.patch = zhang.bar + plot_annotation(title = 'Human cortical neurons', caption = 'Zhang et al. 2016, Neuron')
+```
+```{r}
+Kelley.patch = kelley.bar + plot_annotation(title = '', caption = 'Kelley et al. 2018, Nat Neurosci')
+```
+
+```{r fig.width=10, fig.height = 5}
+
+PNS.patch = culture + vivo + injury + plot_annotation(title = "PNS", caption = "Tedeschi et al. 2016, Neuron")
+```
+
+```{r FYCO1_RNAseq_full, fig.width=16, fig.height = 12, fig.path = "../figures/full/"}
+
+FYCO1_RNAseq_full = (Koseki.patch + Zhang.patch + Kelley.patch)/ 
+  (culture + vivo + injury) + plot_annotation(tag_levels = 'A') + plot_layout(guides = 'collect')
+  #PNS.patch + plot_annotation(tag_levels = 'A') + plot_layout(design = RNA.layout)
+
+FYCO1_RNAseq_full
+```
+
+
+
+
