@@ -165,8 +165,9 @@ genes.z.neurons$gene = factor(genes.z.neurons$gene, levels = c('Gapdh', 'Fyco1',
 
 zhang.bar = ggplot(genes.z.neurons, aes(x = gene, y = FPKM)) + 
   geom_bar(aes(fill = gene), stat = 'identity') + 
+  geom_text(aes(label=FPKM), vjust=c(-.5, 1.25, 1.35)) +
   geom_hline(yintercept = 1) + 
-  scale_y_log10() + 
+  scale_y_log10(limits = c(0.17, 400)) + 
   labs(x = '', y = 'Gene expression (FPKM)', title = 'Human cortical neurons') + 
   report_theme + 
   scale_fill_brewer(palette = "Dark2")

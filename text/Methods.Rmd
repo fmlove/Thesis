@@ -3,3 +3,18 @@
 ```{=latex}
 \markboth{MATERIALS AND METHODS}{}
 ```
+
+## Plasmids and antibodies
+
+## Other reagents
+
+## Software
+
+## Protocols
+### Cortical neuron cultures
+### Transfection
+### Immunocytochemistry
+### Microscopy
+### Kymograph analysis
+### Fluorescence quantification
+### Statistical analysis
