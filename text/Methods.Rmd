@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Materials and Methods {.unnumbered #METHODS}
 
 ```{=latex}
@@ -6,15 +11,40 @@
 
 ## Plasmids and antibodies
 
+
+
 ## Other reagents
 
 ## Software
 
+Wherever possible, I tried to use free and open source software throughout this project.  All image analysis tasks were carried out in Fiji [@schindelinFijiOpensourcePlatform2012].  Quantitative analysis and statistics were carried out in R []. FinchTV and Serial Cloner were used for reading DNA sequences and designing plasmids, respectively. 
+
 ## Protocols
+### Plasmid preparation
+
+All plasmid preparation was carried out using either DH5$\alpha$ *(New England BioLabs, C2987I/H)* or XL10-Gold *(Agilent Technilogies, 200314)* competent cells.  Cells were transformed using a heat shock protocol, and grown on LB/agar plates with an appropriate antibody for plasmid selection.  Single colonies were then scaled up in LB culture.  Plasmids were purified from *E. coli* cultures using Qiagen Spin Miniprep *(27104)* or EndoFree Plasmid Maxi kits *(12362)* according to the manufacturer's protocols.  All plasmids were dissolved in ultrapure DNAse-free water *(Thermo Fisher, 10977035)* for transfection.
+
 ### Cortical neuron cultures
+
+Primary cortical neurons were obtained from E18 Sprague Dawley rats. Cortices were dissected in HEPES-HBSS and dissociated with papain for approximately 5 minutes at 37°, followed by DNAse treatment and trituration through a flame-polished glass pipette. Cells were filtered through a 40$\mu$m cell strainer *(Falcon, 352340)* and plated at a density of 200K-400K cells per imaging plate *(Greiner Bio-One, 627860)*. Plates were coated with 2mg/mL poly-D-lysine *(SigmaAldrich, P1149)* in borate buffer.  Cells were grown in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)*, supplemented with NeuroBrew-21 *(Miltenyi Biotec, 130-093-566)*, GlutaMAX *(Thermo Fisher, 35050061)*, and ITS *(R&D Systems, AR013)* at 37° with 7% CO~2~. 
+
 ### Transfection
+
+Cortical neurons were transfected by either magnetofection or calcium phosphate.
+
+
+
+
+HeLa cells were transfected using TransIT-LT1 reagent *(Mirus Bio, MIR2300)*, according to the manufacturer's protocol.
+
 ### Immunocytochemistry
+
+Cortical neurons were fixed using formaldehyde and sucrose, dissolved in PBS and mixed into the growth media to final concentrations of 3% formaldehyde and 10% sucrose.  HeLa cells were fixed in 3% formaldehyde in PBS.  In both cases, cells were fixed for 15 minutes at room temperature, followed by PBS washes and stored at 4$^{\circ}$.  
+
+Cells were permeabilised with saponin, to preserve the localisation of membrane-associated proteins.  
+
 ### Microscopy
-### Kymograph analysis
-### Fluorescence quantification
+### Image analysis
+#### Kymograph analysis
+#### Fluorescence quantification
 ### Statistical analysis
