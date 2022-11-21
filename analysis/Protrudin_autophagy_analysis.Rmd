@@ -3,11 +3,17 @@ title: "Protrudin_autophagy_analysis"
 output: pdf_document
 ---
 
-```{r setup}
-knitr::opts_chunk$set(echo = TRUE)
+```{r LC3_setup}
+knitr::opts_chunk$set(echo = FALSE, dev = 'png')
+knitr::opts_chunk$set(fig.path = "../figures/")
+
+source(here::here('./style/thesis_setup.R'))
 
 library(dplyr)
 library(ggplot2)
+library(readbitmap)
+library(here)
+library(patchwork)
 ```
 
 Load in count CSVs
@@ -29,19 +35,45 @@ LC3_dist.simple$condition = factor(LC3_dist.simple$condition, levels = c('GFP', 
 ```
 
 Plot
-```{r}
-ggplot(LC3_dist.simple[LC3_dist.simple$condition %in% c('Control', 'WT'),], aes(group = condition, fill = condition, y = count, x = distribution)) + geom_bar(stat = 'identity', position = 'dodge') + report_theme + scale_fill_manual(values = c('#8AC926', '#FF595E')) + labs(x = 'LC3 localisation', y = 'Number of cells', fill = '' )
-
-```
-
-```{r}
-ggplot(LC3_dist.simple, aes(group = condition, fill = condition, y = count, x = distribution)) + geom_bar(stat = 'identity', position = 'dodge') + report_theme + labs(x = 'LC3 localisation', y = 'Number of cells', fill = '' )
-
-```
 
 ```{r LC3_dist_plot}
-ggplot(LC3_dist.simple, aes(x = condition, fill = distribution, y = count)) + 
+LC3_neuron_plot = ggplot(LC3_dist.simple, aes(x = condition, fill = distribution, y = count)) + 
   geom_bar(stat = 'identity', position = 'stack') + 
   labs(y = 'Number of cells', x = '', fill = 'LC3 distribution') + 
   report_theme + scale_fill_viridis_d() + theme (legend.position = 'right')
+
+LC3_neuron_plot
+```
+
+```{r LC3_profile_plot}
+LC3.prof = read.csv('C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\HeLa7-9_LC3_TIFs\\7\\stacks\\max_projections\\intensity_profiles\\WT2_Stack_profile.csv')
+LC3.prof.norm = data.frame(X = LC3.prof$X,
+                       ch1 = LC3.prof$Value_ch1/max(LC3.prof$Value_ch1),
+                       ch2 = LC3.prof$Value_ch2/max(LC3.prof$Value_ch2))
+LC3.prof.melt = reshape2::melt(LC3.prof.norm, measure.vars = c('ch1', 'ch2'))
+
+LC3_profile_plot = ggplot(LC3.prof.melt, aes(x = X, y = value, group = variable)) + 
+  geom_area(aes(fill = variable), alpha = 0.25, position = 'dodge') + geom_line(aes(colour = variable), size = 2) + 
+  labs(y = 'Normalised fluorescence intensity', x = '') +
+  d_format + report_theme
+
+LC3_profile_plot 
+
+```
+
+```{r neuron_examples}
+LC3_neuro = image_as_ggplot(read.bitmap(here('images/microscopy/LC3/LC3_neuron_examples.png')))
+```
+```{r HeLa_grid}
+LC3_grid = image_as_ggplot(read.bitmap(here('images/microscopy/HeLa_montages/LC3_WT_inset_grid.png')))
+```
+
+```{r LC3_full, fig.width=16, fig.height=12, fig.path='../figures/full/'}
+LC3.layout = 'AAABB
+              AAABB
+              CCCCD'
+
+LC3_full_plot = LC3_grid + LC3_profile_plot + LC3_neuro + LC3_neuron_plot + plot_annotation(tag_levels = 'A') + plot_layout(design = LC3.layout)
+
+LC3_full_plot
 ```

@@ -3,7 +3,7 @@ title: "Protrudin_proteomics"
 output: pdf_document
 ---
 
-```{r setup, echo = F}
+```{r proteomics_setup, echo = F}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, dev = 'png')
 knitr::opts_chunk$set(fig.path = "../figures/")
 
@@ -30,7 +30,7 @@ library(patchwork)
 ```
 
 
-```{r data_import}
+```{r proteomes_data_import}
 #TODO - FIX FILE PATHS
 
 #From Elbaz-Alon et al. 2020, Nat Commun
@@ -190,5 +190,7 @@ GO_plot
 ```
 
 ```{r proteomics_full, fig.width = 16, fig.height = 6, fig.path = "../figures/full/"}
-venn + GO_plot + plot_annotation(tag_levels = 'A')
+proteomics_full = venn + GO_plot + plot_annotation(tag_levels = 'A')
+
+proteomics_full
 ```

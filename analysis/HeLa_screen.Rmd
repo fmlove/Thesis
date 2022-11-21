@@ -3,7 +3,7 @@ title: "HeLa screen"
 output: pdf_document
 ---
 
-```{r setup, include=FALSE}
+```{r HeLa_setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, dev = 'png')
 knitr::opts_chunk$set(fig.path = "../figures/")
 
@@ -15,7 +15,7 @@ library(reshape2)
 library(patchwork)
 ```
 
-```{r read_in_images}
+```{r HeLa_read_in_images}
 SURF4 = image_as_ggplot(read.bitmap(here("images/microscopy/HeLa_montages/SURF4_grid.png")))
 SEC31A = image_as_ggplot(read.bitmap(here("images/microscopy/HeLa_montages/SEC31A_grid.png")))
 ERGIC53 = image_as_ggplot(read.bitmap(here("images/microscopy/HeLa_montages/ERGIC53_grid.png")))
@@ -37,7 +37,7 @@ mTOR = image_as_ggplot(read.bitmap(here("images/microscopy/HeLa_montages/mTOR_gr
 ```
 
 
-```{r HeLa_screen_grid, fig.width = 16, fig.height = 26.6, fig.path = "../figures/full/"}
+```{r HeLa_screen_grid, fig.width = 16, fig.height = 26.6, fig.path = "../figures/full/", eval = FALSE}
 layout = 'AFK
           BGL
           CHM
@@ -48,6 +48,19 @@ layout = 'AFK
 SURF4 + SEC31A + ERGIC53 + MIA3 + BCAP31 + ACSL3 + BODIPYceramide + GS28 + GLG1 + USO1 + LC3 + SLC38A1 + Rab11 + LAMP1 + mTOR +
   plot_layout(design = layout) & plot_annotation(tag_levels = 'A')
 ```
+
+```{r ERES_grid, fig.width=16, fig.height=16, fig.path = "../figures/full/"}
+ERES_grid = BCAP31 + SURF4 + MIA3 + SEC31A + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2)
+```
+
+```{r Golgi_grid, fig.width=16, fig.height=16, fig.path = "../figures/full/"}
+Golgi_grid = ERGIC53 + GS28 + GLG1 + USO1 + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2)
+```
+
+```{r misc_grid, fig.width=16, fig.height=16, fig.path = "../figures/full/"}
+misc_grid = LAMP1 + mTOR + ACSL3 + SLC38A1 + plot_annotation(tag_levels = 'A') + plot_layout(nrow = 2)
+```
+
 
 ```{r HeLa_ceramide_full_figure, fig.width = 16, fig.height = 8, fig.path = "../figures/full/"}
 ceramide_profile.csv = read.csv("C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\HeLa14_BODIPY-ceramide_TIFs\\intensity_profiles\\WT3_ceramide.tif_profile.csv")
@@ -64,5 +77,7 @@ ceramide_profile = ggplot(ceramide_profile.melt, aes(x = X, y = value, group = v
 
 grid_panel = image_as_ggplot(read.bitmap(here("images/microscopy/HeLa_montages/C5-ceramide_WT_inset_grid.png")))
 
-grid_panel + ceramide_profile + plot_annotation(tag_level = 'A')
+ceramide_grid = grid_panel + ceramide_profile + plot_annotation(tag_level = 'A')
+
+ceramide_grid
 ```

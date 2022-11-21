@@ -41,10 +41,22 @@ HeLa cells were transfected using TransIT-LT1 reagent *(Mirus Bio, MIR2300)*, ac
 
 Cortical neurons were fixed using formaldehyde and sucrose, dissolved in PBS and mixed into the growth media to final concentrations of 3% formaldehyde and 10% sucrose.  HeLa cells were fixed in 3% formaldehyde in PBS.  In both cases, cells were fixed for 15 minutes at room temperature, followed by PBS washes and stored at 4$^{\circ}$.  
 
-Cells were permeabilised with saponin, to preserve the localisation of membrane-associated proteins.  
+Cells were permeabilised with 0.2% saponin, to preserve the localisation of membrane-associated proteins.
 
 ### Microscopy
+
 ### Image analysis
+
+All image analysis was conducted in Fiji.  In most cases, custom macros were used for batch processing and streamlining manual tasks.  
+
+All manual image analysis was conducted blind, with the exception of (LC3 FIG NEURON PANEL), where cells were classified while they were being examined on the microscope.  In most cases, blinding was achieved using the *blinds* R package to replace descriptive file names with unique identifiers, which can then be reversed after manual analysis.  While I wrote the package for this project, it is generally applicable and publicly available on GitHub (CITE, GET ZENODO DOI).  Where it was not possible to obscure the file names (e.g. where ROIs were being matched to images by name), steps were taken in the analysis macros to randomise image order and hide the experimental condition.
+
+
 #### Kymograph analysis
+
+
+
 #### Fluorescence quantification
+
+
 ### Statistical analysis

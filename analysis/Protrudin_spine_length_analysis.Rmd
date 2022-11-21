@@ -339,6 +339,7 @@ lengths_confocal.dunn = add_xy_position(lengths_confocal.dunn, x = "cond")
 lengths_confocal.dunn = add_y_position(lengths_confocal.dunn, step.increase = 0.02)
 lengths_confocal.dunn$p.adj.rounded = sapply(lengths_confocal.dunn$p.adj, function(p){round(p, digits = 3)})
 
+
 lengths_confocal.plot = ggplot(spine_lengths_confocal.melt, aes(x = cond, y = value, colour = cond)) + 
   geom_violin() + geom_boxplot(fill = NA, width = 0.2, outlier.shape = NA) + 
   labs(title = 'Replicate 2', x = '', y = paste0('Spine length (', '\U03BC', 'm)')) + 
@@ -350,9 +351,12 @@ lengths_confocal.plot
 
 # Combined plots
 
-```{r spine_lengths_full_figure, fig.height=14, fig.width=16, fig.path = '../figures/full/', dev = 'png'}
-(counts.plot + counts_confocal.plot) / (lengths.plot + lengths_confocal.plot) + plot_annotation(tag_levels = 'A') & theme(axis.text.x = element_text(angle = 45, hjust=1))
+```{r spine_lengths_full, fig.height=14, fig.width=16, fig.path = '../figures/full/', dev = 'pdf'}
+spine_lengths_full_plot = (counts.plot + counts_confocal.plot) / (lengths.plot + lengths_confocal.plot) + plot_annotation(tag_levels = 'A') & theme(axis.text.x = element_text(angle = 45, hjust=1))
 
+spine_lengths_full_plot
+
+ggsave('spine_lengths_full.pdf', plot = spine_lengths_full_plot, device = 'pdf', path = '../figures/full/', width = 16, height = 14)
 ```
 
 
