@@ -1,0 +1,135 @@
+---
+output:
+  pdf_document: 
+      latex_engine: xelatex
+  html_document: default
+  word_document: default
+bibliography: "`r here::here('bib/THESIS.bib')`"
+---
+
+# ER, ERGIC, and Golgi in axons
+
+```{r chapter_3_setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+knitr::knit_child(here::here("analysis/ER-Golgi_localisation.Rmd"))
+knitr::knit_child(here::here("analysis/Ptdn_St3Gal5_analysis.Rmd"))
+knitr::knit_child(here::here("analysis/St3Gal5_puncta_counts.Rmd"))
+
+library(knitr)
+
+```
+
+## Introduction
+
+The discovery of local secretory pathways in neurons is fairly recent, but has already contributed significantly to our understanding of how these cells develop and function.  In non-polarised cells, protein translation and modification typically take place near the nucleus, and proteins are then transported to their final destination in, on, or outside of the cell.  While this does also occur in neurons, neurons are also capable of locally translating proteins, which can then be delivered to organelles or inserted into the cell membrane as needed [@meriandaAfunctionalequivalent2009].  It has become increasingly apparent that protein delivery from the cell body is not sufficient to maintain protein turnover at distal parts of the cell, nor is it fast enough to support the dynamic behaviour observed in these regions, for example during axon pathfinding.  Instead, these regions rely on several overlapping local pathways for protein production, modification, and secretion (reviewed in [@gonzalezGolgibypassreview2018]).
+
+### ER exit sites and COP vesicles
+Key to all of these pathways is the presence of interconnected ER tubules throughout the neuron.  Continuous with the ER network in the soma, these tubules reach into dendrites, into individual spines in an activity-dependent manner [@perez-alvarezEndoplasmicReticulumVisits2020], and down the entirety of the axon.  Among other roles, this ER network provides a platform for local protein translation, and targeting to other organelles for further modification.
+
+Proteins translated in the ER are exported via ER exit sites (ERES), typically in structures known as COPII vesicles.  Recent work as demonstrated that these exit sites are complex tubular structures, formed by the interactions of numerous COPII-associated proteins [@weigelERtoGolgiProteinDelivery2021].  A number of different chaperones and cargo receptors are involved in this process, sorting proteins for export and facilitating the budding of these transport intermediates from the ER network.  [@aridorSelectiveTargetingER2009] showed that Sar1, a GTPase related to COPII budding, was targeted to mammalian axons during neuronal development, and that this was essential for axonal growth.
+
+
+### The ER-Golgi intermediate compartment
+After budding from the ER, COPII vesicles fuse a dynamic structure known as the ER-Golgi intermediate compartment (ERGIC) (reviewed in [@appenzeller-herzogERGolgiIntermediateCompartment2006]).  From here, cargo can be directed to different downstream organelles for further processing.
+
+### Golgi outposts and satellites
+The most common destination after leaving the ERGIC is the Golgi, although this can take different forms depending on the region of the cell invovled.  In the cell body, this is typically the perinuclear Golgi stack.  In dendrites, proteins may be targeted to Golgi outposts or Golgi satellites.  While these are structurally distinct, they both carry out essential Golgi functions, including protein glycosylation [@mikhaylovaDendriticGolgiSatellite2016].  Recently, Golgi satellites have also been identified in axons, both in static and dynamically transported populations.  Here, they can act as local glycosylation platforms, similar to in dendrites, but also take part in delivering functional proteins to lysosomes [@liePostGolgicarriers2021] and nerve terminals [@cornejoNonconventionalAxonalOrganelles2020].  Golgi satellite localisation, and by extension their functionality, is dynamically regulated by neuronal activity [@govindActivitydependentGolgiSatellite2021].
+
+### Further processing and protein secretion
+After leaving a Golgi-related organelle, proteins are often sorted in endosomes through the retromer complex, which returns cargo receptors to the Golgi.  This complex has been identified in dendrites closely associated with Golgi satellites, suggesting that this sorting also occurs as part of local secretory pathways [@mikhaylovaDendriticGolgiSatellite2016].  Recent work has linked retromer dysfunction to a number of neurodegenerative conditions, potentially through changes to the lysosomal proteome [@dalyMultiomicApproachCharacterises2022].
+
+After sorting by the retromer complex, proteins can then be delivered to other organelles or the plasma membrane.  Several studies have found local translation, processing, and secretion of cell surface proteins, including voltage-gated sodium channels at nodes of Ranvier [@gonzalezAxonsprovidesecretory2016].  The exocyst complex facilitates fusion of post-Golgi carriers with the plasma membrane, and interference with this complex has been shown to inhibit neurite growth [@pereiraExocystComplexEssential2022][@swopeExocystComplexRequired2022].
+
+### The Golgi-bypass pathway
+An alternate, Golgi-bypassing pathway has also been suggested, with cargo moving from the ERGIC to the cell surface via recycling endosomes.  This has been studied in dendrites, where it was found to play a role in delivering GluA1 glutamate receptors to dendritic spines [@bowenGolgiindependentSecretoryTrafficking2017].  This study does not fully rule out the involvement of Golgi satellites, but does show that this pathway is robust to the disruption of somatic Golgi and Golgi outposts with brefeldin A.  
+
+## Methods
+
+### Fluorescence quantification
+
+Immunochemistry was carried out as described in \@ref{METHODS}.  Tracing of regions of interest was assisted by a custom ImageJ macro, which is available at (GITHUB REF).  The area of the nucleus was excluded from cell body quantification.  Background correction was carried out for axon terminals, axons, and dendrites by subtracting the intensity of an identical ROI, manually shifted to avoid overlap the area of interest.  Cell bodies were not background-corrected, due to brighter overall intensity and difficulty in identifying a nearby 'background' region free of neurites or other cellular structures.
+
+### Inhibition of ER to Golgi transport
+
+We tested several inhibitors of either ER to Golgi transport or Golgi function in DIV3 cortical neurons - H-89 (), clofibrate (), brefeldin A (), and golgicide A () (GET CONCENTRATIONS).  These concentrations were based on previously published use[@helmsInhibitionBrefeldinGolgi1992][@defigueiredoClofibrateInhibitsMembrane1999][@gonzalezAxonsprovidesecretory2016][@saenzGolgicideRevealsEssential2009][@weigelERtoGolgiProteinDelivery2021].  Concentration-matched DMSO-only controls were used for each inhibitor.  The inhibitors were added to cells for 30 minutes at 37°, 7% CO~~2~, in supplement-free media, after which cells were fixed.  Given protrudin's effect on ERGIC localisation reported below \@ref{fig:ERGIC_plot}, we used ERGIC53 staining as measure of inhibitor function.  We found that H-89 caused growth cone collapse, while the others preserved cellular morphology, and clofibrate led to a sight decrease in ERGIC53 signal in both the cell body and growth cone (data not shown).
+
+Based on these preliminary results, we decided to test of clofibrate could block protrudin's pro-regenerative effect on injured axons.  Unfortunately, this dosage of clofibrate proved highly toxic over the 16hr timescale required for this experiment.  We were unable to optimise this experiment further, as our regular supply of rats for cortical neuron cultures was disrupted by an animal carriage embargo at Frankfurt airport during the summer of 2022.  We plan to return to this in a future project.
+
+## Results
+### ER-Golgi pathway localisation
+We first set about to determine the baseline localisation of our selected markers, and how this changed during normal neuronal development.  We stained cortical neurons for BCAP31, SURF4, ERGIC53, and SLC38A1 and DIV3 and DIV15, and compared fluorescence intensity between the cell body and axon terminal.  This showed that, with the exception of SURF4, all markers show a relative decline at the axon terminal with age \@ref{fig:dev_changes_full_figure}.  Separate analysis of each region shows that all markers show increased intensity in the cell body with age, but that most show no significant change in the axon terminal, with the exception of SLC38A1, which increases.  (SUPPLEMENTAL FIGURE?)  This is in keeping with SLC38A1's role in mature neuronal function (CITE).  It is worth noting that, while the average intensity remains the same, the axon terminal dramatically reduces in size as the cell matures, so this represents a decrease in the total amount of these proteins present at the axon tip.
+
+```{r dev_changes_full_figure, fig.width=16, fig.height=16, fig.path='../figures/full/', fig.cap = "A) Ratio of fluorescence intensity between Cell body and axon terminal in DIV3 vs DIV15 neurons.  (TODO - N PER CONDITION) B-M) Representative images of DIV3 neurons (B-E), DIV15 cell bodies (F-I), and DIV15 axon terminals (J-M)  All scale bars are 20$\\mu$m, and J-M are 20x20$\\mu$m.  Markers correspond to the graph at the top of each column."}
+
+dev_ratio_plot
+```
+
+The staining was repeated in DIV1 (post-differentiation) i3 neurons, to confirm that the axon terminal:cell body ratio was conserved between rodent and human neurons.  This showed remarkable consistency between cell types, with the exception of BCAP31, which had a very slightly higher ratio in rat neurons.
+
+```{r i3_ratio_plot, fig.width=16, fig.height=10, fig.path='../figures/full/', fig.cap="A) Ratio of fluorescence intensity between Cell body and axon terminal in DIV1 i3 vs DIV3 rat cortical neurons.  (TODO - N PER CONDITION) B-E) Representative images of DIV1 i3 neurons stained for each marker.  All scale bars are 20$\\mu$m."}
+
+i3_plot
+```
+
+### The role of protrudin in localisation and transport
+Given the developmental decline in these markers at axon terminals, we were interested to see if protrudin might act by increasing the axonal levels of ER-Golgi pathway components.  We repeated the experiment above in DIV15 neurons expressing either EGFP or EGFP-tagged protrudin, and measured the fluorescence intensity in the cell body and axon terminals.
+
+#### BCAP31
+BCAP31 showed high variability between cells, particularly in the soma.  This may have been a result of signal amplifcation with a biotinylated secondary antibody, although the smaller range of intensities measured at axon terminals suggests that this may represent natural variation.  In any case, while protrudin did appear to decrease cell body BCAP31 levels, this did not translate to a change in the axon terminal:cell body ratio.  Therefore, we do not believe that protrudin substantially changes the distribution of BCAP31 in cells.
+
+```{r BCAP31_plot, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="A-F) Representative images of BCAP31 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20$\\mu$m, and D-F are 20x20$\\mu$m.  G-I) Quantification of BCAP31 fluorescence intensity. (TODO - N PER CONDITION)"}
+
+BCAP31_plot
+```
+
+Peculiarly, in many cases BCAP31 signal appeared higher in cells expressing either protrudin or control EGFP, compared to untransfected neighbouring cells.  It is possible that the levels of this protein are dynamicaly controlled in response to the cell's overall level of protein synthesis, which may be impacted by exogenous plasmids.  This should be taken into account in any future experiments examining BCAP31 levels or localisation.
+
+#### SURF4
+SURF4 decreased both in the cell body and axon terminal of cells expressing active protrudin.  However, these decreases were well-matched, resulting in no change to the axon terminal:cell body ratio.  It is possible that protrudin is not changing the localisation of this ERES protein, but may alter its overall expression levels.
+
+```{r SURF4_plot, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="A-F) Representative images of SURF4 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20$\\mu$m, and D-F are 20x20$\\mu$m.  G-I) Quantification of SURF4 fluorescence intensity. (TODO - N PER CONDITION)"}
+
+SURF4_plot
+```
+
+#### SLC38A1
+SLC38A1 showed no significant changes with either WT or active protrudin expression, although there was a slight trend towards higher axonal intensity.  
+
+```{r SLC38A1_plot, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="A-F) Representative images of SLC38A1 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20$\\mu$m, and D-F are 20x20$\\mu$m.  G-I) Quantification of SLC38A1 fluorescence intensity. (TODO - N PER CONDITION)"}
+
+SLC38A1_plot
+```
+
+#### ERGIC53
+
+In contrast with the other markers, ERGIC53 showed significantly altered localisation with the expression of active, but not wild type, protrudin.  This included a significant increase in axon terminal intensity and axon terminal:cell body ratio, on top of a slight increase in soma intensity.  This suggests that protrudin is playing a role in either the formation of ERGIC compartments, or their transport into the distal axon.
+
+```{r ERGIC53_plot, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="A-F) Representative images of ERGIC53 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20$\\mu$m, and D-F are 20x20$\\mu$m.  G-I) Quantification of ERGIC53 fluorescence intensity. (TODO - N PER CONDITION)"}
+
+ERGIC53_plot
+```
+
+### Protrudin's effect on Golgi satellites
+
+Given protrudin's effect on the ERGIC compartment, we were particularly interested in seeing if this also impacted axonal Golgi satellites.  As these are highly dynamic organelles, we decided to look at Golgi satellite transport in the presence of protrudin.  We co-expressed mCherry-tagged protrudin constructs with St3Gal5-EGFP, as a marker of Golgi satellites.  
+
+```{r St3Gal5_full_figure, fig.width=16, fig.height=8, fig.path='../figures/full/', fig.cap="A) Representative axon image and kymographs showing St3Gal5 transport in the distal axon of cortical neurons expressing either mCherry (control) or mCherry-tagged protrudin constructs.  B) Total number of St3Gal5-labelled organelles in each cell imaged.  C) Average run length (per cell) of moving Golgi satellites  Anterograde and retrograde were defined as continuous movements of at least 5μm away from or towards the cell body, respectively.  D) Average Golgi satellite velocity (per cell)."}
+
+St3Gal5_kymo_plot
+```
+
+Following live imaging, these cells were fixed, and imaged at higher exposure on a confocal microscope to more clearly visualise Golgi satellites in the axon.  We measured both the number of puncta, as well as point intensity of each, as a proxy for size.  This confirmed that protrudin overexpression did not affect the overall number of Golgi satellites in the distal axon.  This
+
+```{r GS_puncta_full_figure, fig.width=16, fig.height=8, fig.path='../figures/full/', fig.cap="A) Representative axon image showing St3Gal5 puncta.  Scale bar is 20$\\mu$m.  B) Number of puncta per length of axon imaged.  C)Point fluorescence intensity of each St3Gal3 puncta counted.  n = 18 cells per condition across three independent batches."}
+
+GS_puncta_full_figure
+```
+
+## Discussion
+
+These results provide an insight into how protrudin might regulate local secretory pathways in the axon.  While it does not appear to change the distribution of ERES-associated proteins, such as BCAP31 and SURF4, active protrudin does increase the relative level  of ERGIC53 in axon terminals.  As the ERGIC is a distinct compartment from the ER, this suggests a secretory role for protrudin beyond its effects on the axonal ER.  It is not yet clear if this represents an increased formation of ERGIC from ERES-derived vesicles in the axon, or increased transport of these structures from elsewhere in the cell.  However, it does clearly show that protrudin overexpression, and in particular acive protrudin, can impact the local secretory machinery present in the axon, which is likely to play a role in protrudin's neuroprotective and regenerative effects.  
+
+This is further supported by our finding that active protrudin affects Golgi satellite transport in the distal axon.  Unexpectedly, we find slower transport of Golgi satellites in this case, particularly in the anterograde direction, despite unchanged run length or overall number of organelles.  Further experiments are required to identify a mechanism for this change, although it could represent a sustained interaction with another organelle during transport, potentially ERGIC or a related compartment.
+
+These results may account for the finding that active protrudin has a stronger regenerative effect than WT protrudin, but that the two constructs do not significantly differ in Rab11 or integrin transport [@petrovaProtrudinFunctionsEndoplasmic2020].

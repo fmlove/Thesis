@@ -4,7 +4,7 @@ output: pdf_document
 ---
 
 # Setup
-```{r setup}
+```{r ER-Golgi_setup}
 knitr::opts_chunk$set(echo = TRUE, dev = 'png', message = FALSE)
 knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80))
 knitr::opts_chunk$set(fig.path = "../figures/")
@@ -538,9 +538,11 @@ CNC_i3_max_ratio_plot = ggplot(rbind(i3_max.gc_cyto.ratio, max.gc_cyto.ratio[max
 i3.layout = 'AAAA
               BCDE'
 
-CNC_i3_max_ratio_plot +
+i3_plot = CNC_i3_max_ratio_plot +
   i3.BCAP31 + i3.SURF4 + i3.ERGIC53 + i3.SLC38A1 +
   plot_annotation(tag_levels = 'A') + plot_layout(design = i3.layout)
+
+i3_plot
 ```
 
 
@@ -570,11 +572,13 @@ layout = 'AAAA
           FGHI
           JKLM'
 
-max_ratio_plot + 
+dev_ratio_plot = max_ratio_plot + 
   BCAP31.DIV3 + SURF4.DIV3 + ERGIC53.DIV3 + SLC38A1.DIV3 +
   BCAP31.DIV15_soma + SURF4.DIV15_soma + ERGIC53.DIV15_soma + SLC38A1.DIV15_soma +
   BCAP31.DIV15_GC + SURF4.DIV15_GC + ERGIC53.DIV15_GC + SLC38A1.DIV15_GC +
   plot_annotation(tag_levels = 'A') + plot_layout(design = layout)
+
+dev_ratio_plot
 ```
 
 ```{r protrudin_images}
@@ -630,10 +634,12 @@ BCAP31.layout = 'ABC
                   GHI'
 
 
-BCAP31.GFP.soma + BCAP31.WT.soma + BCAP31.Mut2.soma + 
+BCAP31_plot = BCAP31.GFP.soma + BCAP31.WT.soma + BCAP31.Mut2.soma + 
   BCAP31.GFP.GC + BCAP31.WT.GC + BCAP31.Mut2.GC +
   ptdn_ratio.plotlist[['BCAP31']] + ptdn_soma.plotlist[['BCAP31']] + ptdn_GC.plotlist[['BCAP31']] + 
   plot_annotation(tag_levels = 'A') + plot_layout(design = BCAP31.layout)
+
+BCAP31_plot
 ```
 
 ```{r protrudin_SURF4_full, fig.width = 16, fig.height = 16, fig.path = "../figures/full/"}
@@ -642,10 +648,12 @@ SURF4.layout = 'ABC
                   GHI'
 
 
-SURF4.GFP.soma + SURF4.WT.soma + SURF4.Mut2.soma + 
+SURF4_plot = SURF4.GFP.soma + SURF4.WT.soma + SURF4.Mut2.soma + 
   SURF4.GFP.GC + SURF4.WT.GC + SURF4.Mut2.GC +
   ptdn_ratio.plotlist[['SURF4']] + ptdn_soma.plotlist[['SURF4']] + ptdn_GC.plotlist[['SURF4']] + 
   plot_annotation(tag_levels = 'A') + plot_layout(design = SURF4.layout)
+
+SURF4_plot
 ```
 
 ```{r protrudin_ERGIC53_full, fig.width = 16, fig.height = 16, fig.path = "../figures/full/"}
@@ -654,10 +662,12 @@ ERGIC53.layout = 'ABC
                   GHI'
 
 
-ERGIC53.GFP.soma + ERGIC53.WT.soma + ERGIC53.Mut2.soma + 
+ERGIC53_plot = ERGIC53.GFP.soma + ERGIC53.WT.soma + ERGIC53.Mut2.soma + 
   ERGIC53.GFP.GC + ERGIC53.WT.GC + ERGIC53.Mut2.GC +
   ptdn_ratio.plotlist[['ERGIC53']] + ptdn_soma.plotlist[['ERGIC53']] + ptdn_GC.plotlist[['ERGIC53']] + 
   plot_annotation(tag_levels = 'A') + plot_layout(design = ERGIC53.layout)
+
+ERGIC53_plot
 ```
 
 ```{r protrudin_SLC38A1_full, fig.width = 16, fig.height = 16, fig.path = "../figures/full/"}
@@ -666,9 +676,11 @@ SLC38A1.layout = 'ABC
                   GHI'
 
 
-SLC38A1.GFP.soma + SLC38A1.WT.soma + SLC38A1.Mut2.soma + 
+SLC38A1_plot = SLC38A1.GFP.soma + SLC38A1.WT.soma + SLC38A1.Mut2.soma + 
   SLC38A1.GFP.GC + SLC38A1.WT.GC + SLC38A1.Mut2.GC +
   ptdn_ratio.plotlist[['SLC38A1']] + ptdn_soma.plotlist[['SLC38A1']] + ptdn_GC.plotlist[['SLC38A1']] + 
   plot_annotation(tag_levels = 'A') + plot_layout(design = SLC38A1.layout)
+
+SLC38A1_plot
 ```
 

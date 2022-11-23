@@ -51,7 +51,7 @@ Lists of protrudin-interacting proteins were obtained from supplementary data pu
 ### HeLa cell culture
 HeLa cells were expanded before use and cryopreserved in individual vials to prevent genetic drift between batches.
 
-HeLa cells were grown in DMEM (), supplemented with 1% FBS () and 1x penicillin-streptomycin *(Thermo Fisher, 15140122)*.  For each batch of cells, a single vial was thawed, passaged, and grown to 60-80% confluence before transfection.  Cells were transfected with EGFP or EGFP-tagged protrudin under a CAG promoter, using TransIT-LT1 reagent *(Mirus Bio, MIR2300)*, according to the manufacturer's protocol.  These were then passaged 24h after transfection to reduce overlap between cells and encourage protrusion growth.
+HeLa cells were grown in DMEM *(Thermo Fisher, 41966-029)*, supplemented with 1% FBS *(Thermo Fisher, 10500064)* and antibiotic-antimycotic *(Thermo Fisher, 15240062)*.  For each batch of cells, a single vial was thawed, passaged, and grown to 60-80% confluence before transfection.  Cells were transfected with EGFP or EGFP-tagged protrudin under a CAG promoter, using TransIT-LT1 reagent *(Mirus Bio, MIR2300)*, according to the manufacturer's protocol.  These were then passaged 24h after transfection to reduce overlap between cells and encourage protrusion growth.
 
 Cells were fixed with 3% formaldehyde in PBS for 15 mintues at room temperature.  Immunochemistry was carried out according to the protocol in (REF TO SPECIFIC METHODS SECTION).
 
@@ -95,6 +95,8 @@ proteomics_full
 
 When protrudin is overexpressed in HeLa cells, it drives the growth of long cellular protrusions that superficially resemble developing neurites [@shiraneProtrudinInducesNeurite2006].  While these cells are genetically and functionally very distinct from neurons, this nevertheless provides a useful model system for examining protrudin's interactions with other cellular components.  I used this system to screen for proteins that colocalise with protrusion in these cellular outgrowths, to quickly identify organelles or complexes that could be transported into axons when protrudin is overexpressed in neurons.
 
+(INSERT MARKER/ANTIBODY TABLE HERE)
+
 
 Based on the results of our gene ontology analysis, we selected a panel of antibodies to screen for colocalisation with protrudin in HeLa cells.  These were primarily focused on components of the ER exit site to Golgi secretory pathway, but also included proteins involved in lipid metabolism, signalling, and amino acid transport.
 
@@ -102,13 +104,13 @@ Based on the results of our gene ontology analysis, we selected a panel of antib
 ERES_grid
 ```
 
-Of the ERES-related proteins, different markers showed different levels of colocalisation with protrudin.  BCAP31 () and SURF4 () were consistently enriched in cellular protrusions, more so than at other areas of the cell periphery.  MIA3 (TANGO1, ) () and SEC31A () colocalised well with protrudin in the perinuclear area, but were found at lower levels in protrusions, and were less consistent between cells.  At this stage, it was not possible to conclusively say whether these variations represented differences in how ERES proteins were transported or in how effectively the individual antibodies stained these components, so we decided to proceed with BCAP31 and SURF4, which produced more clear results.
+Of the ERES-related proteins, different markers showed different levels of colocalisation with protrudin.  BCAP31 and SURF4 were consistently enriched in cellular protrusions, more so than at other areas of the cell periphery.  MIA3 and SEC31A colocalised well with protrudin in the perinuclear area, but were found at lower levels in protrusions, and were less consistent between cells.  At this stage, it was not possible to conclusively say whether these variations represented differences in how ERES proteins were transported or in how effectively the individual antibodies stained these components, so we decided to proceed with BCAP31 and SURF4, which produced more clear results.
 
 ```{r HeLa_Golgi_grid_full_figure, fig.width=16, fig.height=16, fig.path = "../figures/full/", fig.cap="Representative images of HeLa cells expressing EGFP-tagged protrudin constructs and stained for ERGIC and Golgi-related markers A)ERGIC53, B)GS28, C)GLG1, and D)USO1(p115)  All scale bars are 20$\\mu$m."}
 Golgi_grid
 ```
 
-Of the Golgi-related proteins, GS28 (), GLG1 (), and USO1 (p115, ) () clearly labelled the perinuclear Golgi compartment, but were either entirely absent or found only at very low levels in protrusions.  ERGIC53, on the other hand, was highly enriched in protrusions, in most cases well above the levels seen in the cell body.  This was the strongest concentration with any of the markers used in this screen, and point to the ERGIC compartment not only colocalising with protrudin, but specifically playing a role in the growth of cellular protrusions.  This marker was added to the set (along with BCAP31 and SURF4) to examine in neurons.
+Of the Golgi-related proteins, GS28, GLG1, and USO1 clearly labelled the perinuclear Golgi compartment, but were either entirely absent or found only at very low levels in protrusions.  ERGIC53, on the other hand, was highly enriched in protrusions, in most cases well above the levels seen in the cell body.  This was the strongest concentration with any of the markers used in this screen, and point to the ERGIC compartment not only colocalising with protrudin, but specifically playing a role in the growth of cellular protrusions.  This marker was added to the set (along with BCAP31 and SURF4) to examine in neurons.
 
 ```{r HeLa_misc_grid_full_figure, fig.width=16, fig.height=16, fig.path = "../figures/full/", fig.cap="Representative images of HeLa cells expressing EGFP-tagged protrudin constructs and stained  for A)LAMP1, B)mTOR, C)ACSL3, and D)SLC38A1.  All scale bars are 20$\\mu$m."}
 misc_grid
@@ -116,9 +118,9 @@ misc_grid
 
 LAMP1 and mTOR, which we would expect to move to the cell periphery in response to protrudin overexpression, were present in protrusions at relatively low levels.  While protrudin overexpression did result in more puncta away from the perinuclear cluster, this effect was not especially dramatic, and the highest concentrations were still found near the cell nucleus.  This is in contrast with [@hongPtdIns3PControlsMTORC12017], which found a stronger movement away from the nucleus when expressing Myc-tagged protrudin.  However, their culture protocol differed from ours in adding 2mM supplemental glutamine to the culture media, so the apparent differences could reflect the amino acid dependence of the protrudin-FYOC1 transport mechanism.
 
-ACSL3, (), was found in cellular protrusions, but, similar to MIA3 and SEC31A, was generally at low levels, and varied considerably between cells.  This may reflect on the antibody used, or a more complicated cell-state dependent interaction with other metabolic pathways.  This was not taken forwards.
+ACSL3, was found in cellular protrusions, but, similar to MIA3 and SEC31A, was generally at low levels, and varied considerably between cells.  This may reflect on the antibody used, or a more complicated cell-state dependent interaction with other metabolic pathways.  This was not taken forwards.
 
-Finally, SLC38A1, (), was found to concentrate in protrusions, and similarly to ERGIC53 was found at higher levels here than near the nucleus.  This result is particularly interesting, as SLC38A1 is a potential cargo of the local secretory pathway.  SLC38A1 was added to BCAP31, SURF4, and ERGIC53 to examine in neurons.
+Finally, SLC38A1, was found to concentrate in protrusions, and similarly to ERGIC53 was found at higher levels here than near the nucleus.  This result is particularly interesting, as SLC38A1 is a potential cargo of the local secretory pathway.  SLC38A1 was added to BCAP31, SURF4, and ERGIC53 to examine in neurons.
 
 
 

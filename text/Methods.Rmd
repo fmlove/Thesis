@@ -1,7 +1,8 @@
 ---
 output:
-  pdf_document: default
+  word_document: default
   html_document: default
+  pdf_document: default
 ---
 # Materials and Methods {.unnumbered #METHODS}
 
@@ -10,14 +11,18 @@ output:
 ```
 
 ## Plasmids and antibodies
-
+ (INSERT TABLE HERE)
 
 
 ## Other reagents
+ (INSERT TABLE HERE)
+
 
 ## Software
 
-Wherever possible, I tried to use free and open source software throughout this project.  All image analysis tasks were carried out in Fiji [@schindelinFijiOpensourcePlatform2012].  Quantitative analysis and statistics were carried out in R []. FinchTV and Serial Cloner were used for reading DNA sequences and designing plasmids, respectively. 
+Wherever possible, I tried to use free and open source software throughout this project.  All image analysis tasks were carried out in Fiji [@schindelinFijiOpensourcePlatform2012].  Quantitative analysis and statistics were carried out in R [@Rlanguage]. FinchTV and Serial Cloner were used for reading DNA sequences and designing plasmids, respectively.  
+
+Custom R scripts and ImageJ macros were written for individual analysis tasks.  (GITHUB LINK/DOIs)
 
 ## Protocols
 ### Plasmid preparation
@@ -26,16 +31,15 @@ All plasmid preparation was carried out using either DH5$\alpha$ *(New England B
 
 ### Cortical neuron cultures
 
-Primary cortical neurons were obtained from E18 Sprague Dawley rats. Cortices were dissected in HEPES-HBSS and dissociated with papain for approximately 5 minutes at 37°, followed by DNAse treatment and trituration through a flame-polished glass pipette. Cells were filtered through a 40$\mu$m cell strainer *(Falcon, 352340)* and plated at a density of 200K-400K cells per imaging plate *(Greiner Bio-One, 627860)*. Plates were coated with 2mg/mL poly-D-lysine *(SigmaAldrich, P1149)* in borate buffer.  Cells were grown in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)*, supplemented with NeuroBrew-21 *(Miltenyi Biotec, 130-093-566)*, GlutaMAX *(Thermo Fisher, 35050061)*, and ITS *(R&D Systems, AR013)* at 37° with 7% CO~2~. 
+Primary cortical neurons were obtained from E18 Sprague Dawley rats. Cortices were dissected in HEPES-HBSS and dissociated with papain for approximately 5 minutes at 37°, followed by DNAse treatment and trituration through a flame-polished glass pipette. Cells were filtered through a 40$\mu$m cell strainer *(Falcon, 352340)* and plated at a density of 200K-400K cells per imaging plate *(Greiner Bio-One, 627860)* or 50-100K cells per acid-washed glass coverslip. (Plates and coverslips were coated with 50$\mu$g/mL poly-D-lysine *(SigmaAldrich, P1149)* in borate buffer.)  Cells were grown in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)*, supplemented with NeuroBrew-21 *(Miltenyi Biotec, 130-093-566)*, GlutaMAX *(Thermo Fisher, 35050061)*, and ITS *(R&D Systems, AR013)* at 37° with 7% CO~2~. 
 
 ### Transfection
 
-Cortical neurons were transfected by either magnetofection or calcium phosphate.
+Cortical neurons were transfected at DIV10 by either magnetofection or calcium phosphate.  We experienced a significant drop in efficiency with the magnetofection reagent early in 2020, and subsequently switched to the calcium phosphate method.
 
+Magnetofection was carried out using NeuroMag Transfection Reagent (OZ Biosciences, NM51000). Briefly, plasmid DNA was incubated at room temperature with the NeuroMag Transfection Reagent in MACS Neuro Medium (Miltenyi Biotec, 130-093-570) for 30 minutes. Growth media was removed from the cells and replaced with warmed MACS Neuro Medium and the DNA-complexed NeuroMag Transfection Reagent. The cells were placed on a magnetic plate (OZ Biosciences, MF10000) in an incubator (37° 7% CO~2~) for 30 minutes. The transfection mix was then removed from the cells and the growth media reapplied.
 
-
-
-HeLa cells were transfected using TransIT-LT1 reagent *(Mirus Bio, MIR2300)*, according to the manufacturer's protocol.
+Calcium phosphate transfection was carried out using a protocol adapted from [@jiangHighCaPhosphate2006].  A solution of DNA and calcium phosphate was prepared, and added dropwise to HEPES-buffered saline *()* while vortexing to precipitate the DNA-calcium phosphate complex.  This was then added to the cells in supplement-free media, and incubated at 37° 7% CO~2~ for one hour.  Cells were then washed with media pre-equilibrated in 10% CO~2~ to remove residual precipitate, and the original growth media reapplied.
 
 ### Immunocytochemistry
 
@@ -43,7 +47,18 @@ Cortical neurons were fixed using formaldehyde and sucrose, dissolved in PBS and
 
 Cells were permeabilised with 0.2% saponin, to preserve the localisation of membrane-associated proteins.
 
+
+
+
+
+
 ### Microscopy
+
+Live imaging of axonal transport was carried out with spinning disc confocal microscopy, using an Olympus IX70 microscope and a PerkinElmer UltraVIEW scanner controlled with MetaMorph software.  The microscope was enclosed and maintained at 37° with supplemental CO~2~ during imaging.  For kymographs, the axons of DIV14-16 neurons were imaged for approximately three minutes at least ~500$\mu$m from the cell body.  
+
+High resolution images of fixed cells were obtained with a Leica DMI4000B confocal or Leica DMI6000B epifluorescent microscope, running LAS-AF software.  
+
+
 
 ### Image analysis
 
@@ -57,6 +72,7 @@ All manual image analysis was conducted blind, with the exception of (LC3 FIG NE
 
 
 #### Fluorescence quantification
+
 
 
 ### Statistical analysis
