@@ -11,58 +11,39 @@ output:
 \markboth{INTRODUCTION}{}
 ```
 
-## Glaucoma
 
-
-## Factors limiting CNS regeneration
 
 One of the greatest challenges of modern medicine is how to promote regneration of the central nervous system (CNS).  Compared to most other tissues and organs in the human body, the CNS has exceptionally low regenerative ability.  As a result, damage to the CNS - whether through trauma, infection, or disease - often results in lifelong disability.  In contrast, the peripheral nervous system (PNS) is capable of substantial regeneration after injury, with severed nerves able to regrow several centimeters, reach their targets, and form functional conenctions, suggesting that regeneration of the CNS might be medically possible, if we can identify the relevant factors at play.  While there has been active research in this area for decades (if not centuries), we are still a long way from what most people would consider 'successful' regeneration of damaged CNS tissues -  the regrowth of damaged neuronal processes, appropriate remodelling of the extracellular environment, and restoration of functional synaptic connections.  In this section, I will summarise our current understanding of the factors limiting CNS regeneration, as well as the particular challenges I have decided to address with this project.
 
+## Glaucoma
 [//]: # (CITE - impact on QOL years worldwide)
 
-### Extrinsic factors
+## Factors limiting CNS regeneration
 
-In 1980, Peter Richardson and colleagues at McGill demonstrated that axons in a severed rat spinal cord could regenerate into an implanted sciatic nerve graft, thus demonstrating that CNS neurons were at least somewhat capable of regeneration, but were inhibited by their environment [@richardsonAxonsCNSNeurones1980].  There are a variety of environmental factors that can limit CNS axon growth, ranging from differences in the cellular composition of PNS and CNS tissues, to changes in the extracellular environment and cell surface receptors that occur as an organism ages.
+In 1980, Peter Richardson and colleagues at McGill showed that axons in a severed rat spinal cord could regenerate into an implanted sciatic nerve graft, thus demonstrating that CNS neurons were at least somewhat capable of regeneration, but were inhibited by their environment [@richardsonAxonsCNSNeurones1980].  There are a variety of environmental factors that can limit CNS axon growth, ranging from differences in the cellular composition of PNS and CNS tissues, to changes in the extracellular environment and cell surface receptors that occur as an organism ages.
 
+However, other studies have shown that changes *within* neurons also present a barrier to CNS regeneration.  As the cells mature from a developmental, growth-permissive state into mature, synaptically active neurons, they undergo structural and functional changes that in many cases seem incompatible with regeneration.  Additionally, many neurodegenerative diseases stem from genetic or functional disruption within neurons, as opposed to the extracellular environment.  Understanding and addressing these intrinsic sources of dysfunction and barriers to regeneration is essential to developing successful therapies for CNS protection and regeneration.
 
-#### Glia
-
-Perhaps the most prominent difference between the CNS and the regeneration-competent PNS is their respective complements of glial cells.  Peripheral glia are dominated by myelinating Schwann cells, while glia in the CNS consist largely of a mix of astrocytes, microglia, and myelinating oligodendrocytes.  As glial cells can comprise roughly half of the cells in the mammalian nervous system (estimated from the human brain) [@vonbartheldSearchTrueNumbers2016], it is clear how this difference could have a significant effect on how these tissues respond to and recover from injury.  Glia contribute to the composition and behaviour of CNS - and thus its regenerative capacity - in a variety of ways, which I will briefly summarise in this section.
-
-##### Myelination
-
-Axons of the PNS and CNS are myelinated by Schwann cells and oligodendrocytes, respectively.  Despite the similarity in their function, these cells are morphologically and functionally distinct, and their differences contribute substantially to the difference in axon regeneration between these tissues.  In the PNS, injury induces a change in Schwann cells to a specific, repair-oriented phenotype.  In this state, the Schwann cells function to clear myelin debris by up-regulating phagocytosis and autophagy while decreasing their expression of myelin components.  They also increase expression of various trophic factors and cytokines, and form structures known as Bands of Büngner, which serve as guidance tracts for growing axons [@jessenRepairSchwannCell2016].  In contrast, oligodendrocytes in the CNS are typically either quiescent or apoptotic after injury, resulting in slower clearance of myelin debris, and the persistence of axon-inhibitory components at the injury site for longer [@vargasWhyWallerianDegeneration2007].
-
-###### Myelin lipids
-
-While much research into myelin and axon regeneration has focused on the presence of axon-inhibitory proteins in the myelin (e.g. MAG), more recent work has identified a number of mechanisms through which myelin lipids contribute to secondary injury and inhibit axon regeneration in the CNS.
-
-
-##### Gliosis
-##### Intercellular signalling
-
-
-#### Extracellular matrix
-##### Mechanics
-
-#### Immune system
 
 #### Synaptogenesis
 
-
-### Intrinsic factors
-
-In addition to environmental factors, there are a number of intrinsic barriers to successful axon regeneration.  As the cells mature from a developmental, growth-permissive state into mature, synaptically active neurons, they undergo structural and functional changes that must be considered in the development of regenerative therapies.
+Recent work has increasingly pointed to the formation of synapses as the key point at which developing CNS neurons lose their capacity to regenerate.   During this process, interactions with the external cellular environment trigger internal changes that encourage signalling function at the expense of inhibiting growth.  For example, [@tedeschiCalciumChannelSubunit2016] showed that a voltage-gated calcium channel subunit prevents axon growth, and that inhibiting the channel can promote regeneration *in vivo*.  [@hiltonActiveVesiclePriming2022] found a similar effect with presynaptic vesicle-tethering proteins, and also found that cells that were capable of regeneration down-regulated these proteins during axon growth.  
 
 #### Cytoskeleton
 
 Neurons undergo dramatic morphological changes during development, eventually forming extremely long, thin, and complex structures that, in some cases, must be carefully maintained for the entire lifetime of the organism.  To make this possible, mature neurons have a dynamic but highly regulated cytoskeleton, particularly in the axon.  However, the structural requirements of the mature, signal-carrying axon are very different from a growing axon, and in the case of axon injury this can prevent successful regeneration.   
-A key feature of the neuronal cytoskeleton is the bundle of polarised microtubules that forms the backbone of the axon.  This structure is maintained by proteins such as Efa6, which truncates growing microtubules that leave the bundle to reach the axon periphery.  However, this can also inhibit axon outgrowth, which might limit regeneration [@quEfa6ProtectsAxons2019].
+
+A key feature of the mature neuronal cytoskeleton is the bundle of polarised microtubules that forms the backbone of the axon.  This structure is maintained by proteins such as Efa6, which truncates growing microtubules that leave the bundle to reach the axon periphery.  However, this can also inhibit axon outgrowth, which might limit regeneration [@quEfa6ProtectsAxons2019].  
+
+At the axon tip, a delicate balance of microtubule polymerisation and stabilisation at the axon tip promotes forward extension of the growth cone and axon elongation during development.  This can be partially restored in mature axons with the addition of microtubule-stabilising drugs, but the effect is highly dose-dependent, with higher doses instead inhibiting axon growth (reviewed in [@blanquieCytoskeletonDynamicsAxon2018]).
 
 
 #### Signalling
 ##### PTEN and mTOR
+
+
 ##### Other signalling pathways
+
 
 #### Epigenetic and transcriptomic regulation
 ##### Conditioning lesion effect
@@ -95,15 +76,22 @@ In contrast, Raiborg et al. [@raiborgRepeatedEREndosome2015] looked at protrudin
 
 #### ER contact sites
 
-Other studies have indicated a direct role for protrudin at ER-organelle membrane contact sites (MCSs).  
+Other studies have indicated a direct role for protrudin at ER-organelle membrane contact sites (MCS).  Protrudin interacts with VAPA/B, key tethers at many MCS [@saitaPromotionNeuriteExtension2009] [@matsuzakiProtrudinServesAdaptor2011][@hashimotoProtrudinRegulatesEndoplasmic2014][@elbaz-alonPDZD8InteractsProtrudin2020].  It may also act at ER-mitochondrial contact sites, which are important for axonal function and growth [@elbaz-alonPDZD8InteractsProtrudin2020][@leeIncreasedERMitochondria2019], and may be disrupted in neurodegenerative disease (reviewed in [@bernard-marissalEndoplasmicReticulumMitochondria2018]).  In addition, protrudin itself has been shown to act as a tether at ER-endosome contact sites, as it contains a phophoinositide-binding FYVE domain, as well as several motifs that can bind Rab proteins [@raiborgRepeatedEREndosome2015].  It may also play a role in ER-plasma membrane contacts, as protrudin contains a non-canonical FYVE domain that interacts more strongly with PM lipids than those more abundant on endosomes [@gilPhosphoinositidesDifferentiallyRegulate2012].  
 
 ##### Axonal ER
 
-The axonal ER is comprised of only a few very narrow, continuous tubules, and yet is essential for normal axonal function.  As protrudin localises to ER tubules, it can be found in the axon, although in mature neurons it is more abundant in the cell body and dendrites.  However, it is not excluded from the axon, as it readily moves into the axon if overexpressed [@petrovaProtrudinFunctionsEndoplasmic2020].
+The axonal ER is comprised of only a few very narrow, continuous tubules, and yet is essential for normal axonal function.  As protrudin localises to ER tubules, it can be found in the axon, although in mature neurons it is more abundant in the cell body and dendrites.  However, it is not excluded from the axon, as it readily moves into the axon if overexpressed [@petrovaProtrudinFunctionsEndoplasmic2020].  Nevertheless, protrudin interacts with a number of important axonal ER components, although it remains unclear exactly what function protrudin has in this compartment.  
+
+Protrudin contains a membrane hairpin domain, which is shared with other proteins that play a role in ER membrane shaping [@changProtrudinBindsAtlastins2013].  Several of these are implicated in hereditary spastic paraplegias (HSP), a group of axon degenerative diseases, which may stem from fragmentation of the axonal ER [@yalcinModelingAxonalEndoplasmic2017].  Protrudin itself has been considered an HSP gene [@mannanZFYVE27SPG33Novel2006], although there is some controversy in this area, and the 'mutation' invovled may actually be a benign polymorphism [@martignoniRoleZFYVE27Protrudin2008].  However, protrudin does interact with spastin, atlastin, and other HSP proteins, so it may still play a role in these conditions[@changProtrudinBindsAtlastins2013].  
+
+While dysfunction of these ER-shaping proteins can lead to axonal degeneration, their function is also required for axon regeneration, where they appear to concentrate ER tubules near the growing tip [@raoSpastinAtlastinER2016].  Protrudin may act in the same way, as [@petrovaProtrudinFunctionsEndoplasmic2020] found that protrudin increases the amount of ER in growth cones.
+
+The axonal ER also acts as a local calcium store, and its capacity is regulated by membrane shaping proteins via tubule diameter.  Protrudin may act in the same way, although it is unclear how this may or may not contribute to protrudin's regenerative function, as different ER-shaping proteins have been shown to have opposing effects on axon regeneration [@konnoEndoplasmicReticulumMorphological2021][@alhajlahOverexpressionReticulonEnhances2021].
+
+-----
+
+With these diverse roles across numerous cellular functions, protrudin could be influencing neuronal survival and regeneration through several different mechanisms.  My aim throughout this project has been to shed more light on which pathways contribute to the beneficial effects of protrudin seen in studies such as [@petrovaProtrudinFunctionsEndoplasmic2020].  This is primarily intended to inform the translation of protrudin as a gene therapy for neurodegenerative conditions and CNS injury, although further work could also identify new therapeutic targets in the same pathways.
 
 
-
-
-##### Mitochondria
 
 

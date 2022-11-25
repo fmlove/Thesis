@@ -4,3 +4,47 @@
 \markboth{DISCUSSION}{}
 ```
 
+## Protrudin's role in axonal transport
+
+Perhaps the most surprising finding of this project has been that protrudin overexpression has little if any effect on lysosome or late endosome transport in neurons.  This is in contrast to work in other cell types, which suggest that protrudin has a strong effect on late endosome transport and positioning, [@raiborgRepeatedEREndosome2015][@hongPtdIns3PControlsMTORC12017].  However, this is consistent with the mechanism proposed in those studies,  which identifies on FYCO1 as the actual adaptor between late endosomes and kinesin.  As numerous RNAseq data sets show that there is extremely little FYCO1 in CNS neurons [...], it seems likely that this mechanism is not active in these cells.  Instead, it is likely that anterograde lysosome/late endosome transport in neurons is primarily mediated by the BORC/Arl8b/SKIP mechanism [...].
+
+This clearly demonstrates that the effect seen on recycling ensosome transport in [@petrovaProtrudinFunctionsEndoplasmic2020] is specific to Rab11 ensosomes, rather than an increase in overall axonal transport.    
+
+
+
+## Protrudin's role in local translation
+
+Given its effect on ERGIC localisation (FIGURE REF) and the dynamics of Golgi satellite transport (FIGURE REF), it seems clear that protrudin overexpression is influencing the local secretory machinery in axons.  Considering the importance of local translation on axon function and growth, as discussed previously, it is easy to see how this might contribute to both protrudin's neuroprotective and regenerative effects.  
+
+This is worth considering in the context of the previous finding that protrudin increases the amount of Rab11 recycling endosomes in the distal axon [@petrovaProtrudinFunctionsEndoplasmic2020].  [...] showed that recycling endosomes can play a role in the secretion of locally translated proteins in the axon, either through Golgi satellites or entirely bypassing Golgi-related compartments.  Therefore, it is possible that these ensosomes also comprise part of the secretory machinery, in addition to ERGIC and Golgi satellites. 
+
+Further work will be required to identify the molecular mechanisms at play in this process, and whether it is a result of direct protrudin interactions or is downstream of other cellular effects.  This may well vary for each component of the secretory pathway - for example, protrudin can bind to Rab11 directly to facilitate recycling endosome transport, but no such interactions have yet been identified for ERGIC or Golgi satellites.
+
+
+## The axon trafficking centre
+
+The results of this project, taken in combination with previous work, suggests that protrudin is coordinating an 'axon trafficking centre', relocating key components of the local secretory pathway into the distal axon.  Whether this occurs through direct interactions or downstream of other cellular effects is unclear, but it seems likely that this is a contributing factor to protrudin's effectiveness as a CNS therapy.  Future work in this area should be focused on the structure and nature of interactions between pathway components - ER, ERGIC, Golgi satellites, and endosomes - and how they are recruited to sites of axonal injury or dystrophy.  
+
+
+
+
+
+## Future directions
+
+While this project has provided some answers for how protrudin can promote survival and regeneration, it also raises new questions which should be addressed in future studies.    
+
+### Autophagy
+
+Protrudin's effects on LC3 localisation, both in HeLa cells and cortical neurons, suggests an active role in regulating autophagy.  The preliminary results demonstrated in this project suggest that protrudin may increase autophagy or autophagosome biogenesis.  However, [@hongPtdIns3PControlsMTORC12017] actually found the opposite - protrudin *depletion* promoted autophagy initiation in cultured cells.  
+
+With this in mind, it would be worthwhile to examine further what effect protrudin overexpression has on autophagy.  Given the abundance of literature linking autophagy to neuronal survival [CITE REVIEW], this may well represent another pathway through which protrudin acts, particularly in a neuroprotective role.  
+
+
+### Mitochondria
+
+Previous work has suggested that protrudin may play a role at ER-mitochondrial contact sites [@elbaz-alonPDZD8InteractsProtrudin2020][@chingQuantifyingInterorganelleMembrane2021], although it is not yet clear what effects this may have on the cell.  Preliminary EM data from a collaboration with the Williams lab at Karolinksa show some unusually long mitochondria in the optic nerves of mice injected intravitreally with AAV2 encoding active protrudin, which were not observed with a GFP control.  Work is ongoing to confirm this result and look into potential mechanisms.
+
+
+### Lipids
+
+The gene ontology analysis in section (CROSS REFERENCE) also highlighted a number of protrudin interactions with genes involved in lipid metabolism.  In another collaborative project with the Williams lab, lipid mass spectroscopy of mouse optic nerves showed that either WT or active protrudin decreased the level of ceramides while increasing hexosylceramides, pointing to an effect on sphingolipid synthesis pathways.  This work is currently ongoing.

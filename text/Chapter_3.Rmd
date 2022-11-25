@@ -1,9 +1,9 @@
 ---
 output:
+  word_document: default
+  html_document: default
   pdf_document: 
       latex_engine: xelatex
-  html_document: default
-  word_document: default
 bibliography: "`r here::here('bib/THESIS.bib')`"
 ---
 
@@ -11,10 +11,14 @@ bibliography: "`r here::here('bib/THESIS.bib')`"
 
 ```{r chapter_3_setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-
+```
+```{r include=FALSE}
 knitr::knit_child(here::here("analysis/ER-Golgi_localisation.Rmd"))
 knitr::knit_child(here::here("analysis/Ptdn_St3Gal5_analysis.Rmd"))
 knitr::knit_child(here::here("analysis/St3Gal5_puncta_counts.Rmd"))
+knitr::knit_child(here::here("analysis/ESCargo_fig.Rmd"))
+knitr::knit_child(here::here("analysis/St3Gal5_scratch.Rmd"))
+
 
 library(knitr)
 
@@ -72,6 +76,13 @@ The staining was repeated in DIV1 (post-differentiation) i3 neurons, to confirm 
 i3_plot
 ```
 
+We also tested a tool called ESCargo(FTV) to visualise ER exit sites [@govindActivitydependentGolgiSatellite2021].  This encodes a SURF4-dependent synthetic secretory cargo, which can be inducibly released from the ER.  While the aggregates were clearly visible in cell bodies, we only observed them in a small subset of axons, and even then only very sparsely along their length \@ref{fig:ESCargo_fig}.  In some cases, these were found at axonal swellings or branch points, raising the possibility that these exit sites may concentrate at particular structural features.  Further work is required to test if this corresponds to the localisation of functional ER exit sites in the axon, although it seems unlikely to represent the full picture, given how previous studies have demonstrated the importance of local protein translation for diverse axonal functions.
+
+```{r ESCargo_figure, fig.width=16, fig.height=12, fig.path='../figures/full/', fig.cap="A) Cell body of a cell co-expressing EGFP/Emerald with ESCargo(FTV)-Crimson.  Note individual aggregates or small clusters in dendrites, often at branch points.  B) Axon of neuron depicted in A, with two ESCargo(FTV) aggregates circled.  All scale bars are 20$\\mu$m."}
+
+ESCargo_plot
+```
+
 ### The role of protrudin in localisation and transport
 Given the developmental decline in these markers at axon terminals, we were interested to see if protrudin might act by increasing the axonal levels of ER-Golgi pathway components.  We repeated the experiment above in DIV15 neurons expressing either EGFP or EGFP-tagged protrudin, and measured the fluorescence intensity in the cell body and axon terminals.
 
@@ -125,6 +136,16 @@ Following live imaging, these cells were fixed, and imaged at higher exposure on
 
 GS_puncta_full_figure
 ```
+
+We then conducted a scratch assay to examine the localisation of Golgi satellites in the growth cones of mature neurons.  Cortical neurons cultured on glass coverslips were scratched with a sterile needle, then incubated for 18-20 hours before fixing.  Axons growing into the scratched region were imaged on a confocal microscope.
+
+This revealed a strong concentration of St3Gal5 at the base of each growth cone, with slightly weaker signal extending further distally.  Where St3Gal5 was co-expressed with protrudin, it is apparent that the Golgi satellite signal reaches further into the growth cone than the ER, suggesting secretory machinery oriented towards the direction of growth.
+
+```{r scratch_assay_full, fig.width=16, fig.height=16, fig.path='../figures/full/', fig.cap = "Representative images of growth cones on DIV15 cortical neurons co-expressing either mCherry (A) or mCherry-protrudin (B-C) with St3Gal5-EGFP.  All scale bars are 20$\\mu$m."}
+
+scratch_fig
+```
+
 
 ## Discussion
 
