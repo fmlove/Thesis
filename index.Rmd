@@ -18,9 +18,11 @@ output:
     keep_md: true
     number_sections: true
     toc: FALSE
-    #toc_bib: TRUE
-    citation_package: natbib
-    geometry: a4paper #not working - PDF still showing as 8.5x11
+    toc_bib: TRUE
+    #citation_package: natbib
+papersize: a4
+fontsize: 12pt
+linestretch: 1.15
 bibliography: bib/THESIS.bib
 csl: bib/plos.csl
 ---

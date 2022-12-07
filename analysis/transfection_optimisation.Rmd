@@ -1,0 +1,67 @@
+---
+title: "transfection_optimisation"
+output: pdf_document
+date: "2022-12-06"
+---
+
+
+# Setup
+```{r transf_opt_setup}
+knitr::opts_chunk$set(echo = TRUE, dev = 'png', message = FALSE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80))
+knitr::opts_chunk$set(fig.path = "../figures/")
+
+source('../style/thesis_setup.R')
+
+library(reshape2)
+library(ggplot2)
+library(patchwork)
+
+```
+
+#-----------------------------------------
+#-----DENSITY TEST - DIV15-----------------------
+#-----------------------------------------
+
+```{r}
+
+density.counts = read.csv("C:\\Users\\fl299\\PhD\\Data\\Others\'\\Bart_transfection_test\\density_test_osc_20200122.csv")
+density.melt = melt(density.counts, id.vars = 'density', measure.vars = c('live', 'dead'))
+density.melt$variable = factor(density.melt$variable, levels = c("dead", "live"), labels = c("dead", "intact"))
+
+density.plot = ggplot(density.melt, aes(x = density, fill = variable, y = value)) + 
+  geom_bar(stat = "identity", position = "stack") + 
+  scale_fill_manual(values = c("dead" = "gray85", "intact" = "limegreen")) + 
+  labs(x = "Cell density", y = "Transfected neurons", fill = "Condition", title = 'Magnetofection') + 
+	report_theme
+
+density.plot
+```
+
+#----------------------------------------------------------
+#-----CNC46 - calcium phosphate transfection---------------
+#----------------------------------------------------------
+
+```{r}
+
+#ignoring magnetifection in this batch
+
+cnc46.counts = read.csv('C:\\Users\\fl299\\PhD\\Data\\Mine\\DMi8\\CNC46_cell_counts_and_plots\\CNC46_cell_counts.csv')
+cnc46.melt = melt(cnc46.counts, id.vars = c('plate', 'method'), measure.vars = c('live', 'dead'))
+cnc46.melt$variable = factor(cnc46.melt$variable, levels = c("dead", "live"), labels = c("dead", "intact"))
+
+
+calphos.plot = ggplot(cnc46.melt[cnc46.melt$method == 'calphos',], aes(x = plate, y = value, fill = variable)) + 
+  geom_bar(stat = 'identity', position = 'stack') + 
+  scale_fill_manual(values = c("dead" = "gray85", "intact" = "limegreen")) + 
+  labs(x ="Plate", y = "Transfected neurons", fill = "Condition", title = "Calcium phosphate transfection") + 
+  report_theme
+
+calphos.plot
+```
+
+#----------------------------------------------------------
+
+```{r}
+optimisation_plot = density.plot + calphos.plot + plot_annotation(tag_levels = 'A') + plot_layout(guides = 'collect')
+```

@@ -4,9 +4,8 @@ output:
   pdf_document:
     latex_engine: xelatex
 ---
-```{r setup, include=FALSE}
+```{r spine_length_setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, dev = 'png')
-knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80),tidy=TRUE)
 knitr::opts_chunk$set(fig.path = "../figures/")
 
 source('../style/thesis_setup.R')
@@ -15,7 +14,7 @@ source('../style/thesis_setup.R')
 # Setup and data handling
 
 Loading R packages used in this file
-```{r packages}
+```{r spine_length_packages}
 library(stringr)
 library(reshape2)
 library(ggplot2)
@@ -123,6 +122,7 @@ spine_counts.df$cond = str_match(spine_counts.df$Var1, "(.+)_(C\\d+)")[,2]
 spine_counts.df$cell = str_match(spine_counts.df$Var1, "(.+)_(C\\d+)")[,3]
 
 spine_counts.df$cond = factor(spine_counts.df$cond, levels = c('mCh', 'WT', 'Mut2', 'ER', 'FFAT', 'RBD', 'KIF5', 'FYVE'), labels = c('Control', 'WT', 'Active', paste0('\U0394', 'ER'), paste0('\U0394', 'FFAT'), paste0('\U0394', 'RBD'), paste0('\U0394', 'KIF5'), paste0('\U0394', 'FYVE')), ordered = T)
+# spine_counts.df$cond = factor(spine_counts.df$cond, levels = c('mCh', 'WT', 'Mut2', 'ER', 'FFAT', 'RBD', 'KIF5', 'FYVE'), labels = c('Control', 'WT', 'Active', paste0('$\\Delta$', 'ER'), paste0('$\\Delta$', 'FFAT'), paste0('$\\Delta$', 'RBD'), paste0('$\\Delta$', 'KIF5'), paste0('$\\Delta$', 'FYVE')), ordered = T)
 
 ```
 
@@ -330,6 +330,7 @@ Spine length plots
 spine_lengths_confocal.melt = melt(spine_lengths_confocal.df, id.vars = c('expt', 'age', 'cond', 'cell', 'id'), measure.vars = 'Length')
 spine_lengths_confocal.melt$cond = factor(spine_lengths_confocal.melt$cond, levels = c('mCh', 'WT', 'Mut2', 'ER', 'FFAT', 'RBD', 'KIF5', 'FYVE'), labels = c('Control', 'WT', 'Active', paste0('\U0394', 'ER'), paste0('\U0394', 'FFAT'), paste0('\U0394', 'RBD'), paste0('\U0394', 'KIF5'), paste0('\U0394', 'FYVE')), ordered = T)
 
+
 ```
 
 ```{r spine_length_plots_confocal}
@@ -351,12 +352,12 @@ lengths_confocal.plot
 
 # Combined plots
 
-```{r spine_lengths_full, fig.height=14, fig.width=16, fig.path = '../figures/full/', dev = 'pdf'}
+```{r spine_lengths_full, fig.height=14, fig.width=16, fig.path = '../figures/full/', dev = 'png'}
 spine_lengths_full_plot = (counts.plot + counts_confocal.plot) / (lengths.plot + lengths_confocal.plot) + plot_annotation(tag_levels = 'A') & theme(axis.text.x = element_text(angle = 45, hjust=1))
 
 spine_lengths_full_plot
 
-ggsave('spine_lengths_full.pdf', plot = spine_lengths_full_plot, device = 'pdf', path = '../figures/full/', width = 16, height = 14)
+ggsave('spine_lengths_full.png', plot = spine_lengths_full_plot, device = 'png', path = '../figures/full/', width = 16, height = 14)
 ```
 
 

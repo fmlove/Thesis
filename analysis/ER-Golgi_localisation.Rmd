@@ -470,7 +470,7 @@ max_cyto_plot = ggplot(max.gc_cyto[max.gc_cyto$measure == 'soma',], aes(x = age,
   facet_wrap(~cond, scale = 'free_y', ncol = 4) + 
   labs(x = '', y = 'Soma average intensity') + 
   d_format + report_theme + 
-  stat_compare_means(position = position_nudge(y = 5))
+  stat_compare_means(paired = F, position = position_nudge(y = 5))
 
 max_cyto_plot
 ```
@@ -533,7 +533,7 @@ CNC_i3_max_ratio_plot = ggplot(rbind(i3_max.gc_cyto.ratio, max.gc_cyto.ratio[max
   facet_wrap(~cond, ncol = 4) + 
   labs(x = '', y = 'Axon terminal:soma intensity ratio') +
   d_format + report_theme +
-  stat_compare_means(position = position_nudge(y = 0.1))
+  stat_compare_means(paired = F, position = position_nudge(y = 0.1))
 
 i3.layout = 'AAAA
               BCDE'

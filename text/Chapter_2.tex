@@ -1,0 +1,602 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  12pt,
+  a4paper,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\setstretch{1.15}
+\hypertarget{protrudins-role-in-regeneration-and-endogenous-functions}{%
+\section{Protrudin's role in regeneration and endogenous
+functions}\label{protrudins-role-in-regeneration-and-endogenous-functions}}
+
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
+
+As discussed previously (CROSS\_REF TO INTRO), protrudin's array of
+binding domains allow it to participate in numerous cellular systems,
+with diverse effects. To identify other mechanisms of action, we decided
+to take a broad approach, examining a number of different systems to
+identify how protrudin might influence survival and regeneration in
+neurons.
+
+\hypertarget{cellular-morphology}{%
+\subsubsection{Cellular morphology}\label{cellular-morphology}}
+
+While protrudin's role in cell outgrowth is interesting from the
+perspective of axon regeneration, it could potentially play a number of
+other roles in neuron morphology. Given that Petrova et al.~showed that
+endogenous protrudin is more abundant in dendrites than axons in mature
+neurons, its endogenous functions may well be more apparent here
+{[}1{]}. In fact, there are a number of published findings that suggest
+that protrudin may endogenously function in dendrites, either to control
+dendritic spine morphology or support synaptic function.
+
+For example, the mechanism through which protrudin promotes invadopodia
+formation in cancer cells is functionally extremely similar to how
+lysosomal exocytosis induces dendritic spine expansion, raising the
+possibility that protrudin is involved in spine growth {[}2,3{]}.
+However, Pedersen et al.~found that this process is dependent on FYCO1
+as well as protrudin, which (as discussed in section @ref(no-FYCO)), is
+largely absent in CNS neurons {[}2{]}. On the other hand, protrudin has
+already been shown to play a functional role at dendritic spines,
+mediating long term depression by allowing internalised AMPA receptors
+to be removed from the spine through association with KIF5 {[}4{]}. In
+addition, ER tubules (or the more complicated spine apparatus) have been
+observed either transiently or permanently in most spines on hippocampal
+neurons {[}5{]}, which also suggests that protrudin is likely to be
+present in or near spines and could act on their morphology. Given
+protrudin's effect in cellular outgrowth, therefore, it is reasonable to
+expect that protrudin overexpression might have an effect on dendritic
+spine morphology.
+
+\hypertarget{functional-effects}{%
+\subsubsection{Functional effects}\label{functional-effects}}
+
+To further examine protrudin's endogenous roles beyond cellular
+outgrowth, we turned to the literature to identify published proteomics
+data sets. We identified three studies that published lists of
+protrudin-interacting proteins {[}6--8{]}. Each study used a different
+model system and focused their analysis on different pathways, providing
+a variety of perspectives.
+
+Elbaz-Alon et al.~looked at protrudin in a human epithelial cell line,
+where they investigated how protrudin interacts with PDZD8 and
+contributes to ER contact sites {[}6{]}. Hashimoto et al.~used mouse
+brain neurons to look at interactions between protrudin and HSP-related
+proteins {[}7{]}, while Matsuzaki et al.~used a mouse neuroblast cell
+line to study the interaction between protrudin and KIF5 {[}8{]}.
+Individually, these reveal a number of interesting interactions,
+indicating diverse roles for protrudin that include but are not limited
+to axonal function. Taken together, a substantial level of overlap
+between the interaction sets reveals a conserved set of cellular
+functions that may help explain how protrudin promotes survival and
+regeneration.
+
+\hypertarget{methods}{%
+\subsection{Methods}\label{methods}}
+
+General cell culture and microscopy methods can be found in section
+@ref(METHODS).
+
+\hypertarget{dendritic-spine-imaging-and-analysis}{%
+\subsubsection{Dendritic spine imaging and
+analysis}\label{dendritic-spine-imaging-and-analysis}}
+
+Neurons were co-transfected with mCherry or an mCherry-tagged protrudin
+construct and EGFP/Emerald. Cells were imaged as Z-stacks at DIV15,
+either on the spinning disc at 100x, or confocal at 63x (see
+@ref(METHODS) for microscope details). Image stacks from the green
+channel were converted to maximum intensity projections, and a custom
+ImageJ macro was used to select and crop 20\(\mu\)m sections from a
+dendrite. These images were then blinded, and the Cell Counter Fiji
+plugin was used to count and classify spines. For spine length, the Fiji
+segmented line tool was used to measure along each spine.
+
+\hypertarget{gene-ontology-analysis}{%
+\subsubsection{Gene ontology analysis}\label{gene-ontology-analysis}}
+
+Lists of protrudin-interacting proteins were obtained from supplementary
+data published with {[}6{]}, {[}7{]}, and {[}8{]}. Gene names were
+standardised across experiments (and between human and mouse data sets)
+using Bioconductor genome annotations (\texttt{org.Hs.eg.db} version
+3.15.0 and \texttt{org.Mm.eg.db} version 3.15.0). Gene ontology analysis
+for biological process enrichment was carried out using the
+\texttt{limma} Bioconductor package in R.
+
+\hypertarget{hela-cell-culture}{%
+\subsubsection{HeLa cell culture}\label{hela-cell-culture}}
+
+HeLa cells were expanded before use and cryopreserved in individual
+vials to prevent genetic drift between batches.
+
+HeLa cells were grown in DMEM \emph{(Thermo Fisher, 41966-029)},
+supplemented with 1\% FBS \emph{(Thermo Fisher, 10500064)} and
+antibiotic-antimycotic \emph{(Thermo Fisher, 15240062)}, at
+37\(^{\circ}\), 5\% CO\textsubscript{2}. For each batch of cells, a
+single vial was thawed, passaged, and grown to 60-80\% confluence before
+transfection. Cells were transfected with EGFP or EGFP-tagged protrudin
+under a CAG promoter, using TransIT-LT1 reagent \emph{(Mirus Bio,
+MIR2300)}, according to the manufacturer's protocol. These were then
+passaged 24h after transfection to reduce overlap between cells and
+encourage protrusion growth.
+
+Cells were fixed with 3\% formaldehyde in PBS for 15 minutes at room
+temperature. Immunochemistry was carried out according to the protocol
+in section @ref(immuno). Staining with BODIPY TR C\textsubscript{5}
+ceramide \emph{(Thermo Fisher, B34400)} was carried out according to the
+manufacturer's protocol. Briefly, cells were incubated with 5\(\mu\)M
+dye in DMEM for 30 minutes at 4\(^{\circ}\). They were then recovered in
+supplemented media at 37\(^{\circ}\), 5\% CO\textsubscript{2} for 30
+minutes before fixing as usual.
+
+\hypertarget{results}{%
+\subsection{Results}\label{results}}
+
+\hypertarget{protrudins-effect-on-dendritic-spine-number-length-and-morphology}{%
+\subsubsection{Protrudin's effect on dendritic spine number, length, and
+morphology}\label{protrudins-effect-on-dendritic-spine-number-length-and-morphology}}
+
+Dendritic spines show diverse morphology within and between cells, which
+is generally considered to be reflective of the maturity, functionality,
+and plasticity of each spine. While these ultimately fall on a
+continuous spectrum of shapes, they are conventionally grouped into four
+morphological classes --- mushroom, thin, stubby, and filopodia {[}9{]}.
+We decided to use these classes to obtain an overview of spine
+morphology on cells expressing protrudin.
+
+We counted and manually classified dendritic spines on 20\(\mu\)m
+sections of dendrite from DIV15 (n = 30 cells per condition across three
+batches) or DIV21 neurons (n = 10 cells per condition, one batch)
+co-expressing an EGFP/Emerald filler with an mCherry-labelled protrudin
+construct (figure @ref(fig:spine-type-full-figure)). These included WT
+and active protrudin, as well as a set of domain-deletion mutants to act
+as dominant negatives. \(\Delta\)FFAT, \(\Delta\)RBD, and \(\Delta\)FYVE
+each have a single binding motif deleted, \(\Delta\)KIF5 has both the CC
+and FFAT domains deleted, to completely block binding to kinesin, and
+\(\Delta\)ER mutant (\(\Delta\)TM1-3) has all transmembrane domains
+deleted {[}1{]}. The DIV15 data suggests that WT protrudin might be
+associated with fewer, stubbier spines, although the significant
+comparisons varied for each spine classification, and is inconsistent
+with the DIV21 data.
+
+\begin{figure}
+\centering
+\includegraphics{../figures/full/spine-type-full-figure-1.png}
+\caption{A) Schematic showing selection of dendrite sections for
+analysis and basic spine morphology groups. One dendrite section was
+analysed per cell. Scale bar is 10\(\mu\)m. B-C) Total spine counts in
+20\(\mu\)m section for DIV15 and DIV21 groups. D-E) Quantification of
+each spine type, normalised to the total number of spines in the section
+measured. DIV15: n=30 cells per condition across three independent
+batches; DIV21: n=10 cells per condition in one batch.}
+\end{figure}
+
+As manual spine classification is an inherently subjective measure, and
+did not show any clear associations, we decided to look instead at spine
+length, which can be measured more objectively. We re-analysed the
+initial DIV15 data, measuring the length of each spine from the edge of
+the dendrite. This did yield some significant comparisons, both in spine
+number and length, so we followed this up with a full replication, which
+we analysed in the same way (figure @ref(fig:spine-length-full-figure)).
+While the replication also produced statistically significant results,
+they were wholly inconsistent between the two experiments.
+
+\begin{figure}
+\centering
+\includegraphics{../figures/full/spine-length-full-figure-1.png}
+\caption{A-B) Number of dendritic spines counted per 20\(\mu\)m section
+in cells co-expressing EGFP/Emerald with an mCherry-tagged protrudin
+construct. Replicate 1: n=30 cells per condition across three
+independent batches, except \(\Delta\)RBD n = 29, \(\Delta\)KIF5 n = 20,
+\(\Delta\)FYVE n = 19 across two batches. Replicate 2: n = 40 cells per
+condition, except WT and \(\Delta\)ER n = 39, across three independent
+batches. C-D) Length of each spine measured, in \(\mu\)m. TODO - GET N
+VALUES FOR SPINES}
+\end{figure}
+
+Taken together, these results show that protrudin overexpression does
+not substantially impact dendritic spine number, length, or morphology.
+These measurements were highly variable between cells and between
+replicates, and did not show any consistent patterns that would suggest
+that protrudin plays any role in controlling spine outgrowth. This
+obviously cannot rule out changes in spine function, but in any case
+such changes do not seem to be mediated by morphological changes at the
+micron scale.
+
+\hypertarget{protrudins-interactions-with-other-proteins-in-the-cell}{%
+\subsubsection{Protrudin's interactions with other proteins in the
+cell}\label{protrudins-interactions-with-other-proteins-in-the-cell}}
+
+We identified three published lists of protrudin-interacting proteins
+from {[}6{]}, {[}7{]}, and {[}8{]}. As these studies used distinct
+methods and model systems, we were most interested in the interactions
+that were conserved across sets. After standardising the data across
+sources, we found 46 protrudin-interacting proteins that were identified
+in at least two studies. Gene ontology analysis (biological process
+enrichment) of this set showed a high representation of genes involved
+in vesicular transport, and in particular Golgi-related transport
+(`intra-Golgi vesicle mediated transport', `Golgi vesicle transport',
+`ER to Golgi vesicle-mediated transport', etc.) (figure
+@ref(fig:proteomics-full-figure)). In contrast to endosomal transport,
+protrudin's role in Golgi-related transport has not been extensively
+studied, and we decided to follow this up with further experiments.
+
+\begin{figure}
+\centering
+\includegraphics{../figures/full/proteomics-full-figure-1.png}
+\caption{A) Venn diagram showing overlap between published lists of
+protrudin-interacting proteins. B) Top 20 hits of GO biological process
+enrichment, of all proteins appearing in at least two protrudin
+interaction sets, sorted by p-value.}
+\end{figure}
+
+\hypertarget{hela-screen-for-changes-in-organelle-distribution}{%
+\subsubsection{HeLa screen for changes in organelle
+distribution}\label{hela-screen-for-changes-in-organelle-distribution}}
+
+When protrudin is overexpressed in HeLa cells, it drives the growth of
+long cellular protrusions that superficially resemble developing
+neurites {[}10{]}. While these cells are genetically and functionally
+very distinct from neurons, this nevertheless provides a useful model
+system for examining protrudin's interactions with other cellular
+components. We used this system to screen for proteins that colocalise
+with protrusion in these cellular outgrowths, to quickly identify
+organelles or complexes that could be transported into axons when
+protrudin is overexpressed in neurons.
+
+(INSERT MARKER/ANTIBODY TABLE HERE)
+
+Based on the results of our gene ontology analysis, we selected a panel
+of antibodies to screen for colocalisation with protrudin in HeLa cells.
+These were primarily focused on components of the ER exit site to Golgi
+secretory pathway, but also included proteins involved in lipid
+metabolism, signalling, and amino acid transport.
+
+\begin{figure}
+\centering
+\includegraphics{../figures/full/HeLa-ERES-grid-full-figure-1.png}
+\caption{Representative images of HeLa cells expressing EGFP-tagged
+protrudin constructs and stained for ER/ERES-related markers A) BCAP31,
+B) SURF4, C) MIA3(TANGO1), and D) SEC31A. All scale bars are
+20\(\mu\)m.}
+\end{figure}
+
+Of the ERES-related proteins, different markers showed different levels
+of colocalisation with protrudin. BCAP31 and SURF4 were consistently
+enriched in cellular protrusions, more so than at other areas of the
+cell periphery. MIA3 and SEC31A colocalised well with protrudin in the
+perinuclear area, but were found at lower levels in protrusions, and
+were less consistent between cells. At this stage, it was not possible
+to conclusively say whether these variations represented differences in
+how ERES proteins were transported or in how effectively the individual
+antibodies stained these components, so we decided to proceed with
+BCAP31 and SURF4, which produced more clear results. (Figure
+@ref(fig:HeLa-ERES-grid-full-figure))
+
+\begin{figure}
+\centering
+\includegraphics{../figures/full/HeLa-Golgi-grid-full-figure-1.png}
+\caption{Representative images of HeLa cells expressing EGFP-tagged
+protrudin constructs and stained for ERGIC and Golgi-related markers A)
+ERGIC53, B) GS28, C) GLG1, and D) USO1(p115) All scale bars are
+20\(\mu\)m.}
+\end{figure}
+
+Of the Golgi-related proteins, GS28, GLG1, and USO1 clearly labelled the
+perinuclear Golgi compartment, but were either entirely absent or found
+only at very low levels in protrusions. ERGIC53, on the other hand, was
+highly enriched in protrusions, in most cases well above the levels seen
+in the cell body. This was the strongest concentration with any of the
+markers used in this screen, and point to the ERGIC compartment not only
+colocalising with protrudin, but specifically playing a role in the
+growth of cellular protrusions. This marker was added to the set (along
+with BCAP31 and SURF4) to examine in neurons. (Figure
+@ref(fig:HeLa-Golgi-grid-full-figure))
+
+\begin{figure}
+\centering
+\includegraphics{../figures/full/HeLa-misc-grid-full-figure-1.png}
+\caption{Representative images of HeLa cells expressing EGFP-tagged
+protrudin constructs and stained for A) LAMP1, B) mTOR, C) ACSL3, and D)
+SLC38A1. All scale bars are 20\(\mu\)m.}
+\end{figure}
+
+LAMP1 and mTOR, which we would expect to move to the cell periphery in
+response to protrudin overexpression, were present in protrusions at
+relatively low levels. While protrudin overexpression did result in more
+puncta away from the perinuclear cluster, this effect was not especially
+dramatic, and the highest concentrations were still found near the cell
+nucleus. This is in contrast with {[}11{]}, which found a stronger
+movement away from the nucleus when expressing Myc-tagged protrudin.
+However, their culture protocol differed from ours in adding 2mM
+supplemental glutamine to the culture media, so the apparent differences
+could reflect the amino acid dependence of the protrudin-FYOC1 transport
+mechanism. (Figure @ref(fig:HeLa-misc-grid-full-figure), panels A-B)
+
+ACSL3, was found in cellular protrusions, but, similar to MIA3 and
+SEC31A, was generally at low levels, and varied considerably between
+cells. This may reflect on the antibody used, or a more complicated
+cell-state dependent interaction with other metabolic pathways. This was
+not taken forwards. (Figure @ref(fig:HeLa-misc-grid-full-figure), panel
+C)
+
+Finally, SLC38A1, was found to concentrate in protrusions, and similarly
+to ERGIC53 was found at higher levels here than near the nucleus. This
+result is particularly interesting, as SLC38A1 is a potential cargo of
+the local secretory pathway. SLC38A1 was added to BCAP31, SURF4, and
+ERGIC53 to examine in neurons. (Figure
+@ref(fig:HeLa-misc-grid-full-figure), panel D)
+
+In addition to protrusions, protrudin overexpression also induces the
+formation of large, ring-shaped structures in the perinucear region.
+These are observed occasionally in neurons expressing protrudin, but not
+to the same extent as in HeLa cells. While these were not the primary
+focus of this experiment, they did reveal interesting results with two
+of the markers screened, and may indicate protrudin involvement in
+non-morphological pathways.
+
+LC3 strongly colocalised with protrudin in these structures, suggesting
+that they may represent phagophores or autophagosomes (LINK TO FIGURE).
+Notably, LC3 is \emph{not} enriched in cellular protrusions (LINK TO
+FIGURE PANEL), in contrast to the markers discussed above. This may
+represent a different pathway activated by protrudin overexpression.
+These LC3-labelled structures are also smaller and less abundant in
+cells expressing only EGFP, suggesting that their formation is
+influenced by protrudin overexpression.
+
+We followed up this result with a pilot experiment in neurons,
+co-expressing EGFP-protrudin and mRFP1-tagged LC3. LC3 showed
+differences in localisation between cells, ranging from fully
+cytoplasmic to fully punctate, which likely reflects the conversion
+between soluble LC3-I and membrane-associated LC3-II (CITE). All cells
+expressing either WT or active protrudin contained at least some LC3
+puncta, in contrast to control cells, of which 12.5\% had fully
+cytoplasmic LC3. This suggests that protrudin might be encouraging
+autophagosome biogenesis, although further experiments are needed to
+confirm this result.
+
+\begin{figure}
+\centering
+\includegraphics{../figures/full/LC3_full_figure-1.png}
+\caption{A) Representative image of HeLa cells expressing WT protrudin
+and stained for LC3. Inset is 20x20\(\mu\)m. B) Fluorescence profile
+along the dotted line shown in panel A inset. Note strong correspondence
+between protrudin (green) and LC3 (magenta) signal. C) Representative
+images of neurons expressing mRFP1-tagged LC3 showing range of
+distribution patterns. Scale bars are 20\(\mu\)m. D) Quantification of
+LC3 distributions in cells co-expressing EGFP-protrudin and mRFP1-LC3. n
+= 40 cells per condition across two independent batches.}
+\end{figure}
+
+BODIPY C\textsubscript{5} ceramide, a lipid dye often used to label the
+Golgi apparatus, strongly labelled the lumen of these organelles. It is
+not clear in this context whether these are Golgi-related structures or
+lipid droplets, however it is worth noting that other Golgi markers did
+\emph{not} colocalise with these structures
+(e.g.~@ref(fig:HeLa-Golgi-grid-full-figure), particularly visible in
+panel C). Given the relationship with LC3 as discussed above, this may
+indicate an increase in lipophagy, although further experiments would be
+needed to confirm.
+
+\begin{figure}
+\centering
+\includegraphics{../figures/full/ceramide_full_figure-1.png}
+\caption{A) Representative image of HeLa cells expressing WT protrudin
+and stained with BODIPY C\textsubscript{5} ceramide dye. Inset is
+20x20\(\mu\)m. B) Fluorescence profile along the dotted line shown in
+panel A inset. Note BODIPY signal (magenta) between spikes of protrudin
+(green).}
+\end{figure}
+
+\hypertarget{discussion}{%
+\subsection{Discussion}\label{discussion}}
+
+\hypertarget{the-eres-to-golgi-pathway}{%
+\subsubsection{The ERES to Golgi
+pathway}\label{the-eres-to-golgi-pathway}}
+
+In non-polarised cells, proteins are typically translated in the ER,
+released from ERES, trafficked to the Golgi via the ERGIC compartment,
+and secreted in post-Golgi carriers. In neurons, several alternate
+pathways exist, to account for the local translation needs of
+compartments distant from the cell body. In dendrites, for example,
+Golgi outposts and satellites serve some of the same functions as the
+main Golgi apparatus, acting as local points for protein glycosylation
+{[}12{]}. The ERGIC compartment is also involved in a Golgi-bypassing
+secretory pathway, which has been observed in dendrites {[}13{]}. It is
+possible that that same mechanisms could function in axons, providing a
+mechanism through which protrudin expression could promote secretion and
+growth in the absence of any changes to the cell body Golgi apparatus.
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-petrovaProtrudinFunctionsEndoplasmic2020}{}}%
+\CSLLeftMargin{1. }%
+\CSLRightInline{Petrova V, Pearson CS, Ching J, Tribble JR, Solano AG,
+Yang Y, et al. Protrudin functions from the endoplasmic reticulum to
+support axon regeneration in the adult {CNS}. Nature Communications.
+2020;11: 5614.
+doi:\href{https://doi.org/10.1038/s41467-020-19436-y}{10.1038/s41467-020-19436-y}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-pedersenProtrudinmediatedEREndosome2020}{}}%
+\CSLLeftMargin{2. }%
+\CSLRightInline{Pedersen NM, Wenzel EM, Wang L, Antoine S, Chavrier P,
+Stenmark H, et al. Protrudin-mediated {ER}\textendash endosome contact
+sites promote {MT1-MMP} exocytosis and cell invasion. Journal of Cell
+Biology. 2020;219: e202003063.
+doi:\href{https://doi.org/10.1083/jcb.202003063}{10.1083/jcb.202003063}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-padamseyActivityDependentExocytosisLysosomes2017}{}}%
+\CSLLeftMargin{3. }%
+\CSLRightInline{Padamsey Z, McGuinness L, Bardo SJ, Reinhart M, Tong R,
+Hedegaard A, et al. Activity-{Dependent Exocytosis} of {Lysosomes
+Regulates} the {Structural Plasticity} of {Dendritic Spines}. Neuron.
+2017;93: 132--146.
+doi:\href{https://doi.org/10.1016/j.neuron.2016.11.013}{10.1016/j.neuron.2016.11.013}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-brachetKinesin1protrudinComplex2021}{}}%
+\CSLLeftMargin{4. }%
+\CSLRightInline{Brachet A, Lario A, Fernández-Rodrigo A, Heisler FF,
+Gutiérrez Y, Lobo C, et al. A kinesin 1-protrudin complex mediates
+{AMPA} receptor synaptic removal during long-term depression. Cell
+Reports. 2021;36: 109499.
+doi:\href{https://doi.org/10.1016/j.celrep.2021.109499}{10.1016/j.celrep.2021.109499}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-perez-alvarezEndoplasmicReticulumVisits2020}{}}%
+\CSLLeftMargin{5. }%
+\CSLRightInline{Perez-Alvarez A, Yin S, Schulze C, Hammer JA, Wagner W,
+Oertner TG. Endoplasmic reticulum visits highly active spines and
+prevents runaway potentiation of synapses. Nature Communications.
+2020;11: 5083.
+doi:\href{https://doi.org/10.1038/s41467-020-18889-5}{10.1038/s41467-020-18889-5}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-elbaz-alonPDZD8InteractsProtrudin2020}{}}%
+\CSLLeftMargin{6. }%
+\CSLRightInline{Elbaz-Alon Y, Guo Y, Segev N, Harel M, Quinnell DE,
+Geiger T, et al. {PDZD8} interacts with {Protrudin} and {Rab7} at
+{ER-late} endosome membrane contact sites associated with mitochondria.
+Nature Communications. 2020;11: 3645.
+doi:\href{https://doi.org/10.1038/s41467-020-17451-7}{10.1038/s41467-020-17451-7}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hashimotoProtrudinRegulatesEndoplasmic2014}{}}%
+\CSLLeftMargin{7. }%
+\CSLRightInline{Hashimoto Y, Shirane M, Matsuzaki F, Saita S, Ohnishi T,
+Nakayama KI. Protrudin regulates endoplasmic reticulum morphology and
+function associated with the pathogenesis of hereditary spastic
+paraplegia. The Journal of Biological Chemistry. 2014;289: 12946--12961.
+doi:\href{https://doi.org/10.1074/jbc.M113.528687}{10.1074/jbc.M113.528687}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-matsuzakiProtrudinServesAdaptor2011}{}}%
+\CSLLeftMargin{8. }%
+\CSLRightInline{Matsuzaki F, Shirane M, Matsumoto M, Nakayama KI.
+Protrudin serves as an adaptor molecule that connects {KIF5} and its
+cargoes in vesicular transport during process formation. Molecular
+Biology of the Cell. 2011;22: 4602--4620.
+doi:\href{https://doi.org/10.1091/mbc.e11-01-0068}{10.1091/mbc.e11-01-0068}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-pchitskayaDendriticSpinesShape2020}{}}%
+\CSLLeftMargin{9. }%
+\CSLRightInline{Pchitskaya E, Bezprozvanny I. Dendritic {Spines Shape
+Analysis}\textemdash{{Classification}} or {Clusterization}?
+{Perspective}. Frontiers in Synaptic Neuroscience. 2020;0.
+doi:\href{https://doi.org/10.3389/fnsyn.2020.00031}{10.3389/fnsyn.2020.00031}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-shiraneProtrudinInducesNeurite2006}{}}%
+\CSLLeftMargin{10. }%
+\CSLRightInline{Shirane M, Nakayama KI. Protrudin {Induces Neurite
+Formation} by {Directional Membrane Trafficking}. Science. 2006;314:
+818--821.
+doi:\href{https://doi.org/10.1126/science.1134027}{10.1126/science.1134027}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hongPtdIns3PControlsMTORC12017}{}}%
+\CSLLeftMargin{11. }%
+\CSLRightInline{Hong Z, Pedersen NM, Wang L, Torgersen ML, Stenmark H,
+Raiborg C. {PtdIns3P} controls {mTORC1} signaling through lysosomal
+positioning. Journal of Cell Biology. 2017;216: 4217--4233.
+doi:\href{https://doi.org/10.1083/jcb.201611073}{10.1083/jcb.201611073}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-mikhaylovaDendriticGolgiSatellite2016}{}}%
+\CSLLeftMargin{12. }%
+\CSLRightInline{Mikhaylova M, Bera S, Kobler O, Frischknecht R, Kreutz
+MR. A {Dendritic Golgi Satellite} between {ERGIC} and {Retromer}. Cell
+Reports. 2016;14: 189--199.
+doi:\href{https://doi.org/10.1016/j.celrep.2015.12.024}{10.1016/j.celrep.2015.12.024}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bowenGolgiindependentSecretoryTrafficking2017}{}}%
+\CSLLeftMargin{13. }%
+\CSLRightInline{Bowen AB, Bourke AM, Hiester BG, Hanus C, Kennedy MJ.
+Golgi-independent secretory trafficking through recycling endosomes in
+neuronal dendrites and spines. Davis GW, editor. eLife. 2017;6: e27362.
+doi:\href{https://doi.org/10.7554/eLife.27362}{10.7554/eLife.27362}}
+
+\end{CSLReferences}
+
+\end{document}

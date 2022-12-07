@@ -497,7 +497,7 @@ LAMP1_kymo_panel = image_as_ggplot(read.bitmap('C:\\Users\\fl299\\PhD\\LAMP1_kym
 ```
 
 Patchwork
-```{r LAMP1_full_figure_def}
+```{r LAMP1_full_figure_def, fig.width=16, fig.height=12}
   LAMP1_full = LAMP1_kymo_panel/
   (LAMP1_trace_dot + LAMP1_mean_run_length + LAMP1_mean_run_velocity) + 
   plot_annotation(tag_levels = 'A')

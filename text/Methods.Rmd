@@ -25,7 +25,7 @@ Wherever possible, I tried to use free and open source software throughout this 
 Custom R scripts and ImageJ macros were written for individual analysis tasks.  (GITHUB LINK/DOIs)
 
 ## Protocols
-### Plasmid preparation
+### Plasmid preparation{#plasmid-prep}
 
 All plasmid preparation was carried out using either DH5$\alpha$ *(New England BioLabs, C2987I/H)* or XL10-Gold *(Agilent Technilogies, 200314)* competent cells.  Cells were transformed using a heat shock protocol, and grown on LB/agar plates with an appropriate antibody for plasmid selection.  Single colonies were then scaled up in LB culture.  Plasmids were purified from *E. coli* cultures using Qiagen Spin Miniprep *(27104)* or EndoFree Plasmid Maxi kits *(12362)* according to the manufacturer's protocols.  All plasmids were dissolved in ultrapure DNAse-free water *(Thermo Fisher, 10977035)* for transfection.
 
@@ -37,11 +37,11 @@ Primary cortical neurons were obtained from E18 Sprague Dawley rats. Cortices we
 
 Cortical neurons were transfected at DIV10 by either magnetofection or calcium phosphate.  We experienced a significant drop in efficiency with the magnetofection reagent early in 2020, and subsequently switched to the calcium phosphate method.
 
-Magnetofection was carried out using NeuroMag Transfection Reagent (OZ Biosciences, NM51000). Briefly, plasmid DNA was incubated at room temperature with the NeuroMag Transfection Reagent in MACS Neuro Medium (Miltenyi Biotec, 130-093-570) for 30 minutes. Growth media was removed from the cells and replaced with warmed MACS Neuro Medium and the DNA-complexed NeuroMag Transfection Reagent. The cells were placed on a magnetic plate (OZ Biosciences, MF10000) in an incubator (37° 7% CO~2~) for 30 minutes. The transfection mix was then removed from the cells and the growth media reapplied.
+Magnetofection was carried out using NeuroMag Transfection Reagent *(OZ Biosciences, NM51000)*. Briefly, plasmid DNA was incubated at room temperature with the NeuroMag Transfection Reagent in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)* for 30 minutes. Growth media was removed from the cells and replaced with warmed MACS Neuro Medium and the DNA-complexed NeuroMag Transfection Reagent. The cells were placed on a magnetic plate *(OZ Biosciences, MF10000)* in an incubator (37° 7% CO~2~) for 30 minutes. The transfection mix was then removed from the cells and the growth media reapplied.
 
 Calcium phosphate transfection was carried out using a protocol adapted from [@jiangHighCaPhosphate2006].  A solution of DNA and calcium phosphate was prepared, and added dropwise to HEPES-buffered saline *()* while vortexing to precipitate the DNA-calcium phosphate complex.  This was then added to the cells in supplement-free media, and incubated at 37° 7% CO~2~ for one hour.  Cells were then washed with media pre-equilibrated in 10% CO~2~ to remove residual precipitate, and the original growth media reapplied.
 
-### Immunocytochemistry
+### Immunocytochemistry{#immuno}
 
 Cortical neurons were fixed using formaldehyde and sucrose, dissolved in PBS and mixed into the growth media to final concentrations of 3% formaldehyde and 10% sucrose.  HeLa cells were fixed in 3% formaldehyde in PBS.  In both cases, cells were fixed for 15 minutes at room temperature, followed by PBS washes and stored at 4$^{\circ}$.  
 
@@ -69,6 +69,7 @@ All manual image analysis was conducted blind, with the exception of (LC3 FIG NE
 
 #### Kymograph analysis
 
+Kymographs were generated using the Fiji Multi Kymograph package.  
 
 
 #### Fluorescence quantification
@@ -76,3 +77,5 @@ All manual image analysis was conducted blind, with the exception of (LC3 FIG NE
 
 
 ### Statistical analysis
+
+The Shapiro-Wilk test was used to examine data normality.  As the vast majority of data was not normally distributed, the decision was made to use non-parametric tests throughout.  Kruskal-Wallis or Wilcoxon rank-sum/Mann-Whitney tests were selected as appropriate based on the number of groups.  Post-hoc analysis to identify significant pairings was carried out using Dunn's test with Bonferroni correction for multiple comparisons.

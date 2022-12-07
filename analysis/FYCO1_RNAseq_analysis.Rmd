@@ -184,6 +184,7 @@ genes.k = genes.kelley[,-which(names(genes.kelley) %in% c('Entrez', 'Alias', 'Me
 genes.k$region = sapply(1:nrow(genes.k), function(r){ strsplit(genes.k$name[r], '_')[[1]][1] })
 genes.k$cell_type = sapply(1:nrow(genes.k), function(r){ strsplit(genes.k$name[r], '_')[[1]][2] })
 
+genes.k$Gene = factor(genes.k$Gene, levels = c('FYCO1', 'ZFYVE27'), labels = c('FYCO1', 'Protrudin'))
 
 # 
 # ggplot(genes.k[genes.k$region != 'ALL',], aes(x = cell_type, y = fidelity)) +
@@ -239,7 +240,7 @@ vivo
 
 Combo
 ```{r fig.width=3, fig.height=5}
-Koseki.patch = koseki + plot_annotation(title = "Rat cortical neurons", caption = "Koseki et al. 2017, eLife")
+Koseki.patch = koseki + plot_annotation(title = "Rat cortical neurons", caption = "Koseki et al. 2017, eLife") + theme(legend.position = 'right', axis.title.x = element_text(vjust = 15))
 ```
 ```{r}
 Zhang.patch = zhang.bar + plot_annotation(title = 'Human cortical neurons', caption = 'Zhang et al. 2016, Neuron')
@@ -255,8 +256,11 @@ PNS.patch = culture + vivo + injury + plot_annotation(title = "PNS", caption = "
 
 ```{r FYCO1_RNAseq_full, fig.width=16, fig.height = 12, fig.path = "../figures/full/"}
 
+i3_panel = image_as_ggplot(read.bitmap(here('figures/external/i3_panel.png'))) + labs(title = 'i3 neurons')
+
 FYCO1_RNAseq_full = (Koseki.patch + Zhang.patch + Kelley.patch)/ 
-  (culture + vivo + injury) + plot_annotation(tag_levels = 'A') + plot_layout(guides = 'collect')
+  i3_panel/
+  (culture + vivo + injury) + plot_annotation(tag_levels = 'A') + plot_layout(heights = c(1.5, 2, 1))
   #PNS.patch + plot_annotation(tag_levels = 'A') + plot_layout(design = RNA.layout)
 
 FYCO1_RNAseq_full

@@ -1,0 +1,23 @@
+---
+title: "ESCargo example figure"
+output: pdf_document
+---
+```{r ESCargo_setup}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+knitr::opts_chunk$set(fig.path = "../figures/full")
+
+source('../style/thesis_setup.R')
+
+library(readbitmap)
+library(here)
+library(patchwork)
+```
+
+```{r ESCargo_images}
+ESC.soma = image_as_ggplot(read.bitmap(here('images/microscopy/ESCargo/ESCargo_soma_1094.png')))
+ESC.axon = image_as_ggplot(read.bitmap(here('images/microscopy/ESCargo/ESCargo_axon_1094.png')))
+
+ESCargo_plot = ESC.soma /ESC.axon + plot_annotation(tag_levels = 'A')
+
+ESCargo_plot
+```

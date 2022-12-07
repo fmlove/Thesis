@@ -4,7 +4,7 @@ output: pdf_document
 ---
 
 # Setup
-```{r setup}
+```{r GS_setup}
 knitr::opts_chunk$set(echo = TRUE, dev = 'png')
 knitr::opts_chunk$set(fig.path = '../figures/')
 

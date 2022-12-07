@@ -1,0 +1,24 @@
+---
+title: "St3Gal5 scratch assay figure"
+output: pdf_document
+---
+```{r GS_scratch_setup}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+knitr::opts_chunk$set(fig.path = "../figures/full")
+
+source('../style/thesis_setup.R')
+
+library(readbitmap)
+library(here)
+library(patchwork)
+```
+
+```{r scratch_images}
+mCh.scratch = image_as_ggplot(read.bitmap(here('images/microscopy/St3Gal5/mCh_Montage.png')))
+WT.scratch = image_as_ggplot(read.bitmap(here('images/microscopy/St3Gal5/WT_Montage.png')))
+Mut2.scratch = image_as_ggplot(read.bitmap(here('images/microscopy/St3Gal5/Mut2_Montage.png')))
+
+scratch_fig = mCh.scratch/WT.scratch/Mut2.scratch + plot_annotation(tag_levels = 'A')
+
+scratch_fig
+```

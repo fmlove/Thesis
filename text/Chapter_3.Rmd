@@ -8,6 +8,7 @@ bibliography: "`r here::here('bib/THESIS.bib')`"
 ---
 
 # ER, ERGIC, and Golgi in axons
+\chaptermark{ER, ERGIC, and Golgi}
 
 ```{r chapter_3_setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
