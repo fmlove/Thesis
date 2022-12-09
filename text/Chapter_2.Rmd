@@ -1,10 +1,10 @@
 ---
 output:
+  word_document: default
+  html_document: default
   pdf_document: 
       latex_engine: xelatex
       keep_tex: true
-  html_document: default
-  word_document: default
 bibliography: "`r here::here('bib/THESIS.bib')`"
 csl: "`r here::here('bib/plos.csl')`"
 papersize: a4
@@ -133,11 +133,11 @@ Finally, SLC38A1, was found to concentrate in protrusions, and similarly to ERGI
 
 In addition to protrusions, protrudin overexpression also induces the formation of large, ring-shaped structures in the perinucear region.  These are observed occasionally in neurons expressing protrudin, but not to the same extent as in HeLa cells.  While these were not the primary focus of this experiment, they did reveal interesting results with two of the markers screened, and may indicate protrudin involvement in non-morphological pathways.
 
-LC3 strongly colocalised with protrudin in these structures, suggesting that they may represent phagophores or autophagosomes (LINK TO FIGURE).  Notably, LC3 is *not* enriched in cellular protrusions (LINK TO FIGURE PANEL), in contrast to the markers discussed above.  This may represent a different pathway activated by protrudin overexpression.  These LC3-labelled structures are also smaller and less abundant in cells expressing only EGFP, suggesting that their formation is influenced by protrudin overexpression.
+LC3 strongly colocalised with protrudin in these structures, suggesting that they may represent phagophores or autophagosomes (igure \@ref(fig:LC3-full-figure)).  Notably, LC3 is *not* enriched in cellular protrusions (LINK TO FIGURE PANEL), in contrast to the markers discussed above.  This may represent a different pathway activated by protrudin overexpression.  These LC3-labelled structures are also smaller and less abundant in cells expressing only EGFP, suggesting that their formation is influenced by protrudin overexpression.
 
-We followed up this result with a pilot experiment in neurons, co-expressing EGFP-protrudin and mRFP1-tagged LC3.  LC3 showed differences in localisation between cells, ranging from fully cytoplasmic to fully punctate, which likely reflects the conversion between soluble LC3-I and membrane-associated LC3-II (CITE).  All cells expressing either WT or active protrudin contained at least some LC3 puncta, in contrast to control cells, of which 12.5% had fully cytoplasmic LC3.  This suggests that protrudin might be encouraging autophagosome biogenesis, although further experiments are needed to confirm this result.
+We followed up this result with a pilot experiment in neurons, co-expressing EGFP-protrudin and mRFP1-tagged LC3.  LC3 showed differences in localisation between cells, ranging from fully cytoplasmic to fully punctate, which likely reflects the conversion between soluble LC3-I and membrane-associated LC3-II [@kabeyaLC3MammalianHomologue2000].  All cells expressing either WT or active protrudin contained at least some LC3 puncta, in contrast to control cells, of which 12.5% had fully cytoplasmic LC3.  This suggests that protrudin might be encouraging autophagosome biogenesis, although further experiments are needed to confirm this result.
 
-```{r LC3_full_figure, fig.width=16, fig.height=12, fig.path = "../figures/full/", fig.cap="A) Representative image of HeLa cells expressing WT protrudin and stained for LC3.  Inset is 20x20$\\mu$m.  B) Fluorescence profile along the dotted line shown in panel A inset.  Note strong correspondence between protrudin (green) and LC3 (magenta) signal.  C) Representative images of neurons expressing mRFP1-tagged LC3 showing range of distribution patterns.  Scale bars are 20$\\mu$m.  D) Quantification of LC3 distributions in cells co-expressing EGFP-protrudin and mRFP1-LC3.  n = 40 cells per condition across two independent batches."}
+```{r LC3-full-figure, fig.width=16, fig.height=12, fig.path = "../figures/full/", fig.cap="A) Representative image of HeLa cells expressing WT protrudin and stained for LC3.  Inset is 20x20$\\mu$m.  B) Fluorescence profile along the dotted line shown in panel A inset.  Note strong correspondence between protrudin (green) and LC3 (magenta) signal.  C) Representative images of neurons expressing mRFP1-tagged LC3 showing range of distribution patterns.  Scale bars are 20$\\mu$m.  D) Quantification of LC3 distributions in cells co-expressing EGFP-protrudin and mRFP1-LC3.  n = 40 cells per condition across two independent batches."}
 LC3_full_plot
 ```
 
