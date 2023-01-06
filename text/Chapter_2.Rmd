@@ -10,10 +10,11 @@ csl: "`r here::here('bib/plos.csl')`"
 papersize: a4
 fontsize: 12pt
 linestretch: 1.15
+always_allow_html: true
 ---
 
 # Protrudin's role in regeneration and endogenous functions
-<!--\chaptermark{Regeneration and endogenous functions}-->
+\chaptermark{Regeneration and endogenous functions}
 
 ```{r chapter_2_setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -88,7 +89,7 @@ Taken together, these results show that protrudin overexpression does not substa
 
 
 
-### Protrudin's interactions with other proteins in the cell
+### Protrudin's interactions with other proteins in the cell{#GO-analysis}
 
 We identified three published lists of protrudin-interacting proteins from [@elbaz-alonPDZD8InteractsProtrudin2020], [@hashimotoProtrudinRegulatesEndoplasmic2014], and [@matsuzakiProtrudinServesAdaptor2011].  As these studies used distinct methods and model systems, we were most interested in the interactions that were conserved across sets.  After standardising the data across sources, we found 46 protrudin-interacting proteins that were identified in at least two studies.  Gene ontology analysis (biological process enrichment) of this set showed a high representation of genes involved in vesicular transport, and in particular Golgi-related transport ('intra-Golgi vesicle mediated transport', 'Golgi vesicle transport', 'ER to Golgi vesicle-mediated transport', etc.) (figure \@ref(fig:proteomics-full-figure)).   In contrast to endosomal transport, protrudin's role in Golgi-related transport has not been extensively studied, and we decided to follow this up with further experiments.
 

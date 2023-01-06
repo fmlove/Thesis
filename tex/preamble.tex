@@ -2,7 +2,22 @@
 
 %usepackage{textcomp}
 \usepackage{fancyhdr}
+\usepackage{booktabs}
 
+%header space
+\setlength{\headheight}{16pt}
+
+%page numbers always at the bottom
+\fancypagestyle{plain}{
+
+  \fancyfoot[C]{\thepage}
+  \fancyhead[LE]{\chaptermark}
+  \fancyhead[RO]{\chaptermark}
+  \renewcommand{\headrulewidth}{0pt}
+
+
+}
+\pagestyle{plain}
 
 % turning off autmatic title page; replaced with title_page.tex
 \let\oldmaketitle\maketitle

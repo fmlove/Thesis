@@ -4,7 +4,7 @@ author: "Fiona M. Love"
 college: "Pembroke"
 sub_date: "??? 202?"
 degree: "Doctor of Philosophy"
-
+#^NOT USED - title_page.tex
 
 documentclass: book
 output:
@@ -25,4 +25,5 @@ fontsize: 12pt
 linestretch: 1.15
 bibliography: bib/THESIS.bib
 csl: bib/plos.csl
+always_allow_html: true
 ---

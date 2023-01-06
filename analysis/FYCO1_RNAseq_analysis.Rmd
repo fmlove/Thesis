@@ -167,7 +167,7 @@ zhang.bar = ggplot(genes.z.neurons, aes(x = gene, y = FPKM)) +
   geom_bar(aes(fill = gene), stat = 'identity') + 
   geom_text(aes(label=FPKM), vjust=c(-.5, 1.25, 1.35)) +
   geom_hline(yintercept = 1) + 
-  scale_y_log10(limits = c(0.17, 400)) + 
+  scale_y_log10(limits = c(0.11, 400)) + 
   labs(x = '', y = 'Gene expression (FPKM)', title = 'Human cortical neurons') + 
   report_theme + 
   scale_fill_brewer(palette = "Dark2")
@@ -260,7 +260,7 @@ i3_panel = image_as_ggplot(read.bitmap(here('figures/external/i3_panel.png'))) +
 
 FYCO1_RNAseq_full = (Koseki.patch + Zhang.patch + Kelley.patch)/ 
   i3_panel/
-  (culture + vivo + injury) + plot_annotation(tag_levels = 'A') + plot_layout(heights = c(1.5, 2, 1))
+  (culture + vivo + injury) + plot_annotation(tag_levels = 'A') + plot_layout(heights = c(1, 2, 1))
   #PNS.patch + plot_annotation(tag_levels = 'A') + plot_layout(design = RNA.layout)
 
 FYCO1_RNAseq_full

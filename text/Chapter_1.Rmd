@@ -1,20 +1,19 @@
 ---
 output:
-  word_document: default
-  html_document: default
   pdf_document:
     latex_engine: xelatex
+  html_document: default
+  word_document: default
 bibliography: "`r here::here('bib/THESIS.bib')`"
 csl: "`r here::here('bib/plos.csl')`"
 papersize: a4
 fontsize: 12pt
 linestretch: 1.15
 always_allow_html: true
-
 ---
 
 # Protrudin's effect on neuroprotection through lysosome and late endosome transport
-<!--\chaptermark{Lysosome and late endosome transport}-->
+\chaptermark{Lysosome and late endosome transport}
 
 ```{r chapter_1_setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -30,6 +29,7 @@ source(here::here('style/thesis_setup.R'))
 library(knitr)
 library(here)
 library(readbitmap)
+library(kableExtra)
 
 ```
 
@@ -80,7 +80,7 @@ While the BORC complex is involved in kinesin-mediated transport, several other 
 
 #### Protrudin
 
-As previously discussed (CROSS-REFERENCE TO INTRO SECTION), Raiborg et al. proposed a mechanism through which protrudin promotes anterograde late endosome transport [@raiborgRepeatedEREndosome2015].  Subsequent work expanded this mechanism to lysosomes, and particularly implicated protrudin-mediated lysosomal transport in mTORC1 activation, albeit in non-neuronal cells [@hongPtdIns3PControlsMTORC12017].  Additionally, Since Petrova et al. showed that overexpression of protrudin increased the amount of ER in growth cones, it seemed likely that lysosomal transport might play a role in this process, in keeping with the role of lysosomes in ER transport discussed in (CROSS REFERENCE) [@petrovaProtrudinFunctionsEndoplasmic2020].
+As previously discussed (section \@ref(intro-ptdn-transport)), Raiborg et al. proposed a mechanism through which protrudin promotes anterograde late endosome transport [@raiborgRepeatedEREndosome2015].  Subsequent work expanded this mechanism to lysosomes, and particularly implicated protrudin-mediated lysosomal transport in mTORC1 activation, albeit in non-neuronal cells [@hongPtdIns3PControlsMTORC12017].  Additionally, Since Petrova et al. showed that overexpression of protrudin increased the amount of ER in growth cones, it seemed likely that lysosomal transport might play a role in this process, in keeping with the role of lysosomes in ER transport discussed in section \@ref(intro-ptdn-axonalER) [@petrovaProtrudinFunctionsEndoplasmic2020].
 
 Given the importance of lysosome transport to cell growth and neuronal function, We decided to test whether protrudin overexpression could be increasing axonal lysosome transport.  
 
@@ -100,7 +100,8 @@ kable(
   ),
   booktabs = TRUE,
   caption = 'Gibson cloning primers.'
-  ) %>%  kableExtra::kable_styling(font_size = 11)
+  ) %>% 
+  kable_styling(latex_options="scale_down")
 
 ```
 
