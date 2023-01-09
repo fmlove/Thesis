@@ -64,15 +64,12 @@ High resolution images of fixed cells were obtained with a Leica DMI4000B confoc
 
 All image analysis was conducted in Fiji.  In most cases, custom macros were used for batch processing and streamlining manual tasks.  
 
-All manual image analysis was conducted blind, with the exception of (LC3 FIG NEURON PANEL), where cells were classified while they were being examined on the microscope.  In most cases, blinding was achieved using the *blinds* R package to replace descriptive file names with unique identifiers, which can then be reversed after manual analysis.  While I wrote the package for this project, it is generally applicable and publicly available on GitHub (CITE, GET ZENODO DOI).  Where it was not possible to obscure the file names (e.g. where ROIs were being matched to images by name), steps were taken in the analysis macros to randomise image order and hide the experimental condition.
+All manual image analysis was conducted blind, with the exception of figure \@ref(fig:LC3-full-figure), panel (LC3 FIG NEURON PANEL), where cells were classified while they were being examined on the microscope.  In most cases, blinding was achieved using the `blinds` R package to replace descriptive file names with unique identifiers, which can then be reversed after manual analysis.  While I wrote the package for this project, it is generally applicable and publicly available on GitHub (CITE, GET ZENODO DOI).  Where it was not possible to obscure the file names (e.g. where ROIs were being matched to images by name), steps were taken in the analysis macros to randomise image order and hide the experimental condition.
 
 
 #### Kymograph analysis
 
-Kymographs were generated using the Fiji Multi Kymograph package.  
-
-
-#### Fluorescence quantification
+Kymographs were generated using the Fiji Multi Kymograph package.  We tested KymoButler [@jakobsKymoButlerDeepLearning2019] for automated kymograph analysis, but found that it did not consistently pick up the small, fast-moving particles common in our lysosome and late endosome data.  As a result, kymographs were manually traced in Fiji using the segmented line tool, with a custom macro to export the data in CSV format for analysis in R.
 
 
 

@@ -13,11 +13,9 @@ always_allow_html: true
 ---
 
 # Introduction {.unnumbered #INTRODUCTION}
-\chaptermark{Introduction}
 
 ```{=latex}
 \markboth{INTRODUCTION}{}
-
 ```
 
 
@@ -35,8 +33,6 @@ library(readbitmap)
 One of the greatest challenges of modern medicine is how to promote regeneration of the central nervous system (CNS).  Compared to most other tissues and organs in the human body, the CNS has exceptionally low regenerative ability.  As a result, damage to the CNS - whether through trauma, infection, or disease - often results in lifelong disability.  In contrast, the peripheral nervous system (PNS) is capable of substantial regeneration after injury, with severed nerves able to regrow several centimetres, reach their targets, and form functional connections, suggesting that regeneration of the CNS might be medically possible, if we can identify the relevant factors at play.  While there has been active research in this area for decades (if not centuries), we are still a long way from what most people would consider 'successful' regeneration of damaged CNS tissues - the regrowth of damaged neuronal processes, appropriate remodelling of the extracellular environment, and restoration of functional synaptic connections.  In this section, I will summarise our current understanding of some of the factors limiting CNS regeneration, as well as the particular challenges I have decided to address with this project.
 
 ### Glaucoma
-
-
 
 Glaucoma is the leading cause of irreversible sight loss worldwide.  It is estimated that over 3.5% of the world population aged 40-80 is affected by glaucoma, which has an enormous impact on quality of life for millions of people [@thamGlobalPrevalenceGlaucoma2014].  While we do have drugs that can slow or even halt the progression of this disease, they cannot reverse damage that has already occurred, and the typical progression of glaucoma (with sight loss beginning at the periphery) means that it is often diagnosed at a late stage.  Furthermore, up to 10% of people do not respond to the first line treatment drugs, so there is a significant need for improved therapies [CITE].
 
@@ -106,7 +102,7 @@ Many of these intrinsic factors interact in what has been described as the 'virt
 
 
 
-## Protrudin
+## Protrudin {#intro-ptdn}
 
 Protrudin is an interesting protein in the context of axon regeneration because it sits at the nexus of several of these intrinsic systems that can prevent regeneration.  As a result, targeting protrudin has the potential to substantially influence a neuron's regenerative capacity by synergistically acting on multiple different pathways.
 
@@ -115,6 +111,9 @@ Protrudin is an interesting protein in the context of axon regeneration because 
 ```{r ptdn-schematic, echo = F, fig.height=4, fig.cap="Schematic of protrudin showing transmembrane domains and binding motifs.  The ER lumen is to the bottom of the image."}
 image_as_ggplot(read.bitmap(here('figures/external/protrudin_schematic.png')))
 ```
+
+Protrudin is a transmembrane ER protein.  It contains an intramembrane hairpin loop, which restricts its localisation to tubular domains of the ER, where it might contribute to shaping maintaining membrane curvature (CITE).  It contains an array of binding domains exposed to the cytoplasm, which include a Rab-binding domain (RBD), an FFAT domain, which interacts with VAPA/B at ER contact sites, a coiled-coil (CC) domain, which binds kinesin, and a FYVE domain, which interacts with phospholipids.  There is also a predicted low-complexity region between the hairpin and CC domains, which has been shown to mediate interaction with Rab7 [@raiborgRepeatedEREndosome2015].
+
 
 ### Cellular outgrowth, migration, and invasion
 

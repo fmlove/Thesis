@@ -4,11 +4,15 @@ output:
   html_document: default
   pdf_document: default
 ---
-# Discussion {.unnumbered #DISCUSSION}
 
+
+# Discussion {.unnumbered #DISCUSSION}
 ```{=latex}
 \markboth{DISCUSSION}{}
+\setcounter{chapter}{4}
+\setcounter{section}{0}
 ```
+
 
 ## Protrudin's role in axonal transport
 
@@ -52,4 +56,4 @@ Previous work has suggested that protrudin may play a role at ER-mitochondrial c
 
 ### Lipids
 
-The gene ontology analysis in section \@ref(GO-analysis) also highlighted a number of protrudin interactions with genes involved in lipid metabolism.  [@ewanAscendingDorsalColumn2021a] identified changes in lipid metabolism as a key factor distinguishing PNS from CNS axon regeneration.  In another collaborative project with the Williams lab, lipid mass spectroscopy of mouse optic nerves showed that either WT or active protrudin decreased the level of ceramides while increasing hexosylceramides, pointing to an effect on sphingolipid synthesis pathways.  The unusual localisation of BODIPY C~5~ ceramide in HeLa cells expressing protrudin also supports the idea of a change in ceramide metabolism (figure \@ref(fig:ceramide_full_figure)).  Further work is ongoing in this area.
+The gene ontology analysis in section \@ref(GO-analysis) also highlighted a number of protrudin interactions with genes involved in lipid metabolism.  [@ewanAscendingDorsalColumn2021a] identified changes in lipid metabolism as a key factor distinguishing PNS from CNS axon regeneration.  In another collaborative project with the Williams lab, lipid mass spectroscopy of mouse optic nerves showed that either WT or active protrudin decreased the level of ceramides while increasing hexosylceramides, pointing to an effect on sphingolipid synthesis pathways.  The unusual localisation of BODIPY C~5~ ceramide in HeLa cells expressing protrudin also supports the idea of a change in ceramide metabolism (figure \@ref(fig:ceramide-full-figure)).  Further work is ongoing in this area.

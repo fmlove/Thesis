@@ -177,8 +177,8 @@ transf.labels = c('Control', 'WT', 'Active', '-', 'dGFP')
 age.levels = c('DIV1', 'DIV3', 'DIV15')
 age.labels = c('DIV1', 'DIV3', 'DIV15')
 
-measure.levels = c('growth cone', 'cytoplasm')
-measure.labels = c('axon terminal', 'soma')
+measure.levels = c('cytoplasm', 'growth cone')
+measure.labels = c('soma', 'axon terminal')
 
 cell_type.levels = c('i3', 'rat cortical')
 cell_type.labels = c('i3', 'rat cortical')
@@ -432,6 +432,29 @@ max_GC_plot = ggplot(max.gc_cyto[max.gc_cyto$measure == 'axon terminal',], aes(x
   stat_compare_means(paired = F, position = position_nudge(y = 1.5))
 
 max_GC_plot
+
+#list to pull out for supplementary
+max_GC_plotlist = lapply(cond.labels, function(l){
+  ggplot(max.gc_cyto[max.gc_cyto$measure == 'axon terminal' & max.gc_cyto$cond == l,], aes(x = age, y = Mean)) +
+    geom_dotplot(aes(fill = age, colour = age), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 1) + 
+    geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = position_dodge(width = 0.9), width = 0.5) + 
+    labs(x = '', y = 'Axon terminal average intensity') + 
+    report_theme + d_format + 
+    stat_compare_means(paired = F, position = position_nudge(y = 1.5))
+  })
+names(max_GC_plotlist) = cond.labels
+
+
+```
+```{r dev_grid}
+max_gridplot = ggplot(max.gc_cyto, aes(x = age, y = Mean)) +
+  geom_dotplot(aes(fill = age, colour = age), binaxis = "y", stackdir = "center", position = "dodge", dotsize = .65) + 
+  geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = position_dodge(width = 0.9), width = 0.5) + 
+  facet_grid(measure~cond, scale = 'free_y') + 
+  labs(x = '', y = 'Average intensity') + 
+  report_theme + d_format + theme(strip.background = element_rect(fill = '#DDDDDD'), strip.text = element_text(size = rel(1.5))) + 
+  stat_compare_means(paired = F, position = position_nudge(y = 1.5))
+max_gridplot
 ```
 ```{r ptdn_max_GC_plot, fig.height = 4, fig.width = 16}
 #ERGIC, SURF4 significant - post-hoc test
@@ -473,6 +496,16 @@ max_cyto_plot = ggplot(max.gc_cyto[max.gc_cyto$measure == 'soma',], aes(x = age,
   stat_compare_means(paired = F, position = position_nudge(y = 5))
 
 max_cyto_plot
+
+max_cyto_plotlist = lapply(cond.labels, function(l){
+  ggplot(max.gc_cyto[max.gc_cyto$measure == 'soma' & max.gc_cyto$cond == l,], aes(x = age, y = Mean)) +
+    geom_dotplot(aes(fill = age, colour = age), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 1) + 
+    geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = position_dodge(width = 0.9), width = 0.5) + 
+    labs(x = '', y = 'Axon terminal average intensity') + 
+    report_theme + d_format + 
+    stat_compare_means(paired = F, position = position_nudge(y = 1.5))
+  })
+names(max_cyto_plotlist) = cond.labels
 ```
 ```{r ptdn_max_cyto_plot, fig.height = 4, fig.width = 16}
 #ERGIC, SURF4 significant - post-hoc test
@@ -684,3 +717,6 @@ SLC38A1_plot = SLC38A1.GFP.soma + SLC38A1.WT.soma + SLC38A1.Mut2.soma +
 SLC38A1_plot
 ```
 
+```{r dev_SLC38A1_full, fig.width=16, fig.height=4}
+max_GC_plotlist[['SLC38A1']] + max_cyto_plotlist[['SLC38A1']]
+```

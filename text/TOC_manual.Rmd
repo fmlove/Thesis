@@ -1,7 +1,4 @@
 
 ```{=latex}
-
-\markboth{CONTENTS}{}
-
 \tableofcontents
 ```

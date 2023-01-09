@@ -4,15 +4,21 @@ output:
   html_document: default
 ---
 # Glossary {.unnumbered #GLOSSARY}
-
 ```{=latex}
 \markboth{GLOSSARY}{}
 ```
 
+```{r glossary-setup, include = F}
+library(knitr)
+library(kableExtra)
+
+options(knitr.table.format = 'markdown')#handles line wrapping and headers c.f. 'latex'
+```
 ```{r gloss-tab, echo = F}
-knitr::kable(read.csv('C:\\Users\\fl299\\PhD\\glossary.csv'),
+kable(read.csv('C:\\Users\\fl299\\PhD\\glossary.csv'),
   booktabs = TRUE,
   longtable = TRUE
   ) %>% 
-  kableExtra::kable_styling(latex_options="scale_down")
+  kable_styling(latex_options="scale_down")#not going to work with longtable
+
 ```

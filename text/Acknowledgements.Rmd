@@ -1,5 +1,4 @@
 # Acknowledgements {.unnumbered #ACKNOWLEDGEMENTS}
-
 ```{=latex}
 \markboth{ACKNOWLEDGEMENTS}{}
 ```

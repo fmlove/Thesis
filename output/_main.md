@@ -31,7 +31,6 @@ always_allow_html: true
 <!--chapter:end:index.Rmd-->
 
 # Acknowledgements {.unnumbered #ACKNOWLEDGEMENTS}
-
 ```{=latex}
 \markboth{ACKNOWLEDGEMENTS}{}
 ```
@@ -39,8 +38,6 @@ always_allow_html: true
 <!--chapter:end:text/Acknowledgements.Rmd-->
 
 # Abstract {.unnumbered #ABSTRACT}
-\chaptermark{Abstract}
-
 ```{=latex}
 \markboth{ABSTRACT}{}
 ```
@@ -51,9 +48,6 @@ Protrudin — a transmembrane scaffold protein found in tubular regions of the e
 
 
 ```{=latex}
-
-\markboth{CONTENTS}{}
-
 \tableofcontents
 ```
 
@@ -74,11 +68,9 @@ always_allow_html: true
 ---
 
 # Introduction {.unnumbered #INTRODUCTION}
-\chaptermark{Introduction}
 
 ```{=latex}
 \markboth{INTRODUCTION}{}
-
 ```
 
 
@@ -89,8 +81,6 @@ always_allow_html: true
 One of the greatest challenges of modern medicine is how to promote regeneration of the central nervous system (CNS).  Compared to most other tissues and organs in the human body, the CNS has exceptionally low regenerative ability.  As a result, damage to the CNS - whether through trauma, infection, or disease - often results in lifelong disability.  In contrast, the peripheral nervous system (PNS) is capable of substantial regeneration after injury, with severed nerves able to regrow several centimetres, reach their targets, and form functional connections, suggesting that regeneration of the CNS might be medically possible, if we can identify the relevant factors at play.  While there has been active research in this area for decades (if not centuries), we are still a long way from what most people would consider 'successful' regeneration of damaged CNS tissues - the regrowth of damaged neuronal processes, appropriate remodelling of the extracellular environment, and restoration of functional synaptic connections.  In this section, I will summarise our current understanding of some of the factors limiting CNS regeneration, as well as the particular challenges I have decided to address with this project.
 
 ### Glaucoma
-
-
 
 Glaucoma is the leading cause of irreversible sight loss worldwide.  It is estimated that over 3.5% of the world population aged 40-80 is affected by glaucoma, which has an enormous impact on quality of life for millions of people [@thamGlobalPrevalenceGlaucoma2014].  While we do have drugs that can slow or even halt the progression of this disease, they cannot reverse damage that has already occurred, and the typical progression of glaucoma (with sight loss beginning at the periphery) means that it is often diagnosed at a late stage.  Furthermore, up to 10% of people do not respond to the first line treatment drugs, so there is a significant need for improved therapies [CITE].
 
@@ -160,13 +150,16 @@ Many of these intrinsic factors interact in what has been described as the 'virt
 
 
 
-## Protrudin
+## Protrudin {#intro-ptdn}
 
 Protrudin is an interesting protein in the context of axon regeneration because it sits at the nexus of several of these intrinsic systems that can prevent regeneration.  As a result, targeting protrudin has the potential to substantially influence a neuron's regenerative capacity by synergistically acting on multiple different pathways.
 
 ### Structure and localisation
 
 ![(\#fig:ptdn-schematic)Schematic of protrudin showing transmembrane domains and binding motifs.  The ER lumen is to the bottom of the image.](_main_files/figure-latex/ptdn-schematic-1.pdf) 
+
+Protrudin is a transmembrane ER protein.  It contains an intramembrane hairpin loop, which restricts its localisation to tubular domains of the ER, where it might contribute to shaping maintaining membrane curvature (CITE).  It contains an array of binding domains exposed to the cytoplasm, which include a Rab-binding domain (RBD), an FFAT domain, which interacts with VAPA/B at ER contact sites, a coiled-coil (CC) domain, which binds kinesin, and a FYVE domain, which interacts with phospholipids.  There is also a predicted low-complexity region between the hairpin and CC domains, which has been shown to mediate interaction with Rab7 [@raiborgRepeatedEREndosome2015].
+
 
 ### Cellular outgrowth, migration, and invasion
 
@@ -243,7 +236,7 @@ All plasmid preparation was carried out using either DH5$\alpha$ *(New England B
 
 ### Cortical neuron cultures
 
-Primary cortical neurons were obtained from embryonic day 18 Sprague Dawley rats. Cortices were dissected in HEPES-HBSS and dissociated with papain for approximately 5 minutes at 37°, followed by DNAse treatment and trituration through a flame-polished glass pipette. Cells were filtered through a 40$\mu$m cell strainer *(Falcon, 352340)* and plated at a density of 200K-400K cells per imaging plate *(Greiner Bio-One, 627860)* or 50-100K cells per acid-washed glass coverslip. (Plates and coverslips were coated with 50$\mu$g/mL poly-D-lysine *(SigmaAldrich, P1149)* in borate buffer.)  Cells were grown in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)*, supplemented with NeuroBrew-21 *(Miltenyi Biotec, 130-093-566)*, GlutaMAX *(Thermo Fisher, 35050061)*, and ITS *(R&D Systems, AR013)* at 37° with 7% CO~2~. 
+Primary cortical neurons were obtained from embryonic day 18 Sprague Dawley rats. Cortices were dissected in HEPES-HBSS and dissociated with papain for approximately 5 minutes at 37°, followed by DNAse treatment and trituration through a flame-polished glass pipette. Cells were filtered through a 40$\mu$m cell strainer *(Falcon, 352340)* and plated at a density of 200K-400K cells per imaging plate *(Greiner Bio-One, 627860)* or 50-100K cells per acid-washed glass coverslip. (Plates and coverslips were coated with 50$\mu$g/mL poly-D-lysine *(Sigma-Aldrich, P1149)* in borate buffer.)  Cells were grown in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)*, supplemented with NeuroBrew-21 *(Miltenyi Biotec, 130-093-566)*, GlutaMAX *(Thermo Fisher, 35050061)*, and ITS *(R&D Systems, AR013)* at 37° with 7% CO~2~. 
 
 ### Transfection
 
@@ -251,13 +244,13 @@ Cortical neurons were transfected at DIV10 by either magnetofection or calcium p
 
 Magnetofection was carried out using NeuroMag Transfection Reagent *(OZ Biosciences, NM51000)*. Briefly, plasmid DNA was incubated at room temperature with the NeuroMag Transfection Reagent in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)* for 30 minutes. Growth media was removed from the cells and replaced with warmed MACS Neuro Medium and the DNA-complexed NeuroMag Transfection Reagent. The cells were placed on a magnetic plate *(OZ Biosciences, MF10000)* in an incubator (37° 7% CO~2~) for 30 minutes. The transfection mix was then removed from the cells and the growth media reapplied.
 
-Calcium phosphate transfection was carried out using a protocol adapted from [@jiangHighCaPhosphate2006].  A solution of DNA and calcium phosphate was prepared, and added dropwise to HEPES-buffered saline *()* while vortexing to precipitate the DNA-calcium phosphate complex.  This was then added to the cells in supplement-free media, and incubated at 37° 7% CO~2~ for one hour.  Cells were then washed with media pre-equilibrated in 10% CO~2~ to remove residual precipitate, and the original growth media reapplied.
+Calcium phosphate transfection was carried out using a protocol adapted from [@jiangHighCaPhosphate2006].  A solution of DNA and calcium phosphate was prepared, and added dropwise to HEPES-buffered saline *(Sigma-Aldrich, 51558)* while vortexing to precipitate the DNA-calcium phosphate complex.  This was then added to the cells in supplement-free media, and incubated at 37° 7% CO~2~ for one hour.  Cells were then washed with media pre-equilibrated in 10% CO~2~ to remove residual precipitate, and the original growth media reapplied.
 
 ### Immunocytochemistry{#immuno}
 
 Cortical neurons were fixed using formaldehyde and sucrose, dissolved in PBS and mixed into the growth media to final concentrations of 3% formaldehyde and 10% sucrose.  HeLa cells were fixed in 3% formaldehyde in PBS.  In both cases, cells were fixed for 15 minutes at room temperature, followed by PBS washes and stored at 4$^{\circ}$.  
 
-Cells were permeabilised with 0.2% saponin, to preserve the localisation of membrane-associated proteins.
+Cells were permeabilised with 0.2% saponin, used throughout the staining process, to preserve the localisation of membrane-associated proteins.  Dishes or coverslips were incubated at room temperature for 45 minutes in blocking buffer containing 3% BSA and 0.2% saponin.  Primary and secondary antibodies were diluted to the desired concentration in the same buffer and incubated for 1.5 hours each at room temperature, before being rinsed in PBS and stained with DAPI.  All samples were mounted with FluorSave reagent *(Calciochem, 345789)* and left to dry for at least 24 hours before imaging.
 
 
 
@@ -276,15 +269,12 @@ High resolution images of fixed cells were obtained with a Leica DMI4000B confoc
 
 All image analysis was conducted in Fiji.  In most cases, custom macros were used for batch processing and streamlining manual tasks.  
 
-All manual image analysis was conducted blind, with the exception of (LC3 FIG NEURON PANEL), where cells were classified while they were being examined on the microscope.  In most cases, blinding was achieved using the *blinds* R package to replace descriptive file names with unique identifiers, which can then be reversed after manual analysis.  While I wrote the package for this project, it is generally applicable and publicly available on GitHub (CITE, GET ZENODO DOI).  Where it was not possible to obscure the file names (e.g. where ROIs were being matched to images by name), steps were taken in the analysis macros to randomise image order and hide the experimental condition.
+All manual image analysis was conducted blind, with the exception of figure \@ref(fig:LC3-full-figure), panel (LC3 FIG NEURON PANEL), where cells were classified while they were being examined on the microscope.  In most cases, blinding was achieved using the `blinds` R package to replace descriptive file names with unique identifiers, which can then be reversed after manual analysis.  While I wrote the package for this project, it is generally applicable and publicly available on GitHub (CITE, GET ZENODO DOI).  Where it was not possible to obscure the file names (e.g. where ROIs were being matched to images by name), steps were taken in the analysis macros to randomise image order and hide the experimental condition.
 
 
 #### Kymograph analysis
 
-Kymographs were generated using the Fiji Multi Kymograph package.  
-
-
-#### Fluorescence quantification
+Kymographs were generated using the Fiji Multi Kymograph package.  We tested KymoButler [@jakobsKymoButlerDeepLearning2019] for automated kymograph analysis, but found that it did not consistently pick up the small, fast-moving particles common in our lysosome and late endosome data.  As a result, kymographs were manually traced in Fiji using the segmented line tool, with a custom macro to export the data in CSV format for analysis in R.
 
 
 
@@ -372,33 +362,22 @@ General cell culture and microscopy methods can be found in section \@ref(METHOD
 ### Cloning of LAMP1 construct for lysosome^[While LAMP1 labels a variety of lysosome-related organelles [@chengRevisitingLAMP1Marker2018], ranging from late endosomes to degradative autophagosomes, I will refer to LAMP1-labelled organelles as lysosomes throughout this thesis for the sake of brevity.] labelling
 
 The LAMP1-RFP plasmid *(Addgene, 1817)* was modified to replace the existing CMV promoter with a human synapsin promoter to improve expression level in neurons.  Primers (see table \@ref(tab:primer-table)) were designed using the NEBuilder tool (https://nebuilder.neb.com) from New England Biolabs. 
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:primer-table)Gibson cloning primers.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:left;"> sequence </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> plasmid forward </td>
-   <td style="text-align:left;"> GGTTTAGTGAACCGTCAG </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> plasmid reverse </td>
-   <td style="text-align:left;"> CGGAACTCCATATATGGG </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> insert forward </td>
-   <td style="text-align:left;"> AGCCCATATATGGAGTTCCGCTAGACTCTAGCTGCAGAGGG </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> insert reverse </td>
-   <td style="text-align:left;"> ATCTGACGGTTCACTAAACCTCGACTGCGCTCTCAGGC </td>
-  </tr>
-</tbody>
-</table>
+\begin{table}
+
+\caption{(\#tab:primer-table)Gibson cloning primers.}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{ll}
+\toprule
+  & sequence\\
+\midrule
+plasmid forward & GGTTTAGTGAACCGTCAG\\
+plasmid reverse & CGGAACTCCATATATGGG\\
+insert forward & AGCCCATATATGGAGTTCCGCTAGACTCTAGCTGCAGAGGG\\
+insert reverse & ATCTGACGGTTCACTAAACCTCGACTGCGCTCTCAGGC\\
+\bottomrule
+\end{tabular}}
+\end{table}
 
 
 Fragments for cloning were produced by PCR, separated on a 1% agarose TBE gel, and purified using the Wizard SV Gel and PCR Clean-Up System kit *(Promega, A9282)*. 20$\mu$L assembly reactions were set up with Gibson master mix *(New England Biolabs, E2611S)* and an appropriate ratio of insert and vector DNA (2:1 or higher) and incubated at 50$^{\circ}$ for 1.5 hours. Assembled constructs were scaled up and successful cloning confirmed with restriction digest and DNA sequencing.
@@ -406,33 +385,21 @@ Fragments for cloning were produced by PCR, separated on a 1% agarose TBE gel, a
 ### Calcyon shRNA silencing
 Ready-cloned shRNA expression vectors against calcyon were obtained from OriGene *(TG712969)* (see table \@ref(tab:caly-tab)).  The constructs readily expressed in rat cortical neurons (as seen from TurboGFP signal), but proved highly toxic to the cells.  Many cells transfected with either a mixture of calcyon shRNA constructs or the scrambled control shRNA *(Origene, TR30013)* showed complete fragmentation, and the remaining intact cells had abnormally low levels of organelle movement, suggesting low viability.  This experiment was not continued further.
 
-<table>
-<caption>(\#tab:caly-tab)Calcyon shRNA sequences.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:left;"> sequence </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> TG712969A </td>
-   <td style="text-align:left;"> ATCCGCAGAAGGCGGAGGATGTGCCGTCC </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> TG712969B </td>
-   <td style="text-align:left;"> TGCGGACCAGCCAAAGAAGTTCGCAGATT </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> TG712969C </td>
-   <td style="text-align:left;"> CCAGATGGCTTCCTACTTCGGCACAAGAT </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> TG712969D </td>
-   <td style="text-align:left;"> TCAGCCATCATTCCCTGACCAGGTGGTCA </td>
-  </tr>
-</tbody>
-</table>
+\begin{table}
+
+\caption{(\#tab:caly-tab)Calcyon shRNA sequences.}
+\centering
+\begin{tabular}[t]{ll}
+\toprule
+  & sequence\\
+\midrule
+TG712969A & ATCCGCAGAAGGCGGAGGATGTGCCGTCC\\
+TG712969B & TGCGGACCAGCCAAAGAAGTTCGCAGATT\\
+TG712969C & CCAGATGGCTTCCTACTTCGGCACAAGAT\\
+TG712969D & TCAGCCATCATTCCCTGACCAGGTGGTCA\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 ### Lysotracker labelling
 We initially tried labelling cells with LysoTracker Red *(Thermo Fisher, L7528)*, using the manufacturer's labelling protocol.  However, the dye was toxic to our neuronal cultures, even at low concentrations.  In addition, the density of our cultures made it difficult to distinguish lysosomes in the neuron of interest from those in overlapping neuronal projections.  As a result, we decided to proceed with transfected fluorescently-tagged markers instead of LysoTracker or other cell-permeable dyes.
@@ -440,7 +407,7 @@ We initially tried labelling cells with LysoTracker Red *(Thermo Fisher, L7528)*
 ### BORC-related constructs for lysosome/late endosome manipulation
 Expression constructs for SKIP, myrlysin (BORCS5), WT Arl8b, and constitutively active Arl8b were kindly provided by Juan Bonifacino.  These constructs were scaled up as described in section \@ref(plasmid-prep) and tested for transfection in cortical neurons.  Additional constructs of SYN-myrlysin-EGFP and CBh-SKIP-mNeonGreen were obtained from VectorBuilder and prepared in the same way.
 
-Our original intention was to test if artificially increasing lysosomal transport in the axon could promote regeneration; however, this work was interrupted by the pandemic.  Following our return to the laboratory, we conducted some pilot experiments with SKIP and LAMP1.  This showed some colocalisation between the two, particularly in anterogradely-moving lysosomes, but no immediately obvious differences in number of lysosomes, speed, or run length compared to an EGFP control (figure \@ref{fig:SKIP-LAMP1-kymo}).  (This is not unexpected, as previous experiments required both SKIP and Arl8b overexpression to stimulate transport [@rosa-ferreiraArl8SKIPAct2011; @fariasBORCKinesin1Ensemble2017].)  After the completion of the experiments described in section \@ref(lyso-LE), it was decided not to continue this work further.
+Our original intention was to test if artificially increasing lysosomal transport in the axon could promote regeneration; however, this work was interrupted by the pandemic.  Following our return to the laboratory, we conducted some pilot experiments with SKIP and LAMP1.  This showed some colocalisation between the two, particularly in anterogradely-moving lysosomes, but no immediately obvious differences in number of lysosomes, speed, or run length compared to an EGFP control (figure \@ref(fig:SKIP-LAMP1-kymo)).  (This is not unexpected, as previous experiments required both SKIP and Arl8b overexpression to stimulate transport [@rosa-ferreiraArl8SKIPAct2011; @fariasBORCKinesin1Ensemble2017].)  After the completion of the experiments described in section \@ref(lyso-LE), it was decided not to continue this work further.
 
 
 ![(\#fig:SKIP-LAMP1-kymo)Representative kymorgaph showing SKIP in green and LAMP1 in magenta.  Anterograde is to the right.](../figures/SKIP-LAMP1-kymo-1.png) 
@@ -494,7 +461,7 @@ Somewhat surprisingly, we found that protrudin overexpression had very little if
 
 Of note, Özkan et al. also do not find a link between protrudin and CNS axonal lysosome transport.  They knocked down protrudin in hippocampal neurons, but found no effect on the distribution of LAMP1-labelled lysosomes into the axon  [@ozkanERLysosomeContacts2021].   This supports the idea that protrudin is not involved with late endosome/lysosome transport in neurons, but that other transport mechanisms (e.g. BORC) are predominant in axon transport.
 
-While these findings can effectively rule out late endosome/lysosome transport as a mechanism through which protrudin drives neuroprotection and axon regeneration, they are worth bearing in mind when it comes to clinical translation.  The differential expression of FYCO1 across cell types suggests potential variations in the regulation of lysosome transport between them.  While protrudin overexpression has no substantial effect on this transport in cortical neurons, it could have an impact on other populations, leading to possible off-target effects in non-neuronal cell types.  Any gene therapies incorporating protrudin should therefore be carefully targeted to limit expression in the PNS and glial populations.
+While these findings can effectively rule out late endosome/lysosome transport as a mechanism through which protrudin drives neuroprotection and axon regeneration, they are worth bearing in mind when it comes to clinical translation.  The differential expression of FYCO1 across cell types suggests potential variations in the regulation of lysosome transport between them.  While protrudin overexpression has no substantial effect on this transport in cortical neurons, it could have an impact on other populations, leading to possible undesired effects in non-neuronal cell types.  Any gene therapies incorporating protrudin should therefore be carefully targeted to limit expression in the PNS and glial populations.
 
 It remains an open question whether or not enhancing axonal lysosome transport could promote axon regeneration, for many of the reasons discussed at the start of this chapter.  Further research in this area is required, either targeting transport mechanisms such as BORC or calcyon (which have been demonstrated to act neurons), or through exogenous expression of FYCO1.  In fact, Saridaki et al. have already shown that FYCO1 overexpression in a *Drosophila* model of Parkinson's disease preserves motor function at baseline levels and prevents age-related decline  [@saridakiFYCO1MediatesClearance2018].  (That being said, *Drosophila* does not contain an ortholog for protrudin, so FYCO1 may not have the same effect as it would in a vertebrate model [@wangHereditarySpasticParaplegia2008].)  While FYCO1 is an appealing candidate for further study, due to the possibility of it acting synergistically with protrudin, it might be unfeasible as a gene therapy due to the size of the FYCO1 transcript.  At over 4.4kbp, it is very close to the packaging capacity of most AAV capsids, even without a promoter or other vector elements.  However, a better understanding of FYCO1 function might allow for the development of a shorter functional form with better translational potential.
 
@@ -504,11 +471,11 @@ It remains an open question whether or not enhancing axonal lysosome transport c
 
 ---
 output:
-  word_document: default
-  html_document: default
   pdf_document: 
       latex_engine: xelatex
       keep_tex: true
+  html_document: default
+  word_document: default
 bibliography: "C:/Users/fl299/PhD/Writing/Thesis/bib/THESIS.bib"
 csl: "C:/Users/fl299/PhD/Writing/Thesis/bib/plos.csl"
 papersize: a4
@@ -523,7 +490,7 @@ always_allow_html: true
 
 
 ## Introduction
-As discussed previously (CROSS_REF TO INTRO), protrudin's array of binding domains allow it to participate in numerous cellular systems, with diverse effects.  To identify other mechanisms of action, we decided to take a broad approach, examining a number of different systems to identify how protrudin might influence survival and regeneration in neurons.
+As discussed previously in section \@ref(intro-ptdn), protrudin's array of binding domains allow it to participate in numerous cellular systems, with diverse effects.  To identify other mechanisms of action, we decided to take a broad approach, examining a number of different systems to identify how protrudin might influence survival and regeneration in neurons.
 
 
 ### Cellular morphology
@@ -588,7 +555,25 @@ We identified three published lists of protrudin-interacting proteins from [@elb
 
 When protrudin is overexpressed in HeLa cells, it drives the growth of long cellular protrusions that superficially resemble developing neurites [@shiraneProtrudinInducesNeurite2006].  While these cells are genetically and functionally very distinct from neurons, this nevertheless provides a useful model system for examining protrudin's interactions with other cellular components.  We used this system to screen for proteins that colocalise with protrusion in these cellular outgrowths, to quickly identify organelles or complexes that could be transported into axons when protrudin is overexpressed in neurons.
 
-(INSERT MARKER/ANTIBODY TABLE HERE)
+
+Table: (\#tab:unnamed-chunk-1)Markers for HeLa screen.
+
+|Marker                  |Description                   |
+|:-----------------------|:-----------------------------|
+|BCAP31                  |ER chaperone                  |
+|SURF4                   |ERES cargo loading            |
+|MIA3 (TANGO1)           |ERES cargo loading            |
+|SEC31A                  |COPII coat component          |
+|ERGIC53                 |ERGIC marker                  |
+|GS28                    |Golgi SNARE                   |
+|GLG1                    |Golgi glycoprotein            |
+|USO1 (p115)             |ER to Golgi vesicle targeting |
+|LAMP1                   |lysosome marker               |
+|mTOR                    |signalling kinase             |
+|ALSL3                   |fatty acid metabolism         |
+|SLC38A1                 |glutamine uptake transporter  |
+|LC3                     |autophagosome marker          |
+|BODIPY TR C~5~ ceramide |ceramide lipid dye            |
 
 
 Based on the results of our gene ontology analysis, we selected a panel of antibodies to screen for colocalisation with protrudin in HeLa cells.  These were primarily focused on components of the ER exit site to Golgi secretory pathway, but also included proteins involved in lipid metabolism, signalling, and amino acid transport.
@@ -613,7 +598,7 @@ Finally, SLC38A1, was found to concentrate in protrusions, and similarly to ERGI
 
 In addition to protrusions, protrudin overexpression also induces the formation of large, ring-shaped structures in the perinucear region.  These are observed occasionally in neurons expressing protrudin, but not to the same extent as in HeLa cells.  While these were not the primary focus of this experiment, they did reveal interesting results with two of the markers screened, and may indicate protrudin involvement in non-morphological pathways.
 
-LC3 strongly colocalised with protrudin in these structures, suggesting that they may represent phagophores or autophagosomes (igure \@ref(fig:LC3-full-figure)).  Notably, LC3 is *not* enriched in cellular protrusions (LINK TO FIGURE PANEL), in contrast to the markers discussed above.  This may represent a different pathway activated by protrudin overexpression.  These LC3-labelled structures are also smaller and less abundant in cells expressing only EGFP, suggesting that their formation is influenced by protrudin overexpression.
+LC3 strongly colocalised with protrudin in these structures, suggesting that they may represent phagophores or autophagosomes (figure \@ref(fig:LC3-full-figure)).  Notably, LC3 is *not* enriched in cellular protrusions (LINK TO FIGURE PANEL), in contrast to the markers discussed above.  This may represent a different pathway activated by protrudin overexpression.  These LC3-labelled structures are also smaller and less abundant in cells expressing only EGFP, suggesting that their formation is influenced by protrudin overexpression.
 
 We followed up this result with a pilot experiment in neurons, co-expressing EGFP-protrudin and mRFP1-tagged LC3.  LC3 showed differences in localisation between cells, ranging from fully cytoplasmic to fully punctate, which likely reflects the conversion between soluble LC3-I and membrane-associated LC3-II [@kabeyaLC3MammalianHomologue2000].  All cells expressing either WT or active protrudin contained at least some LC3 puncta, in contrast to control cells, of which 12.5% had fully cytoplasmic LC3.  This suggests that protrudin might be encouraging autophagosome biogenesis, although further experiments are needed to confirm this result.
 
@@ -621,7 +606,7 @@ We followed up this result with a pilot experiment in neurons, co-expressing EGF
 
 BODIPY C~5~ ceramide, a lipid dye often used to label the Golgi apparatus, strongly labelled the lumen of these organelles.   It is not clear in this context whether these are Golgi-related structures or lipid droplets, however it is worth noting that other Golgi markers did *not* colocalise with these structures (e.g. \@ref(fig:HeLa-Golgi-grid-full-figure), particularly visible in panel C).  Given the relationship with LC3 as discussed above, this may indicate an increase in lipophagy, although further experiments would be needed to confirm.
 
-![(\#fig:ceramide_full_figure)A) Representative image of HeLa cells expressing WT protrudin and stained with BODIPY C~5~ ceramide dye.  Inset is 20x20$\mu$m.  B) Fluorescence profile along the dotted line shown in panel A inset.  Note BODIPY signal (magenta) between spikes of protrudin (green).](../figures/full/ceramide_full_figure-1.png) 
+![(\#fig:ceramide-full-figure)A) Representative image of HeLa cells expressing WT protrudin and stained with BODIPY C~5~ ceramide dye.  Inset is 20x20$\mu$m.  B) Fluorescence profile along the dotted line shown in panel A inset.  Note BODIPY signal (magenta) between spikes of protrudin (green).](../figures/full/ceramide-full-figure-1.png) 
 
 ## Discussion
 
@@ -647,7 +632,7 @@ always_allow_html: true
 ---
 
 # ER, ERGIC, and Golgi in axons
-<!--\chaptermark{ER, ERGIC, and Golgi}-->
+\chaptermark{ER, ERGIC, and Golgi}
 
 
 
@@ -678,42 +663,31 @@ An alternate, Golgi-bypassing pathway has also been suggested, with cargo moving
 
 ## Methods
 
+### Immunochemistry
+
+Immunochemistry was carried out as described in section \@ref(immuno).  In the case of BCAP31, a biotinylated secondary antibody was added to improve signal, and cells were additionally stained for 1.5 hours at room temperature with dye-conjugated streptavidin *(Thermo Fisher, S11226)*.  All other steps were unchanged.
+
 ### Fluorescence quantification
 
-Immunochemistry was carried out as described in \@ref{METHODS}.  Tracing of regions of interest was assisted by a custom ImageJ macro, which is available at (GITHUB REF).  The area of the nucleus was excluded from cell body quantification.  Background correction was carried out for axon terminals, axons, and dendrites by subtracting the intensity of an identical ROI, manually shifted to avoid overlap the area of interest.  Cell bodies were not background-corrected, due to brighter overall intensity and difficulty in identifying a nearby 'background' region free of neurites or other cellular structures.
+Confocal images were analysed as maximum-intensity stack projections in Fiji.  Tracing of regions of interest was assisted by a custom macro, which is available at (GITHUB REF).  The area of the nucleus was excluded from cell body quantification.  Background correction was carried out for axon terminals, axons, and dendrites by subtracting the intensity of an identical ROI, manually shifted to avoid overlap with the area of interest.  Cell bodies were not background-corrected, due to brighter overall intensity and difficulty in identifying a nearby 'background' region free of neurites or other cellular structures.
 
 ### Inhibition of ER to Golgi transport
 
-We tested several inhibitors of either ER to Golgi transport or Golgi function in DIV3 cortical neurons — H-89 (100$\mu$M) *(Calbiochem, 371962)*, clofibrate (500$\mu$M) *(Sigma-Aldrich, C6643)*, brefeldin A (10$\mu$g/mL) *(Calbiochem, 500583)*, and golgicide A *(Calbiochem, 345862)* (10$\mu$M).  These concentrations were based on previously published use [@helmsInhibitionBrefeldinGolgi1992; @defigueiredoClofibrateInhibitsMembrane1999a; @gonzalezAxonsprovidesecretory2016; @saenzGolgicideRevealsEssential2009; @weigelERtoGolgiProteinDelivery2021].  Concentration-matched DMSO-only controls were used for each inhibitor.  The inhibitors were added to cells for 30 minutes at 37°, 7% CO~2~, in supplement-free media, after which cells were fixed.  Given protrudin's effect on ERGIC localisation reported below \@ref{fig:ERGIC_plot}, we used ERGIC53 staining as measure of inhibitor function.  We found that H-89 caused growth cone collapse, while the others preserved cellular morphology, and clofibrate led to a sight decrease in ERGIC53 signal in both the cell body and growth cone (data not shown).
+We tested several inhibitors of either ER to Golgi transport or Golgi function in DIV3 cortical neurons — H-89 (100$\mu$M) *(Calbiochem, 371962)*, clofibrate (500$\mu$M) *(Sigma-Aldrich, C6643)*, brefeldin A (10$\mu$g/mL) *(Calbiochem, 500583)*, and golgicide A *(Calbiochem, 345862)* (10$\mu$M).  These concentrations were based on previously published use [@helmsInhibitionBrefeldinGolgi1992; @defigueiredoClofibrateInhibitsMembrane1999a; @gonzalezAxonsprovidesecretory2016; @saenzGolgicideRevealsEssential2009; @weigelERtoGolgiProteinDelivery2021].  Concentration-matched DMSO-only controls were used for each inhibitor.  The inhibitors were added to cells for 30 minutes at 37°, 7% CO~2~, in supplement-free media, after which cells were fixed.  Given protrudin's effect on ERGIC localisation reported below \@ref(fig:ERGIC53-plot), we used ERGIC53 staining as measure of inhibitor function.  We found that H-89 caused growth cone collapse, while the others preserved cellular morphology, and clofibrate led to a sight decrease in ERGIC53 signal in both the cell body and growth cone (data not shown).
 
 Based on these preliminary results, we decided to test of clofibrate could block protrudin's pro-regenerative effect on injured axons.  Unfortunately, this dosage of clofibrate proved highly toxic over the 16 hour timescale required for this experiment.  We were unable to optimise this experiment further, as our regular supply of rats for cortical neuron cultures was disrupted by an animal carriage embargo at Frankfurt airport during the summer of 2022.  We plan to return to this in a future project.
 
 ## Results
 ### ER-Golgi pathway localisation
-We first set about to determine the baseline localisation of our selected markers, and how this changed during normal neuronal development.  We stained cortical neurons for BCAP31, SURF4, ERGIC53, and SLC38A1 and DIV3 (the earliest point when clear axons can be observed) and DIV15 (synaptic maturation), and compared fluorescence intensity between the cell body and axon terminal.  This showed that, with the exception of SURF4, all markers show a relative decline at the axon terminal with age \@ref{fig:dev-changed-full-figure}.  Separate analysis of each region shows that all markers show increased intensity in the cell body with age, but that most show no significant change in the axon terminal, with the exception of SLC38A1, which increases.  (SUPPLEMENTAL FIGURE?)  This is in keeping with SLC38A1's role as an amino acid transporter, which is a particularly important function for synaptically active neurons [@hellstenNeuronalAstrocyticProtein2017].  It is worth noting that, while the average intensity remains the same, the axon terminal dramatically reduces in size as the cell matures, so this represents a decrease in the total amount of these proteins present at the axon tip.
-
-
-```r
-dev_ratio_plot
-```
+We first set about to determine the baseline localisation of our selected markers, and how this changed during normal neuronal development.  We stained cortical neurons for BCAP31, SURF4, ERGIC53, and SLC38A1 and DIV3 (the earliest point when clear axons can be observed) and DIV15 (synaptic maturation), and compared fluorescence intensity between the cell body and axon terminal.  This showed that, with the exception of SURF4, all markers show a relative decline at the axon terminal with age (figure \@ref(fig:dev-changed-full-figure)).  Separate analysis of each region shows that all markers show increased intensity in the cell body with age, but that most show no significant change in the axon terminal, with the exception of SLC38A1, which increases.  (SUPPLEMENTAL FIGURE?)  This is in keeping with SLC38A1's role as an amino acid transporter, which is a particularly important function for synaptically active neurons [@hellstenNeuronalAstrocyticProtein2017].  It is worth noting that, while the average intensity remains the same, the axon terminal dramatically reduces in size as the cell matures, so this represents a decrease in the total amount of these proteins present at the axon tip.
 
 ![(\#fig:dev-changed-full-figure)A) Ratio of fluorescence intensity between Cell body and axon terminal in DIV3 vs DIV15 neurons.  (TODO - N PER CONDITION) B-M) Representative images of DIV3 neurons (B-E), DIV15 cell bodies (F-I), and DIV15 axon terminals (J-M)  All scale bars are 20$\mu$m, and J-M are 20x20$\mu$m.  Markers correspond to the graph at the top of each column.](../figures/full/dev-changed-full-figure-1.png) 
 
 The staining was repeated in DIV1 (post-differentiation) i3 neurons, at a stage when they are just beginning to grow axons, to confirm that the axon terminal:cell body ratio was conserved between rodent and human neurons.  This showed remarkable consistency between cell types, with the exception of BCAP31, which had a very slightly higher ratio in rat neurons.
 
-
-```r
-i3_plot
-```
-
 ![(\#fig:i3-ratio-plot)A) Ratio of fluorescence intensity between Cell body and axon terminal in DIV1 i3 vs DIV3 rat cortical neurons.  (TODO - N PER CONDITION) B-E) Representative images of DIV1 i3 neurons stained for each marker.  All scale bars are 20$\mu$m.](../figures/full/i3-ratio-plot-1.png) 
 
-We also tested a tool called ESCargo(FTV) to visualise ER exit sites [@govindActivitydependentGolgiSatellite2021].  This encodes a SURF4-dependent synthetic secretory cargo, which can be inducibly released from the ER.  While the aggregates were clearly visible in cell bodies, we only observed them in a small subset of axons, and even then only very sparsely along their length \@ref{fig:ESCargo_fig}.  In some cases, these were found at axonal swellings or branch points, raising the possibility that these exit sites may concentrate at particular structural features.  Further work is required to test if this corresponds to the localisation of functional ER exit sites in the axon, although it seems unlikely to represent the full picture, given how previous studies have demonstrated the importance of local protein translation for diverse axonal functions.
-
-
-```r
-ESCargo_plot
-```
+We also tested a tool called ESCargo(FTV) to visualise ER exit sites [@govindActivitydependentGolgiSatellite2021].  This encodes a SURF4-dependent synthetic secretory cargo, which can be inducibly released from the ER.  While the aggregates were clearly visible in cell bodies, we only observed them in a small subset of axons, and even then only very sparsely along their length \@ref(fig:ESCargo-figure).  In some cases, these were found at axonal swellings or branch points, raising the possibility that these exit sites may concentrate at particular structural features.  Further work is required to test if this corresponds to the localisation of functional ER exit sites in the axon, although it seems unlikely to represent the full picture, given how previous studies have demonstrated the importance of local protein translation for diverse axonal functions.
 
 ![(\#fig:ESCargo-figure)A) Cell body of a cell co-expressing EGFP/Emerald with ESCargo(FTV)-Crimson.  Note individual aggregates or small clusters in dendrites, often at branch points.  B) Axon of neuron depicted in A, with two ESCargo(FTV) aggregates circled.  All scale bars are 20$\mu$m.](../figures/full/ESCargo-figure-1.png) 
 
@@ -723,11 +697,6 @@ Given the developmental decline in these markers at axon terminals, we were inte
 #### BCAP31
 BCAP31 showed high variability between cells, particularly in the soma.  This may have been a result of signal amplifcation with a biotinylated secondary antibody, although the smaller range of intensities measured at axon terminals suggests that this may represent natural variation.  In any case, while protrudin did appear to decrease cell body BCAP31 levels, this did not translate to a change in the axon terminal:cell body ratio.  Therefore, we do not believe that protrudin substantially changes the distribution of BCAP31 in cells.  (Figure \@ref(fig:BCAP31-plot))
 
-
-```r
-BCAP31_plot
-```
-
 ![(\#fig:BCAP31-plot)A-F) Representative images of BCAP31 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20$\mu$m, and D-F are 20x20$\mu$m.  G-I) Quantification of BCAP31 fluorescence intensity. (TODO - N PER CONDITION)](../figures/fullBCAP31-plot-1.png) 
 
 Peculiarly, in many cases BCAP31 signal appeared higher in cells expressing either protrudin or control EGFP, compared to untransfected neighbouring cells.  It is possible that the levels of this protein are dynamicaly controlled in response to the cell's overall level of protein synthesis, which may be impacted by exogenous plasmids.  This should be taken into account in any future experiments examining BCAP31 levels or localisation.
@@ -735,20 +704,10 @@ Peculiarly, in many cases BCAP31 signal appeared higher in cells expressing eith
 #### SURF4
 SURF4 decreased both in the cell body and axon terminal of cells expressing active protrudin.  However, these decreases were well-matched, resulting in no change to the axon terminal:cell body ratio.  It is possible that protrudin is not changing the localisation of this ERES protein, but may alter its overall expression levels.  (Figure \@ref(fig:SURF4-plot))
 
-
-```r
-SURF4_plot
-```
-
 ![(\#fig:SURF4-plot)A-F) Representative images of SURF4 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20$\mu$m, and D-F are 20x20$\mu$m.  G-I) Quantification of SURF4 fluorescence intensity. (TODO - N PER CONDITION)](../figures/fullSURF4-plot-1.png) 
 
 #### SLC38A1
 SLC38A1 showed no significant changes with either WT or active protrudin expression, although there was a slight trend towards higher axonal intensity.    (Figure \@ref(fig:SLC38A1-plot))
-
-
-```r
-SLC38A1_plot
-```
 
 ![(\#fig:SLC38A1-plot)A-F) Representative images of SLC38A1 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20$\mu$m, and D-F are 20x20$\mu$m.  G-I) Quantification of SLC38A1 fluorescence intensity. (TODO - N PER CONDITION)](../figures/fullSLC38A1-plot-1.png) 
 
@@ -756,41 +715,21 @@ SLC38A1_plot
 
 In contrast with the other markers, ERGIC53 showed significantly altered localisation with the expression of active, but not wild type, protrudin.  This included a significant increase in axon terminal intensity and axon terminal:cell body ratio, on top of a slight increase in soma intensity.  This suggests that protrudin is playing a role in either the formation of ERGIC compartments, or their transport into the distal axon.  (Figure \@ref(fig:ERGIC53-plot))
 
-
-```r
-ERGIC53_plot
-```
-
 ![(\#fig:ERGIC53-plot)A-F) Representative images of ERGIC53 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20$\mu$m, and D-F are 20x20$\mu$m.  G-I) Quantification of ERGIC53 fluorescence intensity. (TODO - N PER CONDITION)](../figures/fullERGIC53-plot-1.png) 
 
 ### Protrudin's effect on Golgi satellites
 
 Given protrudin's effect on the ERGIC compartment, we were particularly interested in seeing if this also impacted axonal Golgi satellites.  As these are highly dynamic organelles, we decided to look at Golgi satellite transport in the presence of protrudin.  We co-expressed mCherry-tagged protrudin constructs with St3Gal5-EGFP, as a marker of Golgi satellites.  
 
-
-```r
-St3Gal5_kymo_plot
-```
-
 ![(\#fig:St3Gal-full-figure)A) Representative axon image and kymographs showing St3Gal5 transport in the distal axon of cortical neurons expressing either mCherry (control) or mCherry-tagged protrudin constructs.  B) Total number of St3Gal5-labelled organelles in each cell imaged.  C) Average run length (per cell) of moving Golgi satellites  Anterograde and retrograde were defined as continuous movements of at least 5µm away from or towards the cell body, respectively.  D) Average Golgi satellite velocity (per cell).](../figures/full/St3Gal-full-figure-1.png) 
 
 Following live imaging, these cells were fixed, and imaged at higher exposure on a confocal microscope to more clearly visualise Golgi satellites in the axon.  We measured both the number of puncta, as well as point intensity of each, as a proxy for size.  This confirmed that protrudin overexpression did not affect the overall number of Golgi satellites in the distal axon.  This
-
-
-```r
-GS_puncta_full_figure
-```
 
 ![(\#fig:GS-puncta-full-figure)A) Representative axon image showing St3Gal5 puncta.  Scale bar is 20$\mu$m.  B) Number of puncta per length of axon imaged.  C)Point fluorescence intensity of each St3Gal3 puncta counted.  n = 18 cells per condition across three independent batches.](../figures/full/GS-puncta-full-figure-1.png) 
 
 We then conducted a scratch assay to examine the localisation of Golgi satellites in the growth cones of mature neurons.  Cortical neurons cultured on glass coverslips were scratched with a sterile needle, then incubated for 18-20 hours before fixing.  Axons growing into the scratched region were imaged on a confocal microscope.
 
 This revealed a strong concentration of St3Gal5 at the base of each growth cone, with slightly weaker signal extending further distally.  Where St3Gal5 was co-expressed with protrudin, it is apparent that the Golgi satellite signal reaches further into the growth cone than the ER, suggesting secretory machinery oriented towards the direction of growth.
-
-
-```r
-scratch_fig
-```
 
 ![(\#fig:scratch-assay-full)Representative images of growth cones on DIV15 cortical neurons co-expressing either mCherry (A) or mCherry-protrudin (B-C) with St3Gal5-EGFP.  All scale bars are 20$\mu$m.](../figures/full/scratch-assay-full-1.png) 
 
@@ -811,11 +750,15 @@ output:
   html_document: default
   pdf_document: default
 ---
-# Discussion {.unnumbered #DISCUSSION}
 
+
+# Discussion {.unnumbered #DISCUSSION}
 ```{=latex}
 \markboth{DISCUSSION}{}
+\setcounter{chapter}{4}
+\setcounter{section}{0}
 ```
+
 
 ## Protrudin's role in axonal transport
 
@@ -859,7 +802,7 @@ Previous work has suggested that protrudin may play a role at ER-mitochondrial c
 
 ### Lipids
 
-The gene ontology analysis in section \@ref(GO-analysis) also highlighted a number of protrudin interactions with genes involved in lipid metabolism.  [@ewanAscendingDorsalColumn2021a] identified changes in lipid metabolism as a key factor distinguishing PNS from CNS axon regeneration.  In another collaborative project with the Williams lab, lipid mass spectroscopy of mouse optic nerves showed that either WT or active protrudin decreased the level of ceramides while increasing hexosylceramides, pointing to an effect on sphingolipid synthesis pathways.  The unusual localisation of BODIPY C~5~ ceramide in HeLa cells expressing protrudin also supports the idea of a change in ceramide metabolism (figure \@ref(fig:ceramide_full_figure)).  Further work is ongoing in this area.
+The gene ontology analysis in section \@ref(GO-analysis) also highlighted a number of protrudin interactions with genes involved in lipid metabolism.  [@ewanAscendingDorsalColumn2021a] identified changes in lipid metabolism as a key factor distinguishing PNS from CNS axon regeneration.  In another collaborative project with the Williams lab, lipid mass spectroscopy of mouse optic nerves showed that either WT or active protrudin decreased the level of ceramides while increasing hexosylceramides, pointing to an effect on sphingolipid synthesis pathways.  The unusual localisation of BODIPY C~5~ ceramide in HeLa cells expressing protrudin also supports the idea of a change in ceramide metabolism (figure \@ref(fig:ceramide-full-figure)).  Further work is ongoing in this area.
 
 <!--chapter:end:text/Discussion.Rmd-->
 
@@ -869,359 +812,114 @@ output:
   html_document: default
 ---
 # Glossary {.unnumbered #GLOSSARY}
-
 ```{=latex}
 \markboth{GLOSSARY}{}
 ```
 
-<table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Abbreviation </th>
-   <th style="text-align:left;"> Meaning </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> AAV </td>
-   <td style="text-align:left;"> adeno-associated virus </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ACSL3 </td>
-   <td style="text-align:left;"> acyl-CoA synthetase long chain family member 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> AKT </td>
-   <td style="text-align:left;"> AKT serine/threonine kinase; protein kinase B </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ALS </td>
-   <td style="text-align:left;"> amyotrophic lateral sclerosis </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ANXA11 </td>
-   <td style="text-align:left;"> annexin A11 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Arf6 </td>
-   <td style="text-align:left;"> ADP ribosylation factor 6 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Arl8b </td>
-   <td style="text-align:left;"> ADP ribosylation factor like GTPase 8B </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ATF3 </td>
-   <td style="text-align:left;"> activating transcription factor 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> BCAP31 </td>
-   <td style="text-align:left;"> B cell receptor associated protein 31 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> BODIPY </td>
-   <td style="text-align:left;"> boron-dipyrromethene </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> BORC </td>
-   <td style="text-align:left;"> BLOC1-related compex </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> cAMP </td>
-   <td style="text-align:left;"> cyclic adenosine monophosphate </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC </td>
-   <td style="text-align:left;"> coiled-coil (protein motif) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> c-Jun </td>
-   <td style="text-align:left;"> cellular homolog of viral oncogene v-jun </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CMV </td>
-   <td style="text-align:left;"> cytomegalovirus </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CNS </td>
-   <td style="text-align:left;"> central nervous system </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> COPII </td>
-   <td style="text-align:left;"> coat protein complex II </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> DIV </td>
-   <td style="text-align:left;"> days in vitro </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> DRG </td>
-   <td style="text-align:left;"> dorsal root ganglion </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Efa6 </td>
-   <td style="text-align:left;"> exchange factor for ADP-ribosylation factor guanidine nucleotide factor 6 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> EGFP </td>
-   <td style="text-align:left;"> enhanced green fluorescent protein </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ER </td>
-   <td style="text-align:left;"> endoplasmic reticulum </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ERES </td>
-   <td style="text-align:left;"> ER exit sites </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ERGIC </td>
-   <td style="text-align:left;"> ER-Golgi intermediate compartment </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ERGIC53 </td>
-   <td style="text-align:left;"> ERGIC protein 53; LMAN1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ESCargo (FTV) </td>
-   <td style="text-align:left;"> Erv29/Surf4-dependent secretory cargo with FTV export tripeptide </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> FFAT </td>
-   <td style="text-align:left;"> two phenylalanines (FF) in an acidic tract (protein motif) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> FYCO1 </td>
-   <td style="text-align:left;"> FYVE and coiled-coil domain autophagy adaptor 1; ZFYVE7 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> FYVE </td>
-   <td style="text-align:left;"> Fab1 YOTB Vac1 EEA1 zinc finger domain (protein motif) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> GAPDH </td>
-   <td style="text-align:left;"> glyceraldehyde-3-phosphate dehydrogenase </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> GLG1 </td>
-   <td style="text-align:left;"> Golgi glycoprotein 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> GO </td>
-   <td style="text-align:left;"> gene ontology </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> GS28 </td>
-   <td style="text-align:left;"> 28 KDa Golgi SNARE protein; GOSR1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> GTPase </td>
-   <td style="text-align:left;"> guanosine triphosphatase </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> HeLa </td>
-   <td style="text-align:left;"> human carcinoma cell line </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> HSP </td>
-   <td style="text-align:left;"> hereditary spastic paraplegia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> JIP3/4 </td>
-   <td style="text-align:left;"> JNK-interacting proteins 3/4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> KIF5 </td>
-   <td style="text-align:left;"> kinesin family member 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> KLF </td>
-   <td style="text-align:left;"> Krüppel-like factor </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> LAMP1 </td>
-   <td style="text-align:left;"> lysosomal associated membrane protein 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> LC3 </td>
-   <td style="text-align:left;"> microtubule-associated protein 1A/1B light chain 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> LRRK2 </td>
-   <td style="text-align:left;"> leucine rich repeat kinase 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MCS </td>
-   <td style="text-align:left;"> membrane contact sites </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MIA3 </td>
-   <td style="text-align:left;"> melanoma inhibitory activity protein 3; TANGO1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MMP-9 </td>
-   <td style="text-align:left;"> matrix metalloproteinase 9 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> mRFP </td>
-   <td style="text-align:left;"> monomeric red fluorescent protein </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> mRNA </td>
-   <td style="text-align:left;"> messenger ribonucleic acid </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> mTOR </td>
-   <td style="text-align:left;"> mechanistic/mammalian target of rapamycin kinase </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> mTORC1 </td>
-   <td style="text-align:left;"> mTOR complex 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> p115 </td>
-   <td style="text-align:left;"> general vesicular transport factor p115; USO1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> PC12 </td>
-   <td style="text-align:left;"> rat pheochromocytoma cell line </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> PCR </td>
-   <td style="text-align:left;"> polymerase chain reaction </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> PI3K </td>
-   <td style="text-align:left;"> phosphatidylinositol-3 kinase </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> PIP </td>
-   <td style="text-align:left;"> phosphatidylinositol phosphate </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> PKA </td>
-   <td style="text-align:left;"> protein kinase A </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> PM </td>
-   <td style="text-align:left;"> plasma membrane </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> PNS </td>
-   <td style="text-align:left;"> peripheal nervous system </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> PNS </td>
-   <td style="text-align:left;"> peripheral nervous system </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Rab11 </td>
-   <td style="text-align:left;"> Ras-related protein Rab-11a </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Rab7 </td>
-   <td style="text-align:left;"> Ras-related protein Rab-7a </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> RBD </td>
-   <td style="text-align:left;"> Rab-binding domain </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> RBPMS </td>
-   <td style="text-align:left;"> RNA binding protein with mutiple splicing </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> RGC </td>
-   <td style="text-align:left;"> retinal ganglion cell </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> RILP </td>
-   <td style="text-align:left;"> Rab interacting lysosomal protein </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> RTN3 </td>
-   <td style="text-align:left;"> reticulon 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sar1 </td>
-   <td style="text-align:left;"> secretion associated Ras related GTPase 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> SEC31A </td>
-   <td style="text-align:left;"> SEC31 homolog A, COPII coat complex component </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> shRNA </td>
-   <td style="text-align:left;"> short hairpin ribonucleic acid </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> SKIP </td>
-   <td style="text-align:left;"> SifA and kinesin interacting protein; PLEKHM2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> SLC38A1 </td>
-   <td style="text-align:left;"> solute carrier family 38 member 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> SOCS3 </td>
-   <td style="text-align:left;"> suppressor of cytokine signalling 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> St3Gal5 </td>
-   <td style="text-align:left;"> ST3 beta-galactoside alpha-2,3-sialyltransferase 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> SURF4 </td>
-   <td style="text-align:left;"> surfeit locus protein 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> SYN </td>
-   <td style="text-align:left;"> synapsin </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> TANGO1 </td>
-   <td style="text-align:left;"> transport and Golgi organization protein 1 homolog; MIA3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> TET1 </td>
-   <td style="text-align:left;"> ten-eleven translocation 1 gene protein </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> TIMP1 </td>
-   <td style="text-align:left;"> TIMP metallopeptidase inhibitor 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> USO1 </td>
-   <td style="text-align:left;"> USO1 vesicle docking protein homolog; p115 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> VAPA/B </td>
-   <td style="text-align:left;"> VAMP associated proteins A/B </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> WT </td>
-   <td style="text-align:left;"> wild type </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ZFYVE7 </td>
-   <td style="text-align:left;"> zinc finger FYVE domain-containing protein 7; FYCO1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ZFYVE27 </td>
-   <td style="text-align:left;"> zinc finger FYVE domain-containing protein 27; protrudin </td>
-  </tr>
-</tbody>
-</table>
+
+
+|Abbreviation       |Meaning                                                                   |
+|:------------------|:-------------------------------------------------------------------------|
+|AAV                |adeno-associated virus                                                    |
+|ACSL3              |acyl-CoA synthetase long chain family member 3                            |
+|AKT                |AKT serine/threonine kinase; protein kinase B                             |
+|ALS                |amyotrophic lateral sclerosis                                             |
+|ANXA11             |annexin A11                                                               |
+|Arf6               |ADP ribosylation factor 6                                                 |
+|Arl8b              |ADP ribosylation factor like GTPase 8B                                    |
+|ATF3               |activating transcription factor 3                                         |
+|BCAP31             |B cell receptor associated protein 31                                     |
+|BODIPY             |boron-dipyrromethene                                                      |
+|BORC               |BLOC1-related compex                                                      |
+|BSA                |bovine serum albumin                                                      |
+|cAMP               |cyclic adenosine monophosphate                                            |
+|CC                 |coiled-coil (protein motif)                                               |
+|c-Jun              |cellular homolog of viral oncogene v-jun                                  |
+|CMV                |cytomegalovirus                                                           |
+|CNS                |central nervous system                                                    |
+|COPII              |coat protein complex II                                                   |
+|DIV                |days in vitro                                                             |
+|DRG                |dorsal root ganglion                                                      |
+|Efa6               |exchange factor for ADP-ribosylation factor guanidine nucleotide factor 6 |
+|EGFP               |enhanced green fluorescent protein                                        |
+|ER                 |endoplasmic reticulum                                                     |
+|ERES               |ER exit sites                                                             |
+|ERGIC              |ER-Golgi intermediate compartment                                         |
+|ERGIC53            |ERGIC protein 53; LMAN1                                                   |
+|ESCargo&nbsp;(FTV) |Erv29/Surf4-dependent secretory cargo with FTV export tripeptide          |
+|FFAT               |two phenylalanines (FF) in an acidic tract (protein motif)                |
+|FYCO1              |FYVE and coiled-coil domain autophagy adaptor 1; ZFYVE7                   |
+|FYVE               |Fab1 YOTB Vac1 EEA1 zinc finger domain (protein motif)                    |
+|GAPDH              |glyceraldehyde-3-phosphate dehydrogenase                                  |
+|GLG1               |Golgi glycoprotein 1                                                      |
+|GO                 |gene ontology                                                             |
+|GS28               |28 KDa Golgi SNARE protein; GOSR1                                         |
+|GTPase             |guanosine triphosphatase                                                  |
+|HeLa               |human carcinoma cell line                                                 |
+|HSP                |hereditary spastic paraplegia                                             |
+|JIP3/4             |JNK-interacting proteins 3/4                                              |
+|KIF5               |kinesin family member 5                                                   |
+|KLF                |Krüppel-like factor                                                       |
+|LAMP1              |lysosomal associated membrane protein 1                                   |
+|LC3                |microtubule-associated protein 1A/1B light chain 3                        |
+|LRRK2              |leucine rich repeat kinase 2                                              |
+|MCS                |membrane contact sites                                                    |
+|MIA3               |melanoma inhibitory activity protein 3; TANGO1                            |
+|MMP-9              |matrix metalloproteinase 9                                                |
+|mRFP               |monomeric red fluorescent protein                                         |
+|mRNA               |messenger ribonucleic acid                                                |
+|mTOR               |mechanistic/mammalian target of rapamycin kinase                          |
+|mTORC1             |mTOR complex 1                                                            |
+|p115               |general vesicular transport factor p115; USO1                             |
+|PBS                |phosphate-buffered saline                                                 |
+|PC12               |rat pheochromocytoma cell line                                            |
+|PCR                |polymerase chain reaction                                                 |
+|PI3K               |phosphatidylinositol-3 kinase                                             |
+|PIP                |phosphatidylinositol phosphate                                            |
+|PKA                |protein kinase A                                                          |
+|PM                 |plasma membrane                                                           |
+|PNS                |peripheral nervous system                                                 |
+|Rab11              |Ras-related protein Rab-11a                                               |
+|Rab7               |Ras-related protein Rab-7a                                                |
+|RBD                |Rab-binding domain                                                        |
+|RBPMS              |RNA binding protein with mutiple splicing                                 |
+|RGC                |retinal ganglion cell                                                     |
+|RILP               |Rab interacting lysosomal protein                                         |
+|RTN3               |reticulon 3                                                               |
+|Sar1               |secretion associated Ras related GTPase 1                                 |
+|SEC31A             |SEC31 homolog A, COPII coat complex component                             |
+|shRNA              |short hairpin ribonucleic acid                                            |
+|SKIP               |SifA and kinesin interacting protein; PLEKHM2                             |
+|SLC38A1            |solute carrier family 38 member 1                                         |
+|SOCS3              |suppressor of cytokine signalling 3                                       |
+|St3Gal5            |ST3 beta-galactoside alpha-2,3-sialyltransferase 5                        |
+|SURF4              |surfeit locus protein 4                                                   |
+|SYN                |synapsin                                                                  |
+|TANGO1             |transport and Golgi organization protein 1 homolog; MIA3                  |
+|TET1               |ten-eleven translocation 1 gene protein                                   |
+|TIMP1              |TIMP metallopeptidase inhibitor 1                                         |
+|USO1               |USO1 vesicle docking protein homolog; p115                                |
+|VAPA/B             |VAMP associated proteins A/B                                              |
+|WT                 |wild type                                                                 |
+|ZFYVE7             |zinc finger FYVE domain-containing protein 7; FYCO1                       |
+|ZFYVE27            |zinc finger FYVE domain-containing protein 27; protrudin                  |
 
 <!--chapter:end:text/Glossary.Rmd-->
 
 # Appendix {.unnumbered #APPENDIX}
-
 ```{=latex}
 \markboth{APPENDIX}{}
 ```
 
+<!-- Note: won't render without Ch3. -->
+
+![(\#fig:suppl-dev-grid)TODO](../figures/full/suppl-dev-grid-1.png) 
+
+
 # References {.unnumbered #BIB}
+```{=latex}
+\markboth{REFERENCES}{}
+```
 
 <!--chapter:end:text/Appendix.Rmd-->
 

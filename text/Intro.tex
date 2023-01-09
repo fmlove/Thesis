@@ -1,0 +1,879 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  12pt,
+  a4paper,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\setstretch{1.15}
+\hypertarget{INTRODUCTION}{%
+\section*{Introduction}\label{INTRODUCTION}}
+\addcontentsline{toc}{section}{Introduction}
+
+\markboth{INTRODUCTION}{}
+\chaptermark{Introduction}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{echo =} \ConstantTok{FALSE}\NormalTok{)}
+\CommentTok{\#source(here::here(\textquotesingle{}style/thesis\_setup.R\textquotesingle{}))}
+\CommentTok{\#TEMP}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(grid)}
+\NormalTok{image\_as\_ggplot }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(img)\{}\CommentTok{\#read in image using readbitmap::read.bitmap}
+\NormalTok{  img.grob }\OtherTok{=} \FunctionTok{rasterGrob}\NormalTok{(img)}
+\NormalTok{  img.gg }\OtherTok{=} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{()) }\SpecialCharTok{+} \FunctionTok{annotation\_custom}\NormalTok{(img.grob) }\SpecialCharTok{+} \FunctionTok{theme\_void}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{12}\NormalTok{)}
+  \FunctionTok{return}\NormalTok{(img.gg)}
+\NormalTok{\}}
+
+\FunctionTok{library}\NormalTok{(here)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## here() starts at C:/Users/fl299/PhD/Writing/Thesis
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readbitmap)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{the-challenge-of-cns-regeneration}{%
+\subsection{The challenge of CNS
+regeneration}\label{the-challenge-of-cns-regeneration}}
+
+One of the greatest challenges of modern medicine is how to promote
+regeneration of the central nervous system (CNS). Compared to most other
+tissues and organs in the human body, the CNS has exceptionally low
+regenerative ability. As a result, damage to the CNS - whether through
+trauma, infection, or disease - often results in lifelong disability. In
+contrast, the peripheral nervous system (PNS) is capable of substantial
+regeneration after injury, with severed nerves able to regrow several
+centimetres, reach their targets, and form functional connections,
+suggesting that regeneration of the CNS might be medically possible, if
+we can identify the relevant factors at play. While there has been
+active research in this area for decades (if not centuries), we are
+still a long way from what most people would consider `successful'
+regeneration of damaged CNS tissues - the regrowth of damaged neuronal
+processes, appropriate remodelling of the extracellular environment, and
+restoration of functional synaptic connections. In this section, I will
+summarise our current understanding of some of the factors limiting CNS
+regeneration, as well as the particular challenges I have decided to
+address with this project.
+
+\hypertarget{glaucoma}{%
+\subsubsection{Glaucoma}\label{glaucoma}}
+
+Glaucoma is the leading cause of irreversible sight loss worldwide. It
+is estimated that over 3.5\% of the world population aged 40-80 is
+affected by glaucoma, which has an enormous impact on quality of life
+for millions of people {[}1{]}. While we do have drugs that can slow or
+even halt the progression of this disease, they cannot reverse damage
+that has already occurred, and the typical progression of glaucoma (with
+sight loss beginning at the periphery) means that it is often diagnosed
+at a late stage. Furthermore, up to 10\% of people do not respond to the
+first line treatment drugs, so there is a significant need for improved
+therapies {[}CITE{]}.
+
+While many approaches so far have targeted the increased intraocular
+pressure typically considered a hallmark of glaucoma, there are cases
+where degeneration occurs despite normal pressure in the eye, and it is
+not entirely clear what drives the disease progression in these cases
+{[}CITE{]}. Therefore, it is important to develop therapies that can
+target the neurodegeneration directly, rather than just intraocular
+pressure. To that end, we have been investigating how to prevent
+degeneration of the retinal ganglion cells, and how to promote
+regeneration of cells that are already damaged. By delving into the
+biology of why CNS neurons fail to regenerate and how we can change
+this, we hope to introduce a new class of therapeutics that can be
+applied both to glaucoma and to other CNS diseases or injuries.
+
+\hypertarget{factors-limiting-cns-regeneration}{%
+\subsection{Factors limiting CNS
+regeneration}\label{factors-limiting-cns-regeneration}}
+
+In 1980, Peter Richardson and colleagues at McGill showed that axons in
+a severed rat spinal cord could regenerate into an implanted sciatic
+nerve graft, thus demonstrating that CNS neurons were at least somewhat
+capable of regeneration, but were inhibited by their environment
+{[}2{]}. There are a variety of environmental factors that can limit CNS
+axon growth, ranging from differences in the cellular composition of PNS
+and CNS tissues, to changes in the extracellular environment and cell
+surface receptors that occur as an organism ages.
+
+However, other studies have shown that changes \emph{within} neurons
+also present a barrier to CNS regeneration. As the cells mature from a
+developmental, growth-permissive state into mature, synaptically active
+neurons, they undergo structural and functional changes that in many
+cases seem incompatible with regeneration. Additionally, many
+neurodegenerative diseases stem from genetic or functional disruption
+within neurons, as opposed to the extracellular environment.
+Understanding and addressing these intrinsic sources of dysfunction and
+barriers to regeneration is essential to developing successful therapies
+for CNS protection and regeneration.
+
+\hypertarget{synaptogenesis}{%
+\subsubsection{Synaptogenesis}\label{synaptogenesis}}
+
+Recent work has increasingly pointed to the formation of synapses as the
+key point at which developing CNS neurons lose their capacity to
+regenerate. During this process, interactions with the external cellular
+environment trigger internal changes that encourage signalling function
+at the expense of inhibiting growth. For example, {[}3{]} showed that a
+voltage-gated calcium channel subunit prevents axon growth, and that
+inhibiting the channel can promote regeneration \emph{in vivo}. {[}4{]}
+found a similar effect with presynaptic vesicle-tethering proteins, and
+also found that cells that were capable of regeneration down-regulated
+these proteins during axon growth.
+
+\hypertarget{cytoskeleton}{%
+\subsubsection{Cytoskeleton}\label{cytoskeleton}}
+
+Neurons undergo dramatic morphological changes during development,
+eventually forming extremely long, thin, and complex structures that, in
+some cases, must be carefully maintained for the entire lifetime of the
+organism. To make this possible, mature neurons have a dynamic but
+highly regulated cytoskeleton, particularly in the axon. However, the
+structural requirements of the mature, signal-carrying axon are very
+different from a growing axon, and in the case of axon injury this can
+prevent successful regeneration.
+
+A key feature of the mature neuronal cytoskeleton is the bundle of
+polarised microtubules that forms the backbone of the axon. This
+structure is maintained by proteins such as Efa6, which truncates
+growing microtubules that leave the bundle to reach the axon periphery.
+However, this can also inhibit axon outgrowth, which might limit
+regeneration {[}5{]}.
+
+At the axon tip, a delicate balance of microtubule polymerisation and
+stabilisation at the axon tip promotes forward extension of the growth
+cone and axon elongation during development. This can be partially
+restored in mature axons with the addition of microtubule-stabilising
+drugs, but the effect is highly dose-dependent, with higher doses
+instead inhibiting axon growth (reviewed in {[}6{]}).
+
+\hypertarget{signalling}{%
+\subsubsection{Signalling}\label{signalling}}
+
+Many of the internal changes that occur during neuronal maturation are
+regulated through distinct signalling pathways, which help switch the
+cell between growing and quiescent states.
+
+\hypertarget{pten-and-mtor}{%
+\paragraph{PTEN and mTOR}\label{pten-and-mtor}}
+
+One of the most-studied signalling pathways in the context of CNS repair
+is the PI3K/AKT/mTOR pathway. The levels of PIP\textsubscript{3}, an
+important signalling lipid, are developmentally regulated in neurons.
+PIP\textsubscript{3} is produced from PIP\textsubscript{2} by PI3K,
+while the reverse reaction is catalysed by PTEN. During growth, a
+balance of both enzymes maintain sufficient PIP\textsubscript{3} levels
+to promote growth via AKT kinase and downstream targets such as mTOR. As
+neurons mature, however, expression levels of PI3K decline, while PTEN
+remains high. The result is a decline in PIP\textsubscript{3}, and
+subsequent decrease in AKT signalling. Restoring PIP\textsubscript{3}
+levels in mature levels, either through PTEN deletion or PI3K
+expression, can strongly promote axon regeneration{[}7,8,reviewed in
+9{]}.
+
+\hypertarget{other-signalling-pathways}{%
+\paragraph{Other signalling pathways}\label{other-signalling-pathways}}
+
+Numerous other pathways have also been implicated in the failure of
+regeneration in the CNS. {[}10{]} found that SOCS3 - a negative
+regulator of cytokine signalling - inhibited axon regeneration in mouse
+RGCs by blocking responses to external growth factors, and that deleting
+SOCS3 promoted regeneration. {[}11{]} showed that DRG regeneration into
+the CNS following a conditioning lesion was dependent on cAMP and PKA to
+overcome inhibitory signals from the extracellular environment. These
+pathways all overlap or interact to some degree, but it is still unclear
+how they may be differentially regulated in the case of axonal injury,
+or if this varies across cell types.
+
+\hypertarget{epigenetic-and-transcriptional-regulation}{%
+\subsubsection{Epigenetic and transcriptional
+regulation}\label{epigenetic-and-transcriptional-regulation}}
+
+Dorsal root ganglia (DRG) neurons are unique in that they extend axons
+into both the peripheral and central nervous systems. As peripheral
+neurons, they are capable of axonal regeneration, although this is
+usually only successful in the peripheral branch, due to the inhibitory
+extracellular environment of the CNS. However, their regenerative
+capacity in the CNS is vastly enhanced by a prior injury to the
+peripheral axon. Changes in gene expression and regulation that occur in
+the weeks following a peripheral lesion can allow these cells to
+regenerate through the inhibitory environment of a spinal cord lesion,
+raising the possibility that similar changes could convey similar
+capacity in neurons of the CNS {[}12{]}.
+
+This `conditioning lesion' phenomenon in DRG neurons has provided an
+invaluable model to identifying epigenetic and transcriptomic changes
+that permit PNS regeneration but are normally lacking in the CNS. For
+example, {[}13{]} found that histone modification was essential for the
+conditioning lesion effect, and activated signalling cascades to promote
+axonal growth. {[}14{]} found that DRG neurons upregulate TET3 after
+axon injury, which in turn demethylates DNA and allow the activation of
+regeneration-associated genes. They also found that the regeneration
+induced by PTEN deletion in RGCs was dependent on TET1, a similar
+protein.
+
+Other work has identified transcription factors that may play a role in
+axon regeneration. {[}15{]} suggest that different members of the KLF
+family of transcription factors differentially regulate the regenerative
+capacity of RGCs, while {[}16{]} pointed to ATF3 and c-Jun as key
+regulators. This is by no means an enhaustive list, and a significant
+amount of work is ongoing in this area to identify genes that can
+potentially be targeted to promote regeneration.
+
+\hypertarget{intracellular-transport}{%
+\subsubsection{Intracellular transport}\label{intracellular-transport}}
+
+After synapse formation, axons undergo dramatic changes in transport, as
+much growth machinery is excluded in favour of synapse components and
+synaptic vesicle precursors. This results in decreased transport of some
+essential organelles, which can inhibit survival and regrowth in the
+case of injury.
+
+\hypertarget{recycling-endosomes}{%
+\paragraph{Recycling endosomes}\label{recycling-endosomes}}
+
+Among the organelles excluded from mature axons are Rab11 recycling
+endosomes. While they play a key role in recycling internalised
+receptors to the plasma membrane, they also transport cargo into axons
+{[}17{]}. One such cargo is integrins, which are essential for focal
+adhesion formation and axonal growth. In DRG neurons, integrin
+\(\alpha9\) can promote axon regeneration even into the inhibitory
+environment of the spinal cord {[}18{]}. However, integrins are excluded
+from mature CNS axons by small GTPase Arf6 and its activator Efa6.
+Inhibiting Efa6 allows integrins into the axon and promotes regeneration
+after axotomy \emph{in vitro} {[}19{]}.
+
+\hypertarget{mitochondria}{%
+\paragraph{Mitochondria}\label{mitochondria}}
+
+Similar changes in mitochondrial motility have been identified. {[}20{]}
+found that mitochondrial motility decreased with age in cortical
+neurons, and mature mitochondria were often stationary near presynapses.
+{[}21{]} found that chondroitin sylphate proteoglycans - key components
+of the CNS extracellular matrix, and potent inhibitors of axon
+regeneration - prevented mitochondria from reaching the growth cones of
+regenerating DRG neurons. {[}22{]} linked this change even more directly
+to axon regeneration, showing that artificially enhancing mitochondrial
+transport into axons could boost regeneration, albeit in the PNS.
+
+\hypertarget{the-virtuous-cycle-of-axon-growth}{%
+\subsubsection{The virtuous cycle of axon
+growth}\label{the-virtuous-cycle-of-axon-growth}}
+
+Many of these intrinsic factors interact in what has been described as
+the `virtuous cycle of axon growth' {[}23{]}. As explained in detail in
+that review, changes in axon transport with neuronal maturation lead to
+lower levels of growth factor receptors in the distal axon. This in turn
+mutes the cell's responses to growth factors in the extracellular
+environment, and prevents the activation of growth-promoting
+transcription and signalling cascades. By targeting any stage of this
+cycle - or indeed multiple stages - it should be possible to restore
+mature neurons to a growing state and allow regeneration.
+
+\hypertarget{protrudin}{%
+\subsection{Protrudin}\label{protrudin}}
+
+Protrudin is an interesting protein in the context of axon regeneration
+because it sits at the nexus of several of these intrinsic systems that
+can prevent regeneration. As a result, targeting protrudin has the
+potential to substantially influence a neuron's regenerative capacity by
+synergistically acting on multiple different pathways.
+
+\hypertarget{structure-and-localisation}{%
+\subsubsection{Structure and
+localisation}\label{structure-and-localisation}}
+
+\begin{figure}
+\centering
+\includegraphics{Intro_files/figure-latex/ptdn-schematic-1.pdf}
+\caption{Schematic of protrudin showing transmembrane domains and
+binding motifs. The ER lumen is to the bottom of the image.}
+\end{figure}
+
+\hypertarget{cellular-outgrowth-migration-and-invasion}{%
+\subsubsection{Cellular outgrowth, migration, and
+invasion}\label{cellular-outgrowth-migration-and-invasion}}
+
+Protrudin, otherwise known as ZFYVE27, is so named because its
+overexpression induces the growth of long cellular protrusions in HeLa
+cells {[}24{]}. Subsequent work has shown similar effects on a number of
+cell types {[}25{]}, and indicated a role for protrudin in
+outgrowth-dependent processes, such as migration and cancer cell
+invasion {[}26,27{]}. However, the underlying mechanisms of these
+effects are not fully understood, and there are a number of potential
+pathways that could contribute.
+
+\hypertarget{intro-ptdn-transport}{%
+\subsubsection{Transport}\label{intro-ptdn-transport}}
+
+Protrudin contains a kinesin binding site, indicating a role in
+mediating motor protein-mediated transport. In particular, this would
+promote plus-end directed transport, which is essential for delivering
+cargo into the long axons of CNS neurons. Matsuzaki et al. {[}28{]}
+studied this in some depth, and found that protrudin's
+outgrowth-promoting effect in HeLa cells is attenuated if KIF5 is
+inhibited, and increased if KIF5 is also overexpressed. They found
+evidence for direct protrudin-KIF5 interaction in mouse brains, and
+identified protrudin as the KIF5 adaptor for SURF4, Rab11, VAPA/B, and
+RTN3. As these proteins are essential for ER function, contact site
+formation, protein transport, and a number of other processes, this
+suggests that, even at the low levels found endogenously in CNS neurons
+(CITE), protrudin plays an important role in normal axonal function.
+
+Petrova et al. {[}29{]}, which I contributed to during the first year of
+my PhD, looked at protrudin specifically in the context of integrin
+transport. In particular, integrin \(\alpha9\), which is capable of
+promoting axon growth in the mature spinal cord {[}CITE{]}, is a cargo
+of Rab11 endosomes {[}CITE{]}. We found that protrudin overexpression
+had a small effect on developmental neurite outgrowth, but strongly
+promoted axon regrowth after axotomy \emph{in vitro}. In addition,
+protrudin prevented retinal ganglion cell death after an axon crush
+injury \emph{in vivo}, and allowed axons to regrow past the injury site.
+I discuss this result further in Chapter 1, section @ref(protrudin-ONC).
+
+In contrast, Raiborg et al. {[}30{]} looked at protrudin's effect on
+late endosome transport. Using PC12 cells, they found that protrudin
+\emph{indirectly} promoted late endosome transport, forming transient
+ER-late endosome contacts at which a separate adaptor, FYCO1 (ZFYVE7),
+was able to bind Rab7 and KIF5 to move late endosomes down the axon.
+
+\hypertarget{er-contact-sites}{%
+\subsubsection{ER contact sites}\label{er-contact-sites}}
+
+Other studies have indicated a direct role for protrudin at ER-organelle
+membrane contact sites (MCS). Protrudin interacts with VAPA/B, key
+tethers at many MCS {[}31{]}; {[}28{]}; {[}32{]}; {[}33{]}{]}. It may
+also act at ER-mitochondrial contact sites, which are important for
+axonal function and growth {[}33,34{]}, and may be disrupted in
+neurodegenerative disease (reviewed in {[}35{]}). In addition, protrudin
+itself has been shown to act as a tether at ER-endosome contact sites,
+as it contains a phophoinositide-binding FYVE domain, as well as several
+motifs that can bind Rab proteins {[}30{]}. It may also play a role in
+ER-plasma membrane contacts, as protrudin contains a non-canonical FYVE
+domain that interacts more strongly with PM lipids than those more
+abundant on endosomes {[}36{]}.
+
+\hypertarget{intro-ptdn-axonalER}{%
+\subsubsection{Axonal ER}\label{intro-ptdn-axonalER}}
+
+The axonal ER is comprised of only a few very narrow, continuous
+tubules, and yet is essential for normal axonal function. As protrudin
+localises to ER tubules, it can be found in the axon, although in mature
+neurons it is more abundant in the cell body and dendrites. However, it
+is not excluded from the axon, as it readily moves into the axon if
+overexpressed {[}29{]}. Nevertheless, protrudin interacts with a number
+of important axonal ER components, although it remains unclear exactly
+what function protrudin has in this compartment.
+
+Protrudin contains a membrane hairpin domain, which is shared with other
+proteins that play a role in ER membrane shaping {[}37{]}. Several of
+these are implicated in hereditary spastic paraplegias (HSP), a group of
+axon degenerative diseases, which may stem from fragmentation of the
+axonal ER {[}38{]}. Protrudin itself has been considered an HSP gene
+{[}39{]}, although there is some controversy in this area, and the
+`mutation' involved may actually be a benign polymorphism {[}40{]}.
+However, protrudin does interact with spastin, atlastin, and other HSP
+proteins, so it may still play a role in these conditions{[}37{]}.
+
+While dysfunction of these ER-shaping proteins can lead to axonal
+degeneration, their function is also required for axon regeneration,
+where they appear to concentrate ER tubules near the growing tip
+{[}41{]}. Protrudin may act in the same way, as {[}29{]} found that
+protrudin increases the amount of ER in growth cones.
+
+The axonal ER also acts as a local calcium store, and its capacity is
+regulated by membrane shaping proteins via tubule diameter. Protrudin
+may act in the same way, although it is unclear how this may or may not
+contribute to protrudin's regenerative function, as different ER-shaping
+proteins have been shown to have opposing effects on axon regeneration
+{[}42,43{]}.
+
+\hypertarget{previous-work-on-protrudin}{%
+\subsubsection{Previous work on
+protrudin}\label{previous-work-on-protrudin}}
+
+With these diverse roles across numerous cellular functions, protrudin
+could be influencing neuronal survival and regeneration through several
+different mechanisms. Our lab has been working with protrudin for some
+time now, having initially become interested in the protein in the
+context of integrin transport. This led to the publication of {[}29{]},
+which I contributed to, some of which is presented in section
+@ref(protrudin-ONC).
+
+This paper presented a number of key findings, which I have built upon
+over the course of this project. The foremost of these is that protrudin
+overexpression has a striking effect on neuronal survival and
+regeneration after axon injury.
+
+My initial aim in starting this project was to further examine the
+effect of protrudin on \emph{in vivo} CNS injury, with an aim towards
+developing it further as a gene therapy. Unfortunately, the 2020
+coronavirus pandemic and associated disruption necessitated a dramatic
+change in direction, and I have subsequently focused on understanding
+which cellular pathways contribute to protrudin's beneficial effects.
+This is primarily intended to inform the translation of protrudin as a
+gene therapy for neurodegenerative conditions and CNS injury, although
+it also lays the groundwork for identifying new therapeutic targets in
+the same pathways.
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-thamGlobalPrevalenceGlaucoma2014}{}}%
+\CSLLeftMargin{1. }%
+\CSLRightInline{Tham Y-C, Li X, Wong TY, Quigley HA, Aung T, Cheng C-Y.
+Global prevalence of glaucoma and projections of glaucoma burden through
+2040: A systematic review and meta-analysis. Ophthalmology. 2014;121:
+2081--2090.
+doi:\href{https://doi.org/10.1016/j.ophtha.2014.05.013}{10.1016/j.ophtha.2014.05.013}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-richardsonAxonsCNSNeurones1980}{}}%
+\CSLLeftMargin{2. }%
+\CSLRightInline{Richardson PM, McGuinness UM, Aguayo AJ. Axons from
+{CNS} neurones regenerate into {PNS} grafts. Nature. 1980;284: 264--265.
+doi:\href{https://doi.org/10.1038/284264a0}{10.1038/284264a0}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-tedeschiCalciumChannelSubunit2016}{}}%
+\CSLLeftMargin{3. }%
+\CSLRightInline{Tedeschi A, Dupraz S, Laskowski CJ, Xue J, Ulas T, Beyer
+M, et al. The {Calcium Channel Subunit Alpha2delta2 Suppresses Axon
+Regeneration} in the {Adult CNS}. Neuron. 2016;92: 419--434.
+doi:\href{https://doi.org/10.1016/j.neuron.2016.09.026}{10.1016/j.neuron.2016.09.026}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hiltonActiveVesiclePriming2022}{}}%
+\CSLLeftMargin{4. }%
+\CSLRightInline{Hilton BJ, Husch A, Schaffran B, Lin T, Burnside ER,
+Dupraz S, et al. An active vesicle priming machinery suppresses axon
+regeneration upon adult {CNS} injury. Neuron. 2022;110: 51--69.e7.
+doi:\href{https://doi.org/10.1016/j.neuron.2021.10.007}{10.1016/j.neuron.2021.10.007}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-quEfa6ProtectsAxons2019}{}}%
+\CSLLeftMargin{5. }%
+\CSLRightInline{Qu Y, Hahn I, Lees M, Parkin J, Voelzmann A, Dorey K, et
+al. Efa6 protects axons and regulates their growth and branching by
+inhibiting microtubule polymerisation at the cortex. Balasubramanian MK,
+VijayRaghavan K, editors. eLife. 2019;8: e50319.
+doi:\href{https://doi.org/10.7554/eLife.50319}{10.7554/eLife.50319}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-blanquieCytoskeletonDynamicsAxon2018}{}}%
+\CSLLeftMargin{6. }%
+\CSLRightInline{Blanquie O, Bradke F. Cytoskeleton dynamics in axon
+regeneration. Current Opinion in Neurobiology. 2018;51: 60--69.
+doi:\href{https://doi.org/10.1016/j.conb.2018.02.024}{10.1016/j.conb.2018.02.024}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-parkPromotingAxonRegeneration2008}{}}%
+\CSLLeftMargin{7. }%
+\CSLRightInline{Park KK, Liu K, Hu Y, Smith PD, Wang C, Cai B, et al.
+Promoting {Axon Regeneration} in the {Adult CNS} by {Modulation} of the
+{PTEN}/{mTOR Pathway}. Science. 2008;322: 963--966.
+doi:\href{https://doi.org/10.1126/science.1161566}{10.1126/science.1161566}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-nieuwenhuisPI3kinaseDelta2020}{}}%
+\CSLLeftMargin{8. }%
+\CSLRightInline{Nieuwenhuis B, Barber AC, Evans RS, Pearson CS, Fuchs J,
+MacQueen AR, et al. {PI} 3-kinase delta enhances axonal {PIP3} to
+support axon regeneration in the adult {CNS}. EMBO Molecular Medicine.
+2020;12: e11674.
+doi:\href{https://doi.org/10.15252/emmm.201911674}{10.15252/emmm.201911674}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-nieuwenhuisPromotingAxonRegeneration2022}{}}%
+\CSLLeftMargin{9. }%
+\CSLRightInline{Nieuwenhuis B, Eva R. Promoting axon regeneration in the
+central nervous system by increasing {PI3-kinase} signaling. Neural
+Regeneration Research. 2022;17: 1172--1182.
+doi:\href{https://doi.org/10.4103/1673-5374.327324}{10.4103/1673-5374.327324}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-smithSOCS3DeletionPromotes2009}{}}%
+\CSLLeftMargin{10. }%
+\CSLRightInline{Smith PD, Sun F, Park KK, Cai B, Wang C, Kuwako K, et
+al. {SOCS3 Deletion Promotes Optic Nerve Regeneration In Vivo}. Neuron.
+2009;64: 617--623.
+doi:\href{https://doi.org/10.1016/j.neuron.2009.11.021}{10.1016/j.neuron.2009.11.021}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-qiuSpinalAxonRegeneration2002}{}}%
+\CSLLeftMargin{11. }%
+\CSLRightInline{Qiu J, Cai D, Dai H, McAtee M, Hoffman PN, Bregman BS,
+et al. Spinal {Axon Regeneration Induced} by {Elevation} of {Cyclic
+AMP}. Neuron. 2002;34: 895--903.
+doi:\href{https://doi.org/10.1016/S0896-6273(02)00730-4}{10.1016/S0896-6273(02)00730-4}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-neumannRegenerationDorsalColumn1999}{}}%
+\CSLLeftMargin{12. }%
+\CSLRightInline{Neumann S, Woolf CJ. Regeneration of {Dorsal Column
+Fibers} into and beyond the {Lesion Site} following {Adult Spinal Cord
+Injury}. Neuron. 1999;23: 83--91.
+doi:\href{https://doi.org/10.1016/S0896-6273(00)80755-2}{10.1016/S0896-6273(00)80755-2}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-puttaguntaPCAFdependentEpigeneticChanges2014}{}}%
+\CSLLeftMargin{13. }%
+\CSLRightInline{Puttagunta R, Tedeschi A, Sória MG, Hervera A, Lindner
+R, Rathore KI, et al. {PCAF-dependent} epigenetic changes promote axonal
+regeneration in the central nervous system. Nature Communications.
+2014;5: 1--13.
+doi:\href{https://doi.org/10.1038/ncomms4527}{10.1038/ncomms4527}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wengIntrinsicEpigeneticBarrier2017}{}}%
+\CSLLeftMargin{14. }%
+\CSLRightInline{Weng Y-L, An R, Cassin J, Joseph J, Mi R, Wang C, et al.
+An {Intrinsic Epigenetic Barrier} for {Functional Axon Regeneration}.
+Neuron. 2017;94: 337--346.e6.
+doi:\href{https://doi.org/10.1016/j.neuron.2017.03.034}{10.1016/j.neuron.2017.03.034}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-mooreKLFFamilyMembers2009}{}}%
+\CSLLeftMargin{15. }%
+\CSLRightInline{Moore DL, Blackmore MG, Hu Y, Kaestner KH, Bixby JL,
+Lemmon VP, et al. {KLF Family Members Regulate Intrinsic Axon
+Regeneration Ability}. Science. 2009;326: 298--301.
+doi:\href{https://doi.org/10.1126/science.1175737}{10.1126/science.1175737}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ewanAscendingDorsalColumn2021a}{}}%
+\CSLLeftMargin{16. }%
+\CSLRightInline{Ewan EE, Avraham O, Carlin D, Gonçalves TM, Zhao G,
+Cavalli V. Ascending dorsal column sensory neurons respond to spinal
+cord injury and downregulate genes related to lipid metabolism.
+Scientific Reports. 2021;11: 374.
+doi:\href{https://doi.org/10.1038/s41598-020-79624-0}{10.1038/s41598-020-79624-0}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-kosekiSelectiveRab11Transport2017}{}}%
+\CSLLeftMargin{17. }%
+\CSLRightInline{Koseki H, Donegá M, Lam BY, Petrova V, van Erp S, Yeo
+GS, et al. Selective Rab11 transport and the intrinsic regenerative
+ability of {CNS} axons. VijayRaghavan K, editor. eLife. 2017;6: e26956.
+doi:\href{https://doi.org/10.7554/eLife.26956}{10.7554/eLife.26956}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-cheahExpressionActivatedIntegrin2016}{}}%
+\CSLLeftMargin{18. }%
+\CSLRightInline{Cheah M, Andrews MR, Chew DJ, Moloney EB, Verhaagen J,
+Fässler R, et al. Expression of an {Activated Integrin Promotes
+Long-Distance Sensory Axon Regeneration} in the {Spinal Cord}. Journal
+of Neuroscience. 2016;36: 7283--7297.
+doi:\href{https://doi.org/10.1523/JNEUROSCI.0901-16.2016}{10.1523/JNEUROSCI.0901-16.2016}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-evaEFA6RegulatesSelective2017}{}}%
+\CSLLeftMargin{19. }%
+\CSLRightInline{Eva R, Koseki H, Kanamarlapudi V, Fawcett JW. {EFA6}
+regulates selective polarised transport and axon regeneration from the
+axon initial segment. J Cell Sci. 2017;130: 3663--3675.
+doi:\href{https://doi.org/10.1242/jcs.207423}{10.1242/jcs.207423}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lewisProgressiveDecreaseMitochondrial2016}{}}%
+\CSLLeftMargin{20. }%
+\CSLRightInline{Lewis TL, Turi GF, Kwon S-K, Losonczy A, Polleux F.
+Progressive {Decrease} of {Mitochondrial Motility} during {Maturation}
+of {Cortical Axons In Vitro} and {In Vivo}. Current Biology. 2016;26:
+2602--2608.
+doi:\href{https://doi.org/10.1016/j.cub.2016.07.064}{10.1016/j.cub.2016.07.064}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-sainathChondroitinSulfateProteoglycans2017}{}}%
+\CSLLeftMargin{21. }%
+\CSLRightInline{Sainath R, Armijo-Weingart L, Ketscheck A, Xu Z, Li S,
+Gallo G. Chondroitin sulfate proteoglycans negatively regulate the
+positioning of mitochondria and endoplasmic reticulum to distal axons.
+Developmental Neurobiology. 2017;77: 1351--1370.
+doi:\href{https://doi.org/10.1002/dneu.22535}{10.1002/dneu.22535}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-zhouFacilitationAxonRegeneration2016}{}}%
+\CSLLeftMargin{22. }%
+\CSLRightInline{Zhou B, Yu P, Lin M-Y, Sun T, Chen Y, Sheng Z-H.
+Facilitation of axon regeneration by enhancing mitochondrial transport
+and rescuing energy deficits. The Journal of Cell Biology. 2016;214:
+103--119.
+doi:\href{https://doi.org/10.1083/jcb.201605101}{10.1083/jcb.201605101}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-petrovaVirtuousCycleAxon2018}{}}%
+\CSLLeftMargin{23. }%
+\CSLRightInline{Petrova V, Eva R. The {Virtuous Cycle} of {Axon Growth}:
+{Axonal Transport} of {Growth-Promoting Machinery} as an {Intrinsic
+Determinant} of {Axon Regeneration}. Developmental Neurobiology.
+2018;78: 898--925.
+doi:\href{https://doi.org/10.1002/dneu.22608}{10.1002/dneu.22608}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-shiraneProtrudinInducesNeurite2006}{}}%
+\CSLLeftMargin{24. }%
+\CSLRightInline{Shirane M, Nakayama KI. Protrudin {Induces Neurite
+Formation} by {Directional Membrane Trafficking}. Science. 2006;314:
+818--821.
+doi:\href{https://doi.org/10.1126/science.1134027}{10.1126/science.1134027}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-zhangRoleSpastinProtrudin2012}{}}%
+\CSLLeftMargin{25. }%
+\CSLRightInline{Zhang C, Li D, Ma Y, Yan J, Yang B, Li P, et al. Role of
+spastin and protrudin in neurite outgrowth. Journal of Cellular
+Biochemistry. 2012;113: 2296--2307.
+doi:\href{https://doi.org/10.1002/jcb.24100}{10.1002/jcb.24100}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-aroraProtrudinRegulatesFAK2022}{}}%
+\CSLLeftMargin{26. }%
+\CSLRightInline{Arora A, Kivelä AM, Wang L, Minkeviciene R, Taskinen JH,
+Zhang B, et al. Protrudin regulates {FAK} activation, endothelial cell
+migration and angiogenesis. Cellular and Molecular Life Sciences.
+2022;79: 220.
+doi:\href{https://doi.org/10.1007/s00018-022-04251-z}{10.1007/s00018-022-04251-z}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-pedersenProtrudinmediatedEREndosome2020}{}}%
+\CSLLeftMargin{27. }%
+\CSLRightInline{Pedersen NM, Wenzel EM, Wang L, Antoine S, Chavrier P,
+Stenmark H, et al. Protrudin-mediated {ER}\textendash endosome contact
+sites promote {MT1-MMP} exocytosis and cell invasion. Journal of Cell
+Biology. 2020;219: e202003063.
+doi:\href{https://doi.org/10.1083/jcb.202003063}{10.1083/jcb.202003063}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-matsuzakiProtrudinServesAdaptor2011}{}}%
+\CSLLeftMargin{28. }%
+\CSLRightInline{Matsuzaki F, Shirane M, Matsumoto M, Nakayama KI.
+Protrudin serves as an adaptor molecule that connects {KIF5} and its
+cargoes in vesicular transport during process formation. Molecular
+Biology of the Cell. 2011;22: 4602--4620.
+doi:\href{https://doi.org/10.1091/mbc.e11-01-0068}{10.1091/mbc.e11-01-0068}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-petrovaProtrudinFunctionsEndoplasmic2020}{}}%
+\CSLLeftMargin{29. }%
+\CSLRightInline{Petrova V, Pearson CS, Ching J, Tribble JR, Solano AG,
+Yang Y, et al. Protrudin functions from the endoplasmic reticulum to
+support axon regeneration in the adult {CNS}. Nature Communications.
+2020;11: 5614.
+doi:\href{https://doi.org/10.1038/s41467-020-19436-y}{10.1038/s41467-020-19436-y}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-raiborgRepeatedEREndosome2015}{}}%
+\CSLLeftMargin{30. }%
+\CSLRightInline{Raiborg C, Wenzel EM, Pedersen NM, Olsvik H, Schink KO,
+Schultz SW, et al. Repeated {ER}\textendash endosome contacts promote
+endosome translocation and neurite outgrowth. Nature. 2015;520:
+234--238.
+doi:\href{https://doi.org/10.1038/nature14359}{10.1038/nature14359}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-saitaPromotionNeuriteExtension2009}{}}%
+\CSLLeftMargin{31. }%
+\CSLRightInline{Saita S, Shirane M, Natume T, Iemura S, Nakayama KI.
+Promotion of {Neurite Extension} by {Protrudin Requires Its Interaction}
+with {Vesicle-associated Membrane Protein-associated Protein}. The
+Journal of Biological Chemistry. 2009;284: 13766--13777.
+doi:\href{https://doi.org/10.1074/jbc.M807938200}{10.1074/jbc.M807938200}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hashimotoProtrudinRegulatesEndoplasmic2014}{}}%
+\CSLLeftMargin{32. }%
+\CSLRightInline{Hashimoto Y, Shirane M, Matsuzaki F, Saita S, Ohnishi T,
+Nakayama KI. Protrudin regulates endoplasmic reticulum morphology and
+function associated with the pathogenesis of hereditary spastic
+paraplegia. The Journal of Biological Chemistry. 2014;289: 12946--12961.
+doi:\href{https://doi.org/10.1074/jbc.M113.528687}{10.1074/jbc.M113.528687}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-elbaz-alonPDZD8InteractsProtrudin2020}{}}%
+\CSLLeftMargin{33. }%
+\CSLRightInline{Elbaz-Alon Y, Guo Y, Segev N, Harel M, Quinnell DE,
+Geiger T, et al. {PDZD8} interacts with {Protrudin} and {Rab7} at
+{ER-late} endosome membrane contact sites associated with mitochondria.
+Nature Communications. 2020;11: 3645.
+doi:\href{https://doi.org/10.1038/s41467-020-17451-7}{10.1038/s41467-020-17451-7}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-leeIncreasedERMitochondria2019}{}}%
+\CSLLeftMargin{34. }%
+\CSLRightInline{Lee S, Wang W, Hwang J, Namgung U, Min K-T. Increased
+{ER}\textendash mitochondria tethering promotes axon regeneration.
+Proceedings of the National Academy of Sciences. 2019;116: 16074--16079.
+doi:\href{https://doi.org/10.1073/pnas.1818830116}{10.1073/pnas.1818830116}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bernard-marissalEndoplasmicReticulumMitochondria2018}{}}%
+\CSLLeftMargin{35. }%
+\CSLRightInline{Bernard-Marissal N, Chrast R, Schneider BL. Endoplasmic
+reticulum and mitochondria in diseases of motor and sensory neurons: A
+broken relationship? Cell Death \& Disease. 2018;9: 1--16.
+doi:\href{https://doi.org/10.1038/s41419-017-0125-1}{10.1038/s41419-017-0125-1}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-gilPhosphoinositidesDifferentiallyRegulate2012}{}}%
+\CSLLeftMargin{36. }%
+\CSLRightInline{Gil J-E, Kim E, Kim I-S, Ku B, Park WS, Oh B-H, et al.
+Phosphoinositides {Differentially Regulate Protrudin Localization}
+through the {FYVE Domain}. Journal of Biological Chemistry. 2012;287:
+41268--41276.
+doi:\href{https://doi.org/10.1074/jbc.M112.419127}{10.1074/jbc.M112.419127}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-changProtrudinBindsAtlastins2013}{}}%
+\CSLLeftMargin{37. }%
+\CSLRightInline{Chang J, Lee S, Blackstone C. Protrudin binds atlastins
+and endoplasmic reticulum-shaping proteins and regulates network
+formation. Proceedings of the National Academy of Sciences. 2013;110:
+14954--14959.
+doi:\href{https://doi.org/10.1073/pnas.1307391110}{10.1073/pnas.1307391110}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-yalcinModelingAxonalEndoplasmic2017}{}}%
+\CSLLeftMargin{38. }%
+\CSLRightInline{Yalçın B, Zhao L, Stofanko M, O'Sullivan NC, Kang ZH,
+Roost A, et al. Modeling of axonal endoplasmic reticulum network by
+spastic paraplegia proteins. Bellen HJ, editor. eLife. 2017;6: e23882.
+doi:\href{https://doi.org/10.7554/eLife.23882}{10.7554/eLife.23882}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-mannanZFYVE27SPG33Novel2006}{}}%
+\CSLLeftMargin{39. }%
+\CSLRightInline{Mannan AU, Krawen P, Sauter SM, Boehm J, Chronowska A,
+Paulus W, et al. {ZFYVE27} ({SPG33}), a {Novel Spastin-Binding Protein},
+{Is Mutated} in {Hereditary Spastic Paraplegia}. The American Journal of
+Human Genetics. 2006;79: 351--357.
+doi:\href{https://doi.org/10.1086/504927}{10.1086/504927}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-martignoniRoleZFYVE27Protrudin2008}{}}%
+\CSLLeftMargin{40. }%
+\CSLRightInline{Martignoni M, Riano E, Rugarli EI. The {Role} of
+{ZFYVE27}/{Protrudin} in {Hereditary Spastic Paraplegia}. The American
+Journal of Human Genetics. 2008;83: 127--128.
+doi:\href{https://doi.org/10.1016/j.ajhg.2008.05.014}{10.1016/j.ajhg.2008.05.014}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-raoSpastinAtlastinER2016}{}}%
+\CSLLeftMargin{41. }%
+\CSLRightInline{Rao K, Stone MC, Weiner AT, Gheres KW, Zhou C, Deitcher
+DL, et al. Spastin, atlastin, and {ER} relocalization are involved in
+axon but not dendrite regeneration. Molecular Biology of the Cell.
+2016;27: 3245--3256.
+doi:\href{https://doi.org/10.1091/mbc.E16-05-0287}{10.1091/mbc.E16-05-0287}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-konnoEndoplasmicReticulumMorphological2021}{}}%
+\CSLLeftMargin{42. }%
+\CSLRightInline{Konno T, Parutto P, Bailey DMD, Davì V, Crapart C,
+Awadelkareem MA, et al. Endoplasmic {Reticulum} morphological regulation
+by {RTN4}/{NOGO} modulates neuronal regeneration by curbing luminal
+transport. {bioRxiv}; 2021. p. 2021.05.10.441946.
+doi:\href{https://doi.org/10.1101/2021.05.10.441946}{10.1101/2021.05.10.441946}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-alhajlahOverexpressionReticulonEnhances2021}{}}%
+\CSLLeftMargin{43. }%
+\CSLRightInline{Alhajlah S, Thompson AM, Ahmed Z. Overexpression of
+{Reticulon} 3 {Enhances CNS Axon Regeneration} and {Functional Recovery}
+after {Traumatic Injury}. Cells. 2021;10: 2015.
+doi:\href{https://doi.org/10.3390/cells10082015}{10.3390/cells10082015}}
+
+\end{CSLReferences}
+
+\end{document}

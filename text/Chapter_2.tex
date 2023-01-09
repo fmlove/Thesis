@@ -77,6 +77,20 @@
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -100,8 +114,8 @@ functions}\label{protrudins-role-in-regeneration-and-endogenous-functions}}
 \hypertarget{introduction}{%
 \subsection{Introduction}\label{introduction}}
 
-As discussed previously (CROSS\_REF TO INTRO), protrudin's array of
-binding domains allow it to participate in numerous cellular systems,
+As discussed previously in section @ref(intro-ptdn), protrudin's array
+of binding domains allow it to participate in numerous cellular systems,
 with diverse effects. To identify other mechanisms of action, we decided
 to take a broad approach, examining a number of different systems to
 identify how protrudin might influence survival and regeneration in
@@ -291,9 +305,9 @@ obviously cannot rule out changes in spine function, but in any case
 such changes do not seem to be mediated by morphological changes at the
 micron scale.
 
-\hypertarget{protrudins-interactions-with-other-proteins-in-the-cell}{%
+\hypertarget{GO-analysis}{%
 \subsubsection{Protrudin's interactions with other proteins in the
-cell}\label{protrudins-interactions-with-other-proteins-in-the-cell}}
+cell}\label{GO-analysis}}
 
 We identified three published lists of protrudin-interacting proteins
 from {[}6{]}, {[}7{]}, and {[}8{]}. As these studies used distinct
@@ -332,7 +346,34 @@ with protrusion in these cellular outgrowths, to quickly identify
 organelles or complexes that could be transported into axons when
 protrudin is overexpressed in neurons.
 
-(INSERT MARKER/ANTIBODY TABLE HERE)
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-1}Markers for HeLa screen.}
+\centering
+\begin{tabular}[t]{ll}
+\toprule
+marker & description\\
+\midrule
+BCAP31 & ER chaperone\\
+SURF4 & ERES cargo loading\\
+MIA3 (TANGO1) & ERES cargo loading\\
+SEC31A & COPII coat component\\
+ERGIC53 & ERGIC marker\\
+\addlinespace
+GS28 & Golgi SNARE\\
+GLG1 & Golgi glycoprotein\\
+USO1 (p115) & ER to Golgi vesicle targeting\\
+LAMP1 & lysosome marker\\
+mTOR & signalling kinase\\
+\addlinespace
+ALSL3 & fatty acid metabolism\\
+SLC38A1 & glutamine uptake transporter\\
+LC3 & autophagosome marker\\
+BODIPY TR C\textasciitilde{}5\textasciitilde{} ceramide & ceramide lipid dye\\
+Rab11 & recycling endosome marker\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 Based on the results of our gene ontology analysis, we selected a panel
 of antibodies to screen for colocalisation with protrudin in HeLa cells.
@@ -424,19 +465,19 @@ of the markers screened, and may indicate protrudin involvement in
 non-morphological pathways.
 
 LC3 strongly colocalised with protrudin in these structures, suggesting
-that they may represent phagophores or autophagosomes (LINK TO FIGURE).
-Notably, LC3 is \emph{not} enriched in cellular protrusions (LINK TO
-FIGURE PANEL), in contrast to the markers discussed above. This may
-represent a different pathway activated by protrudin overexpression.
-These LC3-labelled structures are also smaller and less abundant in
-cells expressing only EGFP, suggesting that their formation is
-influenced by protrudin overexpression.
+that they may represent phagophores or autophagosomes (figure
+@ref(fig:LC3-full-figure)). Notably, LC3 is \emph{not} enriched in
+cellular protrusions (LINK TO FIGURE PANEL), in contrast to the markers
+discussed above. This may represent a different pathway activated by
+protrudin overexpression. These LC3-labelled structures are also smaller
+and less abundant in cells expressing only EGFP, suggesting that their
+formation is influenced by protrudin overexpression.
 
 We followed up this result with a pilot experiment in neurons,
 co-expressing EGFP-protrudin and mRFP1-tagged LC3. LC3 showed
 differences in localisation between cells, ranging from fully
 cytoplasmic to fully punctate, which likely reflects the conversion
-between soluble LC3-I and membrane-associated LC3-II (CITE). All cells
+between soluble LC3-I and membrane-associated LC3-II {[}12{]}. All cells
 expressing either WT or active protrudin contained at least some LC3
 puncta, in contrast to control cells, of which 12.5\% had fully
 cytoplasmic LC3. This suggests that protrudin might be encouraging
@@ -445,7 +486,7 @@ confirm this result.
 
 \begin{figure}
 \centering
-\includegraphics{../figures/full/LC3_full_figure-1.png}
+\includegraphics{../figures/full/LC3-full-figure-1.png}
 \caption{A) Representative image of HeLa cells expressing WT protrudin
 and stained for LC3. Inset is 20x20\(\mu\)m. B) Fluorescence profile
 along the dotted line shown in panel A inset. Note strong correspondence
@@ -468,7 +509,7 @@ needed to confirm.
 
 \begin{figure}
 \centering
-\includegraphics{../figures/full/ceramide_full_figure-1.png}
+\includegraphics{../figures/full/ceramide-full-figure-1.png}
 \caption{A) Representative image of HeLa cells expressing WT protrudin
 and stained with BODIPY C\textsubscript{5} ceramide dye. Inset is
 20x20\(\mu\)m. B) Fluorescence profile along the dotted line shown in
@@ -490,8 +531,8 @@ pathways exist, to account for the local translation needs of
 compartments distant from the cell body. In dendrites, for example,
 Golgi outposts and satellites serve some of the same functions as the
 main Golgi apparatus, acting as local points for protein glycosylation
-{[}12{]}. The ERGIC compartment is also involved in a Golgi-bypassing
-secretory pathway, which has been observed in dendrites {[}13{]}. It is
+{[}13{]}. The ERGIC compartment is also involved in a Golgi-bypassing
+secretory pathway, which has been observed in dendrites {[}14{]}. It is
 possible that that same mechanisms could function in axons, providing a
 mechanism through which protrudin expression could promote secretion and
 growth in the absence of any changes to the cell body Golgi apparatus.
@@ -583,15 +624,23 @@ Raiborg C. {PtdIns3P} controls {mTORC1} signaling through lysosomal
 positioning. Journal of Cell Biology. 2017;216: 4217--4233.
 doi:\href{https://doi.org/10.1083/jcb.201611073}{10.1083/jcb.201611073}}
 
-\leavevmode\vadjust pre{\hypertarget{ref-mikhaylovaDendriticGolgiSatellite2016}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-kabeyaLC3MammalianHomologue2000}{}}%
 \CSLLeftMargin{12. }%
+\CSLRightInline{Kabeya Y, Mizushima N, Ueno T, Yamamoto A, Kirisako T,
+Noda T, et al. {LC3}, a mammalian homologue of yeast {Apg8p}, is
+localized in autophagosome membranes after processing. The EMBO Journal.
+2000;19: 5720--5728.
+doi:\href{https://doi.org/10.1093/emboj/19.21.5720}{10.1093/emboj/19.21.5720}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-mikhaylovaDendriticGolgiSatellite2016}{}}%
+\CSLLeftMargin{13. }%
 \CSLRightInline{Mikhaylova M, Bera S, Kobler O, Frischknecht R, Kreutz
 MR. A {Dendritic Golgi Satellite} between {ERGIC} and {Retromer}. Cell
 Reports. 2016;14: 189--199.
 doi:\href{https://doi.org/10.1016/j.celrep.2015.12.024}{10.1016/j.celrep.2015.12.024}}
 
 \leavevmode\vadjust pre{\hypertarget{ref-bowenGolgiindependentSecretoryTrafficking2017}{}}%
-\CSLLeftMargin{13. }%
+\CSLLeftMargin{14. }%
 \CSLRightInline{Bowen AB, Bourke AM, Hiester BG, Hanus C, Kennedy MJ.
 Golgi-independent secretory trafficking through recycling endosomes in
 neuronal dendrites and spines. Davis GW, editor. eLife. 2017;6: e27362.

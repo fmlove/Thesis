@@ -1,7 +1,16 @@
 # Appendix {.unnumbered #APPENDIX}
-
 ```{=latex}
 \markboth{APPENDIX}{}
 ```
 
+<!-- Note: won't render without Ch3. -->
+
+```{r suppl-dev-grid, echo = F, fig.width=16, fig.height=8, fig.path = '../figures/full/', fig.cap="TODO"}
+max_gridplot
+```
+
+
 # References {.unnumbered #BIB}
+```{=latex}
+\markboth{REFERENCES}{}
+```

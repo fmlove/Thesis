@@ -1,23 +1,25 @@
 % packages
 
-%usepackage{textcomp}
-\usepackage{fancyhdr}
-\usepackage{booktabs}
+%usepackage{textcomp} % trying to get greek letters working in figure labels
+\usepackage{fancyhdr} % for custom headers
+\usepackage{booktabs} % for table formatting
+\usepackage{longtable} % table formatting for glossary - over multiple pages
+\usepackage[LGRgreek]{mathastext} % getting rid of italics in math mode for greek letters
+\usepackage{tocbibind} % adding Contents and References to TOC
 
 %header space
 \setlength{\headheight}{16pt}
 
 %page numbers always at the bottom
 \fancypagestyle{plain}{
-
   \fancyfoot[C]{\thepage}
-  \fancyhead[LE]{\chaptermark}
-  \fancyhead[RO]{\chaptermark}
+  \fancyhead[LE, RO]{}
+  \fancyhead[LO, RE]{\MakeUppercase{\leftmark}}
   \renewcommand{\headrulewidth}{0pt}
-
-
 }
 \pagestyle{plain}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 
 % turning off autmatic title page; replaced with title_page.tex
 \let\oldmaketitle\maketitle

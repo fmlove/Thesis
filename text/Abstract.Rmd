@@ -1,6 +1,4 @@
 # Abstract {.unnumbered #ABSTRACT}
-\chaptermark{Abstract}
-
 ```{=latex}
 \markboth{ABSTRACT}{}
 ```
