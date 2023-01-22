@@ -1,19 +1,18 @@
 ---
 output:
+  word_document: default
+  html_document: default
   pdf_document:
     latex_engine: xelatex
-  html_document: default
-  word_document: default
 bibliography: "`r here::here('bib/THESIS.bib')`"
-csl: "`r here::here('bib/plos.csl')`"
-papersize: a4
-fontsize: 12pt
-linestretch: 1.15
 always_allow_html: true
 ---
 
-# Protrudin's effect on neuroprotection through lysosome and late endosome transport
+# Is protrudin's effect on neuroprotection mediated by lysosome and late endosome transport?
+
+```{=latex}
 \chaptermark{Lysosome and late endosome transport}
+```
 
 ```{r chapter_1_setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -43,55 +42,47 @@ Lysosomes have traditionally been regarded as the degradative compartment of the
 
 Lysosomal dysfunction is implicated in a wide range of neurodegenerative diseases, including Alzheimer's disease, Parkinson's disease, and ALS.  In many cases, defects in lysosomal degradation of autophagosome contents (a process which occurs in tandem with retrograde transport in axons, as reviewed in Ferguson, 2019 [@fergusonNeuronalLysosomes2019]) are thought to cause the accumulation of damaged organelles, which eventually leads to axonal swellings and subsequent degeneration [@dehayPathogenicLysosomalDepletion2010; @leeLysosomalProteolysisInhibition2011; @xieEndolysosomalDeficitsAugment2015].  Other conditions have been linked to impaired transport leading to decreased availability of lysosomes in the axon [@roneyLipidmediatedMotoradaptorSequestration2021].  Understanding how lysosomes function in neurons and the processes controlling their transport is therefore an important step in developing new protective or regenerative therapies for the CNS.
 
-
 #### RNA transport
 
-In recent years, a substantial body of evidence has emerged for lysosomes and closely related late endosomes facilitating RNA transport in neurons.  mRNA transport, and subsequent local protein synthesis, is essential for axon growth, pathfinding, maintenance, and synapse formation (reviewed in Cioni et al., 2018 [@cioniMolecularControlLocal2018]). 
+In recent years, a substantial body of evidence has emerged to demonstrate how lysosomes and closely related late endosomes facilitate RNA transport in neurons.  mRNA transport, and subsequent local protein synthesis, is essential for axon growth, pathfinding, maintenance, and synapse formation (reviewed in [@cioniMolecularControlLocal2018]).  
 
-Cioni et al. demonstrated that ribonucleoproteins in the axon often associate with Rab7-marked late endosomes, and that these endosomes act as sites for local translation.  Furthermore, these late endosomes can form contact sites with mitochondria, where they are involved in the local translation of proteins for mitochondrial maintenance [@cioniLateEndosomesAct2019].  Work by Liao et al. identified the protein ANXA11 as the tether between lysosomes and RNA granules in the axon, and also showed that ALS-associated mutation in ANXA11 interfere with lysosome binding [@liaoRNAGranulesHitchhike2019].  
-
+Cioni et al. demonstrated that ribonucleoproteins in the axon often associate with Rab7-marked late endosomes, and that these endosomes act as sites for local translation.  Furthermore, these late endosomes can form contact sites with mitochondria, where they are involved in the local translation of proteins for mitochondrial maintenance [@cioniLateEndosomesAct2019].  Work by Liao et al. identified the protein ANXA11 as the tether between lysosomes and RNA granules in the axon, and also showed that ALS-associated mutations in ANXA11 interfere with lysosome binding [@liaoRNAGranulesHitchhike2019].  
 
 #### Signalling platform
 
-As an endpoint of several protein degradation pathways, lysosomes are particularly responsive to amino acid levels in the cell, and in turn regulate the cell's response to feeding or starvation through signalling complex mTORC1.  mTORC1 localises to lysosomes, where it can be activated by regulatory proteins that colocalise in the presence of amino acids, in turn leading to increased protein translation and cell growth (reviewed in [@inpanathanLysosomeSignalingPlatform2019]).This process is modulated by lysosome positioning — during starvation, lysosomes cluster near the nucleus, and mTORC1 activity is inhibited.  Feeding allows the lysosomes to transport towards the cell periphery, where mTORC1 activation can promote growth.  Hong et al. found that protrudin was involved in this process, interacting with lysosomes to facilitate anterograde transport [@hongPtdIns3PControlsMTORC12017].   This signalling is especially important in neurons — Poulopoulos et al. found that the majority of mRNA transcripts that they identified as enriched in growth cones contain a TOP motif for mTORC1-dependent translation [@poulopoulosSubcellularTranscriptomesProteomes2019].  Therefore, the location of lysosomes and the regulation of mTORC1 on those lysosomes likely acts as a key gatekeeper of local translation, and the associated axonal functions that depend on it.
+As an endpoint of several protein degradation pathways, lysosomes are particularly responsive to amino acid levels in the cell, and in turn regulate the cell's response to feeding or starvation through signalling complex mTORC1.  mTORC1 localises to lysosomes, where it can be activated by regulatory proteins that colocalise in the presence of amino acids, in turn leading to increased protein translation and cell growth (reviewed in [@inpanathanLysosomeSignalingPlatform2019]).This process is modulated by lysosome positioning — during starvation, lysosomes cluster near the nucleus, and mTORC1 activity is inhibited.  Feeding allows the lysosomes to transport towards the cell periphery, where mTORC1 activation can promote growth.  Hong et al. found that protrudin was involved in this process, interacting with lysosomes to facilitate anterograde transport [@hongPtdIns3PControlsMTORC12017].   This signalling is especially important in neurons — Poulopoulos et al. found that the majority of mRNA transcripts that they identified as enriched in growth cones contain a TOP motif for mTORC1-dependent translation [@poulopoulosSubcellularTranscriptomesProteomes2019].  (In addition, they showed that endogenous mTOR and mTORC1 proteins were also enriched in growth cones, providing the necessary machinery for local translation.)  Therefore, the location of lysosomes and the regulation of mTORC1 on those lysosomes likely acts as a key gatekeeper of local translation, and the associated axonal functions that depend on it.
 
 Beyond mTORC1, lysosomes also participate in calcium signalling, which is particularly important for neuronal function.  Lysosomes are known to act as calcium stores for the cell, but also participate in a process known as store-operated calcium entry in response to calcium influx.  In this process, lysosomes are exocytosed, inserting N-type calcium channels from their membranes into the plasma membrane and allowing increased calcium entry and subsequent activation of signalling cascades [@huiReleaseCalciumEndolysosomes2015].  Additionally, this exocytosis releases cathepsin B into the extracellular space, which activates matrix metalloproteinase 9 (MMP-9) through cleaving its inhibitor TIMP-1.  Active MMP-9 breaks down components of the extracellular matrix, facilitating cellular growth.  In neurons, this allows dendritic spines to grow in response to activity [@padamseyActivityDependentExocytosisLysosomes2017].  In cancer cells, this underpins the growth of invasive protrusions called invadopodia, a process that has been shown to depend on protrudin, Rab7, and FYCO1 [@pedersenProtrudinmediatedEREndosome2020]. 
 
-
 #### ER morphology
 
-Recent advances in microscopy have allowed the interactions between lysosomes and the ER to be imaged in unprecedented detail, and shown how lysosomes are involved in shaping the tubular ER network in cells.   Lu et al. demonstrated that, lysosomes moved in response to the cell's nutritional state, they pulled ER tubules with them.  Interfering with the anterograde movement of lysosomes or ER-lysosomal contact sites resulted in fewer tubules and large ER sheets near the nucleus.  In neurons, this led to decreased axonal ER tubules and stunted axon growth [@luStructureGlobalDistribution2020].  Spits et al. showed a similar interaction with late endosomes, where Rab7 and its transport adaptors mediated ER tubule reorganisation, and resulting in a more sparse ER network in response to starvation [@spitsMobileLateEndosomes2021].   
+Recent advances in microscopy have allowed the interactions between lysosomes and the ER to be imaged in unprecedented detail, and in turn revealed how lysosomes are involved in shaping the tubular ER network in cells.   Lu et al. demonstrated that, as lysosomes moved in response to the cell's nutritional state, they pulled ER tubules with them.  Interfering with the anterograde movement of lysosomes or ER-lysosomal contact sites resulted in fewer tubules and large ER sheets near the nucleus.  In neurons, this led to decreased axonal ER tubules and stunted axon growth [@luStructureGlobalDistribution2020].  Spits et al. showed a similar interaction with late endosomes, where Rab7 and its transport adaptors mediated ER tubule reorganisation, and resulting in a more sparse ER network in response to starvation [@spitsMobileLateEndosomes2021].   
 
 As much as lysosomes help shape the ER, these interactions are reciprocal, and also play an essential role in lysosome morphology.  Disruption of the ER tubule network has been shown to result in the accumulation of large, static lysosomes near the nucleus, and prevent lysosome transport into axons [@ozkanERLysosomeContacts2021].  Other work has shown that association with ER tubules is necessary for lysosomal tubulation and cargo sorting, and that a key protein involved, LRRK2, is implicated in Parkinson's disease [@bonet-ponceEndoplasmicReticulumContributes2022].
-
-
 
 ### Lysosome transport mechanisms
 
 As lysosomal function is closely tied to the positioning of these organelles in the cell, significant work has gone into understanding how lysosomes are transported.  This has identified a number of distinct, sometimes overlapping pathways that are regulated in different ways.  Work is still ongoing to understand the importance of these different pathways, and how they may interact in different cell types to control late endosome and lysosomal transport.
 
-
 #### BORC/Arl8b/SKIP
 
-The BORC/Arl8b/SKIP interaction is one of the best-characterised mechanisms involved in lysosome transport, in part because of how many different proteins are involved and their roles in other systems.  In summary, BORC, a complex of eight proteins, is recruited to the lysosomal membrane, where it in turn recruits and activates Arl8b, a small GTPase.  GTP-bound Arl8b can in turn interact with SKIP, which binds to kinesin-1.  This chain of interactions tethers lysosomes to the kinesin motor for transport along microtubules [@guardiaBORCFunctionsUpstream2016].  This process has been shown to mediate anterograde transport of lysosomes in axons [@fariasBORCKinesin1Ensemble2017], and defects in BORC component diaskedin are linked to progressive axonal dystrophy [@snouwaertMutationBorcs7Subunit2018].  In cancer cells, this system has been shown to enhance cell invasiveness, supporting a role for BORC-mediated lysosome transport in cell outgrowth [@wuLysosomalTraffickingMediated2020].
-
+The BORC/Arl8b/SKIP interaction is one of the best-characterised mechanisms involved in lysosome transport.  In summary, BORC, a complex of eight proteins, is recruited to the lysosomal membrane, where it in turn recruits and activates Arl8b, a small GTPase.  GTP-bound Arl8b can in turn interact with SKIP, which binds to kinesin-1.  This chain of interactions tethers lysosomes to the kinesin motor for transport along microtubules [@guardiaBORCFunctionsUpstream2016].  This process has been shown to mediate anterograde transport of lysosomes in axons [@fariasBORCKinesin1Ensemble2017], and defects in BORC component diaskedin are linked to progressive axonal dystrophy [@snouwaertMutationBorcs7Subunit2018].  In cancer cells, this system has been shown to enhance cell invasiveness, supporting a role for BORC-mediated lysosome transport in cell outgrowth [@wuLysosomalTraffickingMediated2020].
 
 #### Calcyon and other adaptor proteins
 
-While the BORC complex is involved in kinesin-mediated transport, several other adaptor proteins facilitate minus-end directed transport through binding to dyneins.  These include calcyon (which binds to late endosomes and lysosomes)[@shiDyneinBindsStimulates2017; @shiCouplingMicrotubuleMotors2018], RILP (which is a specific adaptor for Rab)[@bucciExpressionAnalysisChromosomal2001], ALG2 (which binds lysosomes in a calcium-dependent manner) [@liMolecularMechanismRegulate2016], and JIP3 and JIP4, which are involved in amino-acid induced lysosomal transport through TMEM55B [@willettTFEBRegulatesLysosomal2017; @gowrishankarOverlappingRolesJIP32021].  This is not an exhaustive list, and a number of other proteins have also been implicated in lysosome or late endosome transport in various different cell types.  The diversity of effector proteins involved in this process likely reflects the importance of lysosome regulation on the function of different tissues and cells, although further work in this area is required to build up a clearer picture.
+While the BORC complex is involved in kinesin-mediated transport, several other adaptor proteins facilitate minus-end directed transport through binding to dyneins.  These include calcyon (which binds to late endosomes and lysosomes)[@shiDyneinBindsStimulates2017; @shiCouplingMicrotubuleMotors2018], RILP (which is a specific adaptor for Rab)[@bucciExpressionAnalysisChromosomal2001], ALG2 (which binds lysosomes in a calcium-dependent manner) [@liMolecularMechanismRegulate2016], and JIP3 and JIP4, which are involved in amino-acid induced lysosomal transport through TMEM55B [@willettTFEBRegulatesLysosomal2017; @gowrishankarOverlappingRolesJIP32021].  The diversity of effector proteins involved in this process likely reflects the importance of lysosome positioning on the function of diverse tissues and cell types.
 
 #### Protrudin
 
-As previously discussed (section \@ref(intro-ptdn-transport)), Raiborg et al. proposed a mechanism through which protrudin promotes anterograde late endosome transport [@raiborgRepeatedEREndosome2015].  Subsequent work expanded this mechanism to lysosomes, and particularly implicated protrudin-mediated lysosomal transport in mTORC1 activation, albeit in non-neuronal cells [@hongPtdIns3PControlsMTORC12017].  Additionally, Since Petrova et al. showed that overexpression of protrudin increased the amount of ER in growth cones, it seemed likely that lysosomal transport might play a role in this process, in keeping with the role of lysosomes in ER transport discussed in section \@ref(intro-ptdn-axonalER) [@petrovaProtrudinFunctionsEndoplasmic2020].
+As previously discussed (section \@ref(intro-ptdn-transport)), Raiborg et al. proposed a mechanism through which protrudin promotes anterograde late endosome transport [@raiborgRepeatedEREndosome2015], which in turn drives neurite outgrowth.  Subsequent work expanded this mechanism to lysosomes, and particularly implicated protrudin-mediated lysosomal transport in mTORC1 activation, albeit in non-neuronal cells [@hongPtdIns3PControlsMTORC12017].  Additionally, since Petrova et al. showed that overexpression of protrudin increased the amount of ER in growth cones, it seemed likely that lysosomal transport might play a role in this process, in keeping with the role of lysosomes in ER transport discussed in section \@ref(intro-ptdn-axonalER) [@petrovaProtrudinFunctionsEndoplasmic2020].
 
-Given the importance of lysosome transport to cell growth and neuronal function, We decided to test whether protrudin overexpression could be increasing axonal lysosome transport.  
-
+Given the importance of lysosome transport to cell growth and neuronal function, we decided to test whether protrudin overexpression — and its associated neuroprotective and pro-regenerative effects — could be mediated through an increase in axonal lysosome transport.  At the same time, we set out to test whether other approaches to increase lysosomal transport might also promote regeneration or survival in damaged axons.
 
 ## Methods
 
 General cell culture and microscopy methods can be found in section \@ref(METHODS).  Methods for the experiment presented in section \@ref(protrudin-ONC) are published in [@petrovaProtrudinFunctionsEndoplasmic2020].
 
-### Cloning of LAMP1 construct for lysosome^[While LAMP1 labels a variety of lysosome-related organelles [@chengRevisitingLAMP1Marker2018], ranging from late endosomes to degradative autophagosomes, I will refer to LAMP1-labelled organelles as lysosomes throughout this thesis for the sake of brevity.] labelling
+### Cloning of LAMP1 construct for lysosome^[While LAMP1 labels a variety of lysosome-related organelles [@chengRevisitingLAMP1Marker2018], ranging from late endosomes to degradative autophagosomes, I will refer to LAMP1-labelled organelles as lysosomes throughout this thesis for the sake of brevity.] labelling{#cloning}
 
 The LAMP1-RFP plasmid *(Addgene, 1817)* was modified to replace the existing CMV promoter with a human synapsin promoter to improve expression level in neurons.  Primers (see table \@ref(tab:primer-table)) were designed using the NEBuilder tool (https://nebuilder.neb.com) from New England Biolabs. 
 ```{r primer-table, echo = F}
@@ -107,10 +98,10 @@ kable(
 
 ```
 
-
-Fragments for cloning were produced by PCR, separated on a 1% agarose TBE gel, and purified using the Wizard SV Gel and PCR Clean-Up System kit *(Promega, A9282)*. 20$\mu$L assembly reactions were set up with Gibson master mix *(New England Biolabs, E2611S)* and an appropriate ratio of insert and vector DNA (2:1 or higher) and incubated at 50$^{\circ}$ for 1.5 hours. Assembled constructs were scaled up and successful cloning confirmed with restriction digest and DNA sequencing.
+Fragments for cloning were produced by PCR, separated on a 1% agarose TBE gel, and purified using the Wizard SV Gel and PCR Clean-Up System kit *(Promega, A9282)*. 20$\mu$L assembly reactions were set up with Gibson master mix *(New England Biolabs, E2611S)* and an appropriate ratio of insert and vector DNA (2:1 or higher) and incubated at 50°C for 1.5 hours. Assembled constructs were scaled up and successful cloning confirmed with restriction digest and DNA sequencing.
 
 ### Calcyon shRNA silencing
+
 Ready-cloned shRNA expression vectors against calcyon were obtained from OriGene *(TG712969)* (see table \@ref(tab:caly-tab)).  The constructs readily expressed in rat cortical neurons (as seen from TurboGFP signal), but proved highly toxic to the cells.  Many cells transfected with either a mixture of calcyon shRNA constructs or the scrambled control shRNA *(Origene, TR30013)* showed complete fragmentation, and the remaining intact cells had abnormally low levels of organelle movement, suggesting low viability.  This experiment was not continued further.
 
 ```{r caly-tab, echo = FALSE}
@@ -128,37 +119,36 @@ kable(
 ```
 
 ### Lysotracker labelling
+
 We initially tried labelling cells with LysoTracker Red *(Thermo Fisher, L7528)*, using the manufacturer's labelling protocol.  However, the dye was toxic to our neuronal cultures, even at low concentrations.  In addition, the density of our cultures made it difficult to distinguish lysosomes in the neuron of interest from those in overlapping neuronal projections.  As a result, we decided to proceed with transfected fluorescently-tagged markers instead of LysoTracker or other cell-permeable dyes.
 
 ### BORC-related constructs for lysosome/late endosome manipulation
+
 Expression constructs for SKIP, myrlysin (BORCS5), WT Arl8b, and constitutively active Arl8b were kindly provided by Juan Bonifacino.  These constructs were scaled up as described in section \@ref(plasmid-prep) and tested for transfection in cortical neurons.  Additional constructs of SYN-myrlysin-EGFP and CBh-SKIP-mNeonGreen were obtained from VectorBuilder and prepared in the same way.
+
+```{r SKIP-LAMP1-kymo, echo = F, fig.height=4, fig.cap="Representative kymograph showing SKIP in green and LAMP1 in magenta.  Anterograde is to the right."}
+image_as_ggplot(read.bitmap(here('images/representative_kymographs/SKIP_LAMP1_composite.png')))
+```
 
 Our original intention was to test if artificially increasing lysosomal transport in the axon could promote regeneration; however, this work was interrupted by the pandemic.  Following our return to the laboratory, we conducted some pilot experiments with SKIP and LAMP1.  This showed some colocalisation between the two, particularly in anterogradely-moving lysosomes, but no immediately obvious differences in number of lysosomes, speed, or run length compared to an EGFP control (figure \@ref(fig:SKIP-LAMP1-kymo)).  (This is not unexpected, as previous experiments required both SKIP and Arl8b overexpression to stimulate transport [@rosa-ferreiraArl8SKIPAct2011; @fariasBORCKinesin1Ensemble2017].)  After the completion of the experiments described in section \@ref(lyso-LE), it was decided not to continue this work further.
 
 
-```{r SKIP-LAMP1-kymo, echo = F, fig.height=2, fig.cap="Representative kymorgaph showing SKIP in green and LAMP1 in magenta.  Anterograde is to the right."}
-image_as_ggplot(read.bitmap(here('images/representative_kymographs/SKIP_LAMP1_composite.png')))
-```
-
-
 ### Transfection optimisation
+
 As mentioned in section \@ref(METHODS), we experienced a sharp decline in efficiency with our initial magnetofection protocol, and needed to reoptimise our process.  This occurred between the experiments discussed in section \@ref(lyso-LE).  During this time, we tested a variety of protocols and modifications to identify the factors most important for transfection efficiency, using the same EGFP/Emerald expression construct.  Results were measured by scanning the entire plate of cells on a Leica DMi8 tilescan microscope and counting the number of transfected neurons that were either intact or visibly dead.  
 
-```{r transfection-plot-full, echo = F, fig.pos = 'h', fig.width = 16, fig.height = 6, fig.cap="A) Cell counts for plates of varying density transfected with magnetofection protocol.  B) Cell counts for three identical plates (300K cells per plate) transfected with calcium phosphate protocol.  Note the difference in scale between the two plots."}
+Of all the factors tested, cell density best correlated with the transfection efficiency, although the improvements on the original magnetofection protocol were dwarfed by the vast improvement with calcium phosphate transfection.  Going forward, transfections were carried out using the calcium phosphate method, with cell density of 200-400k per imaging dish depending on the needs of the experiment.
+
+```{r transfection-plot-full, echo = F, fig.pos = 'h', fig.width = 16, fig.height = 6, fig.cap="A) Cell counts for plates of varying density transfected with magnetofection protocol.  B) Cell counts for three identical plates (300k cells per plate) transfected with calcium phosphate protocol.  Note the difference in scale between the two plots."}
 
 optimisation_plot
 ```
-
-Of all the factors tested, cell density best correlated with the transfection efficiency, although the improvements on the original magnetofection protocol were dwarfed by the vast improvement with calcium phosphate transfection.  Going forward, transfections were carried out using the calcium phosphate method, with cell density of 200-400K per imaging dish depending on the needs of the experiment.
-
-
 
 ## Results^[The results presented in this section largely reflect my first year of study, a time when I was also training to perform *in vivo* experiments to assess neuroprotection and regeneration in the eye and optic nerve.  My initial plan was to determine protrudin's effect on lysosome/late endosome transport, and then test a variety of different tools (e.g. calcyon shRNA, BORC overexpression, etc.) to manipulate lysosome and late endosome transport and assess their regenerative potential.  Unfortunately, the cessation of lab work during the pandemic and associated disruptions eventually led us to abandon most of these plans.]
 
 ### Protrudin overexpression is neuroprotective following axon injury *in vivo*{#protrudin-ONC}
 
-*The data in this section has been published in [@petrovaProtrudinFunctionsEndoplasmic2020].  My contribution to the experiment included DNA preparation, tissue collection, and data curation.*
-
+*The data in this section has been published in [@petrovaProtrudinFunctionsEndoplasmic2020].  My contribution to the experiment included DNA preparation, tissue collection, and data curation and analysis.*
 
 The optic nerve crush model is a powerful tool for examining CNS survival and regeneration *in vivo*.  Because the eye and the optic nerve can be accessed much more readily than, for example, the brain and spinal cord, it allows the gene delivery and axon injury to be performed with minimal invasiveness.  In addition, because the bodies of the RGCs are all located together in the retina, it is possible to quantify both cell survival and axon regrowth in the same experiment.
 
@@ -173,39 +163,35 @@ This effect was further substantiated by mouse retinal explant experiments, whic
 
 ### Protrudin overexpression does not increase lysosome or late endosome transport in the distal axon{#lyso-LE}
 
-We decided to test the hypothesis that protrudin might function in part by increasing the anterograde transport of late endosomes or lysosomes into the distal axon.  As described above, there are a number of ways in which this increased transport could have neuroprotective or regenerative effects, and such a function would be in keeping with protrudin's described behaviour in the literature.  
+To test the hypothesis that protrudin might function in part by increasing the anterograde transport of late endosomes or lysosomes into the distal axon, we set out to measure the effects of protrudin overexpression on the axonal transport of these organelles.  As described above, there are a number of ways in which this increased transport could have neuroprotective or regenerative effects, and such a function would be in keeping with protrudin's described behaviour in the literature.  
 
-Cortical neurons were transfected to co-express LAMP1-mRFP1 and either EGFP or EGFP-tagged protrudin, and LAMP1 transport in the distal axon was imaged using spinning disc microscopy.  These videos were then used to generate kymographs (as described in \@ref(METHODS)), which were manually traced to give measures of lysosome number, run length, and transport speed.  Overexpression of either wild type or active protrudin had no significant effect on the number, distance, or direction of travel of lysosomes in the distal axon.  A very slight decrease in anterograde speed was observed in cells expressing active protrudin.
+Cortical neurons were transfected to co-express LAMP1-mRFP1 as a marker of lysosomes, with either EGFP or EGFP-tagged protrudin.  LAMP1 transport in the distal axon was imaged in three-minute segments using spinning disc microscopy.  These videos were then used to generate kymographs (as described in \@ref(kymo)), which were manually traced to give measures of lysosome number, run length, and transport speed.  Overexpression of either wild type or active protrudin had no significant effect on the number, distance, or direction of travel of lysosomes in the distal axon.  A very slight decrease in anterograde speed was observed in cells expressing active protrudin.
 
-```{r LAMP1-full-figure, echo = F, fig.width = 16, fig.height = 8, fig.path = '../figures/full/', fig.cap="A) Representative axon image and kymographs showing LAMP1 transport in the distal axon of cortical neurons expressing either EGFP (control) or EGFP-tagged protrudin constructs.  Anterograde is to the right for each kymograph.  B) Total number of LAMP1-labelled organelles in each cell imaged.  C) Average run length (per cell) of moving lysosomes.  Anterograde and retrograde were defined as continuous movements of at least 5μm away from or towards the cell body, respectively.  D) Average lysosome velocity (per cell).  P-values are from Kruskal-Wallis test, followed by Dunn's post-hoc test with Bonferroni correction for multiple comparisons."}
+```{r LAMP1-full-figure, echo = F, fig.width = 16, fig.height = 8, fig.path = '../figures/full/', fig.cap="A) Representative axon image and kymographs showing LAMP1 transport in the distal axon of cortical neurons expressing either EGFP (control) or EGFP-tagged protrudin constructs.  Anterograde is to the right for each kymograph.  B) Total number of LAMP1-labelled organelles in each cell imaged.  C) Average run length (per cell) of moving lysosomes.  Anterograde and retrograde were defined as continuous movements of at least 5μm away from or towards the cell body, respectively.  D) Average lysosome velocity (per cell).  n = 28 to 30 cells per condition across four indpendent batches."}
 
 LAMP1_full
 ```
 
-The experiment was then repeated using Rab7 instead of LAMP1 as a more specific marker of late endosomes.  As the mechanism set out in Raiborg et al. suggests that Rab7 is directly involved in protrudin-mediated transport of late endosomes, this should label only the exact population of organelles that are involved in this process [@raiborgRepeatedEREndosome2015].  While overexpression of Rab7 could potentially amplify any effect of protrudin overexpression on this system, this effect should be consistent between control and protrudin conditions.  Cortical neurons were co-transfected with mCherry of mCherry-tagged protrudin and Rab7a-mEmerald, and Rab7 transport imaged and analysed as described previously.  However, this showed no significant effect of protrudin on any measured parameter of lysosome transport.  Importantly, there was no change in the total number of lysosomes or late endosomes with either WT or active protrudin expression, compared to a control.
+The experiment was then repeated using Rab7 instead of LAMP1 as a more specific marker of late endosomes.  As the mechanism set out in Raiborg et al. suggests that Rab7 is directly involved in protrudin-mediated transport of late endosomes, this should label only the population of organelles that are involved in this process [@raiborgRepeatedEREndosome2015].  While overexpression of Rab7 could potentially amplify any effect of protrudin overexpression on this system, this effect should be consistent between control and protrudin conditions.  Cortical neurons were co-transfected with mCherry or mCherry-tagged protrudin and Rab7a-mEmerald, and Rab7 transport imaged and analysed as described previously.  However, this showed no significant effect of protrudin on any measured parameter of transport.  Importantly, there was no change in the total number of lysosomes or late endosomes with either WT or active protrudin expression, compared to a control.
 
-
-```{r Rab7-full-figure, echo = F, fig.width = 16, fig.height = 8, fig.path = '../figures/full/', fig.cap="A) Representative axon image and kymographs showing Rab7 transport in the distal axon of cortical neurons expressing either mCherry (control) or mCherry-tagged protrudin constructs.  Anterograde is to the right for each kymograph.  B) Total number of Rab7-labelled organelles in each cell imaged.  C) Average run length (per cell) of moving late endosomes.  Anterograde and retrograde were defined as continuous movements of at least 5μm away from or towards the cell body, respectively.  D) Average late endosome velocity (per cell).  P-values are from Kruskal-Wallis test, followed by Dunn's post-hoc test with Bonfferoni correction for multiple comparisions."}
+```{r Rab7-full-figure, echo = F, fig.width = 16, fig.height = 8, fig.path = '../figures/full/', fig.cap="A) Representative axon image and kymographs showing Rab7 transport in the distal axon of cortical neurons expressing either mCherry (control) or mCherry-tagged protrudin constructs.  Anterograde is to the right for each kymograph.  B) Total number of Rab7-labelled organelles in each cell imaged.  C) Average run length (per cell) of moving late endosomes.  Anterograde and retrograde were defined as continuous movements of at least 5μm away from or towards the cell body, respectively.  D) Average late endosome velocity (per cell).  n = 17 or 18 cells per condition across three independent batches."}
 
 Rab7_full
 ```
 
-
-
+Taken together, these results demonstrate that neither wild type nor active protrudin has any clear effect on lysosome or late endosome transport in the axon, and do not support our initial hypothesis that protrudin's beneficial effects are associated with an increase in transport of these organelles.
 
 ## Discussion{#no-FYCO}
-Somewhat surprisingly, we found that protrudin overexpression had very little if any effect on lysosomal and late endosomal transport in cortical neurons.  However, further examination of the literature provides a likely explanation.  The mechanism described in Raiborg et al. — which used PC12 cells as a model system — relies on the protein FYCO1 as an adaptor to link late endosomes to kinesin for anterograde transport [@raiborgRepeatedEREndosome2015].  This protein, also known as ZFYVE7, contains similar Rab7- and PIP-, and kinesin-binding domains to protrudin.  Raiborg et al. suggest that protrudin brings late endosomes and kinesin together through Rab7 and PI(3)P binding, but then transfers the kinesin onto Rab7-bound FYCO1 to facilitate transport.   However, transcriptomic data from Koseki et al. suggests that FYCO1 is mostly absent from mature rat cortical neurons, which could explain why we see no effect on late endosome transport with protrudin overexpression [@kosekiSelectiveRab11Transport2017].  This is consistent with transcriptomic data from other studies that show extremely low FYCO1 in human cortical neurons, expression biased towards non-neuronal cell types in the brain, and low levels in mouse DRG neurons [@zhangPurificationCharacterizationProgenitor2016; @kelleyVariationIntactTissue2018; @tedeschiCalciumChannelSubunit2016].
+
+Somewhat surprisingly, we found that protrudin overexpression had little if any effect on lysosomal and late endosomal transport in cortical neurons.  However, further examination of the literature provides a likely explanation.  The mechanism described in Raiborg et al. — which used PC12 cells as a model system — relies on the protein FYCO1 as an adaptor to link late endosomes to kinesin for anterograde transport [@raiborgRepeatedEREndosome2015].  This protein, also known as ZFYVE7, contains similar Rab7- and PIP-, and kinesin-binding domains to protrudin.  Raiborg et al. reported that protrudin brings late endosomes and kinesin together through Rab7 and PI(3)P binding, but then transfers the kinesin onto Rab7-bound FYCO1 to facilitate transport.   However, transcriptomic data from Koseki et al. suggests that FYCO1 mRNA is almost undetectable in cortical neurons, which could explain why we see no effect on late endosome transport with protrudin overexpression [@kosekiSelectiveRab11Transport2017].  This is consistent with transcriptomic data from other studies that show extremely low FYCO1 in human cortical neurons, expression biased towards non-neuronal cell types in the brain, and low levels in mouse DRG neurons, as illustrated in figure \@ref(fig:FYCO1-RNAseq-full-figure) [@zhangPurificationCharacterizationProgenitor2016; @kelleyVariationIntactTissue2018; @tedeschiCalciumChannelSubunit2016].
 
 ```{r FYCO1-RNAseq-full-figure, echo = F, fig.width = 16, fig.height=12, fig.path='../figures/full/', fig.cap='RNA sequencing data from A) Koseki et al. 2017, B) Zhang et al. 2016, C) Kelley et al. 2018, D) Tian et al. 2019 (via `https://ineuronrnaseq.shinyapps.io/rnaseq_app/`), E-G) Tedeschi et al. 2016.'}
 
 FYCO1_RNAseq_full
 ```
 
-
 Of note, Özkan et al. also do not find a link between protrudin and CNS axonal lysosome transport.  They knocked down protrudin in hippocampal neurons, but found no effect on the distribution of LAMP1-labelled lysosomes into the axon  [@ozkanERLysosomeContacts2021].   This supports the idea that protrudin is not involved with late endosome/lysosome transport in neurons, but that other transport mechanisms (e.g. BORC) are predominant in axon transport.
 
 While these findings can effectively rule out late endosome/lysosome transport as a mechanism through which protrudin drives neuroprotection and axon regeneration, they are worth bearing in mind when it comes to clinical translation.  The differential expression of FYCO1 across cell types suggests potential variations in the regulation of lysosome transport between them.  While protrudin overexpression has no substantial effect on this transport in cortical neurons, it could have an impact on other populations, leading to possible undesired effects in non-neuronal cell types.  Any gene therapies incorporating protrudin should therefore be carefully targeted to limit expression in the PNS and glial populations.
 
 It remains an open question whether or not enhancing axonal lysosome transport could promote axon regeneration, for many of the reasons discussed at the start of this chapter.  Further research in this area is required, either targeting transport mechanisms such as BORC or calcyon (which have been demonstrated to act neurons), or through exogenous expression of FYCO1.  In fact, Saridaki et al. have already shown that FYCO1 overexpression in a *Drosophila* model of Parkinson's disease preserves motor function at baseline levels and prevents age-related decline  [@saridakiFYCO1MediatesClearance2018].  (That being said, *Drosophila* does not contain an ortholog for protrudin, so FYCO1 may not have the same effect as it would in a vertebrate model [@wangHereditarySpasticParaplegia2008].)  While FYCO1 is an appealing candidate for further study, due to the possibility of it acting synergistically with protrudin, it might be unfeasible as a gene therapy due to the size of the FYCO1 transcript.  At over 4.4kbp, it is very close to the packaging capacity of most AAV capsids, even without a promoter or other vector elements.  However, a better understanding of FYCO1 function might allow for the development of a shorter functional form with better translational potential.
-
-

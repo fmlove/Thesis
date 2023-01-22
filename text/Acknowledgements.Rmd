@@ -2,3 +2,15 @@
 ```{=latex}
 \markboth{ACKNOWLEDGEMENTS}{}
 ```
+
+First and foremost, I would like to thank my supervisor, Dr. Richard Eva, for his teaching, guidance, and support throughout my PhD.  A project like this is difficult at the best of times, and these past few years have been anything but.  I am very grateful to have had a supervisor I could rely on while facing the unique challenges of a pandemic-era PhD.
+
+I am grateful to all members of the Fawcett-Martin lab, past and present, for their help and advice throughout this project.  In particular, I would like to thank Vessy Petrova, Bart Nieuwenhuis, Randa Abu-Youssef, and Elise Laperrousaz, without whom I would not have been able to complete the experiments described in this thesis.  I would also like to thank James Fawcett and Keith Martin, for making this entire project possible.
+
+I would like to thank Andras Lakatos for being my 'official' supervisor, and always being a great source of advice.
+
+I would like to thank Jessica Kwok and Edward Avezov for serving as my examiners for this thesis.
+
+I would like to thank my parents, sister, and grandparents, for their support and encouragement in the years it has taken me to get here.  I would not be where I am now without all of you.
+
+Finally, I would like to thank my partner Robert May for his unwavering support throughout my PhD.  These past few years have been challenging in ways I never imagined, and I could not have achieved this without you by my side.  

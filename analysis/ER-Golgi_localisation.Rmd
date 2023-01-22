@@ -25,25 +25,25 @@ library(patchwork)
 ```{r}
 #maximum intensity quantification
 
-max_dir = c('C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC97-98_analysis_temp\\max_intensity_quantification',
-            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC105-110_analysis_temp\\MAX_fluorescence_quantification',
-            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC111_timepoints_analysis\\MAX_fluorescence_quantification',
-            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC68_DIV15',#SLC38A1 corrections
-            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC97_DIV15',
-            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC105_DIV3',
-            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC108_DIV15',
-            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC113_DIV3',
-            'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC116_DIV3')
+max_dir = c('..\\data\\localisation_analysis\\CNC97-98_analysis_temp\\max_intensity_quantification',
+            '..\\data\\localisation_analysis\\CNC105-110_analysis_temp\\MAX_fluorescence_quantification',
+            '..\\data\\localisation_analysis\\CNC111_timepoints_analysis\\MAX_fluorescence_quantification',
+            '..\\data\\localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC68_DIV15',#SLC38A1 corrections
+            '..\\data\\localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC97_DIV15',
+            '..\\data\\localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC105_DIV3',
+            '..\\data\\localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC108_DIV15',
+            '..\\data\\localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC113_DIV3',
+            '..\\data\\localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\CNC116_DIV3')
 
 
-ptdn_max_dir = c('C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC84-100-101_Ptdn_analysis_temp\\max_intensity_quantification',
-                 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC113_Ptdn_analysis\\MAX_fluorescence_quantification',
-                 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC114_Ptdn_analysis\\MAX_fluorescence_quantification',
-                 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\CNC112_Ptdn_analysis_SLC38A1\\MAX_fluorescence_quantification')
+ptdn_max_dir = c('..\\data\\localisation_analysis\\CNC84-100-101_Ptdn_analysis_temp\\max_intensity_quantification',
+                 '..\\data\\localisation_analysis\\CNC113_Ptdn_analysis\\MAX_fluorescence_quantification',
+                 '..\\data\\localisation_analysis\\CNC114_Ptdn_analysis\\MAX_fluorescence_quantification',
+                 '..\\data\\localisation_analysis\\CNC112_Ptdn_analysis_SLC38A1\\MAX_fluorescence_quantification')
 
-i3_max_dir = c('C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\i3-10_analysis\\MAX_fluorescence_quantification',
-               'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\i3-11-12_analysis\\MAX_fluorescence_quantification',
-               'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\Localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\i3-10')
+i3_max_dir = c('..\\data\\localisation_analysis\\i3-10_analysis\\MAX_fluorescence_quantification',
+               '..\\data\\localisation_analysis\\i3-11-12_analysis\\MAX_fluorescence_quantification',
+               '..\\data\\localisation_analysis\\SLC38A1_corrections_analysis\\MAX_fluorescence_quantification\\i3-10')
 
 
 #pull CSVs only

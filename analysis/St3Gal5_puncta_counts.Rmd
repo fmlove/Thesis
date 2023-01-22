@@ -65,9 +65,8 @@ intensities$cond = factor(intensities$cond, levels = c('mCh', 'WT', 'Mut2'), lab
 ```
 
 ```{r GS_intensity_plot}
-GS_intensity_plot = ggplot(intensities, aes(x = cond, y = intensity)) + 
-  geom_dotplot(aes(fill = cond, colour = cond), binaxis = "y", stackdir = "center", position = "dodge", binwidth = 1, dotsize = 1) + 
-  geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = "dodge", width = 0.5) + 
+GS_intensity_plot = ggplot(intensities, aes(x = cond, y = intensity, colour = cond)) + 
+  geom_violin() +   geom_boxplot(fill = NA, outlier.shape = NA, position = "dodge", width = 0.2) + 
   labs(x = '', y = 'Point intensity') +
   stat_compare_means() + 
   d_format + report_theme

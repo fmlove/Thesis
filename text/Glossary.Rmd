@@ -15,10 +15,9 @@ library(kableExtra)
 options(knitr.table.format = 'markdown')#handles line wrapping and headers c.f. 'latex'
 ```
 ```{r gloss-tab, echo = F}
-kable(read.csv('C:\\Users\\fl299\\PhD\\glossary.csv'),
+kable(read.csv(here('data/tables/glossary.csv')),
   booktabs = TRUE,
   longtable = TRUE
-  ) %>% 
-  kable_styling(latex_options="scale_down")#not going to work with longtable
+  )
 
 ```
