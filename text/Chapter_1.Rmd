@@ -8,7 +8,7 @@ bibliography: "`r here::here('bib/THESIS.bib')`"
 always_allow_html: true
 ---
 
-# Is protrudin's effect on neuroprotection mediated by lysosome and late endosome transport?
+# Is protrudin's effect on neuroprotection mediated by lysosome and/or late endosome transport?
 
 ```{=latex}
 \chaptermark{Lysosome and late endosome transport}
