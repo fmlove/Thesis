@@ -53,9 +53,9 @@ custom_add = theme(legend.background = element_rect(fill = "#FFFFFF00"),
                    legend.position = 'none',
                    strip.background = element_blank())
 
-report_theme = theme_classic(base_size = 12) + custom_add
+report_theme = theme_classic(base_size = 14) + custom_add
 
-report_blank = theme_void(base_size = 12) + custom_add
+report_blank = theme_void(base_size = 14) + custom_add
 
 #plot palettes
 d_format = list(scale_colour_manual(values = colours),
@@ -64,7 +64,7 @@ c_format = list(scale_colour_viridis_c(),
                 scale_fill_viridis_c())
 
 #font size for p values
-p_fs = 2
+p_fs = 3
 
 
 

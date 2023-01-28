@@ -138,7 +138,7 @@ counts.plot = ggplot(spine_counts.df, aes(x = cond, y = Freq)) +
   geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
   labs(title = 'Replicate 1', x = '', y = paste0('Number of spines in 20', '\U03BC', 'm section')) + 
   d_format + report_theme +
-  stat_compare_means() + stat_pvalue_manual(spinningdisc.dunn, hide.ns = T, label = 'p.adj.rounded', step.increase = 0.01)
+  stat_compare_means(label.x = 1.25) + stat_pvalue_manual(spinningdisc.dunn, hide.ns = T, label = 'p.adj.rounded', step.increase = 0.01)
 
 counts.plot
 ```
@@ -162,7 +162,7 @@ lengths.plot = ggplot(spine_lengths.melt, aes(x = cond, y = value, colour = cond
   geom_violin() + geom_boxplot(fill = NA, width = 0.2, outlier.shape = NA)  + 
   labs(title = 'Replicate 1', x = '', y = paste0('Spine length (', '\U03BC', 'm)')) + 
   d_format + report_theme +
-  stat_compare_means() + stat_pvalue_manual(lengths.dunn, hide.ns = TRUE, label = 'p.adj.rounded', bracket.nudge.y = -2)
+  stat_compare_means(label.x = 1.25) + stat_pvalue_manual(lengths.dunn, hide.ns = TRUE, label = 'p.adj.rounded', bracket.nudge.y = -2)
 
 lengths.plot
 ```
@@ -319,7 +319,7 @@ counts_confocal.plot= ggplot(spine_counts_confocal.df, aes(x = cond, y = Freq)) 
   geom_dotplot(aes(fill = cond, colour = cond), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 1, binwidth = 1) + 
   geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + labs(x = '', y = paste0('Number of spines in 20', '\U03BC', 'm section'), title = 'Replicate 2') + 
   d_format + report_theme +
-  stat_compare_means() + stat_pvalue_manual(confocal.dunn, hide.ns = T, label = 'p.adj.rounded', step.increase = 0.1)
+  stat_compare_means(label.x = 1.25) + stat_pvalue_manual(confocal.dunn, hide.ns = T, label = 'p.adj.rounded', step.increase = 0.1)
 
 counts_confocal.plot
 ```
@@ -345,7 +345,7 @@ lengths_confocal.plot = ggplot(spine_lengths_confocal.melt, aes(x = cond, y = va
   geom_violin() + geom_boxplot(fill = NA, width = 0.2, outlier.shape = NA) + 
   labs(title = 'Replicate 2', x = '', y = paste0('Spine length (', '\U03BC', 'm)')) + 
   d_format + report_theme +
-  stat_compare_means() + stat_pvalue_manual(lengths_confocal.dunn, hide.ns = TRUE, label = 'p.adj.rounded')
+  stat_compare_means(label.x = 1.25) + stat_pvalue_manual(lengths_confocal.dunn, hide.ns = TRUE, label = 'p.adj.rounded')
 
 lengths_confocal.plot
 ```

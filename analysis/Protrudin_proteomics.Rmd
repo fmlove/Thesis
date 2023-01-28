@@ -133,8 +133,8 @@ hashimoto = hashimoto[!duplicated(hashimoto$SYMBOL),]#CHECK MANUALLY
 
 ```{r combining lists}
 
-all_sets = list(`Elbaz-Alon et al. 2020` = elbaz_alon$SYMBOL,#human
-                   `Matsuzaki et al. 2011` = toupper(matsuzaki$SYMBOL),#mouse
+all_sets = list(`Elbaz-Alon\net al. 2020` = elbaz_alon$SYMBOL,#human
+                   `Matsuzaki\net al. 2011` = toupper(matsuzaki$SYMBOL),#mouse
                    `Hashimoto et al. 2014` = hashimoto$SYMBOL)#mouse
                    #`Uniprot (human)` = uniprot$SYMBOL)
 #excluding uniprot - focus on overlap in non-biased data sets
@@ -144,9 +144,9 @@ all_sets = list(`Elbaz-Alon et al. 2020` = elbaz_alon$SYMBOL,#human
 
 
 
-```{r venn, fig.width=6, fig.height=6}
+```{r venn}
 
-venn = ggvenn(all_sets, fill_color = viridis(length(all_sets)), set_name_size = 3, text_size = 6.5, show_percentage = FALSE) + report_blank
+venn = ggvenn(all_sets, fill_color = viridis(length(all_sets)), set_name_size = 4.5, text_size = 6.5, show_percentage = FALSE) + report_blank
 
 venn
 ```
@@ -182,7 +182,7 @@ bio_proc$Term = factor(bio_proc$Term, levels = rev(bio_proc$Term))#I'm not 100% 
 
 ```
 
-```{r GO_plots, fig.width = 10, fig.height = 6}
+```{r GO_plots}
 
 GO_plot = ggplot(bio_proc, aes(x = Term, y = n_log)) + geom_bar(stat='identity', fill = viridis(1)) + coord_flip() + labs(x = '', y = expression(-log[10] ~ "(p-value)"), title = "GO Biological Process") + report_theme + theme(plot.title = element_text(hjust = 0.75), plot.title.position = "plot") 
 
@@ -190,7 +190,7 @@ GO_plot
 ```
 
 ```{r proteomics_full, fig.width = 16, fig.height = 6, fig.path = "../figures/full/"}
-proteomics_full = venn + GO_plot + plot_annotation(tag_levels = 'A')
+proteomics_full = venn + GO_plot + plot_annotation(tag_levels = 'A') + plot_layout(widths = c(12,4))
 
 proteomics_full
 ```

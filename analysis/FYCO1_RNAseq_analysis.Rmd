@@ -184,7 +184,7 @@ genes.k = genes.kelley[,-which(names(genes.kelley) %in% c('Entrez', 'Alias', 'Me
 genes.k$region = sapply(1:nrow(genes.k), function(r){ strsplit(genes.k$name[r], '_')[[1]][1] })
 genes.k$cell_type = sapply(1:nrow(genes.k), function(r){ strsplit(genes.k$name[r], '_')[[1]][2] })
 
-genes.k$Gene = factor(genes.k$Gene, levels = c('FYCO1', 'ZFYVE27'), labels = c('FYCO1', 'Protrudin'))
+genes.k$gene = factor(genes.k$Gene, levels = c('FYCO1', 'ZFYVE27'), labels = c('FYCO1', 'Protrudin'))
 
 # 
 # ggplot(genes.k[genes.k$region != 'ALL',], aes(x = cell_type, y = fidelity)) +
@@ -193,7 +193,7 @@ genes.k$Gene = factor(genes.k$Gene, levels = c('FYCO1', 'ZFYVE27'), labels = c('
 #   facet_wrap(~Gene)
 
 kelley.bar = ggplot(genes.k[genes.k$region == 'ALL',], aes(x = cell_type, y = ceiling(fidelity*4) / 4)) + #rounding up to nearest 0.25 to avoid empty bar for very small neuron value
-  geom_bar(aes(fill = Gene), stat = 'identity') + facet_wrap(~Gene) + report_theme + 
+  geom_bar(aes(fill = gene), stat = 'identity') + facet_wrap(~gene) + report_theme + 
   scale_fill_manual(values = c('#D95F02', '#7570B3')) + labs(x = '', y = 'Expression fidelity') + 
   theme(axis.text.x = element_text(angle = 45, hjust=1))
   
@@ -221,7 +221,7 @@ injury = ggplot(tb.Injury, aes(x = condition, y = mean, color = gene, group = ge
   geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.15) + 
   geom_line() + geom_point(aes(shape = gene), size = 3) + 
   labs(x = "Treatment", y = "Normalised expression value", title = "Conditioning lesion") + 
-  report_theme + theme(legend.position = 'right') + scale_color_brewer(palette = 'Dark2')
+  report_theme + scale_color_brewer(palette = 'Dark2') #+ theme(legend.position = 'right')
 injury
 
 ```
@@ -254,14 +254,18 @@ Kelley.patch = kelley.bar + plot_annotation(title = '', caption = 'Kelley et al.
 PNS.patch = culture + vivo + injury + plot_annotation(title = "PNS", caption = "Tedeschi et al. 2016, Neuron")
 ```
 
-```{r FYCO1_RNAseq_full, fig.width=16, fig.height = 12, fig.path = "../figures/full/"}
+```{r FYCO1_RNAseq_full, fig.width=16, fig.height = 18, fig.path = "../figures/full/"}
 
 i3_panel = image_as_ggplot(read.bitmap(here('figures/external/i3_panel.png'))) + labs(title = 'i3 neurons')
 
+FYCO1_layout = 'AAAAAAA
+                BBBBBBB
+                BBBBBBB
+                CCCCCCD'
 FYCO1_RNAseq_full = (Koseki.patch + Zhang.patch + Kelley.patch)/ 
-  i3_panel/
-  (culture + vivo + injury) + plot_annotation(tag_levels = 'A') + plot_layout(heights = c(1, 2, 1))
-  #PNS.patch + plot_annotation(tag_levels = 'A') + plot_layout(design = RNA.layout)
+  (i3_panel)/
+  (culture + vivo + injury) + guide_area() + 
+  plot_annotation(tag_levels = 'A') + plot_layout(design = FYCO1_layout, guides = 'collect')#heights = c(1, 2, 1)
 
 FYCO1_RNAseq_full
 ```

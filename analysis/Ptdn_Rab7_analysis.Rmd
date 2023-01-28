@@ -210,7 +210,7 @@ Rab7_trace_dot = ggplot(rab7.traces.df, aes(x = cond, y = traces, fill = cond)) 
   geom_boxplot(alpha = 0, position = position_dodge(width = 0.9), width = 0.2, show.legend = FALSE) + 
   labs(x = "", y = "Total number of LEs", fill = "") + 
   d_format + report_theme + theme(legend.position = "none") + 
-  stat_compare_means(label.y = plyr::round_any(max(rab7.traces.df$traces), 10, ceiling), size = p_fs)
+  stat_compare_means(label.y = plyr::round_any(max(rab7.traces.df$traces), 350, ceiling), size = p_fs)
 
 plot(Rab7_trace_dot)
 ```
