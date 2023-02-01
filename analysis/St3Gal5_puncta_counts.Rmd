@@ -18,7 +18,8 @@ library(patchwork)
 
 Read in St3Gal5 puncta count CSV
 ```{r}
-puncta = read.csv('C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC114-116_Ptdn-St3Gal5_puncta_TIFs\\max_projections\\GFP\ -\ puncta\\puncta_counts\\counts.csv')
+# puncta = read.csv('C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC114-116_Ptdn-St3Gal5_puncta_TIFs\\max_projections\\GFP\ -\ puncta\\puncta_counts\\counts.csv')
+puncta = read.csv(here('data/puncta_counts/counts.csv'))
 fileparse = lapply(puncta$File, function(f){ strsplit(f, "_") })
 
 puncta$expt = sapply(1:nrow(puncta), function(i){fileparse[[i]][[1]][1]})
@@ -42,7 +43,8 @@ GS_count_plot = ggplot(puncta, aes(x = cond, y = norm_count)) +
 
 
 ```{r puncta_intensities}
-puncta_dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC114-116_Ptdn-St3Gal5_puncta_TIFs\\max_projections\\GFP\ -\ puncta\\puncta_counts'
+# puncta_dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC114-116_Ptdn-St3Gal5_puncta_TIFs\\max_projections\\GFP\ -\ puncta\\puncta_counts'
+puncta_dir = '../data/puncta_counts/'
 puncta_files = list.files(puncta_dir)
 puncta_files = puncta_files[which(!puncta_files %in% c('counts.csv', 'desktop.ini'))]
 

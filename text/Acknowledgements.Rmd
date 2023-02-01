@@ -9,7 +9,9 @@ I am grateful to all members of the Fawcett-Martin lab, past and present, for th
 
 I would like to thank Andras Lakatos for being my 'official' supervisor, and always being a great source of advice.
 
-I would like to thank Jessica Kwok and Edward Avezov for serving as my examiners for this thesis.
+I would like to thank Jessica Kwok and Edward Avezov for their time and input in serving as my examiners for this thesis.
+
+I would like to thank the University of Cambridge Statistics Clinic for their advice on the analyses included in this thesis.
 
 I would like to thank my parents, sister, and grandparents, for their support and encouragement in the years it has taken me to get here.  I would not be where I am now without all of you.
 

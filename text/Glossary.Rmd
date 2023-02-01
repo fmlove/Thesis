@@ -3,14 +3,15 @@ output:
   pdf_document: default
   html_document: default
 ---
-# Glossary {.unnumbered #GLOSSARY}
+# Abbreviations {.unnumbered #ABBREVIATIONS}
 ```{=latex}
-\markboth{GLOSSARY}{}
+\markboth{ABBREVIATIONS}{}
 ```
 
 ```{r glossary-setup, include = F}
 library(knitr)
 library(kableExtra)
+library(here)
 
 options(knitr.table.format = 'markdown')#handles line wrapping and headers c.f. 'latex'
 ```

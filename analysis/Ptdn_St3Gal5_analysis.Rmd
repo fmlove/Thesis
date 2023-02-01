@@ -74,7 +74,7 @@ trace_plot = ggplot(per_cell.df, aes(x = condition, y = traces)) +
   geom_boxplot(alpha = 0, position = position_dodge(width = 0.9), width = 0.2, show.legend = FALSE) + 
   labs(x = "", y = "Total number of Golgi satellites", fill = "") + 
   d_format + report_theme + 
-  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed), 160, ceiling), size = p_fs)
+  stat_compare_means(label.y = plyr::round_any(max(per_cell.df$traces), 5, ceiling), size = p_fs)
 
 trace_plot
 ```
@@ -138,7 +138,7 @@ GS_mov_dot = ggplot(per_seg.per_cell[per_seg.per_cell$direction != "static",], a
   geom_boxplot(alpha = 0, width = 0.5, position = position_dodge(0.9), show.legend = F) + 
   labs(x = "", y = "GS movements per cell") + 
   d_format + report_theme + 
-  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed), 225, ceiling), size = p_fs)
+  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell[per_seg.per_cell$direction!= 'static',]$count), 25, ceiling), size = p_fs)
 
 plot(GS_mov_dot)
 
@@ -161,7 +161,7 @@ GS_mean_run_length = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$direct
   geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
   d_format + report_theme + 
   labs(x = "", y = "Mean run length") + 
-  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed), 16, ceiling), size = p_fs)
+  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_dist), 1, ceiling), size = p_fs)
 
 plot(GS_mean_run_length)
 
@@ -182,7 +182,7 @@ GS_mean_run_velocity = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$dire
   geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
   d_format + report_theme + 
   labs(x = "", y = "Mean velocity") + 
-  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed), 8.5, ceiling), size = p_fs) +
+  stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed), 3, ceiling), size = p_fs) +
   stat_pvalue_manual(GS_mean_run_velocity.dunn, hide.ns = TRUE, label = 'p.adj.rounded', step.increase = 0.1)
 
 plot(GS_mean_run_velocity)

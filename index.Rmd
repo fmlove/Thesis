@@ -12,6 +12,7 @@ output:
     includes:
       in_header: tex/preamble.tex
       before_body: tex/title_page.tex
+    latex_engine: xelatex
     keep_tex: true
     keep_md: true
     number_sections: true

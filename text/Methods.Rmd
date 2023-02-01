@@ -58,7 +58,7 @@ kable(ab[ab$HeLa_screen == TRUE & ab$stage %in% c('secondary', 'additional'), c(
 
 ## Software
 
-Wherever possible, I tried to use free and open source software throughout this project.  All image analysis tasks were carried out in Fiji [@schindelinFijiOpensourcePlatform2012].  Quantitative analysis and statistics were carried out in R [@Rlanguage]. FinchTV and Serial Cloner were used for reading DNA sequences and designing plasmids, respectively.  
+Wherever possible, I tried to use free and open-source software throughout this project.  All image analysis tasks were carried out in Fiji [@schindelinFijiOpensourcePlatform2012].  Quantitative analysis and statistics were carried out in R [@Rlanguage]. FinchTV and Serial Cloner were used for reading DNA sequences and designing plasmids, respectively.  
 
 Custom R scripts and ImageJ macros were written for individual analysis tasks, all of which are available by request.  
 
@@ -66,7 +66,7 @@ Custom R scripts and ImageJ macros were written for individual analysis tasks, a
 
 ### Plasmid preparation{#plasmid-prep}
 
-All plasmid preparation was carried out using either DH5$\alpha$ *(New England BioLabs, C2987I/H)* or XL10-Gold *(Agilent Technilogies, 200314)* competent cells.  Cells were transformed using a heat shock protocol, and grown on LB/agar plates with an appropriate antibody for plasmid selection.  Single colonies were then scaled up in LB culture.  Plasmids were purified from *E. coli* cultures using Qiagen Spin Miniprep *(27104)* or EndoFree Plasmid Maxi kits *(12362)* according to the manufacturer's protocols.  All plasmids were dissolved in ultrapure DNAse-free water *(Thermo Fisher, 10977035)* for transfection.
+All plasmid preparation was carried out using either DH5$\alpha$ *(New England BioLabs, C2987I/H)* or XL10-Gold *(Agilent Technologies, 200314)* competent cells.  Cells were transformed using a heat shock protocol, and grown on LB/agar plates with an appropriate antibody for plasmid selection.  Single colonies were then scaled up in LB culture.  Plasmids were purified from *E. coli* cultures using Qiagen Spin Miniprep *(27104)* or EndoFree Plasmid Maxi kits *(12362)* according to the manufacturer's protocols.  All plasmids were dissolved in ultrapure DNAse-free water *(Thermo Fisher, 10977035)* for transfection.
 
 ### Cortical neuron cultures
 
@@ -78,13 +78,15 @@ Cortical neurons were transfected at DIV10 by either magnetofection or calcium p
 
 Magnetofection was carried out using NeuroMag Transfection Reagent *(OZ Biosciences, NM51000)*. Briefly, plasmid DNA was incubated at room temperature with the NeuroMag Transfection Reagent in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)* for 30 minutes. Growth media was removed from the cells and replaced with warmed MACS Neuro Medium and the DNA-complexed NeuroMag Transfection Reagent. The cells were placed on a magnetic plate *(OZ Biosciences, MF10000)* in an incubator (37°C 7% CO~2~) for 30 minutes. The transfection mix was then removed from the cells and the growth media reapplied.
 
-Calcium phosphate transfection was carried out using a protocol adapted from [@jiangHighCaPhosphate2006].  A solution of DNA and calcium phosphate was prepared, and added dropwise to HEPES-buffered saline *(Sigma-Aldrich, 51558)* while vortexing to precipitate the DNA-calcium phosphate complex.  This was then added to the cells in supplement-free media, and incubated at 37°C 7% CO~2~ for one hour.  Cells were then washed with media pre-equilibrated in 10% CO~2~ to remove residual precipitate, and the original growth media reapplied.
+Calcium phosphate transfection was carried out using a protocol adapted from Jiang and Chen [@jiangHighCaPhosphate2006].  A solution of DNA and calcium phosphate was prepared, and added dropwise to HEPES-buffered saline *(Sigma-Aldrich, 51558)* while vortexing to precipitate the DNA-calcium phosphate complex.  This was then added to the cells in supplement-free media, and incubated at 37°C 7% CO~2~ for one hour.  Cells were then washed with media pre-equilibrated in 10% CO~2~ to remove residual precipitate, and the original growth media reapplied.
 
 ### Immunocytochemistry{#immuno}
 
 Cortical neurons were fixed using formaldehyde and sucrose, dissolved in PBS and mixed into the growth media to final concentrations of 3% formaldehyde and 10% sucrose.  HeLa cells were fixed in 3% formaldehyde in PBS.  In both cases, cells were fixed for 15 minutes at room temperature, followed by PBS washes and stored at 4°C.  
 
 Cells were permeabilised with 0.2% saponin, used throughout the staining process, to preserve the localisation of membrane-associated proteins.  Dishes or coverslips were incubated at room temperature for 45 minutes in blocking buffer containing 3% BSA and 0.2% saponin.  Primary and secondary antibodies were diluted to the desired concentration in the same buffer and incubated for 1.5 hours each at room temperature, before being rinsed in PBS and stained with DAPI.  All samples were mounted with FluorSave reagent *(Calbiochem, 345789)* and left to dry for at least 24 hours before imaging.
+
+Secondary-only controls were carried out for each combination of cell type and secondary antibody used throughout this project.  No significant non-specific staining was observed (data not shown).
 
 ### Microscopy
 
@@ -102,7 +104,8 @@ All manual image analysis tasks were conducted blind, with the exception of figu
 
 Kymographs were generated from Metamorph stack files using the Fiji Multi Kymograph plugin.  In cases where moving puncta were especially faint (most notably Rab7), stacks were pre-processed with the Bleach Correction plugin, using the histogram matching method.  Snapshots of the axon marker channel (typically either EGFP or mCherry-tagged protrudin) were traced to generate axon ROIs, which were then used to generate the kymographs.  Line width for the Multi Kymograph plugin was set to 5 pixels.  Generated kymographs were further refined as needed through rolling ball background subtraction and contrast adjustment.
 
-We tested KymoButler [@jakobsKymoButlerDeepLearning2019] for automated kymograph analysis, but found that it did not consistently pick up the small, fast-moving particles common in our lysosome and late endosome data.  As a result, kymographs were manually traced in Fiji using the segmented line tool, with a custom macro to export the data in CSV format for analysis in R.
+We tested KymoButler [@jakobsKymoButlerDeepLearning2019] for automated kymograph analysis, but found that it did not consistently pick up the small, fast-moving particles common in our lysosome and late endosome data.  As a result, kymographs were manually traced in Fiji using the segmented line tool, with a custom macro to export the data in CSV format for analysis in R.  For the purposes of classification, anterograde and retrograde were defined as continuous movements of at
+least 5μm away from or towards the cell body, respectively.  
 
 ### Statistical analysis
 

@@ -520,7 +520,7 @@ ptdn_soma.plotlist = lapply(cond.labels, function(l){ ggplot(ptdn_max.gc_cyto[pt
   geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = position_dodge(width = 0.9), width = 0.5) +
   labs(x = '', y = 'Soma average intensity') + 
   d_format + report_theme + 
-  stat_compare_means(position = position_nudge(y = 8)) + stat_pvalue_manual(ptdn_max.gc_cyto.soma.dunn[ptdn_max.gc_cyto.soma.dunn$cond == l,], hide.ns = TRUE, label = 'p.adj.rounded', position = position_nudge(y = 3)) })
+  stat_compare_means(position = position_nudge(y = ifelse(l == 'SURF4', 4, 8))) + stat_pvalue_manual(ptdn_max.gc_cyto.soma.dunn[ptdn_max.gc_cyto.soma.dunn$cond == l,], hide.ns = TRUE, label = 'p.adj.rounded', position = position_nudge(y = ifelse(l == 'SURF4', 2, 3))) })
 names(ptdn_soma.plotlist) = cond.labels
 
 # ptdn_max_cyto_plot = ggplot(ptdn_max.gc_cyto[ptdn_max.gc_cyto$measure == 'soma',], aes(x = transf, y = Mean)) +

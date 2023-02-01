@@ -1,4 +1,6 @@
 
 ```{=latex}
 \tableofcontents
+\listoffigures
+\listoftables
 ```

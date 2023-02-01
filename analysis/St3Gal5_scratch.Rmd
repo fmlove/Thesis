@@ -4,7 +4,7 @@ output: pdf_document
 ---
 ```{r GS_scratch_setup}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE)
-knitr::opts_chunk$set(fig.path = "../figures/full")
+knitr::opts_chunk$set(fig.path = "../figures/")
 
 source('../style/thesis_setup.R')
 
@@ -18,7 +18,17 @@ mCh.scratch = image_as_ggplot(read.bitmap(here('images/microscopy/St3Gal5/mCh_Mo
 WT.scratch = image_as_ggplot(read.bitmap(here('images/microscopy/St3Gal5/WT_Montage.png')))
 Mut2.scratch = image_as_ggplot(read.bitmap(here('images/microscopy/St3Gal5/Mut2_Montage.png')))
 
-scratch_fig = mCh.scratch/WT.scratch/Mut2.scratch + plot_annotation(tag_levels = 'A')
+mCh.zoom = image_as_ggplot(read.bitmap(here('images/microscopy/St3Gal5/mCh_zoom_Montage_single.png')))
+WT.zoom = image_as_ggplot(read.bitmap(here('images/microscopy/St3Gal5/WT_zoom_Montage_single.png')))
+Mut2.zoom = image_as_ggplot(read.bitmap(here('images/microscopy/St3Gal5/Mut2_zoom_Montage_single.png')))
+```
+```{r scratch_fig}
+
+scratch_layout = 'AAAD
+									BBBE
+									CCCF'
+
+scratch_fig = mCh.scratch + WT.scratch + Mut2.scratch + mCh.zoom + WT.zoom + Mut2.zoom + plot_layout(design = scratch_layout) + plot_annotation(tag_levels = 'A')
 
 scratch_fig
 ```
