@@ -76,15 +76,15 @@ Given protrudin's dendritic localisation and known effects on protrusion formati
 We counted and manually classified dendritic spines on 20$\mu$m sections of dendrite from DIV15 or DIV21 neurons co-expressing an EGFP/Emerald filler with an mCherry-labelled protrudin construct (figure \@ref(fig:spine-type-full-figure)).  These included WT and active protrudin, as well as a set of domain-deletion mutants to act as dominant negatives.  $\Delta$FFAT, $\Delta$RBD, and $\Delta$FYVE each have a single binding motif deleted, $\Delta$KIF5 has both the CC and FFAT domains deleted, to completely block binding to kinesin, and $\Delta$ER mutant ($\Delta$TM1-3) has all transmembrane domains deleted [@petrovaProtrudinFunctionsEndoplasmic2020].  The DIV15 data suggests that WT protrudin might be associated with fewer, stubbier spines, although the significant comparisons varied for each spine classification, and is inconsistent with the DIV21 data.
 
 ```{=latex}
-%\newgeometry{a4paper, top=1.5in, left=1.5in, right=1.5in, bottom = 3cm} %unnecessary as long as 1.5in margins overall
+\newgeometry{a4paper, top=40mm, left=35mm, right=35mm, bottom = 30mm} %unnecessary as long as 1.5in margins overall
 ```
 ```{r spine-type-full-figure, echo = F,  fig.width = 16, fig.height = 22, fig.path = '../figures/full/', fig.cap="A) Schematic showing selection of dendrite sections for analysis and basic spine morphology groups.  One dendrite section was analysed per cell.  Scale bar is 10$\\mu$m.  B-C) Total spine counts in 20$\\mu$m section for DIV15 and DIV21 groups.  D-E) Quantification of each spine type, normalised to the total number of spines in the section measured.  DIV15: n = 30 cells per condition across three independent batches; DIV21: n = 10 cells per condition in one batch.", fig.scap="Protrudin effect on dendritic spine morphology"}
 
 spine_types_plot
 ```
 ```{=latex}
-%\restoregeometry
-%\setstretch{1.5} %not restored by \restoregeometry
+\restoregeometry
+\setstretch{1.5} %not restored by \restoregeometry
 ```
 
 As manual spine classification is an inherently subjective measure, and did not show any clear associations, we decided to look instead at spine length, which can be measured more objectively.  We re-analysed the initial DIV15 data, measuring the length of each spine from the edge of the dendrite.  This did yield some significant comparisons, both in spine number and length, so we followed this up with a full replication, which we analysed in the same way (figure \@ref(fig:spine-length-full-figure)).  While the replication also produced statistically significant results, they were wholly inconsistent between the two experiments.    
