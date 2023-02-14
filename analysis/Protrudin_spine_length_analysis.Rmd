@@ -20,20 +20,22 @@ library(reshape2)
 library(ggplot2)
 library(rstatix)
 library(ggpubr)
+library(here)
 library(patchwork)
 ```
 
 Reading in CSV files
 ```{r read_spine_type_CSVs}
 #CNC79 - copied and pasted for 80 and 78
-CNC79.dir = 'C:/Users/fl299/PhD/Data/Mine/Spinning\ Disc/070721_cnc79_dendrites/max_projections/GFP/dendrite_sections/spines/'
+# CNC79.dir = 'C:/Users/fl299/PhD/Data/Mine/Spinning\ Disc/070721_cnc79_dendrites/max_projections/GFP/dendrite_sections/spines/'
+CNC79.dir = '../data/spine_length/CNC79/'
 CNC79.csvs = lapply(list.files(path = CNC79.dir, pattern = '\\.csv$'), 
                               function(f){
                                 df = read.csv(paste0(CNC79.dir, f), stringsAsFactors = F);
                                 df$file = rep(f, nrow(df));
                                 return(df);
                               })
-#remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
+#remove key.csvs if present - assuming that these will be fewer than desired spine length CSVs
 #WARNING - reassigned for each experiment - start looking here if any bugs pop up
 colnames = unique(lapply(CNC79.csvs, colnames))
 colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC79.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
@@ -51,7 +53,8 @@ remove(CNC79.dir, CNC79.csvs, colnames, colnames.counts, colnames.correct)
 
 
 #CNC80
-CNC80.dir = 'C:/Users/fl299/PhD/Data/Mine/Spinning\ Disc/140721_CNC80_dendrites/max_projections/GFP/dendrite_sections/spines/'
+# CNC80.dir = 'C:/Users/fl299/PhD/Data/Mine/Spinning\ Disc/140721_CNC80_dendrites/max_projections/GFP/dendrite_sections/spines/'
+CNC80.dir = '../data/spine_length/CNC80/'
 CNC80.csvs = lapply(list.files(path = CNC80.dir, pattern = '\\.csv$'), 
                               function(f){
                                 df = read.csv(paste0(CNC80.dir, f), stringsAsFactors = F);
@@ -75,7 +78,8 @@ remove(CNC80.dir, CNC80.csvs, colnames, colnames.counts, colnames.correct)
 
 
 #CNC78
-CNC78.dir = 'C:/Users/fl299/PhD/Data/Mine/Spinning\ Disc/300621_CNC78_dendrites/max_projections/GFP/dendrite_sections/spines/'
+# CNC78.dir = 'C:/Users/fl299/PhD/Data/Mine/Spinning\ Disc/300621_CNC78_dendrites/max_projections/GFP/dendrite_sections/spines/'
+CNC78.dir = '../data/spine_length/CNC78/'
 CNC78.csvs = lapply(list.files(path = CNC78.dir, pattern = '\\.csv$'), 
                               function(f){
                                 df = read.csv(paste0(CNC78.dir, f), stringsAsFactors = F);
@@ -174,7 +178,8 @@ lengths.plot
 ```{r read_CSVs_confocal}
 #coped and pasted from CNC79
 
-CNC81.dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC81_dendrites\\GFP_max_projections\\dendrite_sections\\spines\\'
+# CNC81.dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC81_dendrites\\GFP_max_projections\\dendrite_sections\\spines\\'
+CNC81.dir = '../data/spine_length/CNC81/'
 CNC81.csvs = lapply(list.files(path = CNC81.dir, pattern = '\\.csv$'), 
                               function(f){
                                 df = read.csv(paste0(CNC81.dir, f), stringsAsFactors = F);
@@ -202,7 +207,8 @@ remove(CNC81.dir, CNC81.csvs, colnames, colnames.counts, colnames.correct)
 
 
 
-CNC82.dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC82_dendrites\\GFP_max_projections\\dendrite_sections\\spines\\'
+# CNC82.dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC82_dendrites\\GFP_max_projections\\dendrite_sections\\spines\\'
+CNC82.dir = '../data/spine_length/CNC82/'
 CNC82.csvs = lapply(list.files(path = CNC82.dir, pattern = '\\.csv$'), 
                               function(f){
                                 df = read.csv(paste0(CNC82.dir, f), stringsAsFactors = F);
@@ -230,7 +236,8 @@ remove(CNC82.dir, CNC82.csvs, colnames, colnames.counts, colnames.correct)
 
 
 
-CNC83.dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC83_dendrites\\GFP_max_projections\\dendrite_sections\\spines\\'
+# CNC83.dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC83_dendrites\\GFP_max_projections\\dendrite_sections\\spines\\'
+CNC83.dir = '../data/spine_length/CNC83/'
 CNC83.csvs = lapply(list.files(path = CNC83.dir, pattern = '\\.csv$'), 
                               function(f){
                                 df = read.csv(paste0(CNC83.dir, f), stringsAsFactors = F);
@@ -258,7 +265,8 @@ remove(CNC83.dir, CNC83.csvs, colnames, colnames.counts, colnames.correct)
 
 
 
-CNC84.dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC84_dendrites\\GFP_max_projections\\dendrite_sections\\spines\\'
+# CNC84.dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC84_dendrites\\GFP_max_projections\\dendrite_sections\\spines\\'
+CNC84.dir = '../data/spine_length/CNC84/'
 CNC84.csvs = lapply(list.files(path = CNC84.dir, pattern = '\\.csv$'), 
                               function(f){
                                 df = read.csv(paste0(CNC84.dir, f), stringsAsFactors = F);
@@ -352,12 +360,12 @@ lengths_confocal.plot
 
 # Combined plots
 
-```{r spine_lengths_full, fig.height=14, fig.width=16, fig.path = '../figures/full/', dev = 'png'}
+```{r spine_lengths_full, fig.height=14, fig.width=16, dev = 'png'}
 spine_lengths_full_plot = (counts.plot + counts_confocal.plot) / (lengths.plot + lengths_confocal.plot) + plot_annotation(tag_levels = 'A') & theme(axis.text.x = element_text(angle = 45, hjust=1))
 
 spine_lengths_full_plot
 
-ggsave('spine_lengths_full.png', plot = spine_lengths_full_plot, device = 'png', path = '../figures/full/', width = 16, height = 14)
+#ggsave('spine_lengths_full.png', plot = spine_lengths_full_plot, device = 'png', path = '../figures/full/', width = 16, height = 14)
 ```
 
 

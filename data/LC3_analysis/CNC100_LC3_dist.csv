@@ -1,0 +1,10 @@
+condition,distribution,number
+GFP,cytoplasmic,0
+GFP,mixed,10
+GFP,punctate,10
+WT,cytoplasmic,0
+WT,mixed,3
+WT,punctate,17
+Mut2,cytoplasmic,0
+Mut2,mixed,7
+Mut2,punctate,13

@@ -1,0 +1,12 @@
+ ,Label,Area,Mean,StdDev,Mode,Min,Max,IntDen,Median,RawIntDen,Length
+1,MAX_DMSO-for-clof_4_soma.tif:cell body:1,254.094,73.525,66.104,9.000,5.000,232.000,18682.317,44.000,361450.000,0.000
+2,MAX_DMSO-for-clof_4_soma.tif:nucleus:1,62.025,170.187,31.938,158.000,44.000,232.000,10555.755,173.000,204224.000,0.000
+3,MAX_DMSO-for-clof_4_soma.tif:cytoplasm:1,192.069,42.311,38.201,9.000,5.000,200.000,8126.562,29.000,157226.000,0.000
+4,MAX_DMSO-for-clof_4_soma.tif:dendrite 1:1,1.344,15.605,6.223,27.458,5.724,27.501,20.971,14.454,405.721,5.788
+5,MAX_DMSO-for-clof_4_soma.tif:dendrite 1 background:1,1.344,6.418,4.220,5.026,3.235,22.741,8.625,4.995,166.868,5.788
+6,MAX_DMSO-for-clof_4_soma.tif:dendrite 2:1,2.946,23.713,7.331,15.022,12.053,40.739,69.863,22.409,1351.656,12.916
+7,MAX_DMSO-for-clof_4_soma.tif:dendrite 2 background:1,2.946,5.917,2.095,5.492,4.000,16.948,17.433,5.269,337.286,12.916
+8,MAX_DMSO-for-clof_4_soma.tif:dendrite 3:1,1.654,19.120,8.793,12.740,6.110,40.398,31.625,17.171,611.846,7.274
+9,MAX_DMSO-for-clof_4_soma.tif:dendrite 3 background:1,1.654,5.869,2.350,4.075,4.015,14.314,9.707,4.980,187.795,7.274
+10,MAX_DMSO-for-clof_4_soma.tif:AIS:1,7.650,19.853,6.639,14.061,7.591,37.984,151.873,19.214,2938.307,33.598
+11,MAX_DMSO-for-clof_4_soma.tif:AIS background:1,7.650,4.862,1.758,4.387,3.000,13.925,37.190,4.381,719.529,33.598

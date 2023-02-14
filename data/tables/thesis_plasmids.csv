@@ -1,0 +1,28 @@
+Promoter,Gene,Reporter,Source,Citation,Used,Notes
+CMV,Arl8b (constitutively active),GFP,Bonifacino lab,,FALSE,Gift from Juan Bonifacino
+CMV,Arl8b (WT),GFP,Bonifacino lab,,FALSE,Gift from Juan Bonifacino
+CAG,EGFP, - ,our lab,,TRUE,
+hSYN,EGFP, - ,our lab,,TRUE,
+SFFV/UbC,EGFP/Emerald, - ,our lab,,TRUE,
+EF-1$\alpha$,ESCargo (FTV),Crimson,"*Addgene, 140162*",[@caslerESC2020],TRUE,"Gift from Benjamin Glick *(Addgene, 140162)* [@caslerESC2020]"
+CMV,FYCO1,EGFP,Johansen lab,[@pankivFYCO12010],TRUE,Gift from Terje Johansen [@pankivFYCO12010]
+CMV,LAMP1,mNeonGreen,"*Addgene, 98882*",[@chertkova2020],FALSE,"Gift from Dorus Gadella *(Addgene, 98882)* [@chertkova2020]"
+CMV,LAMP1,mRFP1,"*Addgene, 1817*",[@sherer2003],TRUE,"Gift from Walther Mothes *(Addgene, 1817)* 	[@sherer2003]"
+hSYN,LAMP1,mRFP1,this thesis,,TRUE,
+CMV,LC3b,mRFP1,"*Addgene, 21075*",[@kimura2007],TRUE,"Gift from Tamotsu Yoshimori *(Addgene, 21075)* [@kimura2007]"
+hSYN,mCherry, - ,our lab,,TRUE,
+hSYN,Myrlysin,EGFP,"VectorBuilder, custom",,TRUE,"VectorBuilder, custom"
+CMV,Myrlysin,Myc,Bonifacino lab,,FALSE,Gift from Juan Bonifacino
+CAG,Protrudin (active),EGFP,our lab,,TRUE,
+hSYN,Protrudin (active),EGFP,our lab,,TRUE,
+hSYN,Protrudin (active),mCherry,our lab,,TRUE,
+hSYN,Protrudin (domain deletion mutants),mCherry,our lab,,TRUE,
+CAG,Protrudin (WT),EGFP,our lab,,TRUE,
+hSYN,Protrudin (WT),EGFP,our lab,,TRUE,
+hSYN,Protrudin (WT),mCherry,our lab,,TRUE,
+UbC,Rab7a,mEmerald,our lab,,TRUE,
+U6,shRNA for calcyon (A-D),TurboGFP,"*Origene, TG712969*",,TRUE,"*(Origene, TG712969)*"
+U6,shRNA scrambled control,TurboGFP,"*Origene, TR30013*",,TRUE,"*(Origene, TR30013)*"
+CMV,SKIP,EGFP,Bonifacino lab,,TRUE,Gift from Juan Bonifacino
+CBh,SKIP,mNeonGreen,"VectorBuilder, custom",,FALSE,"VectorBuilder, custom"
+hSYN,St3Gal5,EGFP,Mikhaylova lab,[@mikhaylovaGS2016],TRUE,Gift from Marina Mikhaylova [@mikhaylovaGS2016]

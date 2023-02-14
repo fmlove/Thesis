@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE, dev = 'png')
 knitr::opts_chunk$set(fig.path = '../figures/')
 
 
-source('C:\\Users\\fl299\\GitHub\\kymograph-analysis\\Kymograph_trace_analysis.R')
+source('../analysis/Kymograph_trace_analysis.R')#copied over from git repo 08-02-23
 source('../style/thesis_setup.R')
 
 library(stringr)
@@ -21,13 +21,14 @@ library(ggpubr)
 library(reshape2)
 library(PMCMRplus)
 library(rstatix)
+library(here)
 
 library(readbitmap)
 library(patchwork)
 ```
 
 ```{r read_data}
-trace_dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning\ Disc\\Kymographs\ and\ Traces\\traced\\CNC114-116'
+trace_dir = '../data/kymograph_traces/CNC114-116/'
 CSVs = list.files(trace_dir, pattern = "^CNC\\d+_.+\\.csv$", full.names = TRUE)
 
 trace_data = lapply(CSVs, function(c){
@@ -189,8 +190,8 @@ plot(GS_mean_run_velocity)
 
 ```
 
-```{r St3Gal5_kymo_full_figure, fig.width = 16, fig.height = 8, fig.path = '../figures/full/'}
-St3Gal5_kymo_panel = image_as_ggplot(read.bitmap('C:\\Users\\fl299\\PhD\\St3Gal5_kymo_panel.png'))
+```{r St3Gal5_kymo_full_figure, fig.width = 16, fig.height = 8}
+St3Gal5_kymo_panel = image_as_ggplot(read.bitmap(here('figures/external/St3Gal5_kymo_panel.png')))
 
 
 St3Gal5_kymo_plot = St3Gal5_kymo_panel/

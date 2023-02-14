@@ -552,7 +552,7 @@ i3_max_ratio_plot
 
 # FULL FIGURES
 
-```{r CNC_vs_i3_ratio_full, fig.height = 10, fig.width=16, fig.path="../figures/full/"}
+```{r CNC_vs_i3_ratio_full, fig.height = 10, fig.width=16}
 
 i3.BCAP31 = image_as_ggplot(read.bitmap('../images/microscopy/i3/i3-BCAP31.png'))
 i3.SURF4 = image_as_ggplot(read.bitmap('../images/microscopy/i3/i3-SURF4.png'))
@@ -584,7 +584,7 @@ i3_plot
 
 
 
-```{r dev_changes_ratio_full_figure, fig.width=16, fig.height=16, fig.path = "../figures/full/"}
+```{r dev_changes_ratio_full_figure, fig.width=16, fig.height=16}
 BCAP31.DIV3 = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/BCAP31-DIV3.png'))
 SURF4.DIV3 = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/SURF4-DIV3.png'))
 ERGIC53.DIV3 = image_as_ggplot(read.bitmap('../images/microscopy/dev_changes/ERGIC53-DIV3.png'))
@@ -661,7 +661,7 @@ SLC38A1.Mut2.GC = image_as_ggplot(read.bitmap('../images/microscopy/protrudin_st
 #   plot_annotation(tag_levels = 'A') + plot_layout(design = layout)
 ```
 
-```{r protrudin_BCAP31_full, fig.width = 16, fig.height = 16, fig.path = "../figures/full/"}
+```{r protrudin_BCAP31_full, fig.width = 16, fig.height = 16}
 BCAP31.layout = 'ABC
                   DEF
                   GHI'
@@ -675,7 +675,7 @@ BCAP31_plot = BCAP31.GFP.soma + BCAP31.WT.soma + BCAP31.Mut2.soma +
 BCAP31_plot
 ```
 
-```{r protrudin_SURF4_full, fig.width = 16, fig.height = 16, fig.path = "../figures/full/"}
+```{r protrudin_SURF4_full, fig.width = 16, fig.height = 16}
 SURF4.layout = 'ABC
                   DEF
                   GHI'
@@ -689,7 +689,7 @@ SURF4_plot = SURF4.GFP.soma + SURF4.WT.soma + SURF4.Mut2.soma +
 SURF4_plot
 ```
 
-```{r protrudin_ERGIC53_full, fig.width = 16, fig.height = 16, fig.path = "../figures/full/"}
+```{r protrudin_ERGIC53_full, fig.width = 16, fig.height = 16}
 ERGIC53.layout = 'ABC
                   DEF
                   GHI'
@@ -703,7 +703,7 @@ ERGIC53_plot = ERGIC53.GFP.soma + ERGIC53.WT.soma + ERGIC53.Mut2.soma +
 ERGIC53_plot
 ```
 
-```{r protrudin_SLC38A1_full, fig.width = 16, fig.height = 16, fig.path = "../figures/full/"}
+```{r protrudin_SLC38A1_full, fig.width = 16, fig.height = 16}
 SLC38A1.layout = 'ABC
                   DEF
                   GHI'

@@ -1,0 +1,20 @@
+Marker,Description,Source,HeLa_screen,Species,Type,Dilution,stage
+BCAP31,ER chaperone,"*Novus Biologicals, NBP2-75416*",TRUE,rabbit,monoclonal,1:100,primary
+SURF4,ERES cargo loading,"*Proteintech, 11599-1-AP*",TRUE,rabbit,polyclonal,1:250–1:500,primary
+MIA3 (TANGO1),ERES cargo loading,"*Sigma-Aldrich, HPA055922-25UL*",TRUE,rabbit,polyclonal,1:100,primary
+SEC31A,COPII coat component,"*BD Biosciences, 612351*",TRUE,mouse,monoclonal,1:100,primary
+ERGIC53,ERGIC marker,"*Sigma-Aldrich, E1031-200UL*",TRUE,rabbit,polyclonal,1:100,primary
+GS28,Golgi SNARE,"*Proteintech, 16106-1-AP*",TRUE,rabbit,polyclonal,1:100,primary
+GLG1,Golgi glycoprotein,"*Novis Biologicals, NBP1-90636*",TRUE,rabbit,polyclonal,1:150,primary
+USO1 (p115),ER to Golgi vesicle targeting,"*Proteintech, 13509-1-AP*",TRUE,rabbit,polyclonal,1:1000,primary
+LAMP1,lysosome marker,"*Abcam, ab24170*",TRUE,rabbit,polyclonal,1:100,primary
+mTOR,signalling kinase,"*Thermo Fisher, A300-503A-M*",TRUE,rabbit,polyclonal,1:50,primary
+ACSL3,fatty acid metabolism,"*Proteintech, 20710-1-AP*",TRUE,rabbit,polyclonal,1:50,primary
+SLC38A1,glutamine uptake transporter,"*Abcam, ab134268*",TRUE,mouse,monoclonal,1:100,primary
+LC3,autophagosome marker,"*Proteintech, 14600-1-AP*",TRUE,rabbit,polyclonal,1:250,primary
+BODIPY TR C~5~ ceramide,ceramide lipid dye,"*Thermo Fisher, B34400*",TRUE,,,,dye
+Rab11,recycling endosome marker,,FALSE,rabbit,,,primary
+Goat anti-Rabbit IgG Alexa Fluor 568,,"*Thermo Fisher,  A-11011*",TRUE,goat,polyclonal,1:500,secondary
+Goat anti-Mouse IgG Alexa Fluor 568,,"*Thermo Fisher,  A-11004*",TRUE,goat,polyclonal,1:500,secondary
+Biotinylated donkey anti-Rabbit,,"*Amersham Biosciences, RPN1004V1*",TRUE,donkey,monoclonal,1:500,secondary
+Streptavidin Alexa Fluor 568,,"*Thermo Fisher, S11226*",TRUE,,NA,1:1000,additional

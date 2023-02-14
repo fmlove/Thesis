@@ -4,7 +4,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, dev = 'png'
 knitr::opts_chunk$set(fig.path = '../figures/')
 
 
-source('C:\\Users\\fl299\\GitHub\\kymograph-analysis\\Kymograph_trace_analysis.R')
+source('../analysis/Kymograph_trace_analysis.R')#copied over from git repo 08-02-23
 source('../style/thesis_setup.R')
 
 library(dplyr)
@@ -15,6 +15,7 @@ library(ggpubr)
 library(reshape2)
 library(PMCMRplus)
 library(rstatix)
+library(here)
 
 library(readbitmap)
 library(patchwork)
@@ -23,10 +24,10 @@ library(patchwork)
 # Data handling
 ```{r LAMP1_csv_selection}
 
-CNC20 = "C:\\Users\\fl299\\GitHub\\first-year-report\\data_analysis\\data\\CNC20_kymo_analysis"
-CNC25 = "C:\\Users\\fl299\\GitHub\\first-year-report\\data_analysis\\data\\CNC25_kymo_analysis"
-CNC26 = "C:\\Users\\fl299\\GitHub\\first-year-report\\data_analysis\\data\\CNC26_kymo_analysis"
-CNC32 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\kymograph_processing_TO_SORT\\CNC32_kymograph_analysis"
+CNC20 = "../data/kymograph_traces/CNC20_kymo_analysis/"
+CNC25 = "../data/kymograph_traces/CNC25_kymo_analysis/"
+CNC26 = "../data/kymograph_traces/CNC26_kymo_analysis/"
+CNC32 = "../data/kymograph_traces/CNC32_kymograph_analysis/"
 
 #keeping experiments separate because of frame rate differences
 GFP_CSVs_20 = list.files(CNC20, pattern = "^GFP_.+\\.csv$", full.names = TRUE)
@@ -493,7 +494,7 @@ Repeat with mCherry Ptdn constructs and LAMP1-mNeonGreen to compare
 
 Import representative kymographs
 ```{r}
-LAMP1_kymo_panel = image_as_ggplot(read.bitmap('C:\\Users\\fl299\\PhD\\LAMP1_kymo_panel.png'))
+LAMP1_kymo_panel = image_as_ggplot(read.bitmap(here('figures/external/LAMP1_kymo_panel.png')))
 ```
 
 Patchwork

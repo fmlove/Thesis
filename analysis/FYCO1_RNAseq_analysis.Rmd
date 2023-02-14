@@ -33,7 +33,7 @@ genes = c('Gapdh', 'Fyco1', 'Zfyve27')
 
 read in condensed CSV
 ```{r}
-full.csv = read.csv('C:\\Users\\fl299\\PhD\\Data\\koseki_et_al_2017_data_condensed.csv', stringsAsFactors = F)
+full.csv = read.csvhere(('data/published_data_sets/koseki_et_al_2017_data_condensed.csv'), stringsAsFactors = F)
 ```
 
 Subset to selected genes and remodel
@@ -79,7 +79,7 @@ legend = as_ggplot(get_legend(koseki))
 
 read in CSV
 ```{r}
-tb.csv = read.csv('C:\\Users\\fl299\\PhD\\Data\\Bradke Tedeschi DRG RNAseq.csv', stringsAsFactors = F)
+tb.csv = read.csv(here('data/published_data_sets/Bradke_Tedeschi_DRG_RNAseq.csv'), stringsAsFactors = F)
 ```
 
 Filter to selected genes
@@ -157,7 +157,7 @@ tb.Injury$condition = factor(tb.Injury$condition, levels = c('sham', 'lesion'))
 ## Zhang et al. 2016 (brainrnaseq.org)
 ```{r}
 #25yo human cortical neuron data, FPKM
-z.csv = read.csv('C:\\Users\\fl299\\PhD\\Data\\Zhang_GSE73721_Human_and_mouse_table.csv', stringsAsFactors = F)
+z.csv = read.csv(here('data/published_data_sets/Zhang_GSE73721_Human_and_mouse_table.csv'), stringsAsFactors = F)
 genes.z =  z.csv %>% filter(Gene %in% genes)
 genes.z.neurons = data.frame(gene = genes.z$Gene,
                              FPKM = genes.z$X25yo.ctx.neuron)
@@ -177,7 +177,7 @@ zhang.bar
 
 Kelley et al. 2018 - gene fidelity (cell type specificity)
 ```{r}
-kelley.csv = read.csv('C:\\Users\\fl299\\PhD\\Data\\Kelley_ALL_Fidelity.csv', stringsAsFactors = F)
+kelley.csv = read.csv(here('data/published_data_sets/Kelley_ALL_Fidelity.csv'), stringsAsFactors = F)
 genes.kelley = kelley.csv[kelley.csv$Gene %in% c('FYCO1', 'ZFYVE27'),]
 
 genes.k = genes.kelley[,-which(names(genes.kelley) %in% c('Entrez', 'Alias', 'MeanExpression_Percentile'))] %>% pivot_longer(cols = 2:85, values_to = 'fidelity')
@@ -254,7 +254,7 @@ Kelley.patch = kelley.bar + plot_annotation(title = '', caption = 'Kelley et al.
 PNS.patch = culture + vivo + injury + plot_annotation(title = "PNS", caption = "Tedeschi et al. 2016, Neuron")
 ```
 
-```{r FYCO1_RNAseq_full, fig.width=16, fig.height = 18, fig.path = "../figures/full/"}
+```{r FYCO1_RNAseq_full, fig.width=16, fig.height = 18}
 
 i3_panel = image_as_ggplot(read.bitmap(here('figures/external/i3_panel.png'))) + labs(title = 'i3 neurons')
 

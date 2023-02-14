@@ -1,0 +1,3 @@
+ ,Label,Area,Mean,StdDev,Mode,Min,Max,IntDen,Median,RawIntDen
+1,MAX_BCAP31_DIV15_1_GC.tif:growth cone:1,6.564,30.843,17.818,15,9,118,202.459,27,3917
+2,MAX_BCAP31_DIV15_1_GC.tif:growth cone background:1,6.564,17.024,18.235,8,5,130,111.748,11,2162

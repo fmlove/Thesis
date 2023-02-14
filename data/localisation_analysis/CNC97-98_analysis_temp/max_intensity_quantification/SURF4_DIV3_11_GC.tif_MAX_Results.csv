@@ -1,0 +1,3 @@
+ ,Label,Area,Mean,StdDev,Mode,Min,Max,IntDen,Median,RawIntDen
+1,MAX_SURF4_DIV3_11_GC.tif:growth cone:1,17.487,13.783,9.065,6,2,48,241.026,12,4645.000
+2,MAX_SURF4_DIV3_11_GC.tif:growth cone background:1,17.487,0.074,0.341,0,0,4,1.297,0,25.000

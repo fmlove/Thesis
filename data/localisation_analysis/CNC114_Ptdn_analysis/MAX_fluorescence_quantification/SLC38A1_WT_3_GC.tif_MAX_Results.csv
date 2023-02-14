@@ -1,0 +1,3 @@
+ ,Label,Area,Mean,StdDev,Mode,Min,Max,IntDen,Median,RawIntDen
+1,MAX_SLC38A1_WT_3_GC.tif:growth cone:1,7.650,52.601,23.544,34,14,121,402.384,48,7785.000
+2,MAX_SLC38A1_WT_3_GC.tif:growth cone background:1,7.650,22.095,13.844,9,5,80,169.017,18,3270.000

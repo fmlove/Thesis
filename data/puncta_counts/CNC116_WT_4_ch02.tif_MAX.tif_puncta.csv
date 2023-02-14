@@ -1,0 +1,4 @@
+ ,Label,Area,Mean,StdDev,Mode,Min,Max,X,Y,IntDen,Median,RawIntDen
+1,duplicate,0.000,20,0,20,20,20,62.691,37.967,1.034,20,20
+2,duplicate,0.000,28,0,28,28,28,66.613,53.484,1.447,28,28
+3,duplicate,0.000,14,0,14,14,14,68.659,57.633,0.724,14,14

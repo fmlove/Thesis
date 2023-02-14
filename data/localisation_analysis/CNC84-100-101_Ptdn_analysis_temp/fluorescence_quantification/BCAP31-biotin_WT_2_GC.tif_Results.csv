@@ -1,0 +1,3 @@
+ ,Label,Area,Mean,StdDev,Mode,Min,Max,IntDen,Median,RawIntDen
+1,SUM_1706b082-bc5b-4488-8ad8-d00e3a4650e0.tif:growth cone:1,4.548,308.330,256.653,100.023,51,1055,1402.427,156.500,27133
+2,SUM_1706b082-bc5b-4488-8ad8-d00e3a4650e0.tif:growth cone background:1,4.548,150.875,177.358,97.000,31,1055,686.250,94.000,13277

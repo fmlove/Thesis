@@ -35,15 +35,15 @@ library(patchwork)
 
 #From Elbaz-Alon et al. 2020, Nat Commun
 #extracted from Supplementary Data Set 2 PDF
-elbaz_alon.data = read.csv('C:/Users/fl299/PhD/Writing/Thesis/data/published_data_sets/Elbaz-Alon_2020_protrudin_interactions.csv', stringsAsFactors = F)
+elbaz_alon.data = read.csv(here('data/published_data_sets/Elbaz-Alon_2020_protrudin_interactions.csv'), stringsAsFactors = F)
 
 #From Matsuzaki et al. 2011, MBOC
 #modified from supplementary file mc-e11-01-0068-s02.xls - removed merged cells, etc.
-matsuzaki.data = read.csv('C:/Users/fl299/PhD/Writing/Thesis/data/published_data_sets/Matsuzaki_2011_protrudin_interactions.csv', stringsAsFactors = F)
+matsuzaki.data = read.csv(here('data/published_data_sets/Matsuzaki_2011_protrudin_interactions.csv'), stringsAsFactors = F)
 
 #From Hashimoto et al. 2014, J Biol Chem
 #transcribed and deduplicated from Table 1 - gene symbols only
-hashimoto.data = read.csv('C:/Users/fl299/PhD/Writing/Thesis/data/published_data_sets/Hashimoto_2014_protrudin_interactions.csv', stringsAsFactors = F)
+hashimoto.data = read.csv(here('data/published_data_sets/Hashimoto_2014_protrudin_interactions.csv'), stringsAsFactors = F)
 
 #From uniprot interactions for human ZFYVE27 (Q5T4F4) - curated from literature
 # #initial query to get up-to-date interactions, then working with fixed CSV to avoid unexpected changes
@@ -189,7 +189,7 @@ GO_plot = ggplot(bio_proc, aes(x = Term, y = n_log)) + geom_bar(stat='identity',
 GO_plot
 ```
 
-```{r proteomics_full, fig.width = 16, fig.height = 6, fig.path = "../figures/full/"}
+```{r proteomics_full, fig.width = 16, fig.height = 6}
 proteomics_full = venn + GO_plot + plot_annotation(tag_levels = 'A') + plot_layout(widths = c(12,4))
 
 proteomics_full

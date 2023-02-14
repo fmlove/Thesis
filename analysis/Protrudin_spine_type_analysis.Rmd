@@ -16,6 +16,7 @@ library(reshape2)
 library(ggplot2)
 library(rstatix)
 library(ggpubr)
+library(here)
 library(readbitmap)
 library(patchwork)
 ```
@@ -57,10 +58,10 @@ write.csv(counts, file = paste(dir, "cell_counter_counts.csv", sep = '/'))
 
 Reading in CSV files
 ```{r read_CSVs}
-CNC78 = read.csv("C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning\ Disc\\300621_cnc78_dendrites\\max_projections\\GFP\\dendrite_sections\\cell_counter\\cell_counter_counts.csv", stringsAsFactors = F)
-CNC79 = read.csv("C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning\ Disc\\070721_cnc79_dendrites\\max_projections\\GFP\\dendrite_sections\\cell_counter\\cell_counter_counts.csv", stringsAsFactors = F)
-CNC80 = read.csv("C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning\ Disc\\140721_cnc80_dendrites\\max_projections\\GFP\\dendrite_sections\\cell_counter\\cell_counter_counts.csv", stringsAsFactors = F)
-CNC79_DIV21 = read.csv("C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning\ Disc\\130721_cnc79_DIV21_dendrites\\max_projections\\GFP\\dendrite_sections\\blind\\cell_counter\\cell_counter_counts.csv", stringsAsFactors = F)
+CNC78 = read.csv(here("data/spine_classification/CNC78/cell_counter/cell_counter_counts.csv"), stringsAsFactors = F)
+CNC79 = read.csv(here("data/spine_classification/CNC79/cell_counter/cell_counter_counts.csv"), stringsAsFactors = F)
+CNC80 = read.csv(here("data/spine_classification/CNC80/cell_counter/cell_counter_counts.csv"), stringsAsFactors = F)
+CNC79_DIV21 = read.csv(here("data/spine_classification/CNC79_DIV21/cell_counter/cell_counter_counts.csv"), stringsAsFactors = F)
 ```
 
 Adding columns to each table for experiment number and cell age
@@ -280,8 +281,8 @@ Maybe Mutant 2 has fewer filopodia at this stage, but it's too early to be sure.
 
 
 
-```{r spine_types_full_figure, fig.width = 16, fig.height = 22, fig.path='../figures/full/'}
-schematic = image_as_ggplot(read.bitmap('C:\\Users\\fl299\\PhD\\dendrite_section_schematic.png'))
+```{r spine_types_full_figure, fig.width = 16, fig.height = 22}
+schematic = image_as_ggplot(read.bitmap(here('figures/external/dendrite_section_schematic.png')))
 
 
 spine_type_layout = 'AABC

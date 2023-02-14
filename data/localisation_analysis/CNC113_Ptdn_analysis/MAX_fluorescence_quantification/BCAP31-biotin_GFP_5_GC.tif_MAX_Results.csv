@@ -1,0 +1,3 @@
+ ,Label,Area,Mean,StdDev,Mode,Min,Max,IntDen,Median,RawIntDen
+1,MAX_BCAP31-biotin_GFP_5_GC.tif:growth cone:1,11.423,21.819,13.610,9,4,99,249.235,18,4822
+2,MAX_BCAP31-biotin_GFP_5_GC.tif:growth cone background:1,11.423,13.235,9.515,5,4,53,151.185,10,2925

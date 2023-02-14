@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE, dev = 'png')
 knitr::opts_chunk$set(fig.path = "../figures/")
 
 
-source('C:\\Users\\fl299\\GitHub\\kymograph-analysis\\Kymograph_trace_analysis.R')
+source('../analysis/Kymograph_trace_analysis.R')#copied over from git repo 08-02-23
 source('../style/thesis_setup.R')
 
 
@@ -20,6 +20,7 @@ library(gridExtra)
 library(ggpubr)
 library(reshape2)
 library(PMCMRplus)
+library(here)
 
 library(readbitmap)
 library(patchwork)
@@ -28,10 +29,15 @@ library(patchwork)
 # Data handling
 ```{r Rab7_csv_selection}
 
-CNC57 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC57"
-CNC58_59 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC58-59"
-CNC59 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC59"
-CNC61 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC61"
+# CNC57 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC57"
+# CNC58_59 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC58-59"
+# CNC59 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC59"
+# CNC61 = "C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\Kymographs and Traces\\traced\\CNC61"
+
+CNC57 = "../data/kymograph_traces/CNC57/"
+CNC58_59 = "../data/kymograph_traces/CNC58-59/"
+CNC59 = "../data/kymograph_traces/CNC59/"
+CNC61 = "../data/kymograph_traces/CNC61/"
 
 #keeping experiments separate because of frame rate differences
 
@@ -323,7 +329,7 @@ mov_dot + mean_run_length + velocity_box +
 
 Import representative kymographs
 ```{r}
-Rab7_kymo_panel = image_as_ggplot(read.bitmap('C:\\Users\\fl299\\PhD\\Rab7_kymo_panel.png'))
+Rab7_kymo_panel = image_as_ggplot(read.bitmap(here('figures/external/Rab7_kymo_panel.png')))
 ```
 
 Patchwork

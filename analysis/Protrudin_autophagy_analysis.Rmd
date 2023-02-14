@@ -18,8 +18,8 @@ library(patchwork)
 
 Load in count CSVs
 ```{r}
-CNC100 = read.csv('C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning\ Disc\\270422_cnc100\\CNC100_LC3_dist.csv')
-CNC101 = read.csv('C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc\\040522_cnc101\\CNC101_LC3_dist.csv')
+CNC100 = read.csv(here('data/LC3_analysis/CNC100_LC3_dist.csv'))
+CNC101 = read.csv(here('data/LC3_analysis/CNC101_LC3_dist.csv'))
 
 CNC100$expt = rep('CNC100', nrow(CNC100))
 CNC101$expt = rep('CNC101', nrow(CNC101))
@@ -46,7 +46,7 @@ LC3_neuron_plot
 ```
 
 ```{r LC3_profile_plot}
-LC3.prof = read.csv('C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\HeLa7-9_LC3_TIFs\\7\\stacks\\max_projections\\intensity_profiles\\WT2_Stack_profile.csv')
+LC3.prof = read.csv(here('data/intensity_profiles/HeLa7_LC3_WT2_Stack_profile.csv'))
 LC3.prof.norm = data.frame(X = LC3.prof$X,
                        ch1 = LC3.prof$Value_ch1/max(LC3.prof$Value_ch1),
                        ch2 = LC3.prof$Value_ch2/max(LC3.prof$Value_ch2))
@@ -71,7 +71,7 @@ LC3_grid = image_as_ggplot(read.bitmap(here('images/microscopy/HeLa_montages/LC3
 LC3_protrusion = image_as_ggplot(read.bitmap(here('images/microscopy/HeLa_montages/LC3_WT_protrusion_vertical.png')))
 ```
 
-```{r LC3_full, fig.width=16, fig.height=12, fig.path='../figures/full/'}
+```{r LC3_full, fig.width=16, fig.height=12}
 LC3.layout = 'AAAAAABBBBCC
               AAAAAABBBBCC
               AAAAAABBBBCC

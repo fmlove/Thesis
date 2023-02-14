@@ -1,0 +1,3 @@
+ ,Label,Area,Mean,StdDev,Mode,Min,Max,IntDen,Median,RawIntDen
+1,MAX_Mut2-ERGIC53_5_GC.tif:growth cone:1,6.306,27.131,12.795,20,9,78,171.084,24,3310
+2,MAX_Mut2-ERGIC53_5_GC.tif:growth cone background:1,6.306,8.500,7.579,4,1,58,53.600,7,1037

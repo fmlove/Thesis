@@ -26,7 +26,6 @@ library(here)
 
 ```{r}
 
-# density.counts = read.csv("C:\\Users\\fl299\\PhD\\Data\\Others\'\\Bart_transfection_test\\density_test_osc_20200122.csv")
 density.counts = read.csv(here('data/transfection_optimisation/density_test_osc_20200122.csv'))
 density.melt = melt(density.counts, id.vars = 'density', measure.vars = c('live', 'dead'))
 density.melt$variable = factor(density.melt$variable, levels = c("dead", "live"), labels = c("dead", "intact"))
@@ -46,9 +45,8 @@ density.plot
 
 ```{r}
 
-#ignoring magnetifection in this batch
+#ignoring magnetofection in this batch
 
-# cnc46.counts = read.csv('C:\\Users\\fl299\\PhD\\Data\\Mine\\DMi8\\CNC46_cell_counts_and_plots\\CNC46_cell_counts.csv')
 cnc46.counts = read.csv(here('data/transfection_optimisation/CNC46_cell_counts.csv'))
 cnc46.melt = melt(cnc46.counts, id.vars = c('plate', 'method'), measure.vars = c('live', 'dead'))
 cnc46.melt$variable = factor(cnc46.melt$variable, levels = c("dead", "live"), labels = c("dead", "intact"))

@@ -1,0 +1,3 @@
+ ,Label,Area,Mean,StdDev,Mode,Min,Max,IntDen,Median,RawIntDen
+1,MAX_WT-ERGIC53_4_GC.tif:growth cone:1,4.755,18.250,9.393,19,5,49,86.783,18,1679
+2,MAX_WT-ERGIC53_4_GC.tif:growth cone background:1,4.755,13.217,6.605,14,4,35,62.852,13,1216
