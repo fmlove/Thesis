@@ -1,6 +1,6 @@
 Marker,Description,Source,HeLa_screen,Species,Type,Dilution,stage
 BCAP31,ER chaperone,"*Novus Biologicals, NBP2-75416*",TRUE,rabbit,monoclonal,1:100,primary
-SURF4,ERES cargo loading,"*Proteintech, 11599-1-AP*",TRUE,rabbit,polyclonal,1:250–1:500,primary
+SURF4,ERES cargo loading,"*Proteintech, 11599-1-AP*",TRUE,rabbit,polyclonal,1:250--1:500,primary
 MIA3 (TANGO1),ERES cargo loading,"*Sigma-Aldrich, HPA055922-25UL*",TRUE,rabbit,polyclonal,1:100,primary
 SEC31A,COPII coat component,"*BD Biosciences, 612351*",TRUE,mouse,monoclonal,1:100,primary
 ERGIC53,ERGIC marker,"*Sigma-Aldrich, E1031-200UL*",TRUE,rabbit,polyclonal,1:100,primary
