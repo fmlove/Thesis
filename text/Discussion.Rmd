@@ -40,7 +40,7 @@ While this project has provided some answers to how protrudin can promote surviv
 
 ### Autophagy
 
-Protrudin's effects on LC3 localisation, both in HeLa cells and cortical neurons (figure \@ref(fig:LC3-full-figure)), suggests an active role in regulating autophagy.  The preliminary results demonstrated in this project suggest that protrudin may increase autophagy or autophagosome biogenesis.  However, Hong et al. actually found the opposite — protrudin *depletion* promoted autophagy initiation in cultured epithelial cells [@hongPtdIns3PControlsMTORC12017].  
+Protrudin's effects on LC3 localisation, both in HeLa cells and cortical neurons (figure \@ref(fig:LC3-full-figure)), suggest an active role in regulating autophagy.  The preliminary results demonstrated in this project suggest that protrudin may increase autophagy or autophagosome biogenesis.  However, Hong et al. actually found the opposite — protrudin *depletion* promoted autophagy initiation in cultured epithelial cells [@hongPtdIns3PControlsMTORC12017].  
 
 With this in mind, it would be worthwhile to examine further what effect protrudin overexpression has on autophagy.  Given the abundance of literature linking autophagy to neuronal survival (reviewed in [@overhoffMechanismsNeuronalSurvival2021]), this may well represent another pathway through which protrudin acts, particularly in a neuroprotective role.  
 
