@@ -33,7 +33,7 @@ genes = c('Gapdh', 'Fyco1', 'Zfyve27')
 
 read in condensed CSV
 ```{r}
-full.csv = read.csvhere(('data/published_data_sets/koseki_et_al_2017_data_condensed.csv'), stringsAsFactors = F)
+full.csv = read.csv(here('data/published_data_sets/koseki_et_al_2017_data_condensed.csv'), stringsAsFactors = F)
 ```
 
 Subset to selected genes and remodel
