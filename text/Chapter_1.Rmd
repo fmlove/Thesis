@@ -154,7 +154,7 @@ The optic nerve crush model is a powerful tool for examining CNS survival and re
 
 For this experiment, mice received intravitreal injections of AAV2 viruses containing either EGFP only, WT protrudin, or active protrudin under a CAG promoter, followed two weeks later by a unilateral optic nerve crush.  Two weeks post-crush, the mice were perfused, and eyes and optic nerves were collected.  RBPMS staining of retinal flat mounts showed a significant increase in RGC survival with expression of the active protrudin construct, as measured by comparing the number of RBPMS positive cells between the crush and uninjured eyes (Figure \@ref(fig:ONC-figure))[@petrovaProtrudinFunctionsEndoplasmic2020].  
 
-```{r ONC-figure, echo = F, fig.path = '../figures/full/', fig.width = 16, fig.height = 6, fig.cap='Reproduced with permission from Petrova et al. 2020.  A) Representative images of RBPMS-stained retinal whole mounts.  B) Quantification of surviving RGCs.   Fisher’s exact test with analysis of stack of p values and Bonferroni–Dunn multiple comparison test. Error bars represent mean ± SEM.', fig.scap="RGC neuroprotection experiment from Petrova et al. 2020"}
+```{r ONC-figure, echo = F, fig.path = '../figures/full/', fig.width = 16, fig.height = 6, fig.cap='Reproduced with permission from Petrova et al. 2020.  A) Representative images of RBPMS-stained retinal whole mounts.  Scale bar is 100\\textmu{}m.  B) Quantification of surviving RGCs.   Fisher’s exact test with analysis of stack of p values and Bonferroni–Dunn multiple comparison test. Error bars represent mean ± SEM.', fig.scap="RGC neuroprotection experiment from Petrova et al. 2020"}
 
 ONC_figure
 ```
