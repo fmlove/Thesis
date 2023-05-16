@@ -1,7 +1,8 @@
 Abbreviation,Meaning
 AAV,adeno-associated virus
 ACSL3,acyl-CoA synthetase long chain family member 3
-AKT,AKT serine/threonine kinase; protein kinase B
+ADP,adenosine diphosphate
+AKT,"AKT serine/threonine kinase; protein kinase B \footnote{AKT is not an acronym, and the origin of this term is not entirely clear [@xieWhatDoesAKT2020]}"
 ALS,amyotrophic lateral sclerosis
 ANXA11,annexin A11
 ARF6,ADP ribosylation factor 6
