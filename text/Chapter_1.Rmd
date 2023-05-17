@@ -46,7 +46,7 @@ Lysosomal dysfunction is implicated in a wide range of neurodegenerative disease
 
 In recent years, a substantial body of evidence has emerged to demonstrate how lysosomes and closely related late endosomes facilitate RNA transport in neurons.  mRNA transport, and subsequent local protein synthesis, is essential for axon growth, pathfinding, maintenance, and synapse formation (reviewed in [@cioniMolecularControlLocal2018]).  
 
-Cioni et al. demonstrated that ribonucleoproteins in the axon often associate with Rab7-marked late endosomes, and that these endosomes act as sites for local translation.  Furthermore, these late endosomes can form contact sites with mitochondria, where they are involved in the local translation of proteins for mitochondrial maintenance [@cioniLateEndosomesAct2019].  Work by Liao et al. identified the protein ANXA11 as the tether between lysosomes and RNA granules in the axon, and also showed that ALS-associated mutations in ANXA11 interfere with lysosome binding [@liaoRNAGranulesHitchhike2019].  
+Cioni et al. demonstrated that ribonucleoproteins in the axon often associate with Rab7-marked late endosomes, and that these endosomes act as sites for local translation [@cioniLateEndosomesAct2019].  Furthermore, these late endosomes can form contact sites with mitochondria, where they are involved in the local translation of proteins for mitochondrial maintenance.  Work by Liao et al. identified the protein ANXA11 as the tether between lysosomes and RNA granules in the axon, and also showed that ALS-associated mutations in ANXA11 interfere with lysosome binding [@liaoRNAGranulesHitchhike2019].  
 
 #### Signalling platform
 
