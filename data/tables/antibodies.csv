@@ -16,5 +16,5 @@ BODIPY TR C~5~ ceramide,ceramide lipid dye,"*Thermo Fisher, B34400*",TRUE,,,,dye
 Rab11,recycling endosome marker,,FALSE,rabbit,,,primary
 Goat anti-Rabbit IgG Alexa Fluor 568,,"*Thermo Fisher,  A-11011*",TRUE,goat,polyclonal,1:500,secondary
 Goat anti-Mouse IgG Alexa Fluor 568,,"*Thermo Fisher,  A-11004*",TRUE,goat,polyclonal,1:500,secondary
-Biotinylated donkey anti-Rabbit,,"*Amersham Biosciences, RPN1004V1*",TRUE,donkey,monoclonal,1:500,secondary
+Biotinylated Donkey anti-Rabbit,,"*Amersham Biosciences, RPN1004V1*",TRUE,donkey,monoclonal,1:500,secondary
 Streptavidin Alexa Fluor 568,,"*Thermo Fisher, S11226*",TRUE,,NA,1:1000,additional
