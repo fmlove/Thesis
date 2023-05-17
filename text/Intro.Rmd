@@ -101,7 +101,7 @@ Protrudin is an interesting protein in the context of axon regeneration because 
 
 ### Structure and localisation
 
-```{r ptdn-schematic, echo = F, fig.height = 4, fig.cap = "Schematic of protrudin showing transmembrane domains and binding motifs.  The ER lumen is to the bottom of the image.", fig.scap="Protrudin schematic"}
+```{r ptdn-schematic, echo = F, fig.height = 4, fig.cap = "Schematic of protrudin embedded in the ER membrane, showing RBD (Rab binding domain), transmembrane domains, FFAT motif (two phenylalanines in an acidic tract), CC motif (coiled-coil), and FYVE domain (Fab1 YOTB Vac1 EEA1 zinc finger domain).  The ER lumen is to the bottom of the image.", fig.scap="Protrudin schematic"}
 image_as_ggplot(read.bitmap(here('figures/external/protrudin_schematic.png')))
 ```
 
