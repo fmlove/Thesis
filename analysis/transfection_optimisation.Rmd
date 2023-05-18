@@ -57,7 +57,7 @@ calphos.plot = ggplot(cnc46.melt[cnc46.melt$method == 'calphos',], aes(x = plate
   geom_bar(stat = 'identity', position = 'stack') + 
   scale_fill_manual(values = c("dead" = "gray85", "intact" = "limegreen")) + 
   labs(x ="Plate", y = "Transfected neurons", fill = "Condition", title = "Calcium phosphate transfection") + 
-  report_theme
+  report_theme + theme(legend.position = 'right')
 
 calphos.plot
 ```
