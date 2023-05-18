@@ -15,6 +15,9 @@ library(here)
 
 options(knitr.table.format = 'markdown')#handles line wrapping and headers c.f. 'latex'
 ```
+
+(ref:AKT-footnote) AKT is not an acronym, and the origin of this term is not entirely clear [@xieWhatDoesAKT2020]
+
 ```{r gloss-tab, echo = F}
 kable(read.csv(here('data/tables/glossary.csv')),
   booktabs = TRUE,
