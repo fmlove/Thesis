@@ -88,21 +88,21 @@ Based on these preliminary results, we decided to test if clofibrate could block
 
 We first set about to determine the baseline localisation of our selected markers, and to assess whether this changed during neuronal development, as regenerative ability declines.  We stained cortical neurons for BCAP31, SURF4, ERGIC53, and SLC38A1 at DIV3 (the earliest point at which axons can be clearly identified) and DIV15 (synaptic maturation and low regenerative ability), and compared fluorescence intensity between the cell body and axon terminal.  This showed that, with the exception of SURF4, all markers show a relative decline at the axon terminal with age (figure \@ref(fig:dev-changed-full-figure)).  Separate analysis of each region shows that all markers show increased intensity in the cell body with age, but that most show no significant change in the axon terminal, with the exception of SLC38A1, which increases (supplementary figure \@ref(fig:suppl-dev-grid)).  This is in keeping with SLC38A1's role as an amino acid transporter, which is a particularly important function for synaptically active neurons [@hellstenNeuronalAstrocyticProtein2017].  It is worth noting that, while the average intensity remains the same, the axon terminal dramatically reduces in size as the cell matures, so this represents a decrease in the total amount of these proteins present at the axon tip.
 
-```{r dev-changed-full-figure, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full/', fig.cap = "A) Ratio of fluorescence intensity between Cell body and axon terminal in DIV3 vs DIV15 neurons.  All n = 26 or 27 cells per condition across three batches, except SLC38A1 (n = 18 cells, three batches). B-M) Representative images of DIV3 neurons (B-E), DIV15 cell bodies (F-I), and DIV15 axon terminals (J-M)  All scale bars are 20\\textmu{}m, and J-M are 20x20\\textmu{}m.  Markers correspond to the graph at the top of each column.", fig.scap="Developmental changes in marker localisation in cortical neurons"}
+```{r dev-changed-full-figure, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full/', fig.cap = "A) Ratio of fluorescence intensity between Cell body and axon terminal in DIV3 vs DIV15 neurons.  All n = 26 or 27 cells per condition across three batches, except SLC38A1 (n = 18 cells, three batches). B-M) Representative images of DIV3 neurons (B-E), DIV15 cell bodies (F-I), and DIV15 axon terminals (J-M)  All scale bars are 20 \\textmu{}m, and J-M are 20x20 \\textmu{}m.  Markers correspond to the graph at the top of each column.", fig.scap="Developmental changes in marker localisation in cortical neurons"}
 
 dev_ratio_plot
 ```
 
 The staining was repeated in DIV1 (post-differentiation) i3 neurons, at a stage when they are just beginning to grow axons, to confirm that the axon terminal:cell body ratio was conserved between rodent and human neurons.  This showed remarkable consistency between cell types, with the exception of BCAP31, which had a very slightly higher ratio in rat neurons.
 
-```{r i3-ratio-plot, echo = F, fig.width=16, fig.height=10, fig.path='../figures/full/', fig.cap="A) Ratio of fluorescence intensity between Cell body and axon terminal in DIV1 i3 vs DIV3 rat cortical neurons.  n = 17 or 18 i3 neurons per condition across three batches. B-E) Representative images of DIV1 i3 neurons stained for each marker.  All scale bars are 20\\textmu{}m.", fig.scap = "Comparison of marker localisation between i3 neurons and rat cortical neurons"}
+```{r i3-ratio-plot, echo = F, fig.width=16, fig.height=10, fig.path='../figures/full/', fig.cap="A) Ratio of fluorescence intensity between Cell body and axon terminal in DIV1 i3 vs DIV3 rat cortical neurons.  n = 17 or 18 i3 neurons per condition across three batches. B-E) Representative images of DIV1 i3 neurons stained for each marker.  All scale bars are 20 \\textmu{}m.", fig.scap = "Comparison of marker localisation between i3 neurons and rat cortical neurons"}
 
 i3_plot
 ```
 
 We also tested a tool called ESCargo(FTV) to visualise ER exit sites [@caslerESC2020; @govindActivitydependentGolgiSatellite2021].  This encodes a SURF4-dependent synthetic secretory cargo, which can be inducibly released from the ER with the addition of a synthetic ligand.  While the aggregates were clearly visible in cell bodies, we also observed them in axons, although they were distributed very sparsely along their length (figure \@ref(fig:ESCargo-figure)).  In some cases, these were found at axonal swellings or branch points, raising the possibility that these exit sites may concentrate at particular structural features.  Further work is required to test if this corresponds to the localisation of functional ER exit sites in the axon, and whether their size or number is regulated developmentally or with the overexpression of protrudin.
 
-```{r ESCargo-figure, echo = F, fig.width=16, fig.height=12, fig.path='../figures/full/', fig.cap="A) Cell body of a cell co-expressing EGFP/Emerald with ESCargo(FTV)-Crimson.  Note individual aggregates or small clusters in dendrites, often at branch points.  B) Axon of neuron depicted in A, with two ESCargo(FTV) aggregates circled.  All scale bars are 20\\textmu{}m.", fig.scap="ESCargo localisation in cortical neurons"}
+```{r ESCargo-figure, echo = F, fig.width=16, fig.height=12, fig.path='../figures/full/', fig.cap="A) Cell body of a cell co-expressing EGFP/Emerald with ESCargo(FTV)-Crimson.  Note individual aggregates or small clusters in dendrites, often at branch points.  B) Axon of neuron depicted in A, with two ESCargo(FTV) aggregates circled.  All scale bars are 20 \\textmu{}m.", fig.scap="ESCargo localisation in cortical neurons"}
 
 ESCargo_plot
 ```
@@ -130,22 +130,22 @@ SLC38A1 showed no significant changes with either WT or active protrudin express
 In contrast with the other markers, ERGIC53 showed significantly altered localisation with the expression of active, but not wild type, protrudin.  This included a significant increase in axon terminal intensity and axon terminal:cell body ratio, on top of a slight increase in soma intensity.  This suggests that protrudin is playing a role in either the formation of ERGIC compartments, or their transport into the distal axon.  (Figure \@ref(fig:ERGIC53-plot))
 
 
-```{r BCAP31-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="A-F) Representative images of BCAP31 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20\\textmu{}m, and D-F are 20x20\\textmu{}m.  G-I) Quantification of BCAP31 fluorescence intensity. n = 18 cells per condition across three independent batches.", fig.scap="BCAP31 localisation in protrudin-expressing neurons"}
+```{r BCAP31-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="A-F) Representative images of BCAP31 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20 \\textmu{}m, and D-F are 20x20 \\textmu{}m.  G-I) Quantification of BCAP31 fluorescence intensity. n = 18 cells per condition across three independent batches.", fig.scap="BCAP31 localisation in protrudin-expressing neurons"}
 
 BCAP31_plot
 ```
 
-```{r SURF4-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="A-F) Representative images of SURF4 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20\\textmu{}m, and D-F are 20x20\\textmu{}m.  G-I) Quantification of SURF4 fluorescence intensity. n = 17 or 18 cells per condition across three independent batches.", fig.scap="SURF4 localisation in protrudin-expressing neurons"}
+```{r SURF4-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="A-F) Representative images of SURF4 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20 \\textmu{}m, and D-F are 20x20 \\textmu{}m.  G-I) Quantification of SURF4 fluorescence intensity. n = 17 or 18 cells per condition across three independent batches.", fig.scap="SURF4 localisation in protrudin-expressing neurons"}
 
 SURF4_plot
 ```
 
-```{r SLC38A1-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="A-F) Representative images of SLC38A1 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20\\textmu{}m, and D-F are 20x20\\textmu{}m.  G-I) Quantification of SLC38A1 fluorescence intensity. n = 15 to 18 cells per condition across three independent batches.", fig.scap="SLC38A1 localisation in protrudin-expressing neurons"}
+```{r SLC38A1-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="A-F) Representative images of SLC38A1 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20 \\textmu{}m, and D-F are 20x20 \\textmu{}m.  G-I) Quantification of SLC38A1 fluorescence intensity. n = 15 to 18 cells per condition across three independent batches.", fig.scap="SLC38A1 localisation in protrudin-expressing neurons"}
 
 SLC38A1_plot
 ```
 
-```{r ERGIC53-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="A-F) Representative images of ERGIC53 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20\\textmu{}m, and D-F are 20x20\\textmu{}m.  G-I) Quantification of ERGIC53 fluorescence intensity. n = 16 or 18 cells per condition across three independent batches.", fig.scap="ERGIC53 localisation in protrudin-expressing neurons"}
+```{r ERGIC53-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="A-F) Representative images of ERGIC53 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20 \\textmu{}m, and D-F are 20x20 \\textmu{}m.  G-I) Quantification of ERGIC53 fluorescence intensity. n = 16 or 18 cells per condition across three independent batches.", fig.scap="ERGIC53 localisation in protrudin-expressing neurons"}
 
 ERGIC53_plot
 ```
@@ -161,7 +161,7 @@ St3Gal5_kymo_plot
 
 Following live imaging, these cells were fixed, and imaged at higher exposure on a confocal microscope to more clearly visualise Golgi satellites in the axon.  We measured both the number of puncta, as well as point intensity of each, as a proxy for size.  This confirmed that protrudin overexpression did not affect the overall number of Golgi satellites in the distal axon.
 
-```{r GS-puncta-full-figure, echo = F, fig.width=16, fig.height=8, fig.path='../figures/full/', fig.cap="A) Representative axon image showing St3Gal5 puncta.  Scale bar is 20\\textmu{}m.  B) Number of puncta per length of axon imaged.  C)Point fluorescence intensity of each St3Gal3 puncta counted.  n = 18 cells per condition across three independent batches.", fig.scap="Protrudin effect on Golgi satellite abundance and size in the distal axon"}
+```{r GS-puncta-full-figure, echo = F, fig.width=16, fig.height=8, fig.path='../figures/full/', fig.cap="A) Representative axon image showing St3Gal5 puncta.  Scale bar is 20 \\textmu{}m.  B) Number of puncta per length of axon imaged.  C)Point fluorescence intensity of each St3Gal3 puncta counted.  n = 18 cells per condition across three independent batches.", fig.scap="Protrudin effect on Golgi satellite abundance and size in the distal axon"}
 
 GS_puncta_full_figure
 ```
@@ -170,7 +170,7 @@ We then conducted a scratch assay to determine the localisation of Golgi satelli
 
 This revealed a strong concentration of St3Gal5 at the base of each growth cone, with slightly weaker signal extending further distally.  Where St3Gal5 was co-expressed with protrudin, it is apparent that the Golgi satellite signal reaches further into the growth cone than the ER.  This suggests that there are distinct ER and Golgi compartments in the growth cone, with secretory machinery oriented towards the direction of growth.  The images also suggest that there might be an accumulation of St3Gal5 immediately proximal to the growth cone in protrudin-expressing neurons, although further work is required to confirm and quantify this result.
 
-```{r scratch-assay-full, echo = F, fig.width=16, fig.height=14, fig.path='../figures/full/', fig.cap = "Representative images of growth cones on DIV15 cortical neurons after scratch.  Neurons are co-expressing either mCherry (A) or mCherry-protrudin (B-C) with St3Gal5-EGFP.  Scale bars are 20\\textmu{}m.  D-F) 20x20\\textmu{}m images highlighting the growth cone details shown in A-C.  Arrows indicate large Golgi satellites, as well as the distal edge of protrudin localisation.  Note how the St3Gal5 signal extends beyond protrudin in these growth cones.", fig.scap="Scratch assay of neurons co-expressing protrudin and St3Gal5"}
+```{r scratch-assay-full, echo = F, fig.width=16, fig.height=14, fig.path='../figures/full/', fig.cap = "Representative images of growth cones on DIV15 cortical neurons after scratch.  Neurons are co-expressing either mCherry (A) or mCherry-protrudin (B-C) with St3Gal5-EGFP.  Scale bars are 20 \\textmu{}m.  D-F) 20x20 \\textmu{}m images highlighting the growth cone details shown in A-C.  Arrows indicate large Golgi satellites, as well as the distal edge of protrudin localisation.  Note how the St3Gal5 signal extends beyond protrudin in these growth cones.", fig.scap="Scratch assay of neurons co-expressing protrudin and St3Gal5"}
 
 scratch_fig
 ```

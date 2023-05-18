@@ -140,7 +140,7 @@ spinningdisc.dunn$p.adj.rounded = sapply(spinningdisc.dunn$p.adj, function(p){ro
 counts.plot = ggplot(spine_counts.df, aes(x = cond, y = Freq)) + 
   geom_dotplot(aes(fill = cond, colour = cond), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7, binwidth = 1) + 
   geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
-  labs(title = 'Replicate 1', x = '', y = paste0('Number of spines in 20', '\U03BC', 'm section')) + 
+  labs(title = 'Replicate 1', x = '', y = paste0('Number of spines in 20 ', '\U03BC', 'm section')) + 
   d_format + report_theme +
   stat_compare_means(label.x = 1.25) + stat_pvalue_manual(spinningdisc.dunn, hide.ns = T, label = 'p.adj.rounded', step.increase = 0.01)
 
@@ -325,7 +325,7 @@ confocal.dunn$p.adj.rounded = sapply(confocal.dunn$p.adj, function(p){round(p, d
 
 counts_confocal.plot= ggplot(spine_counts_confocal.df, aes(x = cond, y = Freq)) + 
   geom_dotplot(aes(fill = cond, colour = cond), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 1, binwidth = 1) + 
-  geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + labs(x = '', y = paste0('Number of spines in 20', '\U03BC', 'm section'), title = 'Replicate 2') + 
+  geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + labs(x = '', y = paste0('Number of spines in 20 ', '\U03BC', 'm section'), title = 'Replicate 2') + 
   d_format + report_theme +
   stat_compare_means(label.x = 1.25) + stat_pvalue_manual(confocal.dunn, hide.ns = T, label = 'p.adj.rounded', step.increase = 0.1)
 

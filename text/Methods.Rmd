@@ -70,7 +70,7 @@ All plasmid preparation was carried out using either DH5\textalpha{} *(New Engla
 
 ### Cortical neuron cultures
 
-Primary cortical neurons were obtained from embryonic day 18 Sprague Dawley rats. Cortices were dissected in HEPES-HBSS and dissociated with papain for approximately 5 minutes at 37°C, followed by DNAse treatment and trituration through a flame-polished glass pipette. Cells were filtered through a 40\textmu{}m cell strainer *(Falcon, 352340)* and plated at a density of 200,000-400,000 cells per imaging plate *(Greiner Bio-One, 627860)* or 50,000-100,000 cells per acid-washed glass coverslip (13mm diameter). (Plates and coverslips were coated with 50\textmu{}g/mL poly-D-lysine *(Sigma-Aldrich, P1149)* in borate buffer.)  Cells were grown in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)*, supplemented with NeuroBrew-21 *(Miltenyi Biotec, 130-093-566)*, GlutaMAX *(Thermo Fisher, 35050061)*, and ITS *(R&D Systems, AR013)* at 37°C with 7% CO~2~. 
+Primary cortical neurons were obtained from embryonic day 18 Sprague Dawley rats. Cortices were dissected in HEPES-HBSS and dissociated with papain for approximately 5 minutes at 37°C, followed by DNAse treatment and trituration through a flame-polished glass pipette. Cells were filtered through a 40 \textmu{}m cell strainer *(Falcon, 352340)* and plated at a density of 200,000-400,000 cells per imaging plate *(Greiner Bio-One, 627860)* or 50,000-100,000 cells per acid-washed glass coverslip (13 mm diameter). (Plates and coverslips were coated with 50 \textmu{}g/mL poly-D-lysine *(Sigma-Aldrich, P1149)* in borate buffer.)  Cells were grown in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)*, supplemented with NeuroBrew-21 *(Miltenyi Biotec, 130-093-566)*, GlutaMAX *(Thermo Fisher, 35050061)*, and ITS *(R&D Systems, AR013)* at 37°C with 7% CO~2~. 
 
 ### Transfection
 
@@ -90,7 +90,7 @@ Secondary-only controls were carried out for each combination of cell type and s
 
 ### Microscopy
 
-Live imaging of axonal transport was carried out with spinning disc confocal microscopy, using an Olympus IX70 microscope and a PerkinElmer UltraVIEW scanner controlled with MetaMorph software.  The microscope was enclosed and maintained at 37°C with supplemental CO~2~ during imaging.  For kymographs, the axons of DIV14-16 neurons were imaged for approximately three minutes at least ~500\textmu{}m from the cell body.  
+Live imaging of axonal transport was carried out with spinning disc confocal microscopy, using an Olympus IX70 microscope and a PerkinElmer UltraVIEW scanner controlled with MetaMorph software.  The microscope was enclosed and maintained at 37°C with supplemental CO~2~ during imaging.  For kymographs, the axons of DIV14-16 neurons were imaged for approximately three minutes at least ~500 \textmu{}m from the cell body.  
 
 High resolution images of fixed cells were obtained with a Leica DMI4000B confocal or Leica DMI6000B epifluorescent microscope, running LAS-AF software.  Confocal images were obtained as Z-stacks with frame averaging.  All files were exported as TIFs before further analysis.  
 
@@ -105,7 +105,7 @@ All manual image analysis tasks were conducted blind, with the exception of figu
 Kymographs were generated from Metamorph stack files using the Fiji Multi Kymograph plugin.  In cases where moving puncta were especially faint (most notably Rab7), stacks were pre-processed with the Bleach Correction plugin, using the histogram matching method.  Snapshots of the axon marker channel (typically either EGFP or mCherry-tagged protrudin) were traced to generate axon ROIs, which were then used to generate the kymographs.  Line width for the Multi Kymograph plugin was set to 5 pixels.  Generated kymographs were further refined as needed through rolling ball background subtraction and contrast adjustment.
 
 We tested KymoButler [@jakobsKymoButlerDeepLearning2019] for automated kymograph analysis, but found that it did not consistently pick up the small, fast-moving particles common in our lysosome and late endosome data.  As a result, kymographs were manually traced in Fiji using the segmented line tool, with a custom macro to export the data in CSV format for analysis in R.  For the purposes of classification, anterograde and retrograde were defined as continuous movements of at
-least 5\textmu{}m away from or towards the cell body, respectively.  
+least 5 \textmu{}m away from or towards the cell body, respectively.  
 
 ### Statistical analysis
 
