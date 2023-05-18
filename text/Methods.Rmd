@@ -35,7 +35,7 @@ kable(plasmids[, c('Promoter', 'Gene', 'Reporter')], #leaving out 'Notes' column
 
 ```
 
-The hSYN-LAMP1-mRFP1 plasmid was cloned for this project (see section \@ref(cloning)).  The original LAMP1-mRFP1 plasmid *(#1817)*, along with LAMP1-mNeonGreen *(#98882)*,  ESCargo(FTV) *(#140162)* and LC3b *(#21075)*, were acquired from Addgene, with thanks to Walther Mothes [@sherer2003], Dorus Gadella [@chertkova2020], Benjamin Glick [@caslerESC2020], and Tamotsu Yoshimori [@kimura2007], respectively.  The FYCO1 plasmid was a gift from Terje Johansen [@pankivFYCO12010].  St3Gal5 plasmid was a gift from Marina Mikhaylova [@mikhaylovaGS2016].  SKIP-EGFP, myrlysin-myc, and Arl8b plasmids were a gift from Juan Bonifacino.  All shRNA constructs were purchased from Origene *(TG712969, TR30013)*.
+The hSYN-LAMP1-mRFP1 plasmid was cloned for this project (see section \@ref(cloning)).  The original LAMP1-mRFP1 plasmid *(#1817)*, along with LAMP1-mNeonGreen *(#98882)*,  ESCargo(FTV) *(#140162)* and LC3b *(#21075)*, were acquired from Addgene, with thanks to Walther Mothes [@sherer2003], Dorus Gadella [@chertkovaRobustBrightGenetically2020], Benjamin Glick [@caslerESC2020], and Tamotsu Yoshimori [@kimura2007], respectively.  The FYCO1 plasmid was a gift from Terje Johansen [@pankivFYCO12010].  St3Gal5 plasmid was a gift from Marina Mikhaylova [@mikhaylovaGS2016].  SKIP-EGFP, myrlysin-myc, and Arl8b plasmids were a gift from Juan Bonifacino.  All shRNA constructs were purchased from Origene *(TG712969, TR30013)*.
 
 
 ```{r primary-table}
