@@ -29,6 +29,7 @@ library(here)
 density.counts = read.csv(here('data/transfection_optimisation/density_test_osc_20200122.csv'))
 density.melt = melt(density.counts, id.vars = 'density', measure.vars = c('live', 'dead'))
 density.melt$variable = factor(density.melt$variable, levels = c("dead", "live"), labels = c("dead", "intact"))
+density.melt$density = factor(density.melt$density, levels = c('100k', '200k', '250k', '400k'), labels = c('100,000', '200,000', '250,000', '400,000'))
 
 density.plot = ggplot(density.melt, aes(x = density, fill = variable, y = value)) + 
   geom_bar(stat = "identity", position = "stack") + 

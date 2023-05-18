@@ -137,9 +137,9 @@ Our original intention was to test if artificially increasing lysosomal transpor
 
 As mentioned in section \@ref(METHODS), we experienced a sharp decline in efficiency with our initial magnetofection protocol, and needed to reoptimise our process.  This occurred between the experiments discussed in section \@ref(lyso-LE).  During this time, we tested a variety of protocols and modifications to identify the factors most important for transfection efficiency, using the same EGFP/Emerald expression construct.  Results were measured by scanning the entire plate of cells on a Leica DMi8 tilescan microscope and counting the number of transfected neurons that were either intact or visibly dead.  
 
-Of all the factors tested, cell density best correlated with the transfection efficiency, although the improvements on the original magnetofection protocol were dwarfed by the vast improvement with calcium phosphate transfection.  Going forward, transfections were carried out using the calcium phosphate method, with cell density of 200-400k per imaging dish depending on the needs of the experiment.
+Of all the factors tested, cell density best correlated with the transfection efficiency, although the improvements on the original magnetofection protocol were dwarfed by the vast improvement with calcium phosphate transfection.  Going forward, transfections were carried out using the calcium phosphate method, with cell density of 200,000-400,000 per imaging dish depending on the needs of the experiment.
 
-```{r transfection-plot-full, echo = F, fig.pos = 'h', fig.width = 16, fig.height = 6, fig.cap="A) Cell counts for plates of varying density transfected with magnetofection protocol.  B) Cell counts for three identical plates (300k cells per plate) transfected with calcium phosphate protocol.  Note the difference in scale between the two plots.", fig.scap="Transfection optimisation plot"}
+```{r transfection-plot-full, echo = F, fig.pos = 'h', fig.width = 16, fig.height = 6, fig.cap="A) Cell counts for plates of varying density transfected with magnetofection protocol.  B) Cell counts for three identical plates (300,000 cells per plate) transfected with calcium phosphate protocol.  Note the difference in scale between the two plots.", fig.scap="Transfection optimisation plot"}
 
 optimisation_plot
 ```
