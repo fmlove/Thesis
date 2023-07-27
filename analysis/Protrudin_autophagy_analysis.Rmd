@@ -69,20 +69,24 @@ LC3_neuro = image_as_ggplot(read.bitmap(here('images/microscopy/LC3/LC3_neuron_e
 ```
 ```{r HeLa_grid}
 LC3_grid = image_as_ggplot(read.bitmap(here('images/microscopy/HeLa_montages/LC3_WT_inset_grid.png')))
+LC3_GFP = image_as_ggplot(read.bitmap(here('images/microscopy/HeLa_montages/LC3_GFP_montage_spaced.png')))
 ```
 ```{r LC3_protrusion}
 LC3_protrusion = image_as_ggplot(read.bitmap(here('images/microscopy/HeLa_montages/LC3_WT_protrusion_vertical.png')))
 ```
 
-```{r LC3_full, fig.width=16, fig.height=12}
-LC3.layout = 'AAAAAABBBBCC
-              AAAAAABBBBCC
-              AAAAAABBBBCC
-              AAAAAABBBBCC
-              DDDDDDDEEEFF
-              DDDDDDDEEEFF'
+```{r LC3_full, fig.width=16, fig.height=18}
+LC3.layout = 'AAAAAABB
+              AAAAAABB
+              AAAAAACC
+              AAAAAACC
+              AAAAAACC
+              DDDDDDCC
+              DDDDDDCC
+              EEEEEEFG
+              EEEEEEFG'
 
-LC3_full_plot = LC3_grid + LC3_profile_plot + LC3_protrusion + LC3_neuro + LC3_neuron_plot + guide_area() + plot_annotation(tag_levels = 'A') + plot_layout(design = LC3.layout, guides = 'collect')
+LC3_full_plot = LC3_grid + LC3_profile_plot + LC3_protrusion + LC3_GFP + LC3_neuro + LC3_neuron_plot + guide_area() + plot_annotation(tag_levels = 'A') + plot_layout(design = LC3.layout, guides = 'collect')
 
 LC3_full_plot
 ```

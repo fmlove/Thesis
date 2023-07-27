@@ -90,7 +90,7 @@ misc_grid = LAMP1 + mTOR + ACSL3 + SLC38A1 + plot_annotation(tag_levels = 'A') +
 ```
 
 
-```{r HeLa_ceramide_full_figure, fig.width = 16, fig.height = 8}
+```{r HeLa_ceramide_full_figure, fig.width = 16, fig.height = 12}
 ceramide_profile.csv = read.csv(here("data/intensity_profiles/HeLa14_ceramide_WT3.tif_profile.csv"))
 ceramide_profile.csv.normalised = data.frame(X = ceramide_profile.csv$X,
                                              ch1 = ceramide_profile.csv$Value_ch1/max(ceramide_profile.csv$Value_ch1),
@@ -108,8 +108,17 @@ ceramide_profile = ggplot(ceramide_profile.melt, aes(x = distance, y = value, gr
   d_format + report_theme
 
 grid_panel = image_as_ggplot(read.bitmap(here("images/microscopy/HeLa_montages/C5-ceramide_WT_inset_grid.png")))
+montage_panel = image_as_ggplot(read.bitmap(here("images/microscopy/HeLa_montages/C5-ceramide_GFP_montage_stacked.png")))
 
-ceramide_grid = grid_panel + ceramide_profile + plot_annotation(tag_level = 'A')
+ceramide_layout = 'AAAB
+                    AAAB
+                    AAAB
+                    AAAC
+                    AAAC
+                    AAAC'
+
+
+ceramide_grid = grid_panel + ceramide_profile + montage_panel + plot_annotation(tag_level = 'A') + plot_layout(design = ceramide_layout)
 
 ceramide_grid
 ```
