@@ -230,7 +230,7 @@ vivo = ggplot(tb.DRG_vivo, aes(x = ED, y = mean, color = gene, group = gene)) +
   geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.15) + 
   geom_line() + geom_point(aes(shape = gene), size = 3) + 
   labs(x = "Embryonic day", y = "Normalised expression value", title = "Embryonic mouse DRG") + 
-  report_theme + scale_color_brewer(palette = 'Dark2')
+  report_theme + theme(plot.title = element_text(size = rel(1.2))) + scale_color_brewer(palette = 'Dark2')
 vivo
 
 ```
@@ -258,10 +258,10 @@ PNS.patch = culture + vivo + injury + plot_annotation(title = "PNS", caption = "
 
 i3_panel = image_as_ggplot(read.bitmap(here('figures/external/i3_panel.png'))) + labs(title = 'i3 neurons')
 
-FYCO1_layout = 'AAAAAAA
-                BBBBBBB
-                BBBBBBB
-                CCCCCCD'
+FYCO1_layout = 'AAAAAAAAAAAAAA
+                BBBBBBBBBBBBBB
+                BBBBBBBBBBBBBB
+                CCCCCCCCCCCCCD'
 FYCO1_RNAseq_full = (Koseki.patch + Zhang.patch + Kelley.patch)/ 
   (i3_panel)/
   (culture + vivo + injury) + guide_area() + 
