@@ -154,7 +154,7 @@ ERGIC53_plot
 
 Given protrudin's effect on the ERGIC compartment, we were particularly interested in seeing if this also impacted axonal Golgi satellites.  As these are highly dynamic organelles, we decided to look at Golgi satellite transport in the presence of protrudin.  We co-expressed mCherry-tagged protrudin constructs with St3Gal5-EGFP, as a marker of Golgi satellites.  
 
-```{r St3Gal-full-figure, echo = F, fig.width=16, fig.height=8, fig.path='../figures/full/', fig.cap="A) Representative axon image and kymographs showing St3Gal5 transport in the distal axon of cortical neurons expressing either mCherry (control) or mCherry-tagged protrudin constructs.  B) Total number of St3Gal5-labelled organelles in each cell imaged.  C) Average run length (per cell) of moving Golgi satellites  D) Average Golgi satellite velocity (per cell).  n = 22 or 24 cells per condition across three independent batches.", fig.scap="Protrudin effect on Golgi satellite (St3Gal5) transport in the distal axon"}
+```{r St3Gal-full-figure, echo = F, fig.width=16, fig.height=8, fig.path='../figures/full/', fig.cap="A) Representative axon image and kymographs showing St3Gal5 transport in the distal axon of cortical neurons expressing either mCherry (control) or mCherry-tagged protrudin constructs.  All scale bars are 20 \\textmu{}m.  B) Total number of St3Gal5-labelled organelles in each cell imaged.  C) Average run length (per cell) of moving Golgi satellites  D) Average Golgi satellite velocity (per cell).  n = 22 or 24 cells per condition across three independent batches.", fig.scap="Protrudin effect on Golgi satellite (St3Gal5) transport in the distal axon"}
 
 St3Gal5_kymo_plot
 ```

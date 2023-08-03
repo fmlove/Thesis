@@ -25,7 +25,7 @@ library(readbitmap)
 
 ## The challenge of CNS regeneration
 
-One of the greatest challenges of modern medicine is how to promote regeneration of the central nervous system (CNS).  Compared to most other tissues and organs in the human body, the CNS has exceptionally low regenerative ability, largely due to the neurons' inability to reliably regrow their axons.  As a result, damage to the CNS — whether through trauma, infection, or disease — often results in lifelong disability.  In contrast, the peripheral nervous system (PNS) is capable of substantial regeneration after injury, with severed nerves able to regrow several centimetres, reach their targets, and form functional connections, suggesting that regeneration of the CNS might be medically possible, if we can identify the relevant factors at play.  While there has been active research in this area for decades (if not centuries), we are still a long way from what most people would consider 'successful' regeneration of damaged CNS tissues — the regrowth of damaged neuronal processes, appropriate remodelling of the extracellular environment, and restoration of functional synaptic connections.  In this section, I will summarise our current understanding of some of the factors limiting CNS regeneration, as well as the particular challenges I have decided to address with this project.
+One of the greatest challenges of modern medicine is how to promote regeneration of the central nervous system (CNS).  Compared to most other tissues and organs in the human body, the CNS has exceptionally low regenerative ability, largely due to the neurons' inability to reliably regrow injured axons.  As a result, damage to the CNS — whether through trauma, infection, or disease — often results in lifelong disability.  In contrast, the peripheral nervous system (PNS) is capable of substantial regeneration after injury, with severed nerves able to regrow several centimetres, reach their targets, and form functional connections, suggesting that regeneration of the CNS might be medically possible, if we can identify the relevant factors at play.  While there has been active research in this area for decades (if not centuries), we are still a long way from what most people would consider 'successful' regeneration of damaged CNS tissues — the regrowth of damaged neuronal processes, appropriate remodelling of the extracellular environment, and restoration of functional synaptic connections.  In this section, I will summarise our current understanding of some of the factors limiting CNS regeneration, as well as the particular challenges I have decided to address with this project.
 
 ### Glaucoma
 
@@ -37,17 +37,53 @@ This combination of axon damage and neurodegeneration makes glaucoma an ideal ta
 
 ## Factors limiting CNS regeneration
 
-In 1980, Peter Richardson and colleagues at McGill showed that axons in a severed rat spinal cord could regenerate into an implanted sciatic nerve graft, thus demonstrating that CNS neurons were at least somewhat capable of regeneration, but were inhibited by their environment [@richardsonAxonsCNSNeurones1980].  Since then, researchers have identified a variety of environmental factors that limit CNS axon growth, ranging from differences in the cellular composition of PNS and CNS tissues, to changes in the extracellular environment and cell surface receptors that occur as an organism ages.
+The question of why CNS axons fail to regenerate after injury is a complex one, and our current understanding points to a wide range of both extrinsic and intrinsic factors, which interact to limit regrowth.^[Note that this regeneration is distinct from — but closely related to — *functional* recovery, which can result from reorganisation of surviving neuronal circuits after injury in the absence of any axonal regeneration.  The central nervous system is exceptionally flexible, and significant functional recovery can achieved after, for example, spinal cord injury, in the case of an incomplete injury and intensive rehabilitation.  However, this plasticity can be significantly enhanced by even limited axonal regeneration, if regrowing axons can bridge the site of an injury and create new connections between cells, even if the axon fails to regrow as far as its original targets.  In this thesis I will be focusing on survival and regrowth of damaged axons, as opposed to functional recovery after a CNS injury or disease.]
 
-However, therapies targeting the inhibitory extracellular environment of the CNS have had limited success.  It is now widely accepted that targeting inhibitory molecules in the extracellular matrix — most commonly chondroitin sulphate proteoglycans, which can be broken down by an enzyme known as chondroitinase ABC, although new approaches are now being tested — can permit short-range regeneration and enhance neuronal plasticity.  These treatments have led to moderate restoration of function in some models of spinal cord injury, often through the reorganisation of local neuronal networks following an incomplete injury.  However, robust long-range axonal regeneration — past the site of injury and back to their original downstream targets — remains elusive [@irvine4methylumbelliferoneEnhancesNeuroplasticity2023;&nbsp;reviewed in @kwokExtracellularMatrixPerineuronal2011; @muirRecentAdvancesTherapeutic2019].
+### Extrinsic factors
+
+In 1980, Peter Richardson and colleagues at McGill showed that axons in a severed rat spinal cord could regenerate into an implanted sciatic nerve graft, thus demonstrating that CNS neurons were at least somewhat capable of regeneration, but were inhibited by their environment [@richardsonAxonsCNSNeurones1980].  Since then, researchers have identified a variety of environmental factors that limit CNS axon growth, ranging from differences in the cellular composition of PNS and CNS tissues, to changes in the extracellular environment and cell surface receptors that occur during development as the tissue matures.
+
+
+#### Extraellular matrix
+
+The extracellular matrix of the mature central nervous system contains a number of chemicals that are known to be inhibitory to axonal growth.  
+
+
+
+It is now widely accepted that targeting inhibitory molecules in the extracellular matrix — most commonly chondroitin sulphate proteoglycans, which can be broken down by an enzyme known as chondroitinase ABC, although new approaches are now being tested — can permit short-range regeneration and enhance neuronal plasticity.  These treatments have led to moderate restoration of function in some models of spinal cord injury, often through the reorganisation of local neuronal networks following an incomplete injury.  However, robust long-range axonal regeneration — past the site of injury and back to their original downstream targets — remains elusive [@irvine4methylumbelliferoneEnhancesNeuroplasticity2023;&nbsp;reviewed in @kwokExtracellularMatrixPerineuronal2011; @muirRecentAdvancesTherapeutic2019].
+
+
+
+
+
+#### Cellular environment
+##### Glia
+
+One of the most obvious tissue-level differences between the CNS and the PNS is the type of glial cells present.  PNS axons are myelinated by Schwann cells, while in the CNS oligodendrocytes carry out the same role.  These cells have significantly different structures, and respond differently to injury.  Following an axonal injury, Schwann cells transform to exhibit a regeneration-promoting phenotype. In this state, they actively participate in clearing myelin debris, form a scaffold for axonal regrowth, and release exosomes containing growth-promoting factors. In contrast, oligodendroytes that survive an axonal injury in the CNS are largely quiescent, and do not appear to support axon repair in the same way. (CITE - multiple)  On the contrary, the myelin debris from damaged oligodendrocytes, both lipids and proteins, and in particular myelin-associated glycoprotein (MAG), are inhibitory to axon growth, and can contribute to inflammation following an injury to the CNS. (CITATIONS)
+
+##### Inflammation
+
+
+
+
+
+
+
+
 
 In addition to extrinsic factors, developmental changes *within* neurons also present a barrier to CNS regeneration.  As the cells mature from a growth-permissive state into synaptically active neurons, they undergo structural and functional changes that correlate with the loss of regenerative ability [@kosekiSelectiveRab11Transport2017].  Additionally, many neurodegenerative diseases are associated with genetic or molecular dysfunction within neurons, as opposed to the extracellular environment, highlighting the importance of internal factors in maintaining healthy, functional axons.  Understanding and addressing these intrinsic sources of dysfunction and barriers to regeneration is essential to developing successful therapies to protect and repair CNS axons.
 
-### Synaptogenesis
+#### Synapses - a bridge between extrinsic and intrinsic factors
 
-Recent work has increasingly pointed to the formation of synapses as a key point at which developing CNS neurons lose their intrinsic capacity to regenerate.   During this process, interactions with the external cellular environment trigger internal changes that encourage signalling function at the expense of inhibiting growth.  For example, Tedeschi et al. showed that a voltage-gated calcium channel subunit prevents axon growth, and that inhibiting the channel can promote regeneration *in vivo* [@tedeschiCalciumChannelSubunit2016].  Hilton et al. found a similar effect with presynaptic vesicle-tethering proteins, and also found that cells that were capable of regeneration down-regulated these proteins during axon growth [@hiltonActiveVesiclePriming2022].  
+Recent work has increasingly pointed to the formation of synapses as a key point at which developing CNS neurons lose their intrinsic capacity to regenerate.   During this process, interactions with the external cellular environment trigger internal changes that encourage signalling function at the expense of inhibiting growth.  For example, Tedeschi et al. showed that a voltage-gated calcium channel subunit prevents axon growth, and that inhibiting the channel can promote regeneration *in vivo* [@tedeschiCalciumChannelSubunit2016].  Hilton et al. found a similar effect with presynaptic vesicle-tethering proteins, and also found that cells that were capable of regeneration down-regulated these proteins during axon growth [@hiltonActiveVesiclePriming2022].  (NOTE PNNs HERE?)  These results suggest that the cellular requirements to support synaptic signalling might be at odds with the mechanisms needed to support axonal growth, and that changing a neuron's interactions with external partners might be a necessary step in promoting regeneration through internal mechanisms.
 
-### Cytoskeleton
+
+
+
+
+### Intrinsic factors
+
+#### Cytoskeletal regulation of axon growth
 
 Neurons undergo dramatic morphological changes during development, eventually forming extremely long, thin, and complex structures that, in many cases, must be carefully maintained for the entire lifetime of the organism.  To make this possible, mature neurons have a dynamic but highly regulated cytoskeleton, particularly in the axon.  However, the structural requirements of the mature, signal-carrying axon are very different from a growing axon, and in the case of axon injury this can prevent successful regeneration.   
 
@@ -57,19 +93,19 @@ This microtubule structure, and by extension the structure of the axon, is also 
 
 At the axon tip, a delicate balance of microtubule polymerisation and stabilisation promotes forward extension of the growth cone and axon elongation during development.  This can be partially restored in mature axons with the addition of microtubule-stabilising drugs, but the effect is highly dose-dependent, with higher doses instead inhibiting axon growth (reviewed in [@blanquieCytoskeletonDynamicsAxon2018]).  There is also a complex interaction between these growing microtubules and the actin filaments that define the structure of the growth cone periphery.  Actin filaments in the growth cone are constantly polymerising, being pulled towards the center of the growth cone, and depolymerising, in a process that is dynamically regulated to limit growth speed and allow the growth cone to change direction in response to environmental cues (reviewed in [@leiteActinDynamicsGrowth2021]).  Inhibiting proteins involved in this retrograde flow of actin filaments has been shown to increase axon growth even in the presence of otherwise inhibitory cues [@hurEngineeringNeuronalGrowth2011; @yuMyosinIIActivity2012].
 
-### Signalling
+#### Growth-related signalling
 
 The internal changes that occur during neuronal maturation are regulated by distinct signalling pathways.  Several of these have been associated with the loss of regenerative ability, and have been targeted to increase axon regeneration.
 
-#### PTEN and mTOR
+##### PTEN and mTOR
 
 One of the most-studied signalling pathways in the context of CNS repair is the PI3K/AKT/mTOR pathway.  The levels of PIP~3~, an important signalling lipid, are developmentally regulated in neurons [@nieuwenhuisPI3kinaseDelta2020].  PIP~3~ is produced from PIP~2~ by PI3K, while the reverse reaction is catalysed by PTEN.  During growth, a balance of both enzymes maintains sufficient PIP~3~ levels to promote growth via AKT kinase and downstream targets such as mTOR.  As neurons mature, however, expression levels of PI3K decline.  The result is a decline in PIP~3~, and subsequent decrease in AKT signalling.  Restoring PIP~3~ levels in mature neurons, either through PTEN deletion or PI3K expression, can strongly promote axon regeneration [@parkPromotingAxonRegeneration2008; @nieuwenhuisPI3kinaseDelta2020;&nbsp;reviewed in @nieuwenhuisPromotingAxonRegeneration2022].
 
-#### Other signalling pathways
+##### Other signalling pathways
 
 Numerous other pathways have also been implicated in the failure of regeneration in the CNS.  Smith et al. found that SOCS3 — a negative regulator of cytokine signalling — inhibited axon regeneration in mouse RGCs by blocking responses to external growth factors, and that deleting SOCS3 promoted regeneration [@smithSOCS3DeletionPromotes2009].  Qiu et al. showed that DRG regeneration into the CNS following a conditioning lesion was dependent on cAMP and PKA to overcome inhibitory signals from the extracellular environment [@qiuSpinalAxonRegeneration2002].  These pathways all overlap or interact to some degree, but it is still unclear how they may be differentially regulated in the case of axonal injury, or if this varies across cell types.
 
-### Epigenetic and transcriptional regulation
+#### Epigenetic and transcriptional regulation of regeneration
 
 Dorsal root ganglia (DRG) neurons are unique in that they extend axons into both the peripheral and central nervous systems from their location just outside the spinal cord.  As peripheral neurons they have the intrinsic capacity for axonal regeneration, although this is usually only successful in the peripheral branch, due to the inhibitory extracellular environment of the spinal cord.  However, their regenerative capacity into the CNS is vastly enhanced by a prior injury to the peripheral axon, known as a conditioning lesion.  Changes in gene expression and regulation that occur in the weeks following a peripheral lesion can allow these cells to regenerate through the inhibitory environment of a spinal cord injury, raising the possibility that similar changes could convey similar capacity in neurons of the CNS [@neumannRegenerationDorsalColumn1999].  
 
@@ -77,19 +113,19 @@ This conditioning lesion phenomenon has provided an invaluable model to identify
 
 Other work has identified transcription factors that may play a role in axon regeneration (reviewed in [@mooreMultipleTranscriptionFactor2011]).  Moore et al. suggest that different members of the KLF family of transcription factors differentially regulate the regenerative capacity of RGCs, while Ewan et al. pointed to ATF3 and c-Jun as key regulators [@mooreKLFFamilyMembers2009; @ewanAscendingDorsalColumn2021].  This is by no means an exhaustive list, and a significant amount of work is ongoing in this area to identify transcription factors that can be targeted to promote regeneration, particularly in combination with therapies that address chromatin accessibility (reviewed in [@wahaneEpigeneticRegulationAxon2019]).  
 
-### Intracellular transport
+#### Changes in axonal transport with development
 
 After synapse formation, axons undergo dramatic changes in transport, as growth machinery is excluded from the axon in favour of synapse components and synaptic vesicle precursors.  This results in decreased transport of some essential organelles, which can inhibit survival and regrowth in the case of injury.
 
-#### Recycling endosomes
+##### Recycling endosomes
 
 Among the organelles excluded from mature axons are recycling endosomes, which are marked with a small GTPase called Rab11.  Rab11 endosomes play a key role in recycling internalised receptors back to the plasma membrane, but they also play a role in transporting cargo into axons [@kosekiSelectiveRab11Transport2017].  One such cargo is integrins, which are essential for focal adhesion formation and involved with both developmental and regenerative axonal growth.  In DRG neurons in the PNS, integrin \textalpha{}9 can promote axon regeneration even into the inhibitory environment of the spinal cord [@cheahExpressionActivatedIntegrin2016].  However, integrins are excluded from mature CNS axons by another recycling endosome small GTPase called ARF6, in combination with its activator EFA6.  Inhibiting EFA6 allows integrins into the axon and promotes regeneration after axotomy *in vitro*, but it remains to be seen whether this approach is effective *in vivo* [@evaEFA6RegulatesSelective2017].
 
-#### Mitochondria
+##### Mitochondria
 
 Similar changes in mitochondrial motility have been identified.  Lewis et al. found that mitochondrial motility decreased with age in cortical neurons, and mature mitochondria were often stationary near presynapses  [@lewisProgressiveDecreaseMitochondrial2016].   Sainath et al. found that chondroitin sulphate proteoglycans — potent inhibitors of axon regeneration — prevented mitochondria from reaching the growth cones of regenerating DRG neurons [@sainathChondroitinSulfateProteoglycans2017].  Other studies linked this change even more directly to axon regeneration, showing that artificially enhancing mitochondrial motility by either reducing the anchor protein syntaphilin or overexpressing transport-regulating ARMCX1 could boost regeneration after axon injury [@zhouFacilitationAxonRegeneration2016; @cartoniMammalianSpecificProteinArmcx12016].  
 
-### The virtuous cycle of axon growth
+#### The virtuous cycle of axon growth
 
 Many of these intrinsic factors interact in what has been described as the 'virtuous cycle of axon growth' [@petrovaVirtuousCycleAxon2018].  Axonal growth is sustained by a cycle in which activated axonal growth factor receptors trigger transcriptional and signalling cascades through retrograde transport to the cell body.  These in turn can result in the translation and subsequent delivery of more receptors and growth machinery, which allow the cell to respond more effectively to growth cues in the extracellular environment.  As the cell matures, changes in axon transport lead to lower levels of growth factor receptors in the distal axon, and the cycle stops.  By targeting any stage of this cycle — axon transport, signalling, transcription, or translation — it should be possible to effectively restart the cycle and promote regeneration.
 
@@ -105,7 +141,7 @@ Protrudin is an interesting protein in the context of axon regeneration because 
 image_as_ggplot(read.bitmap(here('figures/external/protrudin_schematic.png')))
 ```
 
-Protrudin is a transmembrane ER protein.  It contains an intramembrane hairpin loop, which restricts its localisation to tubular domains of the ER, where it contributes to shaping and maintaining membrane curvature [@hashimotoProtrudinRegulatesEndoplasmic2014].  It contains an array of binding domains exposed to the cytoplasm, which include a Rab-binding domain (RBD), an FFAT domain, which interacts with VAPA/B at ER contact sites, a coiled-coil (CC) domain, which binds kinesin, and a FYVE domain, which interacts with phospholipids.  There is also a predicted low-complexity region between the hairpin and CC domains, which has been shown to mediate interaction with Rab7 [@raiborgRepeatedEREndosome2015].
+Protrudin is a transmembrane ER protein.  It contains an intramembrane hairpin loop, which restricts its localisation to tubular domains of the ER, where it contributes to shaping and maintaining membrane curvature [@hashimotoProtrudinRegulatesEndoplasmic2014].  This loop is also required for protrudin oligomerisation - functional protrudin forms homodimers or tetramers, although how this contributes to its function is not well understood [@pantakaniOligomerizationZFYVE27Protrudin2011].  Protrudin also contains an array of binding domains exposed to the cytoplasm, which include a Rab-binding domain (RBD), an FFAT domain, which interacts with VAPA/B at ER contact sites, a coiled-coil (CC) domain, which binds kinesin, and a FYVE domain, which interacts with phospholipids.  There is also a predicted low-complexity region between the hairpin and CC domains, which has been shown to mediate interaction with Rab7 [@raiborgRepeatedEREndosome2015].  
 
 ### Cellular outgrowth, migration, and invasion
 
@@ -138,5 +174,7 @@ The axonal ER also acts as a local calcium store, and its capacity is regulated 
 With these diverse roles across numerous cellular functions, protrudin could be influencing neuronal survival and regeneration through several different mechanisms.  Our lab has been working with protrudin for some time now, having initially become interested in the protein in the context of integrin transport.  This led to the publication of a paper which I contributed to [@petrovaProtrudinFunctionsEndoplasmic2020], some of which is presented in section \@ref(protrudin-ONC).
 
 That paper presented a number of key findings, which I have built upon over the course of this project.  The foremost of these is that protrudin overexpression has a striking effect on neuronal survival and regeneration after axon injury.  
+
+## Aims of this project{#intro-aims}
 
 My initial aim in starting this project was to further examine the effect of protrudin on *in vivo* CNS injury, with the intent of developing it towards a gene therapy.  Unfortunately, the 2020 coronavirus pandemic and associated disruption necessitated a dramatic change in direction, and I have subsequently focused on understanding which cellular pathways contribute to protrudin's beneficial effects.  This is primarily intended to inform the translation of protrudin as a gene therapy for neurodegenerative conditions and CNS injury, although it also lays the groundwork for identifying new therapeutic targets in the same pathways.

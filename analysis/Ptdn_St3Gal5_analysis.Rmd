@@ -161,7 +161,7 @@ GS_mean_run_length = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$direct
   geom_dotplot(aes(colour = condition, fill = condition), binaxis = 'y', stackdir = 'center') + 
   geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
   d_format + report_theme + 
-  labs(x = "", y = "Mean run length") + 
+  labs(x = "", y = paste0("Mean run length (", "\U03BC", "m)")) + 
   stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_dist), 1, ceiling), size = p_fs)
 
 plot(GS_mean_run_length)
@@ -182,7 +182,7 @@ GS_mean_run_velocity = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$dire
   geom_dotplot(aes(fill = condition, color = condition), binaxis = 'y', stackdir = 'center') + 
   geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
   d_format + report_theme + 
-  labs(x = "", y = "Mean velocity") + 
+  labs(x = "", y = paste0("Mean velocity (", "\U03BC", "m/s)")) + 
   stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed), 3, ceiling), size = p_fs) +
   stat_pvalue_manual(GS_mean_run_velocity.dunn, hide.ns = TRUE, label = 'p.adj.rounded', step.increase = 0.1)
 
