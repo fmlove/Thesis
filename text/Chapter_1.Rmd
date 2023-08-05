@@ -134,8 +134,8 @@ We initially tried labelling cells with LysoTracker Red *(Thermo Fisher, L7528)*
 
 Expression constructs for SKIP, myrlysin (BORCS5), WT Arl8b, and constitutively active Arl8b were kindly provided by Juan Bonifacino.  These constructs were scaled up as described in section \@ref(plasmid-prep) and tested for transfection in cortical neurons.  Additional constructs of SYN-myrlysin-EGFP and CBh-SKIP-mNeonGreen were obtained from VectorBuilder and prepared in the same way.
 
-```{r SKIP-LAMP1-kymo, echo = F, fig.height=4, fig.cap="Representative kymograph showing SKIP in green and LAMP1 in magenta.  Anterograde is to the right.", fig.scap="SKIP and LAMP1 representative kymograph"}
-image_as_ggplot(read.bitmap(here('images/representative_kymographs/SKIP_LAMP1_composite.png')))
+```{r SKIP-LAMP1-kymo, echo = F, fig.height=4, dpi = 160, fig.cap="Representative kymograph showing SKIP in green and LAMP1 in magenta.  Scale bar is 20 \\textmu{}m.", fig.scap="SKIP and LAMP1 representative kymograph"}
+image_as_ggplot(read.bitmap(here('figures/external/SKIP_LAMP1_kymo_annotated.png')))
 ```
 
 Our original intention was to test if artificially increasing lysosomal transport in the axon could promote regeneration; however, this work was interrupted by the pandemic.  Following our return to the laboratory, we conducted some pilot experiments with SKIP and LAMP1.  This showed some colocalisation between the two, particularly in anterogradely-moving lysosomes, but no immediately obvious differences in number of lysosomes, speed, or run length compared to an EGFP control (figure \@ref(fig:SKIP-LAMP1-kymo)).  (This is not unexpected, as previous experiments required both SKIP and Arl8b overexpression to stimulate transport [@rosa-ferreiraArl8SKIPAct2011; @fariasBORCKinesin1Ensemble2017].)  After the completion of the experiments described in section \@ref(lyso-LE), it was decided not to continue this work further.
