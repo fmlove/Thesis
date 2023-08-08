@@ -369,6 +369,36 @@ i3_max.gc_cyto.ratio$transf = factor(i3_max.gc_cyto.ratio$transf, levels = trans
 
 ## Plots
 
+Supplementary - area of axon terminal between cells at DIV3 and DIV15
+```{r gc_area_plot, fig.width = 8, fig.height = 8}
+
+gc_area_plot = ggplot(max.gc_cyto[max.gc_cyto$measure == 'axon terminal',], aes(x = age, y = Area)) + 
+    geom_dotplot(aes(fill = age, colour = age), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.9) + 
+    geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = position_dodge(width = 0.9), width = 0.5) +#change colour?
+    facet_wrap(~cond, ncol = 2, scales = 'free_y') + 
+    ylab(bquote("Axon terminal area (\U03BC"*m^2*")")) + 
+    d_format + report_theme +
+    stat_compare_means(paired = F, vjust = -1) +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+gc_area_plot
+```
+```{r gc_area_plot_pooled, fig.width = 8}
+gc_area_plot_pooled = ggplot(max.gc_cyto[max.gc_cyto$measure == 'axon terminal',], aes(x = age, y = Area)) + 
+    geom_dotplot(aes(fill = age, colour = age), binaxis = "y", stackdir = "center", position = "dodge", dotsize = 1, binwidth = 10) + 
+    geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = position_dodge(width = 0.9), width = 0.5) +#change colour?
+    labs(title = 'All markers') + ylab(bquote("Axon terminal area (\U03BC"*m^2*")")) +
+    d_format + report_theme +
+    stat_compare_means(paired = F, vjust = -1)
+
+gc_area_plot_pooled
+```
+```{r gc_total_fluor}
+
+```
+
+
+
 Max intensity - GC/soma (cytoplasm) ratio at DIV3 vs DIV15
 ```{r max_ratio_plot, fig.width = 16, fig.height = 4}
 max_ratio_plot = ggplot(max.gc_cyto.ratio, aes(x = age, y = ratio_mean)) + 
@@ -719,4 +749,10 @@ SLC38A1_plot
 
 ```{r dev_SLC38A1_full, fig.width=16, fig.height=4}
 max_GC_plotlist[['SLC38A1']] + max_cyto_plotlist[['SLC38A1']]
+```
+
+```{r gc_area_full, fig.width = 19, fig.height = 8}
+gc_area_full = gc_area_plot + gc_area_plot_pooled + plot_annotation(tag_levels = 'A')
+
+gc_area_full
 ```

@@ -10,8 +10,14 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <!-- Note: won't render without Ch3. -->
 
-```{r suppl-dev-grid, echo = F, fig.width=16, fig.height=12, fig.path = '../figures/full/', fig.cap="Fluorescence intensity of various markers in DIV3 vs DIV15 cortical neurons, divided into cell body or axon terminal.  All n=26 or 27 cells per condition across three batches, except SLC38A1 (n=18 cells, three batches).", fig.scap="Supplementary figure; marker intensity in cell bodies and axon terminals of developing cortical neurons"}
+```{r suppl-dev-grid, echo = F, fig.width=16, fig.height=12, fig.path = '../figures/full/', fig.cap="Fluorescence intensity of various markers in DIV3 vs DIV15 rat cortical neurons, divided into cell body or axon terminal.  All n=26 or 27 cells per condition across three batches, except SLC38A1 (n=18 cells, three batches).", fig.scap="Supplementary figure; marker intensity in cell bodies and axon terminals of developing cortical neurons"}
+
 max_gridplot
+```
+
+```{r suppl-gc-area, echo = F, fig.width=16, fig.height=8, fig.path='../figures/full/', fig.cap="Axon terminal area of DIV3 vs DIV15 rat cortical neurons, A) for each marker and B) pooled together.  All show a significant decrease in axon terminal area with age, with the exeception of SURF4.  Given the substantially smaller measurements in DIV3 neurons stained for SURF4 compared to other markers, this suggests that SURF4 is confined to the central region of the developing growth cone.  All n=26 or 27 cells per condition across three batches, except SLC38A1 (n=18 cells, three batches).", fig.scap="Supplementary figure; axon terminal area in developing cortical neurons"}
+
+gc_area_full
 ```
 
 
