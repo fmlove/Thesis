@@ -34,7 +34,7 @@ options(knitr.table.format = 'markdown')
 
 As discussed previously in section \@ref(intro-ptdn), protrudin's array of binding domains allow it to participate in numerous cellular systems, with diverse effects.  To identify other mechanisms of action, we decided to take a broad approach, examining a number of different systems to identify how protrudin might influence neuronal function, either endogenously or with overexpression.
 
-Previous work in the lab found it extremely difficult to reduce protrudin levels in neurons — either by shRNA or CRISPR — without killing the cells.  We were able to study loss of protrudin expression through overexpression of mutants with dominant negative effects, rather than protrudin deletion or silencing.
+Previous work in the lab found it extremely difficult to reduce protrudin levels in neurons — either by shRNA or CRISPR — without killing the cells.  We were able to study loss of protrudin expression through overexpression of mutants with dominant negative effects, rather than protrudin deletion or silencing.  Since our plasmids drive protrudin overexpression at levels substantially higher than endogenous protrudin expression [@petrovaProtrudinFunctionsEndoplasmic2020], overexpression of a mutant form of protrudin should outcompete the endogenous protein for binding partners, even if it does not directly decrease the amount of endogenous protein in the cell.  In this way, we are able to examine the effects of different loss-of-function mutations on protrudin's cellular effects.
 
 ### Cellular morphology
 While protrudin's role in cell outgrowth is interesting from the perspective of axon regeneration, it could potentially play a number of other roles in neuron morphology.  Petrova et al. showed that endogenous protrudin is present in both axons and dendrites, but is most abundant in the dendrites and cell bodies of mature neurons [@petrovaProtrudinFunctionsEndoplasmic2020].  Consequently, protrudin's endogenous functions may well be more apparent in the somatodendritic domain.  In fact, there are a number of published findings that suggest that protrudin may function in dendrites, either to control dendritic spine morphology or support synaptic function.  
@@ -69,11 +69,17 @@ Cells were fixed with 3% formaldehyde in PBS for 15 minutes at room temperature.
 
 ## Results
 
-### Protrudin's effect on dendritic spine number, length, and morphology
+### Protrudin does not influence dendritic spine number, length, or morphology
 
 Given protrudin's dendritic localisation and known effects on protrusion formation, we first decided to examine whether protrudin plays a role in regulating dendritic spine morphology.  Dendritic spines show diverse morphology within and between cells, which is generally considered to be reflective of the maturity, functionality, and plasticity of each spine.  While these ultimately fall on a continuous spectrum of shapes, they are conventionally grouped into four morphological classes — mushroom, thin, stubby, and filopodia [@pchitskayaDendriticSpinesShape2020].  We decided to use these classes to obtain an overview of spine morphology on cells expressing protrudin.  
 
-We counted and manually classified dendritic spines on 20 \textmu{}m sections of dendrite from DIV15 or DIV21 neurons co-expressing an EGFP/Emerald filler with an mCherry-labelled protrudin construct (figure \@ref(fig:spine-type-full-figure)).  These included WT and active protrudin, as well as a set of domain-deletion mutants to act as dominant negatives.  \textDelta{}FFAT, \textDelta{}RBD, and \textDelta{}FYVE each have a single binding motif deleted, \textDelta{}KIF5 has both the CC and FFAT domains deleted, to completely block binding to kinesin, and \textDelta{}ER mutant (\textDelta{}TM1-3) has all transmembrane domains deleted [@petrovaProtrudinFunctionsEndoplasmic2020].  The DIV15 data suggests that WT protrudin might be associated with fewer, stubbier spines, although the significant comparisons varied for each spine classification, and is inconsistent with the DIV21 data.
+We co-transfected rat cortical neurons with EGFP/Emerald (as a cytoplasmic label) and an mCherry-labelled protrudin construct.  These included WT and active protrudin, as well as a set of domain-deletion mutants to act as dominant negatives.  \textDelta{}FFAT, \textDelta{}RBD, and \textDelta{}FYVE each have a single binding motif deleted or disrupted, \textDelta{}KIF5 has both the CC and FFAT domains deleted, to completely block binding to kinesin, and \textDelta{}ER mutant (\textDelta{}TM1-3) has all transmembrane domains deleted [@petrovaProtrudinFunctionsEndoplasmic2020]. (Figure \@ref(fig:mutant-maps-full-figure))
+
+```{r mutant-maps-full-figure, echo=F, fig.width=16, fig.height = 16, dpi = 160, fig.path = '../figures/full/', fig.cap='Domain maps of the protrudin constructs used in this experiment.  Not to scale.', fig.scap="Domain maps of protrudin mutants."}
+image_as_ggplot(read.bitmap(here('figures/external/protrudin_mutant_maps.png')))
+```
+
+For each of these conditions, we counted and manually classified dendritic spines on 20 \textmu{}m sections of dendrite from cells at DIV15 or DIV21.  The DIV15 data suggests that WT protrudin might be associated with fewer, stubbier spines, although the significant comparisons varied for each spine classification, and is inconsistent with the DIV21 data. (Figure \@ref(fig:spine-type-full-figure))
 
 ```{=latex}
 \newgeometry{a4paper, top=40mm, left=35mm, right=35mm, bottom = 30mm} %unnecessary as long as 1.5in margins overall
@@ -96,7 +102,7 @@ spine_lengths_full_plot
 
 Taken together, these results show that protrudin overexpression does not substantially impact dendritic spine number, length, or morphology.  These measurements were highly variable between cells and between replicates, and did not show any consistent patterns that would suggest that protrudin plays any role in controlling spine outgrowth.  This obviously cannot rule out changes in spine function, but in any case such changes do not seem to be mediated by morphological changes at the micron scale.
 
-### Protrudin's interactions with other proteins in the cell{#GO-analysis}
+### Gene ontology analysis of protrudin-interacting proteins{#GO-analysis}
 
 As our results did not indicate a clear role for protrudin in regulating dendritic spine morphology, we turned to proteomic analysis to identify other potential cellular functions, either in the somatodendritic domain or in axons.
 
@@ -145,7 +151,7 @@ Finally, SLC38A1 was found to concentrate in protrusions, and similarly to ERGIC
 misc_grid
 ```
 
-#### Other morphological changes
+#### Other morphological effects of protrudin overexpression
 
 In addition to protrusions, we noted that protrudin overexpression also induces the formation of large, ring-shaped structures in the perinuclear region of HeLa cells.  These are observed occasionally in neurons expressing protrudin, but not to the same extent as in HeLa cells.  While these were not the primary focus of this experiment, they did reveal interesting results with two of the markers screened, and may indicate protrudin involvement in additional cellular pathways.
 
@@ -165,7 +171,7 @@ ceramide_grid
 
 ## Discussion
 
-### Protrudin and dendritic spines
+### Protrudin's effect on dendritic spine morphology
 
 Protrudin overexpression — or inhibition through the expression of dominant negative mutants — did not substantially influence dendritic spine morphology. Considering the mechanism described in Pedersen et al. (in which protrudin-mediated cellular outgrowth is dependent on interaction with Rab7 and FYCO1), it seems likely that this is another result of the absence of FYCO1 in CNS neurons [@pedersenProtrudinmediatedEREndosome2020].  We cannot, however, rule out an effect on dendritic spine function, and more work would be required to understand whether protrudin overexpression may influence neuronal signalling.
 
