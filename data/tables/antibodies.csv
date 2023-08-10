@@ -3,7 +3,7 @@ BCAP31,ER chaperone,"*Novus Biologicals, NBP2-75416*",TRUE,rabbit,monoclonal,1:1
 SURF4,ERES cargo loading,"*Proteintech, 11599-1-AP*",TRUE,rabbit,polyclonal,1:250--1:500,primary
 MIA3 (TANGO1),ERES cargo loading,"*Sigma-Aldrich, HPA055922-25UL*",TRUE,rabbit,polyclonal,1:100,primary
 SEC31A,COPII coat component,"*BD Biosciences, 612351*",TRUE,mouse,monoclonal,1:100,primary
-ERGIC53,ERGIC marker,"*Sigma-Aldrich, E1031-200UL*",TRUE,rabbit,polyclonal,1:100,primary
+ERGIC53 (p58),ERGIC marker,"*Sigma-Aldrich, E1031-200UL*",TRUE,rabbit,polyclonal,1:100,primary
 GS28,Golgi SNARE,"*Proteintech, 16106-1-AP*",TRUE,rabbit,polyclonal,1:100,primary
 GLG1,Golgi glycoprotein,"*Novis Biologicals, NBP1-90636*",TRUE,rabbit,polyclonal,1:150,primary
 USO1 (p115),ER to Golgi vesicle targeting,"*Proteintech, 13509-1-AP*",TRUE,rabbit,polyclonal,1:1000,primary
