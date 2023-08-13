@@ -60,6 +60,11 @@ After sorting by the retromer complex, proteins can then be delivered to other o
 
 An alternate, Golgi-bypassing pathway has also been suggested, with cargo moving from the ERGIC to the cell surface via Rab11-marked recycling endosomes.  This has been studied in dendrites, where it was found to play a role in delivering GluA1 glutamate receptors to dendritic spines [@bowenGolgiindependentSecretoryTrafficking2017].  This study does not fully rule out the involvement of Golgi satellites, but does show that this pathway is robust to the disruption of somatic Golgi and Golgi outposts with brefeldin A, indicating a distinction from conventional Golgi processing.  
 
+### Hypothesis and experimental aims
+
+
+
+
 ## Methods
 
 General cell culture and microscopy methods can be found in section \@ref(METHODS).
