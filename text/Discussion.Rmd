@@ -14,7 +14,7 @@ output:
 \setcounter{figure}{0}
 ```
 
-## Conclusions
+## Results
 
 ### Protrudin's role in axonal transport
 
