@@ -151,7 +151,7 @@ As mentioned in section \@ref(METHODS), we experienced a sharp decline in effici
 
 Of all the factors tested, cell density best correlated with the transfection efficiency, although the improvements on the original magnetofection protocol were dwarfed by the vast improvement with calcium phosphate transfection.  Going forward, transfections were carried out using the calcium phosphate method, with cell density of 200,000-400,000 per imaging dish depending on the needs of the experiment.
 
-```{r transfection-plot-full, echo = F, fig.pos = 'h', fig.width = 16, fig.height = 6, fig.cap="A) Cell counts for plates of varying density transfected with magnetofection protocol.  B) Cell counts for three identical plates (300,000 cells per plate) transfected with calcium phosphate protocol.  Note the difference in scale between the two plots.", fig.scap="Transfection optimisation plot"}
+```{r transfection-plot-full, echo = F, fig.pos = 'h', fig.width = 16, fig.height = 16, fig.cap="A) Example image of a full-plate scan used for quantifying transfection.  The indicated area is enlarged to the right, and examples of intact cells (blue asterisk) and dead cells (magenta x) are annotated. B) Cell counts for plates of varying density transfected with magnetofection protocol.  C) Cell counts for three identical plates (300,000 cells per plate) transfected with calcium phosphate protocol.  Note the difference in scale between the two plots.", fig.scap="Transfection optimisation plot"}
 
 optimisation_plot
 ```

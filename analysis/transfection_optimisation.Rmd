@@ -15,6 +15,7 @@ source('../style/thesis_setup.R')
 
 library(reshape2)
 library(ggplot2)
+library(readbitmap)
 library(patchwork)
 library(here)
 
@@ -29,7 +30,7 @@ library(here)
 density.counts = read.csv(here('data/transfection_optimisation/density_test_osc_20200122.csv'))
 density.melt = melt(density.counts, id.vars = 'density', measure.vars = c('live', 'dead'))
 density.melt$variable = factor(density.melt$variable, levels = c("dead", "live"), labels = c("dead", "intact"))
-density.melt$density = factor(density.melt$density, levels = c('100k', '200k', '250k', '400k'), labels = c('100,000', '200,000', '250,000', '400,000'))
+density.melt$density = factor(density.melt$density, levels = c('100k', '200k', '250k', '400k'), labels = c('100k', '200k', '250k', '400k'))
 
 density.plot = ggplot(density.melt, aes(x = density, fill = variable, y = value)) + 
   geom_bar(stat = "identity", position = "stack") + 
@@ -64,6 +65,13 @@ calphos.plot
 
 #----------------------------------------------------------
 
-```{r}
-optimisation_plot = density.plot + calphos.plot + plot_annotation(tag_levels = 'A') + plot_layout(guides = 'collect')
+```{r, fig.width = 16, fig.height = 16}
+plate_scan_panel = image_as_ggplot(read.bitmap(here("images/microscopy/transfection_optimisation/combined_panel.png")))
+layout = 'AAAAAAA
+          AAAAAAA
+          BBBCCCD'
+
+optimisation_plot = plate_scan_panel + density.plot + calphos.plot + guide_area() + plot_annotation(tag_levels = 'A') + plot_layout(design = layout, guides = 'collect')
+
+optimisation_plot
 ```
