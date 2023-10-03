@@ -87,6 +87,11 @@ We tested several inhibitors of either ER to Golgi transport or Golgi function i
 
 Based on these preliminary results, we decided to test if clofibrate could block protrudin's pro-regenerative effect on injured axons.  Unfortunately, this dosage of clofibrate proved highly toxic over the 16-hour timescale required for this experiment.  We were unable to optimise this experiment further, as our regular supply of rats for cortical neuron cultures was disrupted by an animal carriage embargo at Frankfurt airport during the summer of 2022.  We plan to return to this in a future project.
 
+### Scratch assay
+
+Primary rat cortical neurons were cultured on acid-washed glass coverslips coated with PDL as described in section \@ref(CNC).  At DIV14, each coverslip was scratched across once with a sterile needle, then the cells were cultured for a further 18-20 hours before fixing as described previously (section \@ref(immuno)).  
+
+
 ## Results
 
 ### ER-Golgi pathway localisation during development
@@ -171,7 +176,7 @@ Following live imaging, these cells were fixed, and imaged at higher exposure on
 GS_puncta_full_figure
 ```
 
-We then conducted a scratch assay to determine the localisation of Golgi satellites in the growth cones of mature neurons and examine whether protrudin might have an effect on axonal Golgi satellites in response to injury.  Cortical neurons cultured on glass coverslips were scratched with a sterile needle, then incubated for 18-20 hours before fixing.  Axons growing into the scratched region were imaged on a confocal microscope.
+We then conducted a scratch assay to determine the localisation of Golgi satellites in the growth cones of mature neurons and examine whether protrudin might have an effect on axonal Golgi satellites in response to injury.  Cortical neurons cultured on glass coverslips were scratched with a sterile needle, then incubated for 18-20 hours before fixing.^[While this method cuts axons, dendrites, and cell bodies indiscriminately, and does not directly measure regeneration, it is useful for isolating growth cones in mature (DIV15) cortical neurons.]  Axons growing into the scratched region were imaged on a confocal microscope.
 
 This revealed a strong concentration of St3Gal5 at the base of each growth cone, with slightly weaker signal extending further distally.  Where St3Gal5 was co-expressed with protrudin, it is apparent that the Golgi satellite signal reaches further into the growth cone than the ER.  This suggests that there are distinct ER and Golgi compartments in the growth cone, with secretory machinery oriented towards the direction of growth.  The images also suggest that there might be an accumulation of St3Gal5 immediately proximal to the growth cone in protrudin-expressing neurons, although further work is required to confirm and quantify this result.
 

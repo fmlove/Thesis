@@ -34,7 +34,9 @@ options(knitr.table.format = 'markdown')
 
 As discussed previously in section \@ref(intro-ptdn), protrudin's array of binding domains allow it to participate in numerous cellular systems, with diverse effects.  To identify other mechanisms of action, we decided to take a broad approach, examining a number of different systems to identify how protrudin might influence neuronal function, either endogenously or with overexpression.
 
-Previous work in the lab found it extremely difficult to reduce protrudin levels in neurons — either by shRNA or CRISPR — without killing the cells.  We were able to study loss of protrudin expression through overexpression of mutants with dominant negative effects, rather than protrudin deletion or silencing.  Since our plasmids drive protrudin overexpression at levels substantially higher than endogenous protrudin expression [@petrovaProtrudinFunctionsEndoplasmic2020], overexpression of a mutant form of protrudin should outcompete the endogenous protein for binding partners, even if it does not directly decrease the amount of endogenous protein in the cell.  In this way, we are able to examine the effects of different loss-of-function mutations on protrudin's cellular effects.
+Shirane et al. recently developed a knockout mouse model of protrudin deficiency, with surprising results [@shiraneProtrudindeficientMiceManifest2020].  The animals showed no sign of HSP-like motor symptoms, but instead had a broad behavioural phenotype that more closely resembled attention deficit hyperactivity disorder in humans.  This suggests that protrudin's role in the nervous system is significantly more complex than just maintaining ER membrane curvature or mediating endosomal transport.
+
+Previous work in the lab found it extremely difficult to reduce protrudin levels in cultured neurons — either by shRNA or CRISPR — without killing the cells.  We were able to study loss of protrudin function through overexpression of mutants with dominant negative effects, rather than protrudin deletion or silencing.  Since our plasmids drive protrudin overexpression at levels substantially higher than endogenous protrudin expression [@petrovaProtrudinFunctionsEndoplasmic2020], overexpression of a mutant form of protrudin should outcompete the endogenous protein for binding partners, even if it does not directly decrease the amount of endogenous protein in the cell.  In this way, we are able to examine the effects of different loss-of-function mutations on protrudin's cellular effects.
 
 ### Cellular morphology
 
@@ -45,8 +47,9 @@ For example, the mechanism through which protrudin promotes invadopodia formatio
 ### Functional effects
 
 To further examine protrudin's endogenous roles beyond cellular outgrowth, we turned to the literature to identify published proteomics data sets.  We identified three studies that published lists of protrudin-interacting proteins [@elbaz-alonPDZD8InteractsProtrudin2020; @hashimotoProtrudinRegulatesEndoplasmic2014; @matsuzakiProtrudinServesAdaptor2011].  Each study used a different model system and focused their analysis on different pathways, providing a variety of perspectives.  
-
 Elbaz-Alon et al. looked at protrudin in a human epithelial cell line, where they investigated how protrudin interacts with PDZD8 and contributes to ER contact sites  [@elbaz-alonPDZD8InteractsProtrudin2020].  Hashimoto et al. used mouse brain neurons to look at interactions between protrudin and HSP-related proteins [@hashimotoProtrudinRegulatesEndoplasmic2014], while Matsuzaki et al. used a mouse neuroblast cell line to study the interaction between protrudin and KIF5 [@matsuzakiProtrudinServesAdaptor2011].  Individually, these reveal a number of interesting interactions, indicating diverse roles for protrudin that include but are not limited to axonal function.  Taken together, a substantial level of overlap between the interaction sets reveals a conserved set of cellular functions that may help explain protrudin's role in neurons.
+
+
 
 ### Experimental aims
 

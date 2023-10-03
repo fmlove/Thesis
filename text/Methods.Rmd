@@ -68,9 +68,11 @@ Custom R scripts and ImageJ macros were written for individual analysis tasks, a
 
 All plasmid preparation was carried out using either DH5\textalpha{} *(New England BioLabs, C2987I/H)* or XL10-Gold *(Agilent Technologies, 200314)* competent cells.  Cells were transformed using a heat shock protocol, and grown on LB/agar plates with an appropriate antibiotic for plasmid selection.  Single colonies were then scaled up in LB culture.  Plasmids were purified from *E. coli* cultures using Qiagen Spin Miniprep *(27104)* or EndoFree Plasmid Maxi kits *(12362)* according to the manufacturer's protocols.  All plasmids were dissolved in ultrapure DNAse-free water *(Thermo Fisher, 10977035)* for transfection.
 
-### Cortical neuron cultures
+### Cortical neuron cultures{#CNC}
 
 Primary cortical neurons were obtained from embryonic day 18 Sprague Dawley rats. Cortices were dissected in HEPES-HBSS and dissociated with papain for approximately 5 minutes at 37°C, followed by DNAse treatment and trituration through a flame-polished glass pipette. Cells were filtered through a 40 \textmu{}m cell strainer *(Falcon, 352340)* and plated at a density of 200,000-400,000 cells per imaging plate *(Greiner Bio-One, 627860)* or 50,000-100,000 cells per acid-washed glass coverslip (13 mm diameter). (Plates and coverslips were coated with 50 \textmu{}g/mL poly-D-lysine *(Sigma-Aldrich, P1149)* in borate buffer.)  Cells were grown in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)*, supplemented with NeuroBrew-21 *(Miltenyi Biotec, 130-093-566)*, GlutaMAX *(Thermo Fisher, 35050061)*, and ITS *(R&D Systems, AR013)* at 37°C with 7% CO~2~. 
+
+The day of dissection was considered to be day zero, and further development measured by days *in vitro* (DIV).  The cells would typically begin to grow neurites within a day, exhibit clearly differentiated axons by DIV3, and demonstrate electrical maturity and significantly reduced regenerative ability by DIV16 [@kosekiSelectiveRab11Transport2017].
 
 ### Transfection
 
