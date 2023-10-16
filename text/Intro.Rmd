@@ -51,9 +51,11 @@ In 1980, Peter Richardson and colleagues at McGill showed that axons in a severe
 
 #### Extraellular matrix
 
-The extracellular matrix of the mature central nervous system contains a number of chemicals that are known to be inhibitory to axonal growth.  
+The extracellular matrix of the mature central nervous system contains a number of chemicals that are known to be inhibitory to axonal growth, either mechanically or biochemically.  
 
 
+
+either by enzymatic breakdown (ChABC) or inhibition of synthesis (4-MU)
 
 It is now widely accepted that targeting inhibitory molecules in the extracellular matrix — most commonly chondroitin sulphate proteoglycans, which can be broken down by an enzyme known as chondroitinase ABC, although new approaches are now being tested — can permit short-range regeneration and enhance neuronal plasticity.  These treatments have led to moderate restoration of function in some models of spinal cord injury, often through the reorganisation of local neuronal networks following an incomplete injury.  However, robust long-range axonal regeneration — past the site of injury and back to their original downstream targets — remains elusive [@irvine4methylumbelliferoneEnhancesNeuroplasticity2023;&nbsp;reviewed in @kwokExtracellularMatrixPerineuronal2011; @muirRecentAdvancesTherapeutic2019].
 
@@ -62,31 +64,24 @@ It is now widely accepted that targeting inhibitory molecules in the extracellul
 
 
 #### Cellular environment
+
+Axonal regeneration, or its failure, is significantly influenced by surrounding non-neuronal cells.  In most cases, glia make up the vast majority of these cells, but in the case of traumatic injury to the CNS circulating immune cells can also play an important role.
+
 ##### Glia
 
-One of the most obvious tissue-level differences between the CNS and the PNS is the type of glial cells present.  PNS axons are myelinated by Schwann cells, while in the CNS oligodendrocytes carry out the same role.  These cells have significantly different structures, and respond differently to injury.  Following an axonal injury, Schwann cells transform to exhibit a regeneration-promoting phenotype. In this state, they actively participate in clearing myelin debris, form a scaffold for axonal regrowth, and release exosomes containing growth-promoting factors. In contrast, oligodendroytes that survive an axonal injury in the CNS are largely quiescent, and do not appear to support axon repair in the same way. (CITE - multiple)  On the contrary, the myelin debris from damaged oligodendrocytes, both lipids and proteins, and in particular myelin-associated glycoprotein (MAG), are inhibitory to axon growth, and can contribute to inflammation following an injury to the CNS. (CITATIONS)
+One of the most obvious tissue-level differences between the CNS and the PNS is the type of glial cells present.  PNS axons are myelinated by Schwann cells, while in the CNS oligodendrocytes carry out the same role.  These cells have significantly different structures, and respond differently to injury.  Following an axonal injury, Schwann cells transform to exhibit a regeneration-promoting phenotype. In this state, they actively participate in clearing myelin debris, form a scaffold for axonal regrowth, and release exosomes containing growth-promoting factors [reviewed in @jessenRepairSchwannCell2016]. In contrast, oligodendroytes that survive an axonal injury in the CNS are largely quiescent, and do not appear to support axon repair in the same way [@ludwinOligodendrocyteSurvivalWallerian1990].  On the contrary, the myelin debris from damaged oligodendrocytes, both lipids and proteins, and in particular myelin-associated glycoprotein (MAG), are inhibitory to axon growth, and can contribute to inflammation following an injury to the CNS [@marMyelinLipidsInhibit2016; @mukhopadhyayNovelRoleMyelinassociated1994; @mckerracherIdentificationMyelinassociatedGlycoprotein1994].
 
 ##### Inflammation
 
-
-
-
-
-
-
-
-
-In addition to extrinsic factors, developmental changes *within* neurons also present a barrier to CNS regeneration.  As the cells mature from a growth-permissive state into synaptically active neurons, they undergo structural and functional changes that correlate with the loss of regenerative ability [@kosekiSelectiveRab11Transport2017].  Additionally, many neurodegenerative diseases are associated with genetic or molecular dysfunction within neurons, as opposed to the extracellular environment, highlighting the importance of internal factors in maintaining healthy, functional axons.  Understanding and addressing these intrinsic sources of dysfunction and barriers to regeneration is essential to developing successful therapies to protect and repair CNS axons.
+In normal circumstances, microglia act as the primary immune cells of the central nervous system, while other immune cells are excluded by the blood-brain or blood-spinal cord barrier.  However, in the case of injury — or certain degenerative conditions, such as multiple sclerosis — circulating immune cells can infiltrate the CNS, causing significant inflammation [reviewed in @hellenbrandInflammationSpinalCord2021; @freyermuth-trujilloInflammationTargetTreatment2022; @grajchenPhysiologyFoamyPhagocytes2018].  While some transient inflammation appears to be important for clearing tissue debris and subsequent repair, this process commonly becomes dysregulated, and unresolved inflammation is a significant contributor to the secondary injury cascade seen after traumatic brain or spinal cord injury.  While the inflammatory changes that occur following CNS injury are highly complex and dynamic, this is an active area of research, and some studies have suggested that anti-inflammatory treatments could promote axon regeneration [@fuNonsteroidalAntiInflammatoryDrugs2007; @parkLocalImmunomodulationAntiinflammatory2018].
 
 #### Synapses - a bridge between extrinsic and intrinsic factors
 
 Recent work has increasingly pointed to the formation of synapses as a key point at which developing CNS neurons lose their intrinsic capacity to regenerate.   During this process, interactions with the external cellular environment trigger internal changes that encourage signalling function at the expense of inhibiting growth.  For example, Tedeschi et al. showed that a voltage-gated calcium channel subunit prevents axon growth, and that inhibiting the channel can promote regeneration *in vivo* [@tedeschiCalciumChannelSubunit2016].  Hilton et al. found a similar effect with presynaptic vesicle-tethering proteins, and also found that cells that were capable of regeneration down-regulated these proteins during axon growth [@hiltonActiveVesiclePriming2022].  (NOTE PNNs HERE?)  These results suggest that the cellular requirements to support synaptic signalling might be at odds with the mechanisms needed to support axonal growth, and that changing a neuron's interactions with external partners might be a necessary step in promoting regeneration through internal mechanisms.
 
-
-
-
-
 ### Intrinsic factors
+
+In addition to extrinsic factors, developmental changes *within* neurons also present a barrier to CNS regeneration.  As the cells mature from a growth-permissive state into synaptically active neurons, they undergo structural and functional changes that correlate with the loss of regenerative ability [@kosekiSelectiveRab11Transport2017].  Additionally, many neurodegenerative diseases are associated with genetic or molecular dysfunction within neurons, as opposed to the extracellular environment, highlighting the importance of internal factors in maintaining healthy, functional axons.  Understanding and addressing these intrinsic sources of dysfunction and barriers to regeneration is essential to developing successful therapies to protect and repair CNS axons.
 
 #### Cytoskeletal regulation of axon growth
 
