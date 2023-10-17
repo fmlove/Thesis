@@ -1,8 +1,10 @@
-# Supplementary Figures {.unnumbered #SUPPLEMENT}
-
 ```{=latex}
-\markboth{SUPPLEMENT}{}
+\markboth{APPENDIX}{}
 ```
+
+# Appendix {.unnumbered #APPENDIX}
+
+## Supplementary Figures {.unnumbered #SUPPLEMENT}
 
 ```{r supplementary-setup, include = F}
 knitr::opts_chunk$set(echo = FALSE)
@@ -18,6 +20,46 @@ max_gridplot
 ```{r suppl-gc-area, echo = F, fig.width=16, fig.height=8, fig.path='../figures/full/', fig.cap="Axon terminal area of DIV3 vs DIV15 rat cortical neurons, A) for each marker and B) pooled together.  All show a significant decrease in axon terminal area with age, with the exeception of SURF4.  Given the substantially smaller measurements in DIV3 neurons stained for SURF4 compared to other markers, this suggests that SURF4 is confined to the central region of the developing growth cone.  All n=26 or 27 cells per condition across three batches, except SLC38A1 (n=18 cells, three batches).", fig.scap="Supplementary figure; axon terminal area in developing cortical neurons"}
 
 gc_area_full
+```
+
+
+
+## Plasmid Maps
+```{r}
+library(here)
+library(readbitmap)
+library(patchwork)
+
+source(here::here('style/thesis_setup.R'))
+```
+
+```{r plasmid-maps-1, fig.width=16, fig.height=24}
+image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Protrudin-EGFP_SYN_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Protrudin-EGFP_CAG_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Protrudin-mCherry_SYN_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/dual-GFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/LAMP1-RFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/LAMP1-mNeonGreen_map.html.png'))) + plot_layout(ncol = 2)
+```
+
+```{r plasmid-maps-2, fig.width=16, fig.height=24}
+image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Rab7a-mEmerald_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/St3Gal5-GFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/ESCargo-Crimson_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/FYCO1-EGFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/SKIP-GFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/SKIP-mNeonGreen_map.html.png'))) + plot_layout(ncol = 2)
+```
+
+```{r plasmid-maps-3, fig.width=16, fig.height=24}
+image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Myrlysin-MYC_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Myrlysin-EGFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Arl8b-GFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/shRNA_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/LC3-RFP_map.html.png')))  + plot_layout(ncol = 2)
+
+
+
 ```
 
 
