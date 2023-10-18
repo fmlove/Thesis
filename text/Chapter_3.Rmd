@@ -62,6 +62,7 @@ An alternate, Golgi-bypassing pathway has also been suggested, with cargo moving
 
 ### Hypothesis and experimental aims
 
+The results of our HeLa cell screen suggest that protrudin has the capacity to relocate ERES components and ERGIC to distal parts of the cell.  We followed up a selection of promising markers in rat cortical neurons to examine whether protrudin overexpression has the same effect in axons.  This could indicate whether protrudin overexpression supports axonal survival and regrowth by relocating protein secretory machinery to the distal axon.
 
 
 

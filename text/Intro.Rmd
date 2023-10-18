@@ -55,10 +55,6 @@ The extracellular environment of the mature central nervous system is unique fro
 
 Given this substantial impact on neurite growth, numerous therapies tageting the extracellular matrix have been tested to promote regeneration after spinal cord and other CNS injuries, with mixed results.  It is now widely accepted that targeting inhibitory molecules in the extracellular matrix — either by emzymatic breakdown, as in the case of chondroitinase ABC, or by inhibiting synthesis, for example with 4-methylumbelliferone — can permit short-range regeneration and enhance neuronal plasticity [@bradburyChondroitinaseABCPromotes2002a; @@irvine4methylumbelliferoneEnhancesNeuroplasticity2023;].  These treatments have led to moderate restoration of function in some models of spinal cord injury, often through the reorganisation of local neuronal networks following an incomplete injury.  However, robust long-range axonal regeneration — past the site of injury and back to their original downstream targets — remains elusive [reviewed in @kwokExtracellularMatrixPerineuronal2011; @muirRecentAdvancesTherapeutic2019].
 
-
-
-
-
 #### Cellular environment
 
 Axonal regeneration, or its failure, is significantly influenced by surrounding non-neuronal cells.  In most cases, glia make up the vast majority of these cells, but in the case of traumatic injury to the CNS circulating immune cells can also play an important role.
