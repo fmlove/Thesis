@@ -127,16 +127,9 @@ kable(overlap_table[, 7:10],
       escape = FALSE)
 ```
 
-Of these, six proteins (excluding protrudin itself) were identified in all three data sets, and for the most part their interactions with protrudin are well-characterised.  VAPA and VAPB are ER contact site proteins that interact with the FFAT domain of protrudin to concentrate it at organelle contact sites.   KIF5A is an isoform of kinesin 1 that binds to protrudin in its coiled-coil domain to drive anterograde transport.    
+Of these, six proteins (excluding protrudin itself) were identified in all three data sets, and for the most part their interactions with protrudin are well-understood.  VAPA and VAPB are transmembrane ER proteins that interact with the FFAT domain of protrudin to concentrate it at organelle contact sites [@saitaPromotionNeuriteExtension2009].   KIF5A is an isoform of kinesin 1 that binds to protrudin in its coiled-coil domain to drive anterograde transport [@matsuzakiProtrudinServesAdaptor2011, @brachetKinesin1protrudinComplex2021].  COPB2 is a subunit of the COPI complex, which is involved in retrieval of ER proteins from the Golgi [@cossonCoatomerInteractionDiLysine1994].  As protrudin contains a KKRR motif for ER retention, it would be expected to interact with the COPI complex during this process, although this does not appear to have been studied directly.  DNAJA2 and CANX (calnexin) are both common chaperone proteins [@teradaHumanDnaJHomologs2000a; @davidInteractionNewlySynthesized1993].  While their exact interactions with protrudin are unclear, they might occur while newly-translated protrudin is being folded.
 
-COPB2 is a subunit of the COPI complex, which is involved in retrieval of ER proteins from the Golgi.  As protrudin contains a KDEL motif for ER localisation, it would be expected to interact 
-
-
-The wider overlap data set also showed a number of well-known protrudin interactions.  These include additional kinesin isoforms, two Rab proteins, and reticulons
-
-
-
-Gene ontology analysis (biological process enrichment) of this set showed a high representation of proteins involved in vesicular transport, and in particular Golgi-related transport ('intra-Golgi vesicle mediated transport', 'Golgi vesicle transport', 'ER to Golgi vesicle-mediated transport', etc.) (figure \@ref(fig:proteomics-full-figure), panel B).   In contrast to endosomal transport, protrudin's role in Golgi-related transport has not been extensively studied, and we decided to follow this up with further experiments.
+Gene ontology analysis (biological process enrichment) of the wider overlap data set showed a high representation of proteins involved in vesicular transport, and in particular Golgi-related transport ('intra-Golgi vesicle mediated transport', 'Golgi vesicle transport', 'ER to Golgi vesicle-mediated transport', etc.) (figure \@ref(fig:proteomics-full-figure), panel B).   In contrast to endosomal transport, protrudin's role in Golgi-related transport has not been extensively studied, and we decided to follow this up with further experiments.
 
 
 ```{r proteomics-full-figure, fig.width = 16, fig.height = 6.5, fig.path = "../figures/full/", fig.cap="A) Venn diagram showing overlap between published lists of protrudin-interacting proteins. B) Top 20 hits of GO biological process enrichment, of all proteins appearing in at least two protrudin interaction sets, sorted by p-value.", fig.scap="Data set comparison and gene ontology of conserved protrudin-interacting proteins"}
