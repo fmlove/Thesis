@@ -44,7 +44,9 @@ Membrane proteins translated in the ER are exported via ER exit sites (ERES), ty
 
 ### The ER-Golgi intermediate compartment
 
-After budding from the ER, COPII-coated vesicles fuse into a dynamic structure known as the ER-Golgi intermediate compartment (ERGIC) (reviewed in [@appenzeller-herzogERGolgiIntermediateCompartment2006]).  From here, cargo is directed to different downstream organelles for further processing.
+After budding from the ER, COPII-coated vesicles fuse into a dynamic structure known as the ER-Golgi intermediate compartment (ERGIC).  While there is ongoing debate about how the ERGIC is formed and its role in protein secretion and other cellular functions, it is generally accepted to be a site of early protein sorting, with ER-resident proteins transported back to the ER, and other cargo directed to anterograde transport pathways (reviewed in [@appenzeller-herzogERGolgiIntermediateCompartment2006; @sarasteIntermediateCompartmentIC2018]).  In many cases, these proteins are then passed to the Golgi apparatus or related organelles, although there is some evidence that alternate processing pathways also exist, as discussed in section \@ref(Golgi-bypass).  The definitive marker protein of the ERGIC, ERGIC53 (also known as LMAN1) is a cargo receptor, which is required for the secretion of a number of different glycoproteins [@schweizerIdentificationMonoclonalAntibody1988; reviewed in @hauriERGIC53TrafficSecretory2000].  Mutation of ERGIC53 in humans leads to a rare bleeding disorder, due to decreased secretion of coagulation factors [@nicholsMutationsERGolgi1998].
+
+Besides cargo sorting, other studies have indicated that the ERGIC plays a role in protein quality control, passing misfolded or unfolded proteins back to the ER for degradation [@zuberImmunolocalizationUDPglucoseGlycoprotein2001; @sirkisNeurodegenerationassociatedMutantTREM22017; reviewed in @appenzeller-herzogERGolgiIntermediateCompartment2006; @sarasteIntermediateCompartmentIC2018].  There is also some evidence that the ERGIC might be a source of membrane for the early stages of autophagosome biogenesis [@geERGolgiIntermediate2013].
 
 ### Golgi outposts and satellites
 
@@ -56,7 +58,7 @@ After leaving a Golgi-related organelle, membrane proteins can be sorted in endo
 
 After sorting by the retromer complex, proteins can then be delivered to other organelles or the plasma membrane.  Several studies have found local translation, processing, and secretion of cell surface proteins, including voltage-gated sodium channels at nodes of Ranvier [@gonzalezAxonsprovidesecretory2016].  The exocyst complex facilitates fusion of post-Golgi carriers with the plasma membrane, and interference with this complex has been shown to inhibit neurite growth [@pereiraExocystComplexEssential2022; @swopeExocystComplexRequired2022].
 
-### The Golgi-bypass pathway
+### The Golgi-bypass pathway {#Golgi-bypass}
 
 An alternate, Golgi-bypassing pathway has also been suggested, with cargo moving from the ERGIC to the cell surface via Rab11-marked recycling endosomes.  This has been studied in dendrites, where it was found to play a role in delivering GluA1 glutamate receptors to dendritic spines [@bowenGolgiindependentSecretoryTrafficking2017].  This study does not fully rule out the involvement of Golgi satellites, but does show that this pathway is robust to the disruption of somatic Golgi and Golgi outposts with brefeldin A, indicating a distinction from conventional Golgi processing.  
 
