@@ -209,4 +209,10 @@ It is worth noting that three of the four proteins identified in our HeLa screen
 
 ### Autophagy and lipids
 
-Our HeLa screen also revealed intriguing effects of protrudin overexpression on autophagy and lipid metabolism, which unfortunately could not be examined further within the scope of this thesis.  
+Our HeLa screen also revealed intriguing effects of protrudin overexpression on autophagy and lipid metabolism, which unfortunately could not be examined further within the scope of this thesis.    This is particularly interesting given the importance of autophagy to neuronal survival and function, and the fact that defects in autophagy often lead to neurodegeneration [reviewed in @overhoffMechanismsNeuronalSurvival2021].  The data presented in figure \@ref(LC3-full-figure) indicate that protrudin expression could encourage autophagy initiation and the formation of autophagosomes, which could plausibly contribute to protrudin's neuroprotective effects.  This should be followed up in a future project, as it seems likely to yield significant results.
+
+It is worth nothing that this could potentially relate to the the decrease in lysosomal speed seen in figure \@ref(LAMP1-full-figure), panel D, and discussed in the previous chapter.  An increase in autophagy could result in more autophagosomes fusing with lysosomes, resulting in larger and slower-moving autolysosomes containing LAMP1.  However, it is unclear why this would primarily affect anterograde transport, and why the effect is only seen with active protrudin.
+
+The interpretation of protrudin's effect on BODIPY C~5~ ceramide localisation, as presented in figure \@ref(ceramide-full-figure), is significantly less clear, but also worthy of further investigation.  BODIPY C~5~ ceramide typically labels the Golgi apparatus, but these structures appear more similar to lipid droplets, and do not label for other Golgi markers (figure \@ref(HeLa-Golgi-grid-full-figure), panels B-D), although they could be something akin to Golgi satellites or otherwise derived from Golgi membranes.  The relationship with LC3-labelled structures seems to suggest some sort of autophagic activity occurring, but whether this is lipophagy of lipid droplets or some other process remains to be seen.  I discuss some current work regarding protrudin and lipid metabolism in section \@ref(discussion-lipids).
+
+
