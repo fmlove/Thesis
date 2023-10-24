@@ -9,10 +9,10 @@ bibliography: "`r here::here('bib/THESIS.bib')`"
 always_allow_html: true
 ---
 
-# Identifying protrudin's neuronal functions
+# Identifying protrudin's cellular functions in CNS neurons
 
 ```{=latex}
-\chaptermark{Neuronal functions}
+\chaptermark{Cellular functions}
 ```
 
 ```{r chapter_2_setup, include=FALSE}
@@ -32,9 +32,9 @@ options(knitr.table.format = 'markdown')
 
 ## Introduction
 
-As discussed previously in section \@ref(intro-ptdn), protrudin's array of binding domains allow it to participate in numerous cellular systems, with diverse effects.  To identify other mechanisms of action, we decided to take a broad approach, examining a number of different systems to identify how protrudin might influence neuronal function, either endogenously or with overexpression.
+As discussed previously in section \@ref(intro-ptdn), protrudin's array of binding domains allow it to participate in numerous cellular systems, with diverse effects.  To identify other mechanisms of action, we decided to take a broad approach, examining a number of different systems to identify how protrudin might influence neuronal structure and function, either endogenously or with overexpression.
 
-Shirane et al. recently developed a knockout mouse model of protrudin deficiency, with surprising results [@shiraneProtrudindeficientMiceManifest2020].  The animals showed no sign of HSP-like motor symptoms, but instead had a broad behavioural phenotype that more closely resembled attention deficit hyperactivity disorder in humans.  This suggests that protrudin's role in the nervous system is significantly more complex than just maintaining ER membrane curvature or mediating endosomal transport.
+Shirane et al. recently developed a knockout mouse model of protrudin deficiency, with surprising results [@shiraneProtrudindeficientMiceManifest2020].  The animals showed no sign of HSP-like motor symptoms, but instead had a broad behavioural phenotype that more closely resembled attention deficit hyperactivity disorder in humans.  They did not show any signs of neurodegeneration, as might be expected from previous *in vitro* work, that would indicate that protrudin is required to maintain axonal ER structure or endosomal transport [@shiraneProtrudinPDZD8Contribute2020].  This suggests that protrudin's role in the nervous system is significantly more complex than previously understood.
 
 Previous work in the lab found it extremely difficult to reduce protrudin levels in cultured neurons — either by shRNA or CRISPR — without killing the cells.  We were able to study loss of protrudin function through overexpression of mutants with dominant negative effects, rather than protrudin deletion or silencing.  Since our plasmids drive protrudin overexpression at levels substantially higher than endogenous protrudin expression [@petrovaProtrudinFunctionsEndoplasmic2020], overexpression of a mutant form of protrudin should outcompete the endogenous protein for binding partners, even if it does not directly decrease the amount of endogenous protein in the cell.  In this way, we are able to examine the effects of different loss-of-function mutations on protrudin's cellular effects.
 
@@ -48,8 +48,6 @@ For example, the mechanism through which protrudin promotes invadopodia formatio
 
 To further examine protrudin's endogenous roles beyond cellular outgrowth, we turned to the literature to identify published proteomics data sets.  We identified three studies that published lists of protrudin-interacting proteins [@elbaz-alonPDZD8InteractsProtrudin2020; @hashimotoProtrudinRegulatesEndoplasmic2014; @matsuzakiProtrudinServesAdaptor2011].  Each study used a different model system and focused their analysis on different pathways, providing a variety of perspectives.  
 Elbaz-Alon et al. looked at protrudin in a human epithelial cell line, where they investigated how protrudin interacts with PDZD8 and contributes to ER contact sites  [@elbaz-alonPDZD8InteractsProtrudin2020].  Hashimoto et al. used mouse brain neurons to look at interactions between protrudin and HSP-related proteins [@hashimotoProtrudinRegulatesEndoplasmic2014], while Matsuzaki et al. used a mouse neuroblast cell line to study the interaction between protrudin and KIF5 [@matsuzakiProtrudinServesAdaptor2011].  Individually, these reveal a number of interesting interactions, indicating diverse roles for protrudin that include but are not limited to axonal function.  Taken together, a substantial level of overlap between the interaction sets reveals a conserved set of cellular functions that may help explain protrudin's role in neurons.
-
-
 
 ### Experimental aims
 
@@ -138,7 +136,7 @@ proteomics_full
 
 ### HeLa screen for changes in organelle and protein distribution
 
-When protrudin is overexpressed in HeLa cells, it drives the growth of long cellular protrusions that superficially resemble developing neurites [@shiraneProtrudinInducesNeurite2006].  While these cells are genetically and functionally very distinct from neurons, this nevertheless provides a useful model system for examining protrudin's interactions with other cellular components.  We used this system to screen for proteins that colocalise with protrudin in these cellular outgrowths, to quickly identify organelles or complexes that might be transported into axons when protrudin is overexpressed in neurons.
+When protrudin is overexpressed in HeLa cells, it drives the growth of long cellular protrusions that superficially resemble developing neurites [@shiraneProtrudinInducesNeurite2006].  While HeLa cells are genetically and functionally very distinct from neurons, this nevertheless provides a useful model system for examining protrudin's interactions with other cellular components.  Compared to most neuronal cell models, and certainly the rat primary cortical neurons we use for most experiments, HeLa cells are exceptionally quick and easy to grow, transform, and image, allowing for much higher throughput.  We used this system to quickly screen for proteins that colocalise with protrudin in these cellular outgrowths, to identify organelles or complexes that might be transported into axons when protrudin is overexpressed in neurons.
 
 Based on the results of our gene ontology analysis, we selected a panel of antibodies to screen for colocalisation with protrudin in HeLa cells.  These were primarily focused on components of the ER exit site to Golgi secretory pathway, but also included proteins involved in lipid metabolism, signalling, and amino acid transport.
 
