@@ -9,7 +9,6 @@ Dialog.show();
 
 out = Dialog.getRadioButton();
 
-
 //filter to TIFs only
 files = newArray(0);
 for(i=0; i<file_list.length; i++){
@@ -19,7 +18,6 @@ for(i=0; i<file_list.length; i++){
 }
 
 File.makeDirectory(dir + out + "/");
-
 
 //configurable
 
@@ -47,8 +45,6 @@ if(no_pref == true){
 regex_structure = structure_to_regex(structure, regex_condition, regex_cell, regex_slice, regex_channel);
 regex_structure = regex_start + regex_structure + regex_end;
 
-
-
 //pull conditions
 if(indexOf(structure, "condition") != -1){
 	pre_regex = structure_to_regex(substring(structure, 0, indexOf(structure, "condition")), regex_condition, regex_cell, regex_slice, regex_channel);
@@ -73,8 +69,6 @@ else{
 	cond_values = newArray("");
 }
 
-
-
 //pull cells
 if(indexOf(structure, "cell") != -1){
 	pre_regex = structure_to_regex(substring(structure, 0, indexOf(structure, "cell")), regex_condition, regex_cell, regex_slice, regex_channel);
@@ -98,9 +92,6 @@ if(indexOf(structure, "cell") != -1){
 else{
 	cells_values = newArray("");
 }
-
-
-
 
 //pull channels
 if(indexOf(structure, "channel") != -1){
@@ -129,7 +120,6 @@ else{
 Array.print(cond_values);
 Array.print(cells_values);
 Array.print(chan_values);
-
 
 //possible combinations
 for(i=0; i<cond_values.length; i++){
@@ -183,9 +173,7 @@ for(i=0; i<cond_values.length; i++){
 					title = condition + "_" + cell + ".tif";
 					saveAs("Tiff", dir + "hyperstacks/" + title);
 				}
-				
 			}			
-			
 			run("Close All");
 		}
 	}

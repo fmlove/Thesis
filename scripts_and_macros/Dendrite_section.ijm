@@ -5,16 +5,12 @@ function main(){
 	rename("orig");
 	run("Duplicate...", "title=["+getInfo("image.filename")+"_duplicate] duplicate");
 	close("orig");
-	
-	
-	
+		
 	//---resize to avoid cutting off edges during rotation step---
 	getDimensions(width, height, channels, slices, frames);
 	diagonal = Math.ceil(sqrt(width*width + height*height)); //not sure what ^2 is doing but it's definitely not squared
 	run("Canvas Size...", "width=" + diagonal + " height=" + diagonal + " position=Center zero");
-	
-	
-	
+		
 	//---establish scale and desired length to measure---
 	Dialog.createNonBlocking("Select dendrite segment");
 	Dialog.addNumber("Scale (pixels/micron)", 6.25);
@@ -34,24 +30,18 @@ function main(){
 	Angle = getValue("Angle");
 	Length = getValue("Length");
 	rAngle = Angle * PI/180;
-	
-	
-	
+		
 	//---create new line from same starting point to desired length---
 	newX = Math.ceil(X[0] + pixLength*cos(rAngle));
 	newY = Math.ceil(Y[0] - pixLength*sin(rAngle));
 	
 	makeLine(X[0], Y[0], newX, newY);
-	
-	
-	
+		
 	//---confirm new line before cropping---
 	Dialog.createNonBlocking("Confirm dendrite segment");
 	Dialog.addMessage("Click 'OK' to confirm segment.");
 	Dialog.show();
-	
-	
-	
+		
 	//---rotate and crop image---
 	//image
 	run("Rotate... ", "angle=" + Math.round(Angle) + " grid=1 interpolation=Bilinear");
@@ -62,10 +52,6 @@ function main(){
 	makeRotatedRectangle(rX[0], rY[0], rX[1], rY[1], cropwidth);
 	run("Crop");
 }
-
-
-
-
 
 //---batch runner---
 Dialog.create("Batch selection");
@@ -102,4 +88,3 @@ if(batch){
 else{
 	main();
 }
-

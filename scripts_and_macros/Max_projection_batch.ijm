@@ -16,7 +16,6 @@ stacks = newArray(0);
 print(ext);
 print(files.length);
 
-
 //select stacks for processing
 for(i = 0; i < files.length; i++){
 	if(endsWith(toLowerCase(files[i]), ext)){
@@ -35,5 +34,4 @@ for(i = 0; i < stacks.length; i++){
 	close("orig");
 
 	saveAs("Tiff", dir + "max_projections/" + stacks[i] + "_MAX.tif");
-
 }

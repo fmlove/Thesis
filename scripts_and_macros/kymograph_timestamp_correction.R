@@ -8,27 +8,27 @@ library(lubridate)
 library(hms)
 library(dplyr)
 
-dir = choose.dir(default = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Spinning Disc', "Choose TIF directory")#WINDOWS-SPECIFIC
+dir = choose.dir("Choose TIF directory")#WINDOWS-SPECIFIC
 expt = readline(prompt = "Enter an identifier in the form 'experiment_condition' for saving:")
 files = list.files(dir, pattern = '.(tif(f)?|TIF(F)?)$', recursive = F)#TODO - handle recursion from experiment file, but skip any TIF stacks if present (most should be .stk)
 
 #get creation timestamps from TIF metadata
 timestamps = sapply(files, function(f){
-                                    filepath = paste(dir, f, sep = "\\")
-                                    #escape spaces
-                                    filepath = gsub(" ", "\ ", filepath)
-                                    f.tiff = readTIFF(filepath, info = T)
-                                    metadata = attr(f.tiff, "description")
-                                    acquisition_time = str_match(metadata, 
-                                                              '\\r\\n\\t\\t<prop id=\\"acquisition-time-local\\"\\ type=\\"time\\" value=\\"(.+)\\">')[[2]] #captured group
-                                    #timestamp = as_hms(as_datetime(acquisition_time))#handle manually to account for MetaMorph bug - dropping leading zeroes in miliseconds field
-                                    acquisition_time.split= str_match(acquisition_time, '\\d{8} (\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)')
-                                    time.hour = acquisition_time.split[2]
-                                    time.min = acquisition_time.split[3]
-                                    time.sec = paste(acquisition_time.split[4], str_pad(acquisition_time.split[5], width = 3, side = 'left', pad = '0'), sep = ".")
-                                    timestamp = as_hms(paste(time.hour, time.min, time.sec, sep = ":"))#might bug out over lunchtime if not 24hr time
-                                    return(timestamp)
-      })
+    filepath = paste(dir, f, sep = "\\")
+    #escape spaces
+    filepath = gsub(" ", "\ ", filepath)
+    f.tiff = readTIFF(filepath, info = T)
+    metadata = attr(f.tiff, "description")
+    acquisition_time = str_match(metadata, 
+                              '\\r\\n\\t\\t<prop id=\\"acquisition-time-local\\"\\ type=\\"time\\" value=\\"(.+)\\">')[[2]] #captured group
+    #timestamp = as_hms(as_datetime(acquisition_time))#handle manually to account for MetaMorph bug - dropping leading zeroes in miliseconds field
+    acquisition_time.split= str_match(acquisition_time, '\\d{8} (\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)')
+    time.hour = acquisition_time.split[2]
+    time.min = acquisition_time.split[3]
+    time.sec = paste(acquisition_time.split[4], str_pad(acquisition_time.split[5], width = 3, side = 'left', pad = '0'), sep = ".")
+    timestamp = as_hms(paste(time.hour, time.min, time.sec, sep = ":"))#might bug out over lunchtime if not 24hr time
+    return(timestamp)
+  })
 timestamps.df = data.frame(file = files, time = timestamps)
 
 #split filenames for analysis
@@ -48,14 +48,11 @@ timestamps.df$frame = as.numeric(as.character(timestamps.df$frame))
 #unique ID for grouping
 timestamps.df$groupID = sapply(1:nrow(timestamps.df), function(i){ r = timestamps.df[i,]; paste(r$condition, r$cell, r$video_ID, r$channel, sep = "_") })
 
-
-
 #DROP FIRST FRAMES
 #most variability here - either very long or very short gap between first and second frames
 #remove first for better frame rate estimation
 timestamps.df = timestamps.df %>% group_by(groupID) %>% filter(!frame == min(frame)) %>% ungroup()
 #should also have the effect of removing groups with only one frame, but leaving in handling code just in case
-
 
 #find average times between frames
 framerates = data.frame(ID = unique(timestamps.df$groupID), stringsAsFactors = F)

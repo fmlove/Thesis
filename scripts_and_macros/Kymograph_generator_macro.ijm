@@ -1,4 +1,5 @@
-setBatchMode(false);//not all macros/plugins used work in batch mode
+setBatchMode(false);
+//not all macros/plugins used work in batch mode
 
 //create dialog and get options for processing
 dir = getDirectory("Choose a Directory");
@@ -41,7 +42,6 @@ for(i = 0; i < files.length; i++){
 
 print(stacks.length);
 
-
 for(i = 0; i < stacks.length; i++){
 	showProgress(i, stacks.length);
 
@@ -74,8 +74,7 @@ for(i = 0; i < stacks.length; i++){
 		else{
 			roiManager("open", dir + roi_name);
 		}
-	
-		
+			
 		if(roiManager("count") == 1){//TODO - handle multiple ROIs
 	
 			createKymograph(lwd, 0);
@@ -94,12 +93,9 @@ for(i = 0; i < stacks.length; i++){
 			save(dir + "kymographs/" + stacks[i] + "_kymograph.tif");
 		}
 		roiManager("reset");
-
 	}
-	
 	run("Close All");
 }
-
 
 function createKymograph(lwd, roiNo){
 	

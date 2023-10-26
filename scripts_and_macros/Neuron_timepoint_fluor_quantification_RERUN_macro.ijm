@@ -29,8 +29,6 @@ Dialog.addMessage("There are " + matches_count + " stacks with available ROI fil
 Dialog.show();
 //-----
 
-
-
 //pick projection type, channel to measure
 proj_options = newArray("Sum Slices", "Max Intensity", "Average Intensity");
 
@@ -71,5 +69,3 @@ for (i = 0; i < st_matches.length; i++) {
 	close("Results");//BUG - ending up with wrong ROI matches, multiple results copies in some
 }
 //***********
-
-

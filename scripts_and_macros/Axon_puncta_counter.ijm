@@ -32,8 +32,7 @@ function main(i){
 	else{
 		count = getValue("results.count");
 	}
-	
-	
+		
 	//---write filename, point count, ROI length to Table---
 	selectWindow("Puncta counts");//TODO pass as parameter
 	Table.set("File", i, stacks[i]);
@@ -45,10 +44,6 @@ function main(i){
 	close("duplicate");//not working
 	//tables handled in batch runner
 }
-
-
-
-
 
 //---batch runner---
 dir = getDirectory("Choose a Directory");

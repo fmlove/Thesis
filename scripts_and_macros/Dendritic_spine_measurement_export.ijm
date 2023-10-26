@@ -3,7 +3,6 @@
 dir = getDirectory("image");
 File.makeDirectory(dir + "spines");
 
-
 roiManager("Measure");
 
 img = getTitle();

@@ -8,10 +8,8 @@ initial_name = getInfo("image.title");
 getDimensions(width, height, channels, slices, frames);
 print("ch = " + channels + " s = " + slices + " f = " + frames);
 
-
 //draw ROI line/polyline
 roiManager("add");
-
 
 for (i = 1; i < channels + 1; i++) {
 	Stack.setChannel(i);

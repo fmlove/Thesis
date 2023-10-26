@@ -3,11 +3,13 @@ library(xml2)
 dir = choose.dir(caption = "Choose directory containing Cell Counter XML files.")
 files = list.files(dir, pattern = '.(xml|XML)$', recursive = F)
 
-
 counts = do.call(rbind, lapply(files, function(f){
   xml = read_xml(paste(dir, f, sep = '/'))
   xml.marker_data = xml_child(xml, search = 'Marker_Data')
   
+
+  ## cell transfection quantification ##
+  ## 'intact' and 'dead' cell counter groups, in that order ##
   intact = xml_child(xml.marker_data, search = 2)
   dead = xml_child(xml.marker_data, search = 3)
   
@@ -17,7 +19,11 @@ counts = do.call(rbind, lapply(files, function(f){
   df = data.frame(file = f,
                   intact = intact.count,
                   dead = dead.count)
-   
+  ##############################################################
+
+  ## comment out the above block and uncomment this block for dendritic spines classification ##
+  ## dendritic spine manual classification, with groups 'mushroom', 'thin', 'stubby', and 'filopodia', in that order ##
+  #
   # mushroom = xml_child(xml.marker_data, search = 2)
   # thin = xml_child(xml.marker_data, search = 3)
   # stubby = xml_child(xml.marker_data, search = 4)
@@ -33,6 +39,8 @@ counts = do.call(rbind, lapply(files, function(f){
   #                 thin = thin.count,
   #                 stubby = stubby.count,
   #                 filopodia = filopodia.count)
+  ##############################################################
+  
   return(df)
   
 }))

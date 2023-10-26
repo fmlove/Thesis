@@ -24,10 +24,8 @@ ch = parseInt(ch);//ROI manager handles channels as 1-indexed
 
 run("Z Project...", "projection=["+ proj +"]");
 
-
 run("ROI Manager...");
 roiManager("Show None");
-
 
 if(type == "cell body" || type == "whole cell"){
 	setTool("polygon");
@@ -38,7 +36,6 @@ if(type == "cell body" || type == "whole cell"){
 	roiManager("Select", 0);
 	roiManager("Rename", "cell body");
 
-
 	roiManager("Deselect");
 	setTool("polygon");
 	Dialog.createNonBlocking("Select");
@@ -48,7 +45,6 @@ if(type == "cell body" || type == "whole cell"){
 	roiManager("Select", 1);
 	roiManager("Rename", "nucleus");
 
-
 	//create cytoplasm ROI
 	roiManager("Select", newArray(0,1));
 	roiManager("AND");
@@ -56,13 +52,11 @@ if(type == "cell body" || type == "whole cell"){
 	roiManager("Select", 2);
 	roiManager("Rename", "t1");
 	
-
 	roiManager("Select", newArray(0,2));
 	roiManager("XOR");
 	roiManager("Add");
 	roiManager("Select", 3);
 	roiManager("Rename", "cytoplasm");
-
 
 	roiManager("Select", 2);
 	roiManager("Delete");
@@ -85,7 +79,6 @@ if(type == "cell body" || type == "whole cell"){
 	roiManager("Rename", "dendrite 1 background");
 	roiManager("translate", 10, 10);
 	
-
 	roiManager("Deselect");
 	setTool("polyline");
 	Dialog.createNonBlocking("Select");
@@ -133,8 +126,6 @@ if(type == "cell body" || type == "whole cell"){
 	roiManager("Select", 10);
 	roiManager("Rename", "AIS background");
 	roiManager("translate", 10, 10);
-	
-	
 }
 if(type == "whole cell"){
 	roiManager("Deselect");
@@ -172,7 +163,6 @@ if(type == "growth cone" || type == "whole cell"){
 	roiManager("Select", roi_count + 1);
 	roiManager("Rename", "growth cone background");
 	roiManager("translate", 10, 10);
-	
 }
 
 //loop through and move all ROIs to measurement channel
@@ -181,13 +171,10 @@ for (i = 0; i < roiManager("count"); i++) {
 	RoiManager.setPosition(ch);
 }
 
-
-
 roiManager("show all with labels");
 Dialog.createNonBlocking("Adjustments");
 Dialog.addMessage("Adjust background ROIs as necessary, then click 'okay'");
 Dialog.show();
-
 
 //-----MEASUREMENT-----
 run("Set Measurements...", "area mean standard modal min integrated median display redirect=None decimal=3");
