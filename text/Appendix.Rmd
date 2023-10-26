@@ -8,16 +8,17 @@
 
 ```{r supplementary-setup, include = F}
 knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80),tidy=FALSE)
 ```
 
 <!-- Note: won't render without Ch3. -->
 
-```{r suppl-dev-grid, echo = F, fig.width=16, fig.height=12, fig.path = '../figures/full/', fig.cap="Fluorescence intensity of various markers in DIV3 vs DIV15 rat cortical neurons, divided into cell body or axon terminal.  All n=26 or 27 cells per condition across three batches, except SLC38A1 (n=18 cells, three batches).", fig.scap="Supplementary figure; marker intensity in cell bodies and axon terminals of developing cortical neurons"}
+```{r suppl-dev-grid, echo = F, fig.width=16, fig.height=12, fig.path = './figures/full/', fig.cap="Fluorescence intensity of various markers in DIV3 vs DIV15 rat cortical neurons, divided into cell body or axon terminal.  All n=26 or 27 cells per condition across three batches, except SLC38A1 (n=18 cells, three batches).", fig.scap="Supplementary figure; marker intensity in cell bodies and axon terminals of developing cortical neurons"}
 
 max_gridplot
 ```
 
-```{r suppl-gc-area, echo = F, fig.width=16, fig.height=8, fig.path='../figures/full/', fig.cap="Axon terminal area of DIV3 vs DIV15 rat cortical neurons, A) for each marker and B) pooled together.  All show a significant decrease in axon terminal area with age, with the exeception of SURF4.  Given the substantially smaller measurements in DIV3 neurons stained for SURF4 compared to other markers, this suggests that SURF4 is confined to the central region of the developing growth cone.  All n=26 or 27 cells per condition across three batches, except SLC38A1 (n=18 cells, three batches).", fig.scap="Supplementary figure; axon terminal area in developing cortical neurons"}
+```{r suppl-gc-area, echo = F, fig.width=16, fig.height=8, fig.path='./figures/full/', fig.cap="Axon terminal area of DIV3 vs DIV15 rat cortical neurons, A) for each marker and B) pooled together.  All show a significant decrease in axon terminal area with age, with the exeception of SURF4.  Given the substantially smaller measurements in DIV3 neurons stained for SURF4 compared to other markers, this suggests that SURF4 is confined to the central region of the developing growth cone.  All n=26 or 27 cells per condition across three batches, except SLC38A1 (n=18 cells, three batches).", fig.scap="Supplementary figure; axon terminal area in developing cortical neurons"}
 
 gc_area_full
 ```
@@ -62,6 +63,59 @@ image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Myrlysin-MYC_ma
 
 ```
 
+
+## Code {.unnumbered #CODE}
+
+### ImageJ Macros
+
+#### Axon puncta counter
+Used to streamline the process of manually counting axonal puncta, as in \@ref(GS-puncta-full-figure).  Displays the first image from each timelapse stack in a directory, plots a low-opacity trace of the axon to be analysed, and selects the multipoint tool for the user.  Results are added to a table, which is then saved to a CSV file at the end of the batch.  Requires a folder of STK or TIF image stacks and RGN or ROI files with matching names. 
+```{Rcpp axon-puncta-counter, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Axon_puncta_counter.ijm'}
+```
+#### Dendrite section crop
+```{Rcpp dendrite-section, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Dendrite_section.ijm'}
+```
+#### Dendritic spine measurement export
+```{Rcpp dendritic_spine_export, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Dendritic_spine_measurement_export.ijm'}
+```
+#### Maximum intensity projection batch runner
+```{Rcpp max-projection-batch, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Max_projection_batch.ijm'}
+```
+#### Sort mixed TIF files into stacks
+```{Rcpp TIF-sorter, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Mixed_TIFs_to_stacks.ijm'}
+```
+#### Neuron fluorescence quantification
+##### Interactive macro
+```{Rcpp neuron-quant, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Neuron_timepoint_fluor_quantification_macro.ijm'}
+```
+##### Additional runs
+```{Rcpp neuron-quant-rerun, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Neuron_timepoint_fluor_quantification_RERUN_macro.ijm'}
+```
+#### Intensity profile export
+```{Rcpp profile-export, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Profile_export.ijm'}
+```
+#### Quick montage generator
+```{Rcpp speedy-montage, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Speedy_montage.ijm'}
+```
+#### Kymograph generator
+```{Rcpp kymo-generator, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Kymograph_generator_macro.ijm'}
+```
+#### Export kymograph traces to CSV
+```{Rcpp kymo-trace-export, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Kymograph_trace_to_CSV.ijm'}
+```
+
+
+### R Scripts
+
+#### Convert XML files from Cell Counter ImageJ plugin to CSVs
+```{r XML-to-CSV, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Cell_counter_XMLs_to_CSV.R'}
+```
+#### Calculate frame rate from individual timelapse images
+```{r framerate-calc, echo=TRUE, eval=FALSE, file='./scripts_and_macros/kymograph_timestamp_correction.R'}
+```
+#### Analyse kymograph traces from CSV
+```{r kymo-trace-analysis, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Kymograph_trace_analysis.R'}
+```
 
 # References {.unnumbered #BIB}
 ```{=latex}

@@ -75,6 +75,8 @@ HeLa cells were grown in DMEM *(Thermo Fisher, 41966-029)*, supplemented with 10
 
 Cells were fixed with 3% formaldehyde in PBS for 15 minutes at room temperature.  Immunochemistry was carried out according to the protocol in section \@ref(immuno).  Staining with BODIPY TR C~5~ ceramide *(Thermo Fisher, B34400)* was carried out according to the manufacturer's protocol.  Briefly, cells were incubated with 5 \textmu{}M dye in DMEM for 30 minutes at 4°C.  They were then recovered in supplemented media at 37°C, 5% CO~2~ for 30 minutes before fixing as usual.
 
+Several different microscopes were used for imaging HeLa cells, as noted in the relevant figure legends.  This was due to reduced equipment availability and long repair times during the pandemic.  All microscopes provided sufficient resolution to examine the distribution of markers between the cell body and protrusions, and as such the outcomes of this experiment were not affected.
+
 ## Results
 
 ### Protrudin does not influence dendritic spine number, length, or morphology
