@@ -104,14 +104,13 @@ Stacks and axon ROIs were exported as STK and RGN files, respectively.  Due to t
 
 Confocal imaging of fixed cells was carried out with a Leica DMI4000B confocal microscope, on a computer running LAS-AF software.  A 63x objective with a numerical aperture of 1.3 was used *(Leica, 11507900)*.  Confocal pinhole was 137.1 \textmu{}m.   Images were obtained as Z-stacks of 512 x 512 pixel images, with a pixel size of approximately 0.23 x 0.23 \textmu{}m and a step size of 0.29 \textmu{}m.  Scans were performed with bidirectional X and a zoom factor of 1.5.  For all experiments involving fluorescence quantification, secondary antibodies or streptavidin conjugated to Alexa Fluor 568 *(Thermo Fisher)* were used, giving a lateral resolution of 232 nm according to the Gurdon Institute calculator [@ConfocalCalculator].  3-frame averaging was used on the channels to be quantified.  
 
-Epifluorescent images of individual cells was carried out with a Leica DMI6000B epifluorescent microscope, running on LAS-AF software.  A 63x objective with a numerical aperture of 1.25 was used *(Leica, 11506185)*.  Images were 1000 x 1000 pixels with a pixel size of 0.127 x 0.127 \textmu{}m.  
+Occasionally, the spinning disc microscope described above was used for imaging fixed cells, with the 100x/1.35 objective and identical settings.  Step size was 0.29 \textmu{}m (for HeLa cell imaging) or 0.5 \textmu{}m (for dendritic spine imaging).
 
+Epifluorescent imaging of individual cells was carried out with a Leica DMI6000B epifluorescent microscope, running on LAS-AF software.  A 63x objective with a numerical aperture of 1.25 was used *(Leica, 11506185)*, giving a resolution limit of approximately 277 nm for Alexa Fluor 568.  Images were 1000 x 1000 pixels with a pixel size of 0.127 x 0.127 \textmu{}m.  
 
 Whole-plate epifluorescent tile scans, used for quantifying transfection efficiency in figure \@ref(transfection-plot-full), were carried out on a Leica DMi8 microscope running on LAS X software.  A 5x objective with a numerical aperture of 0.12 was used.
 
 All images collected in Leica software were were exported as TIFs before further analysis. 
-
-
 
 
 #### Images used in this thesis
