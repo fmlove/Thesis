@@ -176,7 +176,8 @@ St3Gal5_kymo_plot
 
 Following live imaging, these cells were fixed, and imaged at higher exposure on a confocal microscope to more clearly visualise Golgi satellites in the axon.  We measured both the number of puncta, as well as point intensity of each, as a proxy for size.  This confirmed that protrudin overexpression did not affect the overall number of Golgi satellites in the distal axon.
 
-```{r GS-puncta-full-figure, echo = F, fig.width=16, fig.height=8, fig.path='../figures/full/', fig.cap="A) Representative axon image showing St3Gal5 puncta.  Scale bar is 20 \\textmu{}m.  B) Number of puncta per length of axon imaged.  C)Point fluorescence intensity of each St3Gal3 puncta counted.  n = 18 cells per condition across three independent batches.", fig.scap="Protrudin effect on Golgi satellite abundance and size in the distal axon"}
+(ref:GS-puncta-caption) A) Representative axon image showing St3Gal5 puncta.  Scale bar is 20 \textmu{}m.  B) Zoomed-in view of the 20 x 20 \textmu{}m box in panel A.  Counted puncta are indicated by arrows.  C) Number of puncta per \textmu{}m of axon imaged.  D)Point fluorescence intensity of each St3Gal3 puncta counted.  *n* = 18 cells per condition across three independent batches.
+```{r GS-puncta-full-figure, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full/', fig.cap='(ref:GS-puncta-caption)', fig.scap="Protrudin effect on Golgi satellite abundance and size in the distal axon"}
 
 GS_puncta_full_figure
 ```
