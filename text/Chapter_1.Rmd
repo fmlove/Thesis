@@ -74,7 +74,14 @@ As lysosomal function is closely tied to the positioning of these organelles in 
 
 #### BORC/Arl8b/SKIP
 
-The BORC/Arl8b/SKIP interaction is one of the best-characterised mechanisms involved in lysosome transport.  In summary, BORC, a complex of eight proteins, is present on the lysosomal membrane, where it can recruit and activate Arl8b, a small GTPase.  GTP-bound Arl8b can in turn interact with SKIP, which binds to kinesin-1.  This chain of interactions tethers lysosomes to the kinesin motor for transport along microtubules [@guardiaBORCFunctionsUpstream2016]. BORC activity is regulated by interaction with the Ragulator complex, which conveys amino acid sensitivity and allows for control of lysosomal positioning in response to nutrient levels in the cell [@puRagulatorBORCInteraction2017].  This process has been shown to mediate anterograde transport of lysosomes in axons [@fariasBORCKinesin1Ensemble2017], and defects in BORC component diaskedin are linked to progressive axonal dystrophy [@snouwaertMutationBorcs7Subunit2018].  In cancer cells, increased expression of several BORC subunits in cells that survived radiation therapy was shown to enhance cell invasiveness, supporting a role for BORC-mediated lysosome transport in cell outgrowth [@wuLysosomalTraffickingMediated2020].
+The BORC/Arl8b/SKIP interaction is one of the best-characterised mechanisms involved in lysosome transport.  In summary, BORC, a complex of eight proteins, is tethered to the lysosomal membrane by a myristoyl tail on subunit protein myrlysin [@puRagulatorBORCInteraction2017].  BORC recruits and activates Arl8b, a small GTPase, which is otherwise diffusely distributed around the cell.  GTP-bound Arl8b can in turn bind to SKIP, which binds to kinesin-1.  This chain of interactions tethers lysosomes to the kinesin motor for transport along microtubules [@guardiaBORCFunctionsUpstream2016]. BORC activity is regulated by interaction with the Ragulator complex, which conveys amino acid sensitivity and allows for control of lysosomal positioning in response to nutrient levels in the cell [@puRagulatorBORCInteraction2017].  This process has been shown to mediate anterograde transport of lysosomes in axons [@fariasBORCKinesin1Ensemble2017], and defects in BORC component diaskedin are linked to progressive axonal dystrophy [@snouwaertMutationBorcs7Subunit2018].  In cancer cells, increased expression of several BORC subunits in cells that survived radiation therapy was shown to enhance cell invasiveness, supporting a role for BORC-mediated lysosome transport in cell outgrowth [@wuLysosomalTraffickingMediated2020].
+
+\vspace{30pt}
+```{r BORC-schematic, echo = F, fig.path = '../figures/full/', fig.width = 16, fig.height = 8, fig.cap = 'A schamatic of the interactions between BORC, ARL8B, SKIP, and kinesin, which allow lysosomes to be anterogradely transported along microtubules.', fig.scap= 'BORC schematic'}
+
+image_as_ggplot(read.bitmap(here('figures/external/BORC_schematic.png')))
+
+```
 
 #### Calcyon and other adaptor proteins
 
