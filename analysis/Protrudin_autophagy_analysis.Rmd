@@ -75,7 +75,7 @@ LC3_GFP = image_as_ggplot(read.bitmap(here('images/microscopy/HeLa_montages/LC3_
 LC3_protrusion = image_as_ggplot(read.bitmap(here('images/microscopy/HeLa_montages/LC3_WT_protrusion_vertical.png')))
 ```
 
-```{r LC3_full, fig.width=16, fig.height=18}
+```{r LC3_full, fig.width=16, fig.height=22}
 LC3.layout = 'AAAAAABB
               AAAAAABB
               AAAAAACC

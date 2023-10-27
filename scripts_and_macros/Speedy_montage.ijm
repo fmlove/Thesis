@@ -120,7 +120,10 @@ run("Close All");
 
 /*-------------------------------------------------*/
 
-function autoBC(){//from Kota Miura and Damien Guimond http://imagej.1557.x6.nabble.com/Auto-Brightness-Contrast-and-setMinAndMax-td4968628.html
+function autoBC(){
+//from Kota Miura and Damien Guimond 
+//http://imagej.1557.x6.nabble.com/Auto-Brightness-Contrast-
+//and-setMinAndMax-td4968628.html
 	AUTO_THRESHOLD = 5000; 
 	getRawStatistics(pixcount); 
 	limit = pixcount/10; 

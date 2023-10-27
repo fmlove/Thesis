@@ -66,6 +66,6 @@ for (i = 0; i < st_matches.length; i++) {
 	
 	close("*");//image windows
 	close("Roi Manager");
-	close("Results");//BUG - ending up with wrong ROI matches, multiple results copies in some
+	close("Results");//BUG - occasionally ending up with wrong ROI matches, multiple results copies in some
 }
 //***********

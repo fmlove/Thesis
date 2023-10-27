@@ -35,7 +35,7 @@ kable(plasmids[, c('Promoter', 'Gene', 'Reporter')], #leaving out 'Notes' column
 
 ```
 
-The hSYN-LAMP1-mRFP1 plasmid was cloned for this project (see section \@ref(cloning)).  The original LAMP1-mRFP1 plasmid *(#1817)*, along with LAMP1-mNeonGreen *(#98882)*,  ESCargo(FTV) *(#140162)* LC3b *(#21075)*, and Rab7a *(115238)* were acquired from Addgene, with thanks to Walther Mothes [@sherer2003], Dorus Gadella [@chertkovaRobustBrightGenetically2020], Benjamin Glick [@caslerESC2020], Tamotsu Yoshimori [@kimura2007], and Pantelis Tsoulfas [@AddgeneEucaryoticExpression], respectively.  The FYCO1 plasmid was a gift from Terje Johansen [@pankivFYCO12010].  The St3Gal5 plasmid was a gift from Marina Mikhaylova [@mikhaylovaGS2016].  SKIP-EGFP, myrlysin-myc, and Arl8b plasmids were a gift from Juan Bonifacino.  All shRNA constructs were purchased from Origene *(TG712969, TR30013)*.
+The hSYN-LAMP1-mRFP1 plasmid was cloned for this project (see section \@ref(cloning)).  The original LAMP1-mRFP1 plasmid *(#1817)*, along with LAMP1-mNeonGreen *(#98882)*,  ESCargo(FTV) *(#140162)* LC3b *(#21075)*, and Rab7a *(115238)* were acquired from Addgene, with thanks to Walther Mothes [@sherer2003], Dorus Gadella [@chertkovaRobustBrightGenetically2020], Benjamin Glick [@caslerESC2020], Tamotsu Yoshimori [@kimura2007], and Pantelis Tsoulfas [@AddgeneEucaryoticExpression], respectively.  The FYCO1 plasmid was a gift from Terje Johansen [@pankivFYCO12010].  The St3Gal5 plasmid was a gift from Marina Mikhaylova [@mikhaylovaGS2016].  SKIP-EGFP, myrlysin-myc, and Arl8b plasmids were a gift from Juan Bonifacino.  All shRNA constructs were purchased from Origene *(TG712969, TR30013)*.  Plasmid maps are included in the Appendix, section \@ref(plasmid-maps).
 
 
 ```{r primary-table}
@@ -58,9 +58,11 @@ kable(ab[ab$HeLa_screen == TRUE & ab$stage %in% c('secondary', 'additional'), c(
 
 ## Software
 
-Wherever possible, I tried to use free and open-source software throughout this project.  All image analysis tasks were carried out in Fiji [@schindelinFijiOpensourcePlatform2012].  Quantitative analysis and statistics were carried out in R [@Rlanguage]. FinchTV and Serial Cloner were used for reading DNA sequences and designing plasmids, respectively.  
+Wherever possible, I tried to use free and open-source software throughout this project.  All image analysis tasks were carried out in Fiji [@schindelinFijiOpensourcePlatform2012].  Quantitative analysis and statistics were carried out in R [@Rlanguage]. FinchTV and Serial Cloner were used for reading DNA sequences and designing plasmids, respectively.  Plasmid maps were generated using AngularPlasmid [@chawdryAngularPlasmid].
 
-Custom R scripts and ImageJ macros were written for individual analysis tasks, all of which are available by request.  
+### Code availability 
+
+Custom R scripts and ImageJ macros were written for individual data collection and analysis tasks; these are included in the appendix (section \@ref(CODE)) and freely available to use.  In addition, the code used to generate this thesis, including data analysis, statistics, and figures, is available online at `https://github.com/fmlove/Thesis`.  
 
 ## Protocols
 
@@ -92,9 +94,9 @@ Secondary-only controls were carried out for each combination of cell type and s
 
 ### Microscopy
 
-#### Live cells
+#### Live cells (#live-imaging)
 
-Live imaging of axonal transport was carried out with spinning disc confocal microscopy, using an Olympus IX70 microscope and a PerkinElmer UltraVIEW scanner controlled with MetaMorph software.  For the data presented in figures \@ref(LAMP1-full-figure) and \@ref(Rab7-full-figure), a 100x objective with a numerical aperture of 1.35 *(Olympus,  1-UC836R)* was used.  For the data in figure \@ref(St3Gal5-full-figure), a 100x objective with a numerical aperture of 1.40 *(Olympus, 1-U2B836)* was used.  Each image was 512 x 512 pixels, with a pixel size of 0.16 x 0.16 \textmu{}m.  Confocal lateral resolution was 225 nm for LAMP1 experiments and 118 nm for Rab7 and St3Gal5, according to the Gurdon Institute calculator [@ConfocalCalculator].  The microscope was enclosed and maintained at 37°C with supplemental CO~2~ during imaging^[The gas controller for this microscope did not provide a measurement of CO~2~, so we used the colour of phenol red in the growth media as an indicator when adjusting flow rate.  We estimate the final CO~2~ concentration during imaging to be between 5 and 10%.].  
+Live imaging of axonal transport was carried out with spinning disc confocal microscopy, using an Olympus IX70 microscope and a PerkinElmer UltraVIEW scanner controlled with MetaMorph software.  For the data presented in figures \@ref(fig:LAMP1-full-figure) and \@ref(fig:Rab7-full-figure), a 100x objective with a numerical aperture of 1.35 *(Olympus,  1-UC836R)* was used.  For the data in figure \@ref(fig:St3Gal5-full-figure), a 100x objective with a numerical aperture of 1.40 *(Olympus, 1-U2B836)* was used.  Each image was 512 x 512 pixels, with a pixel size of 0.16 x 0.16 \textmu{}m.  Confocal lateral resolution was 225 nm for LAMP1 experiments and 118 nm for Rab7 and St3Gal5, according to the Gurdon Institute calculator [@ConfocalCalculator].  The microscope was enclosed and maintained at 37°C with supplemental CO~2~ during imaging^[The gas controller for this microscope did not provide a measurement of CO~2~, so we used the colour of phenol red in the growth media as an indicator when adjusting flow rate.  We estimate the final CO~2~ concentration during imaging to be between 5 and 10%.].  
 
 For kymographs, the axons of DIV14-16 neurons were imaged for approximately three minutes at least ~500 \textmu{}m from the cell body.  In most cases, cells were imaged at 2 frames per second, except where this was not possible due to the required exposure time.  Towards the end of this project, we identified a slight discrepancy between the frame rate set in MetaMorph and the actual rate of image acquisition, which appeared to be related to the microscope shutter speed.  To correct for this, a 'true' frame rate for each experiment was calculated based on individual image timestamps, and this value was then used for further calculations during data analysis.
 
@@ -108,7 +110,7 @@ Occasionally, the spinning disc microscope described above was used for imaging 
 
 Epifluorescent imaging of individual cells was carried out with a Leica DMI6000B epifluorescent microscope, running on LAS-AF software.  A 63x objective with a numerical aperture of 1.25 was used *(Leica, 11506185)*, giving a resolution limit of approximately 277 nm for Alexa Fluor 568.  Images were 1000 x 1000 pixels with a pixel size of 0.127 x 0.127 \textmu{}m.  
 
-Whole-plate epifluorescent tile scans, used for quantifying transfection efficiency in figure \@ref(transfection-plot-full), were carried out on a Leica DMi8 microscope running on LAS X software.  A 5x objective with a numerical aperture of 0.12 was used.
+Whole-plate epifluorescent tile scans, used for quantifying transfection efficiency in figure \@ref(fig:transfection-plot-full), were carried out on a Leica DMi8 microscope running on LAS X software.  A 5x objective with a numerical aperture of 0.12 was used.
 
 All images collected in Leica software were were exported as TIFs before further analysis. 
 
@@ -138,4 +140,4 @@ The Shapiro-Wilk test was used to examine data normality.  As the vast majority 
 
 After consultation with a statistician, we selected the Kruskall-Wallis test for comparisons of three or more groups, and the Wilcoxon rank-sum/Mann-Whitney test for comparisons of two groups.  As these are non-parametric tests, a significant *p* value (defined to be < 0.05) indicates a difference in median between groups.  In comparisons using the Kruskall-Wallis test, significant *p* values were followed up with Dunn's post-hoc test with Bonferroni correction for multiple comparisons to identify which pairs of groups showed significant differences.  In each case, all possible pairwise comparisons were performed, but only *p* values deemed as significant (< 0.05) are shown.  All statistical analysis was carried out in R [@Rlanguage].
 
-As a general rule, outliers were not excluded, either from graphs or statistical analysis, unless there was some evidence of a fault with data collection or manual analysis.  In practice, this amounted to a single kymograph particle trace from the data presented in figure \@ref(St3Gal5-full-figure), which was deemed to be moving unreasonably fast (>90 \textmu{}m/s) and most likely represented a simple human error during manual tracing.
+As a general rule, outliers were not excluded, either from graphs or statistical analysis, unless there was some evidence of a fault with data collection or manual analysis.  In practice, this amounted to a single kymograph particle trace from the data presented in figure \@ref(fig:St3Gal5-full-figure), which was deemed to be moving unreasonably fast (>90 \textmu{}m/s) and most likely represented a simple human error during manual tracing.

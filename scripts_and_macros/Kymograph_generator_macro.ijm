@@ -120,7 +120,10 @@ function createKymograph(lwd, roiNo){
 	run("16-bit");//"Apply LUT" in autoBC doesn't work on 32 bit produced by MultipleKymograph
 }
 
-function autoBC(){//from Kota Miura and Damien Guimond http://imagej.1557.x6.nabble.com/Auto-Brightness-Contrast-and-setMinAndMax-td4968628.html
+function autoBC(){
+//from Kota Miura and Damien Guimond 
+//http://imagej.1557.x6.nabble.com/Auto-Brightness-Contrast-and-
+//setMinAndMax-td4968628.html
 	AUTO_THRESHOLD = 5000; 
 	getRawStatistics(pixcount); 
 	limit = pixcount/10; 
