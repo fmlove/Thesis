@@ -9,7 +9,7 @@ ARF6,ADP ribosylation factor 6
 Arl8b,ADP ribosylation factor like GTPase 8B
 ARMCX1,armadillo repeat containing X-linked 1
 ATF3,activating transcription factor 3
-BCAP31,B cell receptor associated protein 31
+BCAP31,B cell receptor associated protein 31; BAP31
 BODIPY,boron-dipyrromethene
 BORC,BLOC1-related complex
 BSA,bovine serum albumin
@@ -31,8 +31,10 @@ ESCargo&nbsp;(FTV),Erv29/Surf4-dependent secretory cargo with FTV export tripept
 FFAT,two phenylalanines (FF) in an acidic tract (protein motif)
 FYCO1,FYVE and coiled-coil domain autophagy adaptor 1; ZFYVE7
 FYVE,Fab1 YOTB Vac1 EEA1 zinc finger domain (protein motif)
+GABA,gamma-aminobutyric acid
 GAPDH,glyceraldehyde-3-phosphate dehydrogenase
 GLG1,Golgi glycoprotein 1
+GM3,monosialodihexosylganglioside
 GO,gene ontology
 GS28,28 KDa Golgi SNARE protein; GOSR1
 GTPase,guanosine triphosphatase
