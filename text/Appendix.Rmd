@@ -106,7 +106,7 @@ Generates and saves a CSV containing fluorescence intensity profile information 
 ```{Rcpp profile-export, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Profile_export.ijm'}
 ```
 #### Quick montage generator
-Generates labelled montages of single- and multi-channel images of the sort used in this thesis (e.g. figure \@ref(fig:HeLa-ERES-grid-full-figure).  Includes option to pause and edit or annotate (adding arrows, changing image order, etc.) before generating final montage.  Requires single-channel images to start. 
+Generates labelled montages of single- and multi-channel images of the sort used in this thesis (e.g. figure \@ref(fig:HeLa-ERES-grid-full-figure)).  Includes option to pause and edit or annotate (adding arrows, changing image order, etc.) before generating final montage.  Requires single-channel images to start. 
 ```{Rcpp speedy-montage, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Speedy_montage.ijm'}
 ```
 #### Kymograph generator
