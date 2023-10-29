@@ -194,11 +194,11 @@ plot(GS_mean_run_velocity)
 St3Gal5_kymo_panel = image_as_ggplot(read.bitmap(here('figures/external/St3Gal5_kymo_panel.png')))
 
 
-St3Gal5_kymo_plot = St3Gal5_kymo_panel/
+ST3GAL5_kymo_plot = St3Gal5_kymo_panel/
   (trace_plot + GS_mean_run_length + GS_mean_run_velocity) +
   plot_annotation(tag_levels = 'A')
 
-St3Gal5_kymo_plot
+ST3GAL5_kymo_plot
 ```
 
 

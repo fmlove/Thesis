@@ -334,11 +334,11 @@ Rab7_kymo_panel = image_as_ggplot(read.bitmap(here('figures/external/Rab7_kymo_p
 
 Patchwork
 ```{r Rab7_full_figure_def}
-Rab7_full = Rab7_kymo_panel/
+RAB7_full = Rab7_kymo_panel/
   (Rab7_trace_dot + mean_run_length + velocity_box) + 
   plot_annotation(tag_levels = 'A')
 
-Rab7_full
+RAB7_full
 ```
 
 

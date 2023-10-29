@@ -6,7 +6,7 @@ AKT,"AKT serine/threonine kinase; protein kinase B" \footnote{"(ref:AKT-footnote
 ALS,amyotrophic lateral sclerosis
 ANXA11,annexin A11
 ARF6,ADP ribosylation factor 6
-Arl8b,ADP ribosylation factor like GTPase 8B
+ARL8B,ADP ribosylation factor like GTPase 8B
 ARMCX1,armadillo repeat containing X-linked 1
 ATF3,activating transcription factor 3
 BCAP31,B cell receptor associated protein 31; BAP31
@@ -15,7 +15,7 @@ BORC,BLOC1-related complex
 BSA,bovine serum albumin
 cAMP,cyclic adenosine monophosphate
 CC,coiled-coil (protein motif)
-c-Jun,cellular homolog of viral oncogene v-jun
+CJUN,cellular homolog of viral oncogene v-jun; c-Jun
 CMV,cytomegalovirus
 CNS,central nervous system
 COPII,coat protein complex II
@@ -27,10 +27,10 @@ ER,endoplasmic reticulum
 ERES,ER exit sites
 ERGIC,ER-Golgi intermediate compartment
 ERGIC53,"ERGIC protein 53 (homolog of p58); LMAN1"
-ESCargo&nbsp;(FTV),Erv29/Surf4-dependent secretory cargo with FTV export tripeptide
+ESCargo&nbsp;(FTV),Erv29/SURF4-dependent secretory cargo with FTV export tripeptide
 FFAT,two phenylalanines (FF) in an acidic tract (protein motif)
 FYCO1,FYVE and coiled-coil domain autophagy adaptor 1; ZFYVE7
-FYVE,Fab1 YOTB Vac1 EEA1 zinc finger domain (protein motif)
+FYVE,FAB1 YOTB VAC1 EEA1 zinc finger domain (protein motif)
 GABA,gamma-aminobutyric acid
 GAPDH,glyceraldehyde-3-phosphate dehydrogenase
 GLG1,Golgi glycoprotein 1
@@ -63,21 +63,21 @@ PIP,phosphatidylinositol phosphate
 PKA,protein kinase A
 PM,plasma membrane
 PNS,peripheral nervous system
-Rab11,Ras-related protein Rab-11a
-Rab7,Ras-related protein Rab-7a
+RAB11,Ras-related protein Rab-11a
+RAB7,Ras-related protein Rab-7a
 RBD,Rab-binding domain
 RBPMS,RNA binding protein with multiple splicing (RGC marker)
 RGC,retinal ganglion cell
 RILP,Rab interacting lysosomal protein
 ROI,region of interest
 RTN3,reticulon 3
-Sar1,secretion associated Ras related GTPase 1
+SAR1,secretion associated Ras related GTPase 1
 SEC31A,"SEC31 homolog A, COPII coat complex component"
 shRNA,short hairpin ribonucleic acid
 SKIP,SifA and kinesin interacting protein; PLEKHM2
 SLC38A1,solute carrier family 38 member 1
 SOCS3,suppressor of cytokine signalling 3
-St3Gal5,"ST3 beta-galactoside alpha-2,3-sialyltransferase 5"
+ST3GAL5,"ST3 beta-galactoside alpha-2,3-sialyltransferase 5"
 SURF4,surfeit locus protein 4
 SYN,synapsin
 TANGO1,transport and Golgi organization protein 1 homolog; MIA3

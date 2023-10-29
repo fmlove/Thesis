@@ -110,12 +110,12 @@ ceramide_profile = ggplot(ceramide_profile.melt, aes(x = distance, y = value, gr
 grid_panel = image_as_ggplot(read.bitmap(here("images/microscopy/HeLa_montages/C5-ceramide_WT_inset_grid.png")))
 montage_panel = image_as_ggplot(read.bitmap(here("images/microscopy/HeLa_montages/C5-ceramide_GFP_montage_stacked.png")))
 
-ceramide_layout = 'AAAB
-                    AAAB
-                    AAAB
-                    AAAC
-                    AAAC
-                    AAAC'
+ceramide_layout = 'AAAAABB
+                    AAAAABB
+                    AAAAACC
+                    AAAAACC
+                    AAAAACC
+                    AAAAACC'
 
 
 ceramide_grid = grid_panel + ceramide_profile + montage_panel + plot_annotation(tag_level = 'A') + plot_layout(design = ceramide_layout)

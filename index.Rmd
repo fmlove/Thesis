@@ -18,7 +18,7 @@ output:
     number_sections: true
     toc: FALSE
     toc_bib: TRUE
-    highlight: kate
+    highlight: pygments
 papersize: a4
 fontsize: 12pt
 linestretch: 1.5
