@@ -52,7 +52,6 @@ ab$Name = ab$Marker
 kable(ab[ab$HeLa_screen == TRUE & ab$stage %in% c('secondary', 'additional'), c('Name', 'Source', 'Dilution')],
       row.names = FALSE,
       format = 'markdown',
-      longtable = TRUE,
       caption = 'Secondary antibodies and dye conjugates used in this thesis.')
 ```
 

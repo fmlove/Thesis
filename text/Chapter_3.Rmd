@@ -156,30 +156,26 @@ SLC38A1 showed no significant changes with either WT or active protrudin express
 
 In contrast with the other markers, ERGIC53 showed significantly altered localisation with the expression of active, but not wild type, protrudin.  This included a significant increase in axon terminal intensity and axon terminal:cell body ratio, on top of a slight increase in soma intensity (figure \@ref(fig:ERGIC53-plot), panels G-I).  This strongly suggests that protrudin is playing a role in either the formation of ERGIC compartments, or their transport into the distal axon.  As the ERGIC53 axon terminal:cell body ratio typically declines sharply as these cortical neurons mature (figure \@ref(fig:dev-changed-full-figure)), this result is consistent with active protrudin restoring axonal ERGIC53 to early developmental levels.
 
-
-
-
-
 (ref:BCAP31-cap) A-F) Representative images of BCAP31 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20 \textmu{}m, and D-F are 20x20 \textmu{}m.  G-I) Quantification of BCAP31 fluorescence intensity. *n* = 18 cells per condition across three independent batches.  Kruskal-Wallis *p* values are shown at the top of each plot; significant *p* values from Dunn's post-hoc test with Bonferroni correction for multiple comparisons are shown over brackets.
-```{r BCAP31-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="(ref:BCAP31-cap)", fig.scap="BCAP31 localisation in protrudin-expressing neurons"}
+```{r BCAP31-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="(ref:BCAP31-cap)", fig.scap="BCAP31 localisation in protrudin-expressing neurons", fig.pos = 'H'}
 
 BCAP31_plot
 ```
 
 (ref:SURF4-cap) A-F) Representative images of SURF4 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20 \textmu{}m, and D-F are 20x20 \textmu{}m.  G-I) Quantification of SURF4 fluorescence intensity. *n* = 17 or 18 cells per condition across three independent batches.  Kruskal-Wallis *p* values are shown at the top of each plot; significant *p* values from Dunn's post-hoc test with Bonferroni correction for multiple comparisons are shown over brackets.
-```{r SURF4-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="(ref:SURF4-cap)", fig.scap="SURF4 localisation in protrudin-expressing neurons"}
+```{r SURF4-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="(ref:SURF4-cap)", fig.scap="SURF4 localisation in protrudin-expressing neurons", fig.pos = 'H'}
 
 SURF4_plot
 ```
 
 (ref:SLC38A1-cap) A-F) Representative images of SLC38A1 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20 \textmu{}m, and D-F are 20x20 \textmu{}m.  G-I) Quantification of SLC38A1 fluorescence intensity. *n* = 15 to 18 cells per condition across three independent batches.  Kruskal-Wallis *p* values are shown at the top of each plot.
-```{r SLC38A1-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="(ref:SLC38A1-cap)", fig.scap="SLC38A1 localisation in protrudin-expressing neurons"}
+```{r SLC38A1-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="(ref:SLC38A1-cap)", fig.scap="SLC38A1 localisation in protrudin-expressing neurons", fig.pos = 'H'}
 
 SLC38A1_plot
 ```
 
 (ref:ERGIC53-cap) A-F) Representative images of ERGIC53 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20 \textmu{}m, and D-F are 20x20 \textmu{}m.  G-I) Quantification of ERGIC53 fluorescence intensity. *n* = 16 or 18 cells per condition across three independent batches.  Kruskal-Wallis *p* values are shown at the top of each plot; significant *p* values from Dunn's post-hoc test with Bonferroni correction for multiple comparisons are shown over brackets.
-```{r ERGIC53-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="(ref:ERGIC53-cap)", fig.scap="ERGIC53 localisation in protrudin-expressing neurons"}
+```{r ERGIC53-plot, echo = F, fig.width=16, fig.height=16, fig.path='../figures/full', fig.cap="(ref:ERGIC53-cap)", fig.scap="ERGIC53 localisation in protrudin-expressing neurons", fig.pos = 'H'}
 
 ERGIC53_plot
 ```

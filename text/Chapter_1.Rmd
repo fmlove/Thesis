@@ -105,6 +105,8 @@ General cell culture and microscopy methods can be found in section \@ref(METHOD
 
 The LAMP1-RFP plasmid *(Addgene, 1817)* was modified to replace the existing CMV promoter with a human^[We use the human synapsin promoter in our lab instead of the rat synapsin promoter because it reliably drives expression in both human and rodent neurons, and is more suitable for clinical translation into human gene therapies.] synapsin promoter to improve expression level in neurons.  Primers (table \@ref(tab:primer-table)) were designed using the NEBuilder tool (https://nebuilder.neb.com) from New England Biolabs. 
 
+Fragments for cloning were produced by PCR, separated on a 1% agarose TBE gel, and purified using the Wizard SV Gel and PCR Clean-Up System kit *(Promega, A9282)*. 20 \textmu{}L assembly reactions were set up with Gibson master mix *(New England Biolabs, E2611S)* and an appropriate ratio of insert and vector DNA (2:1 or higher) and incubated at 50°C for 1.5 hours. Assembled constructs were scaled up, and successful cloning confirmed with restriction digest and DNA sequencing.
+
 ```{r primer-table, echo = F, fig.pos='h'}
 kable(
   data.frame(
@@ -117,8 +119,6 @@ kable(
   kable_styling(latex_options="scale_down")
 
 ```
-
-Fragments for cloning were produced by PCR, separated on a 1% agarose TBE gel, and purified using the Wizard SV Gel and PCR Clean-Up System kit *(Promega, A9282)*. 20 \textmu{}L assembly reactions were set up with Gibson master mix *(New England Biolabs, E2611S)* and an appropriate ratio of insert and vector DNA (2:1 or higher) and incubated at 50°C for 1.5 hours. Assembled constructs were scaled up, and successful cloning confirmed with restriction digest and DNA sequencing.
 
 ### Calcyon shRNA silencing
 
@@ -146,6 +146,7 @@ We initially tried labelling cells with LysoTracker Red *(Thermo Fisher, L7528)*
 
 Expression constructs for SKIP, myrlysin (BORCS5), WT ARL8B, and constitutively active ARL8B were kindly provided by Juan Bonifacino.  These constructs were scaled up as described in section \@ref(plasmid-prep) and tested for transfection in cortical neurons.  Additional constructs of SYN-myrlysin-EGFP and CBh-SKIP-mNeonGreen were obtained from VectorBuilder and prepared in the same way.
 
+\vspace{14pt}
 ```{r SKIP-LAMP1-kymo, echo = F, fig.height=4, dpi = 160, fig.cap="Representative kymograph showing SKIP in green and LAMP1 in magenta.  Scale bar is 20 \\textmu{}m.", fig.scap="SKIP and LAMP1 representative kymograph"}
 image_as_ggplot(read.bitmap(here('figures/external/SKIP_LAMP1_kymo_annotated.png')))
 ```
@@ -212,6 +213,7 @@ Somewhat surprisingly, we found that protrudin overexpression had little if any 
 The slight decrease in anterograde lysosome speed seen in figure \@ref(fig:LAMP1-full-figure), panel D, with the expression of active protrudin is unlikely to represent a direct effect on late endosome/lysosome transport, given the absence of any similar effect on RAB7 transport (figure \@ref(fig:RAB7-full-figure)).  This might instead indicate an interaction between LAMP1-labelled lysosomes and other organelles in the axon, directly or indirectly mediated by protrudin.  It could also potentially represent an increase in lysosomal size, perhaps due to an upstream effect on autophagy, which could result in slower axonal transport [@wangRadialContractilityActomyosin2020].  (The video and kymograph data of LAMP1 transport did not show an obvious change in lysosomal size, but this was not examined quantitatively, and any changes could be quite small given the magnitude of the effect on transport speed.)  I discuss these possibilities further in subsequent chapters.
 
 (ref:FYCO-cap) RNA sequencing data from A) Koseki et al. 2017 [@kosekiSelectiveRab11Transport2017], B) Zhang et al. 2016 [@zhangPurificationCharacterizationProgenitor2016], C) Kelley et al. 2018 [@kelleyVariationIntactTissue2018], D) Tian et al. 2019 (via `https://ineuronrnaseq.shinyapps.io/rnaseq_app`) [@tianCRISPRInterferenceBasedPlatform2019], E-G) Tedeschi et al. 2016 [@tedeschiCalciumChannelSubunit2016].
+\vspace{30pt}
 ```{r FYCO1-RNAseq-full-figure, echo = F, fig.width = 16, fig.height=16, fig.path='../figures/full/', fig.cap='(ref:FYCO-cap)', fig.scap="FYCO1 transcriptome comparisons"}
 
 FYCO1_RNAseq_full
