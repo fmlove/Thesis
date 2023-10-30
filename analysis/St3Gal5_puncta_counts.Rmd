@@ -18,7 +18,6 @@ library(patchwork)
 
 Read in St3Gal5 puncta count CSV
 ```{r}
-# puncta = read.csv('C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC114-116_Ptdn-St3Gal5_puncta_TIFs\\max_projections\\GFP\ -\ puncta\\puncta_counts\\counts.csv')
 puncta = read.csv(here('data/puncta_counts/counts.csv'))
 fileparse = lapply(puncta$File, function(f){ strsplit(f, "_") })
 
@@ -36,14 +35,13 @@ puncta$norm_count = sapply(1:nrow(puncta), function(i){ puncta$Count[i]/puncta$R
 GS_count_plot = ggplot(puncta, aes(x = cond, y = norm_count)) + 
   geom_dotplot(aes(fill = cond, colour = cond), binaxis = "y", stackdir = "center", position = "dodge") + 
   geom_boxplot(fill = NA, colour = 'black', outlier.color = NA, position = "dodge", width = 0.5) + 
-  labs(x = '', y = 'Number of puncta/length of axon segment') + 
+  labs(x = '', y = paste0('Number of puncta/ ', '\U03BC', 'm axon segment')) + 
   stat_compare_means() + 
   d_format + report_theme
 ```
 
 
 ```{r puncta_intensities}
-# puncta_dir = 'C:\\Users\\fl299\\PhD\\Data\\Mine\\Confocal\\CNC114-116_Ptdn-St3Gal5_puncta_TIFs\\max_projections\\GFP\ -\ puncta\\puncta_counts'
 puncta_dir = '../data/puncta_counts/'
 puncta_files = list.files(puncta_dir)
 puncta_files = puncta_files[which(!puncta_files %in% c('counts.csv', 'desktop.ini'))]
@@ -74,10 +72,14 @@ GS_intensity_plot = ggplot(intensities, aes(x = cond, y = intensity, colour = co
   d_format + report_theme
 ```
 
-```{r GS_puncta_full, fig.width = 16, fig.height = 8}
-puncta_image = image_as_ggplot(read.bitmap(here("images/microscopy/St3Gal5/Puncta_example_116Mut26.png")))
+```{r GS_puncta_full, fig.width = 16, fig.height = 16}
+puncta_image = image_as_ggplot(read.bitmap(here("images/microscopy/St3Gal5/Puncta_example_116Mut26_annotated.png")))
+puncta_inset = image_as_ggplot(read.bitmap(here("images/microscopy/St3Gal5/Puncta_example_116Mut26_annotated_inset.png")))
 
-GS_puncta_full_figure = puncta_image + GS_count_plot + GS_intensity_plot + plot_annotation(tag_levels = 'A')
+GS_puncta_layout = 'AB
+                    AB
+                    CD'
+GS_puncta_full_figure = puncta_image + puncta_inset + GS_count_plot + GS_intensity_plot + plot_annotation(tag_levels = 'A') + plot_layout(design = GS_puncta_layout)
 
 GS_puncta_full_figure
 ```

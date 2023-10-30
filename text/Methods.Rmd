@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 library(here)
 library(knitr)
-library(kableExtra)
+#library(kableExtra)
 ```
 
 ## Plasmids and antibodies
@@ -35,7 +35,7 @@ kable(plasmids[, c('Promoter', 'Gene', 'Reporter')], #leaving out 'Notes' column
 
 ```
 
-The hSYN-LAMP1-mRFP1 plasmid was cloned for this project (see section \@ref(cloning)).  The original LAMP1-mRFP1 plasmid *(#1817)*, along with LAMP1-mNeonGreen *(98882)*,  ESCargo(FTV) *(#140162)* and LC3b *(#21075)*, were acquired from Addgene, with thanks to Walther Mothes [@@sherer2003], Dorus Gadella [@chertkova2020], Benjamin Glick [@@caslerESC2020], and Tamotsu Yoshimori [@kimura2007], respectively.  The FYCO1 plasmid was a gift from Terje Johansen [@pankivFYCO12010].  St3Gal5 plasmid was a gift from Marina Mikhaylova [@mikhaylovaGS2016].  SKIP-EGFP, myrlysin-myc, and Arl8b plasmids were a gift from Juan Bonifacino.  All shRNA constructs were purchased from Origene *(TG712969, TR30013)*.
+The hSYN-LAMP1-mRFP1 plasmid was cloned for this project (section \@ref(cloning)).  The original LAMP1-mRFP1 plasmid *(#1817)*, along with LAMP1-mNeonGreen *(#98882)*,  ESCargo(FTV) *(#140162)* LC3B *(#21075)*, and RAB7A *(#115238)* were acquired from Addgene, with thanks to Walther Mothes [@sherer2003], Dorus Gadella [@chertkovaRobustBrightGenetically2020], Benjamin Glick [@caslerESC2020], Tamotsu Yoshimori [@kimura2007], and Pantelis Tsoulfas [@AddgeneEucaryoticExpression], respectively.  The FYCO1 plasmid was a gift from Terje Johansen [@pankivFYCO12010].  The ST3GAL5 plasmid was a gift from Marina Mikhaylova [@mikhaylovaGS2016].  SKIP-EGFP, myrlysin-myc, and ARL8B plasmids were a gift from Juan Bonifacino.  All shRNA constructs were purchased from Origene *(TG712969, TR30013)*.  Plasmid maps are included in the Appendix, section \@ref(plasmid-maps).
 
 
 ```{r primary-table}
@@ -44,7 +44,6 @@ ab$Target = ab$Marker
 kable(ab[ab$HeLa_screen == TRUE & ab$stage == 'primary', c('Target', 'Source', 'Dilution')],
       row.names = FALSE,
       format = 'markdown',
-      longtable = TRUE,
       caption = 'Primary antibodies used in this thesis.')
 ```
 ```{r secondary-table}
@@ -52,25 +51,28 @@ ab$Name = ab$Marker
 kable(ab[ab$HeLa_screen == TRUE & ab$stage %in% c('secondary', 'additional'), c('Name', 'Source', 'Dilution')],
       row.names = FALSE,
       format = 'markdown',
-      longtable = TRUE,
       caption = 'Secondary antibodies and dye conjugates used in this thesis.')
 ```
 
 ## Software
 
-Wherever possible, I tried to use free and open-source software throughout this project.  All image analysis tasks were carried out in Fiji [@schindelinFijiOpensourcePlatform2012].  Quantitative analysis and statistics were carried out in R [@Rlanguage]. FinchTV and Serial Cloner were used for reading DNA sequences and designing plasmids, respectively.  
+Wherever possible, I tried to use free and open-source software throughout this project.  All image analysis tasks were carried out in Fiji [@schindelinFijiOpensourcePlatform2012].  Quantitative analysis and statistics were carried out in R [@Rlanguage]. FinchTV and Serial Cloner were used for reading DNA sequences and designing plasmids, respectively.  Plasmid maps were generated using AngularPlasmid [@chawdryAngularPlasmid].
 
-Custom R scripts and ImageJ macros were written for individual analysis tasks, all of which are available by request.  
+### Code availability 
+
+Custom R scripts and ImageJ macros were written for individual data collection and analysis tasks; these are included in the appendix (section \@ref(CODE)) and freely available to use.  In addition, the code used to generate this thesis, including data analysis, statistics, and figures, is available online at `https://github.com/fmlove/Thesis`.  
 
 ## Protocols
 
 ### Plasmid preparation{#plasmid-prep}
 
-All plasmid preparation was carried out using either DH5$\alpha$ *(New England BioLabs, C2987I/H)* or XL10-Gold *(Agilent Technologies, 200314)* competent cells.  Cells were transformed using a heat shock protocol, and grown on LB/agar plates with an appropriate antibody for plasmid selection.  Single colonies were then scaled up in LB culture.  Plasmids were purified from *E. coli* cultures using Qiagen Spin Miniprep *(27104)* or EndoFree Plasmid Maxi kits *(12362)* according to the manufacturer's protocols.  All plasmids were dissolved in ultrapure DNAse-free water *(Thermo Fisher, 10977035)* for transfection.
+All plasmid preparation was carried out using either DH5\textalpha{} *(New England BioLabs, C2987I/H)* or XL10-Gold *(Agilent Technologies, 200314)* competent cells.  Cells were transformed using a heat shock protocol, and grown on LB/agar plates with an appropriate antibiotic for plasmid selection.  Single colonies were then scaled up in LB culture.  Plasmids were purified from *E. coli* cultures using Qiagen Spin Miniprep *(27104)* or EndoFree Plasmid Maxi kits *(12362)* according to the manufacturer's protocols.  All plasmids were dissolved in ultrapure DNAse-free water *(Thermo Fisher, 10977035)* for transfection.
 
-### Cortical neuron cultures
+### Cortical neuron cultures{#CNC}
 
-Primary cortical neurons were obtained from embryonic day 18 Sprague Dawley rats. Cortices were dissected in HEPES-HBSS and dissociated with papain for approximately 5 minutes at 37°C, followed by DNAse treatment and trituration through a flame-polished glass pipette. Cells were filtered through a 40$\mu$m cell strainer *(Falcon, 352340)* and plated at a density of 200k-400k cells per imaging plate *(Greiner Bio-One, 627860)* or 50-100k cells per acid-washed glass coverslip. (Plates and coverslips were coated with 50$\mu$g/mL poly-D-lysine *(Sigma-Aldrich, P1149)* in borate buffer.)  Cells were grown in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)*, supplemented with NeuroBrew-21 *(Miltenyi Biotec, 130-093-566)*, GlutaMAX *(Thermo Fisher, 35050061)*, and ITS *(R&D Systems, AR013)* at 37°C with 7% CO~2~. 
+Primary cortical neurons were obtained from embryonic day 18 Sprague Dawley rats. Cortices were dissected in HEPES-HBSS and dissociated with papain for approximately 5 minutes at 37°C, followed by DNAse treatment and trituration through a flame-polished glass pipette. Cells were filtered through a 40 \textmu{}m cell strainer *(Falcon, 352340)* and plated at a density of 200,000-400,000 cells per imaging plate *(Greiner Bio-One, 627860)* or 50,000-100,000 cells per acid-washed glass coverslip (13 mm diameter). (Plates and coverslips were coated with 50 \textmu{}g/mL poly-D-lysine *(Sigma-Aldrich, P1149)* in borate buffer.)  Cells were grown in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)*, supplemented with NeuroBrew-21 *(Miltenyi Biotec, 130-093-566)*, GlutaMAX *(Thermo Fisher, 35050061)*, and ITS *(R&D Systems, AR013)* at 37°C with 7% CO~2~. 
+
+The day of dissection was considered to be day zero, and further development measured by days *in vitro* (DIV).  The cells would typically begin to grow neurites within a day, exhibit clearly differentiated axons by DIV3, and demonstrate electrical maturity and significantly reduced regenerative ability by DIV16 [@kosekiSelectiveRab11Transport2017].
 
 ### Transfection
 
@@ -78,7 +80,7 @@ Cortical neurons were transfected at DIV10 by either magnetofection or calcium p
 
 Magnetofection was carried out using NeuroMag Transfection Reagent *(OZ Biosciences, NM51000)*. Briefly, plasmid DNA was incubated at room temperature with the NeuroMag Transfection Reagent in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)* for 30 minutes. Growth media was removed from the cells and replaced with warmed MACS Neuro Medium and the DNA-complexed NeuroMag Transfection Reagent. The cells were placed on a magnetic plate *(OZ Biosciences, MF10000)* in an incubator (37°C 7% CO~2~) for 30 minutes. The transfection mix was then removed from the cells and the growth media reapplied.
 
-Calcium phosphate transfection was carried out using a protocol adapted from Jiang and Chen [@jiangHighCaPhosphate2006].  A solution of DNA and calcium phosphate was prepared, and added dropwise to HEPES-buffered saline *(Sigma-Aldrich, 51558)* while vortexing to precipitate the DNA-calcium phosphate complex.  This was then added to the cells in supplement-free media, and incubated at 37°C 7% CO~2~ for one hour.  Cells were then washed with media pre-equilibrated in 10% CO~2~ to remove residual precipitate, and the original growth media reapplied.
+Calcium phosphate transfection was carried out using a protocol adapted from Jiang and Chen [@jiangHighCaPhosphate2006].  A solution of DNA and calcium chloride was prepared, and added dropwise to HEPES-buffered saline *(Sigma-Aldrich, 51558)* while vortexing to precipitate the DNA-calcium phosphate complex.  This was then added to the cells in supplement-free media, and incubated at 37°C 7% CO~2~ for one hour.  Cells were then washed with media pre-equilibrated in 10% CO~2~ to remove residual precipitate, and the original growth media reapplied.
 
 ### Immunocytochemistry{#immuno}
 
@@ -90,23 +92,52 @@ Secondary-only controls were carried out for each combination of cell type and s
 
 ### Microscopy
 
-Live imaging of axonal transport was carried out with spinning disc confocal microscopy, using an Olympus IX70 microscope and a PerkinElmer UltraVIEW scanner controlled with MetaMorph software.  The microscope was enclosed and maintained at 37°C with supplemental CO~2~ during imaging.  For kymographs, the axons of DIV14-16 neurons were imaged for approximately three minutes at least ~500$\mu$m from the cell body.  
+#### Live cells {#live-imaging}
 
-High resolution images of fixed cells were obtained with a Leica DMI4000B confocal or Leica DMI6000B epifluorescent microscope, running LAS-AF software.  Confocal images were obtained as Z-stacks with frame averaging.  All files were exported as TIFs before further analysis.  
+Live imaging of axonal transport was carried out with spinning disc confocal microscopy, using an Olympus IX70 microscope and a PerkinElmer UltraVIEW scanner controlled with MetaMorph software.  For the data presented in figures \@ref(fig:LAMP1-full-figure) and \@ref(fig:RAB7-full-figure), a 100x objective with a numerical aperture of 1.35 *(Olympus,  1-UC836R)* was used.  For the data in figure \@ref(fig:ST3GAL5-full-figure), a 100x objective with a numerical aperture of 1.40 *(Olympus, 1-U2B836)* was used.  Each image was 512 x 512 pixels, with a pixel size of 0.16 x 0.16 \textmu{}m.  Confocal lateral resolution was 225 nm for LAMP1 experiments and 118 nm for RAB7 and ST3GAL5, according to the Gurdon Institute calculator [@ConfocalCalculator].  The microscope was enclosed and maintained at 37°C with supplemental CO~2~ during imaging^[The gas controller for this microscope did not provide a measurement of CO~2~, so we used the colour of phenol red in the growth media as an indicator when adjusting flow rate.  We estimate the final CO~2~ concentration during imaging to be between 5 and 10%.].  
+
+For kymographs, the axons of DIV14-16 rat cortical neurons were imaged for approximately three minutes at least ~500 \textmu{}m from the cell body.  In most cases, cells were imaged at 2 frames per second, except where this was not possible due to the required exposure time.  Towards the end of this project, we identified a slight discrepancy between the frame rate set in MetaMorph and the actual rate of image acquisition, which appeared to be related to the microscope shutter speed.  To correct for this, a 'true' frame rate for each experiment was calculated based on individual image timestamps, and this value was then used for further calculations during data analysis (section \@ref(timestamp-corr)).
+
+Stacks and axon ROIs were exported as STK and RGN files, respectively.  Due to time constraints during imaging, sometimes very rough ROIs were saved just to preserve the anterograde-retrograde direction of the axon in each image.  These were then re-traced from the axon images in ImageJ and saved as ROI files to provide an accurate trace of the axon for generating kymographs.
+
+#### Fixed cells
+
+Confocal imaging of fixed cells was carried out with a Leica DMI4000B confocal microscope, on a computer running LAS-AF software.  A 63x objective with a numerical aperture of 1.3 was used *(Leica, 11507900)*.  Confocal pinhole was 137.1 \textmu{}m.   Images were obtained as Z-stacks of 512 x 512 pixel images, with a pixel size of approximately 0.23 x 0.23 \textmu{}m and a step size of 0.29 \textmu{}m.  Scans were performed with bidirectional X and a zoom factor of 1.5.  For all experiments involving fluorescence quantification, secondary antibodies or streptavidin conjugated to Alexa Fluor 568 *(Thermo Fisher)* were used, giving a lateral resolution of 232 nm according to the Gurdon Institute calculator [@ConfocalCalculator].  3-frame averaging was used on the channels to be quantified.  
+
+Occasionally, the spinning disc microscope described above was used for imaging fixed cells, with the 100x/1.35 objective and identical settings.  Step size was 0.29 \textmu{}m (for HeLa cell imaging) or 0.5 \textmu{}m (for dendritic spine imaging).
+
+Epifluorescent imaging of individual cells was carried out with a Leica DMI6000B epifluorescent microscope, running on LAS-AF software.  A 63x objective with a numerical aperture of 1.25 was used *(Leica, 11506185)*, giving a resolution limit of approximately 277 nm for Alexa Fluor 568.  Images were 1000 x 1000 pixels with a pixel size of 0.127 x 0.127 \textmu{}m.  
+
+Whole-plate epifluorescent tile scans, used for quantifying transfection efficiency in figure \@ref(fig:transfection-plot-full), were carried out on a Leica DMi8 microscope running on LAS X software.  A 5x objective with a numerical aperture of 0.12 was used.
+
+All images collected in Leica software were exported as TIFs before further analysis. 
+
+
+#### Images used in this thesis
+
+Microscope images shown in this thesis have had their brightness and contrast adjusted to ensure that key details are apparent to the reader.  This was performed after any relevant analysis; care was taken during image collection to avoid any overexposure in regions to be analysed, and any intensity analysis was performed on unmodified pixel values.
+
+
 
 ### Image analysis
 
-All image analysis was conducted in Fiji.  In most cases, custom macros were used for batch processing and streamlining manual tasks.  Confocal stacks were compressed to maximum intensity projections before analysis.
+All image analysis was conducted in Fiji.  In most cases, custom macros were used for batch processing and streamlining manual tasks; these are available in section \@ref(CODE).  Confocal stacks were compressed to maximum intensity projections before analysis.
 
 All manual image analysis tasks were conducted blind, with the exception of figure \@ref(fig:LC3-full-figure), panel E, where cells were classified while they were being examined on the microscope.  To facilitate this, I wrote an R package called `blinds`, which replaces file names with unique identifiers that can be reversed after manual analysis.  While I created the package specifically for this project, it is generally applicable and publicly available on GitHub [@loveBlinds2023].  Wherever it was not possible to obscure the file names (e.g. where saved ROIs were being matched to images by name), steps were taken in the analysis macros to randomise image order and hide the experimental condition.
 
 #### Kymograph analysis{#kymo}
 
-Kymographs were generated from Metamorph stack files using the Fiji Multi Kymograph plugin.  In cases where moving puncta were especially faint (most notably Rab7), stacks were pre-processed with the Bleach Correction plugin, using the histogram matching method.  Snapshots of the axon marker channel (typically either EGFP or mCherry-tagged protrudin) were traced to generate axon ROIs, which were then used to generate the kymographs.  Line width for the Multi Kymograph plugin was set to 5 pixels.  Generated kymographs were further refined as needed through rolling ball background subtraction and contrast adjustment.
+Kymographs were generated from Metamorph stack files using the Fiji Multi Kymograph plugin.  In cases where moving puncta were especially faint (most notably RAB7), stacks were pre-processed with the Bleach Correction plugin, using the histogram matching method.  Snapshots of the axon marker channel (typically either EGFP or mCherry-tagged protrudin) were traced to generate axon ROIs, which were then used to generate the kymographs.  Line width for the Multi Kymograph plugin was set to 5 pixels.  Generated kymographs were further refined as needed through rolling ball background subtraction and contrast adjustment.
 
-We tested KymoButler [@jakobsKymoButlerDeepLearning2019] for automated kymograph analysis, but found that it did not consistently pick up the small, fast-moving particles common in our lysosome and late endosome data.  As a result, kymographs were manually traced in Fiji using the segmented line tool, with a custom macro to export the data in CSV format for analysis in R.  For the purposes of classification, anterograde and retrograde were defined as continuous movements of at
-least 5μm away from or towards the cell body, respectively.  
+We tested KymoButler [@jakobsKymoButlerDeepLearning2019] for automated kymograph analysis, but found that it did not consistently pick up the small, fast-moving particles common in our lysosome and late endosome data.  As a result, kymographs were manually traced in Fiji using the segmented line tool, with a custom macro to export the data in CSV format for analysis in R (section \@ref(kymo-export)).  For the purposes of classification, anterograde and retrograde were defined as continuous movements of at
+least 5 \textmu{}m away from or towards the cell body, respectively.  
 
 ### Statistical analysis
 
-The Shapiro-Wilk test was used to examine data normality.  As the vast majority of data was not normally distributed, the decision was made to use non-parametric tests throughout.  Kruskal-Wallis or Wilcoxon rank-sum/Mann-Whitney tests were selected as appropriate based on the number of groups.  Post-hoc analysis to identify significant pairings and p-values was carried out using Dunn's test with Bonferroni correction for multiple comparisons.  All statistical analysis was carried out in R [@Rlanguage].
+The Shapiro-Wilk test was used to examine data normality.  As the vast majority of data was not normally distributed, the decision was made to use non-parametric tests throughout.  This is likely due to a combination of small sample sizes and a high degree of cell-cell variability for many of the experiments.
+
+After consultation with a statistician, we selected the Kruskall-Wallis test for comparisons of three or more groups, and the Wilcoxon rank-sum/Mann-Whitney test for comparisons of two groups.  As these are non-parametric tests, a significant *p* value (defined to be < 0.05) indicates a difference in median or distribution between groups.  In comparisons using the Kruskall-Wallis test, significant *p* values were followed up with Dunn's post-hoc test with Bonferroni correction for multiple comparisons to identify which pairs of groups showed significant differences.  In each case, all possible pairwise comparisons were performed, but only *p* values deemed as significant (< 0.05) are shown.  All statistical analysis was carried out in R [@Rlanguage].
+
+As a general rule, outliers were not excluded, either from graphs or statistical analysis, unless there was some evidence of a fault with data collection or manual analysis.  In practice, this amounted to a single kymograph particle trace from the data presented in figure \@ref(fig:ST3GAL5-full-figure), which was deemed to be moving unreasonably fast (> 90 \textmu{}m/s) and most likely represented a simple human error during manual tracing.
+
+Quantitative data is presented in dot plots wherever feasible, so individual data points are visible.  In cases with a very large number of data points, violin plots are used instead to indicate the distribution of the underlying data.  These are overlaid with box plots, which indicate the quartile ranges of the data.  

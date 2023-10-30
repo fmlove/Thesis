@@ -21,7 +21,6 @@ analyse_traces <- function(csv_path = NULL, x_scale = 1, y_scale = 1, mov_thresh
                 }
               ))
   
-  
   #-----per-segment analysis-------------
   #iterate over segments; fix any going in wrong y-direction; return velocity, distance, direction
   per_seg.df = do.call(rbind, lapply(unique(traces$ROI), function(roi){ 
@@ -51,11 +50,8 @@ analyse_traces <- function(csv_path = NULL, x_scale = 1, y_scale = 1, mov_thresh
   ))
   if(is.null(per_seg.df)){ per_seg.df = data.frame(velocity = numeric(0), distance = numeric(0), direction = character(0), ROI = integer(0)) }  
  
-  
   #-----per-trace analysis-------------
   num_traces = length(unique(traces$ROI))
-  
-  
   
   per_trace.net_distance = unlist(sapply(unique(traces$ROI), function(roi){ 
                                     roi.df = traces[traces$ROI == roi,]; 
@@ -71,19 +67,7 @@ analyse_traces <- function(csv_path = NULL, x_scale = 1, y_scale = 1, mov_thresh
                                     return(dist/time)
                                   }
                                   ))
-  
-  # per_trace.anterograde_count = unlist(sapply(unique(traces$ROI), function(roi){ 
-  #                                   roi.df = traces[traces$ROI == roi,]; 
-  #                                   
-  #                                 }
-  #                                 ))
-  # 
-  # per_trace = data.frame(
-  #   net_distance = per_trace.net_distance,
-  #   net_velocity = per_trace.net_velocity,
-  #   
-  # )
-  
+    
   #------------------------------------
   
   results = list("per_seg" = per_seg.df, 
@@ -92,12 +76,8 @@ analyse_traces <- function(csv_path = NULL, x_scale = 1, y_scale = 1, mov_thresh
                  "per_trace.net_velocity" = per_trace.net_velocity)#TODO - return per_trace as df
   
   return(results)
-  
-  
 }
 
 graph_results <- function(res_list){
   if(is.null(names(res_list))){ names(res_list) = paste0('cond_', 1:length(res_list)) }
-  
-  
 }

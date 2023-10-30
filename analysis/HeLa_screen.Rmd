@@ -63,12 +63,14 @@ ERGIC53_profile.csv.normalised = data.frame(X = ERGIC53_profile.csv$X,
                                              ch1 = ERGIC53_profile.csv$Value_ch1/max(ERGIC53_profile.csv$Value_ch1),
                                              ch2 = ERGIC53_profile.csv$Value_ch2/max(ERGIC53_profile.csv$Value_ch2))
 ERGIC53_profile.melt = melt(ERGIC53_profile.csv.normalised, measure.vars = c('ch1', 'ch2'))
+ERGIC53.pixelsize = 0.2273 #microns, from TIF metadata
+ERGIC53_profile.melt$distance = (ERGIC53_profile.melt$X - 1)*ERGIC53.pixelsize
 
-ERGIC53_profile = ggplot(ERGIC53_profile.melt, aes(x = X, y = value, group = variable)) + 
+ERGIC53_profile = ggplot(ERGIC53_profile.melt, aes(x = distance, y = value, group = variable)) + 
   geom_area(aes(fill = variable), alpha = 0.25, position = 'dodge') +
   geom_line(aes(colour = variable), size = 2) +
-  labs(y = 'Normalised fluorescence intensity', x = '') +
-  d_format + report_theme + theme(axis.ticks.x = element_blank(), axis.text.x = element_blank())
+  labs(y = 'Normalised fluorescence intensity', x = paste0('Distance (', '\U03BC', 'm)')) +
+  d_format + report_theme
 ```
 
 ```{r Golgi_grid_extended, fig.width = 16, fig.height = 22}
@@ -88,22 +90,35 @@ misc_grid = LAMP1 + mTOR + ACSL3 + SLC38A1 + plot_annotation(tag_levels = 'A') +
 ```
 
 
-```{r HeLa_ceramide_full_figure, fig.width = 16, fig.height = 8}
+```{r HeLa_ceramide_full_figure, fig.width = 16, fig.height = 12}
 ceramide_profile.csv = read.csv(here("data/intensity_profiles/HeLa14_ceramide_WT3.tif_profile.csv"))
 ceramide_profile.csv.normalised = data.frame(X = ceramide_profile.csv$X,
                                              ch1 = ceramide_profile.csv$Value_ch1/max(ceramide_profile.csv$Value_ch1),
                                              ch2 = ceramide_profile.csv$Value_ch2/max(ceramide_profile.csv$Value_ch2))
 ceramide_profile.melt = melt(ceramide_profile.csv.normalised, measure.vars = c('ch1', 'ch2'))
 
-ceramide_profile = ggplot(ceramide_profile.melt, aes(x = X, y = value, group = variable)) + 
+ceramide.pixelsize = 0.2273 #microns, from TIF metadata
+ceramide_profile.melt$distance = (ceramide_profile.melt$X - 1)*ceramide.pixelsize
+
+ceramide_profile = ggplot(ceramide_profile.melt, aes(x = distance, y = value, group = variable)) + 
   geom_area(aes(fill = variable), alpha = 0.25, position = 'dodge') +
   geom_line(aes(colour = variable), size = 2) +
-  labs(y = 'Normalised fluorescence intensity', x = '') +
-  d_format + report_theme + theme(axis.ticks.x = element_blank(), axis.text.x = element_blank())
+  labs(y = 'Normalised fluorescence intensity', x = paste0('Distance (', '\U03BC', 'm)')) +
+  scale_x_continuous(breaks = waiver(), n.breaks = 6) + 
+  d_format + report_theme
 
 grid_panel = image_as_ggplot(read.bitmap(here("images/microscopy/HeLa_montages/C5-ceramide_WT_inset_grid.png")))
+montage_panel = image_as_ggplot(read.bitmap(here("images/microscopy/HeLa_montages/C5-ceramide_GFP_montage_stacked.png")))
 
-ceramide_grid = grid_panel + ceramide_profile + plot_annotation(tag_level = 'A')
+ceramide_layout = 'AAAAABB
+                    AAAAABB
+                    AAAAACC
+                    AAAAACC
+                    AAAAACC
+                    AAAAACC'
+
+
+ceramide_grid = grid_panel + ceramide_profile + montage_panel + plot_annotation(tag_level = 'A') + plot_layout(design = ceramide_layout)
 
 ceramide_grid
 ```

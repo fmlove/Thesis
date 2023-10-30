@@ -4,7 +4,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, dev = 'png'
 knitr::opts_chunk$set(fig.path = '../figures/')
 
 
-source('../analysis/Kymograph_trace_analysis.R')#copied over from git repo 08-02-23
+source('../scripts_and_macros/Kymograph_trace_analysis.R')#copied over from git repo 08-02-23
 source('../style/thesis_setup.R')
 
 library(dplyr)
@@ -335,7 +335,7 @@ LAMP1_mean_run_length = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$dir
   geom_dotplot(binaxis = 'y', stackdir = 'center', color = NA) + 
   geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
   d_format + report_theme + theme(legend.position = "none") + 
-  labs(x = "", y = "Mean run length") + 
+  labs(x = "", y = paste0("Mean run length (", "\U03BC", "m)")) + 
   stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_dist), 30, ceiling), size = p_fs)
 
 plot(LAMP1_mean_run_length)
@@ -375,7 +375,7 @@ LAMP1_mean_run_velocity = ggplot(per_seg.per_cell.means[per_seg.per_cell.means$d
   geom_dotplot(aes(fill = cond, color = cond), binaxis = 'y', stackdir = 'center') + 
   geom_boxplot(alpha = 0, colour = "black", position = position_dodge(width = 0.9), width = 0.5, show.legend = FALSE) + 
   d_format + report_theme + 
-  labs(x = "", y = "Mean velocity") + 
+  labs(x = "", y = paste0("Mean velocity (", "\U03BC", "m/s)")) + 
   stat_compare_means(label.y = plyr::round_any(max(per_seg.per_cell.means[per_seg.per_cell.means$direction!= 'static',]$mean_speed), 12, ceiling), size = p_fs) +
   stat_pvalue_manual(LAMP1_mean_run_velocity.dunn, hide.ns = TRUE, label = 'p.adj.rounded', step.increase = 0.1)
 

@@ -1,19 +1,142 @@
-# Supplementary Figures {.unnumbered #SUPPLEMENT}
+
+# Appendix {.unnumbered #APPENDIX}
 
 ```{=latex}
-\markboth{SUPPLEMENT}{}
+\markboth{APPENDIX}{}
+\setcounter{chapter}{5}
+\setcounter{section}{0}
+\setcounter{figure}{0}
 ```
+
+## Supplementary Figures {#SUPPLEMENT}
 
 ```{r supplementary-setup, include = F}
 knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80),tidy=FALSE)
+```
+
+```{r}
+library(here)
+library(readbitmap)
+library(patchwork)
+
+source(here::here('style/thesis_setup.R'))
+```
+
+
+```{r suppl-ring, echo = F, fig.width=16, fig.height=8, fig.path='./figures/full/', fig.cap="Example image of a ring-like structure in a neuron co-expressing active protrudin and LAMP1.  Note that LAMP1 does not label the structure directly, but appears to label an adjacent organelle.  The larger rings towards the top of the cell have a much dimmer protrudin 'ring', and appear to be vacuoles.  Scale bar is 20 \\textmu{}m.", fig.scap="Supplementary figure; Example image of a ring-like structure in a neuron"}
+
+image_as_ggplot(read.bitmap(here('images/microscopy/LC3/neuron_ring_structure.png')))
 ```
 
 <!-- Note: won't render without Ch3. -->
+(ref:suppl-gc-cap) Axon terminal area of DIV3 vs DIV15 rat cortical neurons, A) for each marker and B) pooled together.  All show a significant decrease in axon terminal area during development, with the exception of SURF4.  Given the substantially smaller measurements in DIV3 neurons stained for SURF4 compared to other markers, this suggests that SURF4 is confined to the central region of the developing growth cone.  All *n* = 26 or 27 cells per condition across three batches, except SLC38A1 (*n* = 18 cells, three batches).  Wilcoxon rank-sum *p* values are shown at the top of each plot.
+```{r suppl-gc-area, echo = F, fig.width=16, fig.height=10, fig.path='./figures/full/', fig.cap="(ref:suppl-gc-cap)", fig.scap="Supplementary figure; axon terminal area in developing cortical neurons"}
 
-```{r suppl-dev-grid, echo = F, fig.width=16, fig.height=12, fig.path = '../figures/full/', fig.cap="Fluorescence intensity of various markers in DIV3 vs DIV15 cortical neurons, divided into cell body or axon terminal.  All n=26 or 27 cells per condition across three batches, except SLC38A1 (n=18 cells, three batches).", fig.scap="Supplementary figure; marker intensity in cell bodies and axon terminals of developing cortical neurons"}
-max_gridplot
+gc_area_full
 ```
 
+
+
+## Plasmid Maps {#plasmid-maps}
+
+```{r plasmid-maps-1, fig.width=16, fig.height=24}
+image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Protrudin-EGFP_SYN_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Protrudin-EGFP_CAG_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Protrudin-mCherry_SYN_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/dual-GFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/LAMP1-RFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/LAMP1-mNeonGreen_map.html.png'))) + plot_layout(ncol = 2)
+```
+
+```{r plasmid-maps-2, fig.width=16, fig.height=24}
+image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Rab7a-mEmerald_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/St3Gal5-GFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/ESCargo-Crimson_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/FYCO1-EGFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/SKIP-GFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/SKIP-mNeonGreen_map.html.png'))) + plot_layout(ncol = 2)
+```
+
+```{r plasmid-maps-3, fig.width=16, fig.height=24}
+image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Myrlysin-MYC_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Myrlysin-EGFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Arl8b-GFP_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/shRNA_map.html.png'))) +
+	image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/LC3-RFP_map.html.png')))  + plot_layout(ncol = 2)
+
+
+
+```
+
+
+## Code {#CODE}
+
+In this section, I have included many of the ImageJ macros (written in the ImageJ Macro language) and R scripts that I wrote to simplify collecting and analysing data over the course of this project.  All are freely available to use and modify; if you use them extensively for your own work, please cite this thesis.  You might find the occasional 'TODO' in with the more descriptive comments; I have left these in place as suggestions for future improvements.
+
+### ImageJ Macros
+
+#### Axon puncta counter
+Used to streamline the process of manually counting axonal puncta, as in \@ref(fig:GS-puncta-full-figure).  Displays the first image from each timelapse stack in a directory, plots a low-opacity trace of the axon to be analysed, and selects the multipoint tool for the user.  Results are saved to a CSV file at the end of the batch.  Requires a folder of STK or TIF image stacks and RGN or ROI files with matching names. 
+```{Rcpp axon-puncta-counter, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Axon_puncta_counter.ijm'}
+```
+#### Dendrite section crop {#dend-crop}
+Used to crop dendrite sections of a defined length for spine tracing or counting.  Can run on individual images or a folder of cell body images.  Could also be used for axon sections or other cell projections, but will only measure and crop in straight lines.
+```{Rcpp dendrite-section, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Dendrite_section.ijm'}
+```
+#### Dendritic spine measurement export
+Exports a CSV of dendritic spine lengths, after each has been traced with a segmented line and added to the ROI manager.  Also saves the ROIs to a ZIP file.
+```{Rcpp dendritic_spine_export, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Dendritic_spine_measurement_export.ijm'}
+```
+#### Maximum intensity projection batch runner
+Runs over a folder of TIF or STK stack files to quickly generate maximum intensity projections for each.
+```{Rcpp max-projection-batch, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Max_projection_batch.ijm'}
+```
+#### Sort mixed TIF files into stacks
+Works through a folder of individual slice TIF files (e.g. those generated by the LAS-AF export tool) and attempts to create Z-stacks by matching file names.  This is somewhat configurable, but is designed to work on images named in the format 'condition_cell_slice_channel', for example GFP_C1_z00_c01.  Can also be re-run over the generated folder of TIF stacks to create multi-channel hyperstacks. 
+```{Rcpp TIF-sorter, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Mixed_TIFs_to_stacks.ijm'}
+```
+#### Neuron fluorescence quantification
+##### Interactive macro {#fluor-quant}
+Used to simplify fluorescence quantification in growth cones, neuronal cell bodies or entire neurons.  Walks the user through tracing various features of the cell, and saves ROIs and measurements as ZIP and CSV files, respectively.  Designed to work with a folder of multi-channel Z-stacks to begin, although should also work with single-channel stacks.
+```{Rcpp neuron-quant, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Neuron_timepoint_fluor_quantification_macro.ijm'}
+```
+##### Additional runs
+Allows you to reuse ROI files generated from running the above macro to calculate fluorescence intensities for a different channel or Z-projection type on the same images.
+```{Rcpp neuron-quant-rerun, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Neuron_timepoint_fluor_quantification_RERUN_macro.ijm'}
+```
+#### Intensity profile export
+Generates and saves a CSV containing fluorescence intensity profile information from an image with one or more channels and a line or segmented line ROI.  
+```{Rcpp profile-export, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Profile_export.ijm'}
+```
+#### Quick montage generator
+Generates labelled montages of single- and multi-channel images of the sort used in this thesis (e.g. figure \@ref(fig:HeLa-ERES-grid-full-figure)).  Includes option to pause and edit or annotate (adding arrows, changing image order, etc.) before generating final montage.  Requires single-channel images to start. 
+```{Rcpp speedy-montage, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Speedy_montage.ijm'}
+```
+#### Kymograph generator
+Generates kymographs from a folder of image stacks and ROIs.  Includes options for contrast adjustment, background correction, and bleach correction, which can be adjusted to improve visibility of faint particles.  Can be very slow depending on which options are selected.
+```{Rcpp kymo-generator, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Kymograph_generator_macro.ijm'}
+```
+#### Export kymograph traces to CSV {#kymo-export}
+Used to export manual kymograph traces (segmented line ROIs, added to the ROI manager) into CSV format for analysis in R.  Includes a numeric index for each trace, and X and Y coordinates for each point along the line.
+```{Rcpp kymo-trace-export, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Kymograph_trace_to_CSV.ijm'}
+```
+
+
+### R Scripts
+
+#### Convert XML files from Cell Counter ImageJ plugin to CSVs
+Generates CSVs from the XML files exported by the Fiji Cell Counter plugin's 'Save Markers' feature.  Requires some configuration before use — there are included code blocks to use this for either counting transfected cells or classifying dendritic spines.
+```{r XML-to-CSV, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Cell_counter_XMLs_to_CSV.R'}
+```
+#### Calculate frame rate from individual timelapse images {#timestamp-corr}
+Calculates a 'true' frame rate for a MetaMorph timelapse from the timestamps on individual frames.  See \@ref(live-imaging) for a description of the issue that prompted this fix.
+```{r framerate-calc, echo=TRUE, eval=FALSE, file='./scripts_and_macros/kymograph_timestamp_correction.R'}
+```
+#### Analyse kymograph traces from CSV
+Calculates a number of parameters based on the CSV kymograph data exported by ImageJ macro \@ref(kymo-export).  Includes information such as the direction and speed of each individual particle movement, as well as average distance, average velocity, and the total number of particles traced in each kymograph.
+```{r kymo-trace-analysis, echo=TRUE, eval=FALSE, file='./scripts_and_macros/Kymograph_trace_analysis.R'}
+```
 
 # References {.unnumbered #BIB}
 ```{=latex}

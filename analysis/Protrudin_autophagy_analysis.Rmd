@@ -52,10 +52,13 @@ LC3.prof.norm = data.frame(X = LC3.prof$X,
                        ch2 = LC3.prof$Value_ch2/max(LC3.prof$Value_ch2))
 LC3.prof.melt = reshape2::melt(LC3.prof.norm, measure.vars = c('ch1', 'ch2'))
 
-LC3_profile_plot = ggplot(LC3.prof.melt, aes(x = X, y = value, group = variable)) + 
+LC3.pixelsize = 0.2273 #size in microns, from TIF metadata - TODO grab from image directly?
+LC3.prof.melt$distance = (LC3.prof.melt$X - 1)*LC3.pixelsize#starting @ 0.0
+
+LC3_profile_plot = ggplot(LC3.prof.melt, aes(x = distance, y = value, group = variable)) + 
   geom_area(aes(fill = variable), alpha = 0.25, position = 'dodge') + geom_line(aes(colour = variable), size = 2) + 
-  labs(y = 'Normalised fluorescence intensity', x = '') +
-  d_format + report_theme + theme(axis.ticks.x = element_blank(), axis.text.x = element_blank())
+  labs(y = 'Normalised fluorescence intensity', x = paste0('Distance (', '\U03BC', 'm)')) +
+  d_format + report_theme
 
 LC3_profile_plot 
 
@@ -66,20 +69,24 @@ LC3_neuro = image_as_ggplot(read.bitmap(here('images/microscopy/LC3/LC3_neuron_e
 ```
 ```{r HeLa_grid}
 LC3_grid = image_as_ggplot(read.bitmap(here('images/microscopy/HeLa_montages/LC3_WT_inset_grid.png')))
+LC3_GFP = image_as_ggplot(read.bitmap(here('images/microscopy/HeLa_montages/LC3_GFP_montage_spaced.png')))
 ```
 ```{r LC3_protrusion}
 LC3_protrusion = image_as_ggplot(read.bitmap(here('images/microscopy/HeLa_montages/LC3_WT_protrusion_vertical.png')))
 ```
 
-```{r LC3_full, fig.width=16, fig.height=12}
-LC3.layout = 'AAAAAABBBBCC
-              AAAAAABBBBCC
-              AAAAAABBBBCC
-              AAAAAABBBBCC
-              DDDDDDDEEEFF
-              DDDDDDDEEEFF'
+```{r LC3_full, fig.width=16, fig.height=22}
+LC3.layout = 'AAAAAABB
+              AAAAAABB
+              AAAAAACC
+              AAAAAACC
+              AAAAAACC
+              DDDDDDCC
+              DDDDDDCC
+              EEEEEEFG
+              EEEEEEFG'
 
-LC3_full_plot = LC3_grid + LC3_profile_plot + LC3_protrusion + LC3_neuro + LC3_neuron_plot + guide_area() + plot_annotation(tag_levels = 'A') + plot_layout(design = LC3.layout, guides = 'collect')
+LC3_full_plot = LC3_grid + LC3_profile_plot + LC3_protrusion + LC3_GFP + LC3_neuro + LC3_neuron_plot + guide_area() + plot_annotation(tag_levels = 'A') + plot_layout(design = LC3.layout, guides = 'collect')
 
 LC3_full_plot
 ```

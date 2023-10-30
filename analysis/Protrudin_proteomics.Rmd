@@ -170,7 +170,20 @@ multiples.df$ENTREZID = select(org.Hs.eg.db,
   
 ```
 
+Formatted set for table
+```{r overlap_table}
+overlap_table =
+	multiples.df %>%
+		arrange(desc(multiple), symbol) %>%
+		mutate(`Gene symbol` = symbol,
+					 `Elbaz-Alon et al.` = factor(in_ea, levels = c(TRUE, FALSE), labels = c('+', '-')),
+					 `Matsuzaki et al.` = factor(in_m, levels = c(TRUE, FALSE), labels = c('+', '-')),
+					 `Hashimoto et al.` = factor(in_h, levels = c(TRUE, FALSE), labels = c('+', '-')))
+	
+```
 
+
+Gene ontology analysis
 ```{r gene_ontology}
 
 multiples.go = goana(multiples.df$ENTREZID)

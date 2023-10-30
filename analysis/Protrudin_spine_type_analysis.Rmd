@@ -140,7 +140,7 @@ DIV15_count = ggplot(spine_counts[spine_counts$age == 'DIV15',], aes(x = cond, y
   geom_dotplot(aes(fill = cond, colour = cond), binaxis = "y", stackdir = "center", position = "dodge", binwidth = 1, dotsize = 0.5) + 
   geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
   stat_compare_means(label.x = 2) + stat_pvalue_manual(DIV15.counts.dunn, label = 'p.adj.rounded', hide.ns = T, position = position_nudge(y = -1)) + 
-  labs(x = '', y = 'Number of spines in 20μm section', title = 'DIV15') +
+  labs(x = '', y = 'Number of spines in 20 μm section', title = 'DIV15') +
   ylim(-1, 30) + 
   d_format + report_theme
 
@@ -152,7 +152,7 @@ ggplot(spine_counts[spine_counts$age == 'DIV15',], aes(x = cond, y = total, grou
   geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + 
   geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
   stat_compare_means(label = 'p.signif', ref.group = 'WT', hide.ns = F) + 
-  labs(x = 'Condition', y = 'Number of spines in 20μm section', title = 'Dendritic spines at DIV15') +
+  labs(x = 'Condition', y = 'Number of spines in 20 μm section', title = 'Dendritic spines at DIV15') +
   d_format + report_theme
 ```
 
@@ -165,7 +165,7 @@ ggplot(spine_counts.melt[spine_counts.melt$age == 'DIV15',], aes(x = cond, y = v
   geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
   facet_wrap(~spine_type) + 
   stat_compare_means(label = 'p.signif', ref.group = 'Control') + 
-  labs(x = 'Condition', y = 'Number of spines in 20μm section', title = 'Dendritic spines at DIV15 by type') +
+  labs(x = 'Condition', y = 'Number of spines in 20 μm section', title = 'Dendritic spines at DIV15 by type') +
   d_format + report_theme
 
 ```
@@ -184,7 +184,7 @@ DIV15_type_norm = ggplot(spine_counts.normalised.melt[spine_counts.normalised.me
   facet_wrap(~spine_type) + 
   scale_y_continuous(limits = c(-0.05, 1.4), breaks = c(0.0, 0.5, 1.0)) + 
   stat_compare_means(label.x = 1.5, label.y = 1.35) + stat_pvalue_manual(DIV15.dunn, hide.ns = TRUE, label = 'p.adj.rounded', position = position_nudge(y = -0.15)) + 
-  labs(x = '', y = 'Number of spines/total spines in 20μm section', title = 'DIV15') +
+  labs(x = '', y = 'Number of spines/total spines in 20 μm section', title = 'DIV15') +
   d_format + report_theme
 
 DIV15_type_norm
@@ -218,7 +218,7 @@ DIV21_count = ggplot(spine_counts[spine_counts$age == 'DIV21',], aes(x = cond, y
   geom_dotplot(aes(fill = cond, colour = cond), binaxis = "y", stackdir = "center", position = "dodge", binwidth = 1, dotsize = 0.5) + 
   geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
   stat_compare_means(label.x = 2) + stat_pvalue_manual(DIV21.counts.dunn, label = 'p.adj.rounded', hide.ns = T) + 
-  labs(x = '', y = 'Number of spines in 20μm section', title = 'DIV21') +
+  labs(x = '', y = 'Number of spines in 20 μm section', title = 'DIV21') +
   ylim(-1, 30) + 
   d_format + report_theme
 
@@ -230,7 +230,7 @@ ggplot(spine_counts[spine_counts$age == 'DIV21',], aes(x = cond, y = total, grou
   geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + 
   geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
   stat_compare_means(label = 'p.signif', ref.group = 'WT', hide.ns = F) + 
-  labs(x = 'Condition', y = 'Number of spines in 20μm section', title = 'Dendritic spines at DIV21') +
+  labs(x = 'Condition', y = 'Number of spines in 20 μm section', title = 'Dendritic spines at DIV21') +
   d_format + report_theme
 ```
 
@@ -241,7 +241,7 @@ ggplot(spine_counts.melt[spine_counts.melt$age == 'DIV21',], aes(x = cond, y = v
   geom_dotplot(binaxis = "y", stackdir = "center", position = "dodge", dotsize = 0.7) + geom_boxplot(fill = NA, colour = 'black', outlier.colour = NA) + 
   facet_wrap(~spine_type) + 
   stat_compare_means(label = 'p.signif', ref.group = 'Control') + 
-  labs(x = 'Condition', y = 'Number of spines in 20μm section', title = 'Dendritic spines at DIV21 by type') +
+  labs(x = 'Condition', y = 'Number of spines in 20 μm section', title = 'Dendritic spines at DIV21 by type') +
   d_format + report_theme
 
 ```
@@ -262,7 +262,7 @@ DIV21_type_norm = ggplot(spine_counts.normalised.melt[spine_counts.normalised.me
   facet_wrap(~spine_type) + 
   scale_y_continuous(limits = c(-0.05, 1.4), breaks = c(0.0, 0.5, 1.0)) + 
   stat_compare_means(label.x = 1.5, label.y = 1.35) +  stat_pvalue_manual(DIV21.dunn, label = 'p.adj.rounded', hide.ns = T) + 
-  labs(x = '', y = 'Number of spines/total spines in 20μm section', title = 'DIV21') +
+  labs(x = '', y = 'Number of spines/total spines in 20 μm section', title = 'DIV21') +
   d_format + report_theme
 
 DIV21_type_norm

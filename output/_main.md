@@ -141,7 +141,7 @@ output:
 |HSP                |hereditary spastic paraplegia                                             |
 |JIP3/4             |JNK-interacting proteins 3/4                                              |
 |KIF5               |kinesin family member 5                                                   |
-|KLF                |Krüppel-like factor                                                       |
+|KLF                |Kr<fc>ppel-like factor                                                    |
 |LAMP1              |lysosomal associated membrane protein 1                                   |
 |LC3                |microtubule-associated protein 1A/1B light chain 3                        |
 |LRRK2              |leucine rich repeat kinase 2                                              |
@@ -181,7 +181,7 @@ output:
 |TANGO1             |transport and Golgi organization protein 1 homolog; MIA3                  |
 |TET1               |ten-eleven translocation 1 gene protein                                   |
 |TIMP1              |TIMP metallopeptidase inhibitor 1                                         |
-|TRPM8              |transient receptor potential cation channel subfamily M member 8          |
+|TRPM8              |transient receptor potential cation channel subfamily M member 8<a0>      |
 |USO1               |USO1 vesicle docking protein homolog; p115                                |
 |VAPA/B             |VAMP associated proteins A/B                                              |
 |WT                 |wild type                                                                 |
@@ -222,7 +222,7 @@ The deterioration of vision in glaucoma is associated with both the loss of axon
 
 In 1980, Peter Richardson and colleagues at McGill showed that axons in a severed rat spinal cord could regenerate into an implanted sciatic nerve graft, thus demonstrating that CNS neurons were at least somewhat capable of regeneration, but were inhibited by their environment [@richardsonAxonsCNSNeurones1980].  Since then, researchers have identified a variety of environmental factors that limit CNS axon growth, ranging from differences in the cellular composition of PNS and CNS tissues, to changes in the extracellular environment and cell surface receptors that occur as an organism ages.
 
-However, therapies targeting the inhibitory extracellular environment of the CNS have had limited success.  It is now widely accepted that targeting inhibitory molecules in the extracellular matrix — most commonly chondroitin sulphate proteoglycans, which can be broken down by an enzyme known as chondroitinase ABC, although new approaches are now being tested — can permit short-range regeneration and enhance neuronal plasticity.  These treatments have led to moderate restoration of function in some models of spinal cord injury, often through the reorganisation of local neuronal networks following an incomplete injury.  However, robust long-range axonal regeneration — past the site of injury and back to their original downstream targets — remains elusive [@irvine4methylumbelliferoneEnhancesNeuroplasticity2023;&nbsp;reviewed in [@kwokExtracellularMatrixPerineuronal2011; @muirRecentAdvancesTherapeutic2019].
+However, therapies targeting the inhibitory extracellular environment of the CNS have had limited success.  It is now widely accepted that targeting inhibitory molecules in the extracellular matrix — most commonly chondroitin sulphate proteoglycans, which can be broken down by an enzyme known as chondroitinase ABC, although new approaches are now being tested — can permit short-range regeneration and enhance neuronal plasticity.  These treatments have led to moderate restoration of function in some models of spinal cord injury, often through the reorganisation of local neuronal networks following an incomplete injury.  However, robust long-range axonal regeneration — past the site of injury and back to their original downstream targets — remains elusive [@irvine4methylumbelliferoneEnhancesNeuroplasticity2023;&nbsp;reviewed in @kwokExtracellularMatrixPerineuronal2011; @muirRecentAdvancesTherapeutic2019].
 
 In addition to extrinsic factors, developmental changes *within* neurons also present a barrier to CNS regeneration.  As the cells mature from a growth-permissive state into synaptically active neurons, they undergo structural and functional changes that correlate with the loss of regenerative ability [@kosekiSelectiveRab11Transport2017].  Additionally, many neurodegenerative diseases are associated with genetic or molecular dysfunction within neurons, as opposed to the extracellular environment, highlighting the importance of internal factors in maintaining healthy, functional axons.  Understanding and addressing these intrinsic sources of dysfunction and barriers to regeneration is essential to developing successful therapies to protect and repair CNS axons.
 
@@ -266,7 +266,7 @@ After synapse formation, axons undergo dramatic changes in transport, as growth 
 
 #### Recycling endosomes
 
-Among the organelles excluded from mature axons are recycling endosomes, which are marked with a small GTPase called Rab11.  Rab11 endosomes play a key role in recycling internalised receptors back to the plasma membrane, but they also play a role in transporting cargo into axons [@kosekiSelectiveRab11Transport2017].  One such cargo is integrins, which are essential for focal adhesion formation and involved with both developmental and regenerative axonal growth.  In DRG neurons in the PNS, integrin $\alpha9$ can promote axon regeneration even into the inhibitory environment of the spinal cord [@cheahExpressionActivatedIntegrin2016].  However, integrins are excluded from mature CNS axons by another recycling endosome small GTPase called ARF6, in combination with its activator EFA6.  Inhibiting EFA6 allows integrins into the axon and promotes regeneration after axotomy *in vitro*, but it remains to be seen whether this approach is effective *in vivo* [@evaEFA6RegulatesSelective2017].
+Among the organelles excluded from mature axons are recycling endosomes, which are marked with a small GTPase called Rab11.  Rab11 endosomes play a key role in recycling internalised receptors back to the plasma membrane, but they also play a role in transporting cargo into axons [@kosekiSelectiveRab11Transport2017].  One such cargo is integrins, which are essential for focal adhesion formation and involved with both developmental and regenerative axonal growth.  In DRG neurons in the PNS, integrin \textalpha{}9 can promote axon regeneration even into the inhibitory environment of the spinal cord [@cheahExpressionActivatedIntegrin2016].  However, integrins are excluded from mature CNS axons by another recycling endosome small GTPase called ARF6, in combination with its activator EFA6.  Inhibiting EFA6 allows integrins into the axon and promotes regeneration after axotomy *in vitro*, but it remains to be seen whether this approach is effective *in vivo* [@evaEFA6RegulatesSelective2017].
 
 #### Mitochondria
 
@@ -298,7 +298,7 @@ Protrudin, otherwise known as ZFYVE27, is so named because its overexpression in
 
 Protrudin contains a kinesin binding site, indicating a role in mediating motor protein-mediated transport.  In particular, this would promote plus-end directed transport, which is essential for delivering cargo into the long axons of CNS neurons.  Matsuzaki et al. studied this in some depth, and found that protrudin's outgrowth-promoting effect in HeLa cells is attenuated if KIF5 is inhibited, and increased if KIF5 is also overexpressed [@matsuzakiProtrudinServesAdaptor2011].  They found evidence for direct protrudin-KIF5 interaction in mouse brains, and identified protrudin as the KIF5 adaptor for SURF4, Rab11, VAPA/B, and RTN3.  As these proteins are essential for ER function, contact site formation, protein transport, and a number of other processes, this suggests that, even at the low levels found endogenously in CNS neurons [@kosekiSelectiveRab11Transport2017; @petrovaProtrudinFunctionsEndoplasmic2020], protrudin might play an important role in normal axonal function.
 
-The study by Petrova et al. [@petrovaProtrudinFunctionsEndoplasmic2020], which I contributed to during the first year of my PhD, looked at protrudin specifically in the context of integrin transport.  In particular, integrins $\alpha9$ and $\beta1$, which are capable of promoting axon growth in the mature spinal cord [@cheahExpressionActivatedIntegrin2016], are cargo of Rab11 endosomes [@evaRab11ItsEffector2010].  We found that protrudin overexpression had a small effect on developmental neurite outgrowth, but strongly promoted axon regrowth after axotomy *in vitro*.  In addition, protrudin prevented retinal ganglion cell death after an axon crush injury *in vivo*, and allowed axons to regrow past the injury site.  I discuss this result further in Chapter 1, section \@ref(protrudin-ONC).
+The study by Petrova et al. [@petrovaProtrudinFunctionsEndoplasmic2020], which I contributed to during the first year of my PhD, looked at protrudin specifically in the context of integrin transport.  In particular, integrins \textalpha{}9 and \textbeta{}1, which are capable of promoting axon growth in the mature spinal cord [@cheahExpressionActivatedIntegrin2016], are cargo of Rab11 endosomes [@evaRab11ItsEffector2010].  We found that protrudin overexpression had a small effect on developmental neurite outgrowth, but strongly promoted axon regrowth after axotomy *in vitro*.  In addition, protrudin prevented retinal ganglion cell death after an axon crush injury *in vivo*, and allowed axons to regrow past the injury site.  I discuss this result further in Chapter 1, section \@ref(protrudin-ONC).
 
 In contrast to our work on Rab11 and recycling endosomes, Raiborg et al. looked at protrudin's effect on the transport of late endosomes, marked by the small GTPase Rab7.  Using PC12 cells, which are derived from a neuroendocrine tumour,  they found that protrudin *indirectly* promoted late endosome transport, forming transient ER-late endosome contacts at which a separate adaptor, FYCO1 (ZFYVE7), was able to bind Rab7 and KIF5 to move late endosomes down the axon [@raiborgRepeatedEREndosome2015].
 
@@ -310,7 +310,7 @@ Other studies have indicated a direct role for protrudin at ER-organelle membran
 
 The axonal ER is typically comprised of only a few very narrow tubules, but is essential for normal axonal function [@terasakiAxonalEndoplasmicReticulum2018].  As protrudin localises to tubular ER, it can be found in the axon, although in mature neurons it is more abundant in the cell body and dendrites.  That being said, it does not appear to be actively excluded from the axon, and it readily moves into the axon when overexpressed [@petrovaProtrudinFunctionsEndoplasmic2020].  Protrudin is known to interact with a number of important axonal ER components, although it remains unclear what endogenous function protrudin has in this compartment.  
 
-Protrudin contains a membrane hairpin domain, which is shared with other proteins that play a role in ER membrane shaping [@changProtrudinBindsAtlastins2013].  Several of these are implicated in hereditary spastic paraplegias (HSP), a group of axon degenerative diseases, which may stem from fragmentation of the axonal ER [@yalcinModelingAxonalEndoplasmic2017].  Protrudin itself has been considered an HSP gene [@mannanZFYVE27SPG33Novel2006], although there is some controversy in this area, and the 'mutation' involved may actually be a benign polymorphism [@martignoniRoleZFYVE27Protrudin2008].  However, protrudin does interact with spastin, atlastin, and other HSP proteins, so it may still play a role in these conditions[@changProtrudinBindsAtlastins2013].  
+Protrudin contains a membrane hairpin domain, which is shared with other proteins that play a role in ER membrane shaping [@changProtrudinBindsAtlastins2013].  Several of these are implicated in hereditary spastic paraplegias (HSP), a group of axon degenerative diseases, which may stem from fragmentation of the axonal ER [@yalcinModelingAxonalEndoplasmic2017].  Protrudin itself has been considered an HSP gene [@mannanZFYVE27SPG33Novel2006], although there is some controversy in this area, and the 'mutation' involved may actually be a benign polymorphism [@martignoniRoleZFYVE27Protrudin2008].  However, protrudin does interact with spastin, atlastin, and other HSP proteins, so it may still play a role in these conditions [@changProtrudinBindsAtlastins2013].  
 
 While dysfunction of these ER-shaping proteins can lead to axonal degeneration, their function is also required for axon regeneration, where they appear to concentrate ER tubules near the growing tip [@raoSpastinAtlastinER2016].  Protrudin may act in the same way, as Petrova et al. found that protrudin increases the amount of ER in growth cones [@petrovaProtrudinFunctionsEndoplasmic2020].  However, while these studies demonstrate that the axonal ER is involved in axon regeneration, it is not currently clear what functions it provides in this context.
 
@@ -377,27 +377,27 @@ Table: (\#tab:plasmid-table)Plasmids used in this thesis.
 |CBh          |SKIP                                               |mNeonGreen    |
 |hSYN         |St3Gal5                                            |EGFP          |
 
-The hSYN-LAMP1-mRFP1 plasmid was cloned for this project (see section \@ref(cloning)).  The original LAMP1-mRFP1 plasmid *(#1817)*, along with LAMP1-mNeonGreen *(98882)*,  ESCargo(FTV) *(#140162)* and LC3b *(#21075)*, were acquired from Addgene, with thanks to Walther Mothes [@@sherer2003], Dorus Gadella [@chertkova2020], Benjamin Glick [@@caslerESC2020], and Tamotsu Yoshimori [@kimura2007], respectively.  The FYCO1 plasmid was a gift from Terje Johansen [@pankivFYCO12010].  St3Gal5 plasmid was a gift from Marina Mikhaylova [@mikhaylovaGS2016].  SKIP-EGFP, myrlysin-myc, and Arl8b plasmids were a gift from Juan Bonifacino.  All shRNA constructs were purchased from Origene *(TG712969, TR30013)*.
+The hSYN-LAMP1-mRFP1 plasmid was cloned for this project (see section \@ref(cloning)).  The original LAMP1-mRFP1 plasmid *(#1817)*, along with LAMP1-mNeonGreen *(#98882)*,  ESCargo(FTV) *(#140162)* and LC3b *(#21075)*, were acquired from Addgene, with thanks to Walther Mothes [@sherer2003], Dorus Gadella [@chertkova2020], Benjamin Glick [@caslerESC2020], and Tamotsu Yoshimori [@kimura2007], respectively.  The FYCO1 plasmid was a gift from Terje Johansen [@pankivFYCO12010].  St3Gal5 plasmid was a gift from Marina Mikhaylova [@mikhaylovaGS2016].  SKIP-EGFP, myrlysin-myc, and Arl8b plasmids were a gift from Juan Bonifacino.  All shRNA constructs were purchased from Origene *(TG712969, TR30013)*.
 
 
 
 Table: (\#tab:primary-table)Primary antibodies used in this thesis.
 
-|Target        |Source                          |Dilution    |
-|:-------------|:-------------------------------|:-----------|
-|BCAP31        |*Novus Biologicals, NBP2-75416* |1:100       |
-|SURF4         |*Proteintech, 11599-1-AP*       |1:250–1:500 |
-|MIA3 (TANGO1) |*Sigma-Aldrich, HPA055922-25UL* |1:100       |
-|SEC31A        |*BD Biosciences, 612351*        |1:100       |
-|ERGIC53       |*Sigma-Aldrich, E1031-200UL*    |1:100       |
-|GS28          |*Proteintech, 16106-1-AP*       |1:100       |
-|GLG1          |*Novis Biologicals, NBP1-90636* |1:150       |
-|USO1 (p115)   |*Proteintech, 13509-1-AP*       |1:1000      |
-|LAMP1         |*Abcam, ab24170*                |1:100       |
-|mTOR          |*Thermo Fisher, A300-503A-M*    |1:50        |
-|ACSL3         |*Proteintech, 20710-1-AP*       |1:50        |
-|SLC38A1       |*Abcam, ab134268*               |1:100       |
-|LC3           |*Proteintech, 14600-1-AP*       |1:250       |
+|Target        |Source                          |Dilution     |
+|:-------------|:-------------------------------|:------------|
+|BCAP31        |*Novus Biologicals, NBP2-75416* |1:100        |
+|SURF4         |*Proteintech, 11599-1-AP*       |1:250--1:500 |
+|MIA3 (TANGO1) |*Sigma-Aldrich, HPA055922-25UL* |1:100        |
+|SEC31A        |*BD Biosciences, 612351*        |1:100        |
+|ERGIC53       |*Sigma-Aldrich, E1031-200UL*    |1:100        |
+|GS28          |*Proteintech, 16106-1-AP*       |1:100        |
+|GLG1          |*Novis Biologicals, NBP1-90636* |1:150        |
+|USO1 (p115)   |*Proteintech, 13509-1-AP*       |1:1000       |
+|LAMP1         |*Abcam, ab24170*                |1:100        |
+|mTOR          |*Thermo Fisher, A300-503A-M*    |1:50         |
+|ACSL3         |*Proteintech, 20710-1-AP*       |1:50         |
+|SLC38A1       |*Abcam, ab134268*               |1:100        |
+|LC3           |*Proteintech, 14600-1-AP*       |1:250        |
 
 Table: (\#tab:secondary-table)Secondary antibodies and dye conjugates used in this thesis.
 
@@ -418,11 +418,11 @@ Custom R scripts and ImageJ macros were written for individual analysis tasks, a
 
 ### Plasmid preparation{#plasmid-prep}
 
-All plasmid preparation was carried out using either DH5$\alpha$ *(New England BioLabs, C2987I/H)* or XL10-Gold *(Agilent Technologies, 200314)* competent cells.  Cells were transformed using a heat shock protocol, and grown on LB/agar plates with an appropriate antibody for plasmid selection.  Single colonies were then scaled up in LB culture.  Plasmids were purified from *E. coli* cultures using Qiagen Spin Miniprep *(27104)* or EndoFree Plasmid Maxi kits *(12362)* according to the manufacturer's protocols.  All plasmids were dissolved in ultrapure DNAse-free water *(Thermo Fisher, 10977035)* for transfection.
+All plasmid preparation was carried out using either DH5\textalpha{} *(New England BioLabs, C2987I/H)* or XL10-Gold *(Agilent Technologies, 200314)* competent cells.  Cells were transformed using a heat shock protocol, and grown on LB/agar plates with an appropriate antibiotic for plasmid selection.  Single colonies were then scaled up in LB culture.  Plasmids were purified from *E. coli* cultures using Qiagen Spin Miniprep *(27104)* or EndoFree Plasmid Maxi kits *(12362)* according to the manufacturer's protocols.  All plasmids were dissolved in ultrapure DNAse-free water *(Thermo Fisher, 10977035)* for transfection.
 
 ### Cortical neuron cultures
 
-Primary cortical neurons were obtained from embryonic day 18 Sprague Dawley rats. Cortices were dissected in HEPES-HBSS and dissociated with papain for approximately 5 minutes at 37°C, followed by DNAse treatment and trituration through a flame-polished glass pipette. Cells were filtered through a 40$\mu$m cell strainer *(Falcon, 352340)* and plated at a density of 200k-400k cells per imaging plate *(Greiner Bio-One, 627860)* or 50-100k cells per acid-washed glass coverslip. (Plates and coverslips were coated with 50$\mu$g/mL poly-D-lysine *(Sigma-Aldrich, P1149)* in borate buffer.)  Cells were grown in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)*, supplemented with NeuroBrew-21 *(Miltenyi Biotec, 130-093-566)*, GlutaMAX *(Thermo Fisher, 35050061)*, and ITS *(R&D Systems, AR013)* at 37°C with 7% CO~2~. 
+Primary cortical neurons were obtained from embryonic day 18 Sprague Dawley rats. Cortices were dissected in HEPES-HBSS and dissociated with papain for approximately 5 minutes at 37°C, followed by DNAse treatment and trituration through a flame-polished glass pipette. Cells were filtered through a 40\textmu{}m cell strainer *(Falcon, 352340)* and plated at a density of 200k-400k cells per imaging plate *(Greiner Bio-One, 627860)* or 50-100k cells per acid-washed glass coverslip (13mm diameter). (Plates and coverslips were coated with 50\textmu{}g/mL poly-D-lysine *(Sigma-Aldrich, P1149)* in borate buffer.)  Cells were grown in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)*, supplemented with NeuroBrew-21 *(Miltenyi Biotec, 130-093-566)*, GlutaMAX *(Thermo Fisher, 35050061)*, and ITS *(R&D Systems, AR013)* at 37°C with 7% CO~2~. 
 
 ### Transfection
 
@@ -430,7 +430,7 @@ Cortical neurons were transfected at DIV10 by either magnetofection or calcium p
 
 Magnetofection was carried out using NeuroMag Transfection Reagent *(OZ Biosciences, NM51000)*. Briefly, plasmid DNA was incubated at room temperature with the NeuroMag Transfection Reagent in MACS Neuro Medium *(Miltenyi Biotec, 130-093-570)* for 30 minutes. Growth media was removed from the cells and replaced with warmed MACS Neuro Medium and the DNA-complexed NeuroMag Transfection Reagent. The cells were placed on a magnetic plate *(OZ Biosciences, MF10000)* in an incubator (37°C 7% CO~2~) for 30 minutes. The transfection mix was then removed from the cells and the growth media reapplied.
 
-Calcium phosphate transfection was carried out using a protocol adapted from Jiang and Chen [@jiangHighCaPhosphate2006].  A solution of DNA and calcium phosphate was prepared, and added dropwise to HEPES-buffered saline *(Sigma-Aldrich, 51558)* while vortexing to precipitate the DNA-calcium phosphate complex.  This was then added to the cells in supplement-free media, and incubated at 37°C 7% CO~2~ for one hour.  Cells were then washed with media pre-equilibrated in 10% CO~2~ to remove residual precipitate, and the original growth media reapplied.
+Calcium phosphate transfection was carried out using a protocol adapted from Jiang and Chen [@jiangHighCaPhosphate2006].  A solution of DNA and calcium chloride was prepared, and added dropwise to HEPES-buffered saline *(Sigma-Aldrich, 51558)* while vortexing to precipitate the DNA-calcium phosphate complex.  This was then added to the cells in supplement-free media, and incubated at 37°C 7% CO~2~ for one hour.  Cells were then washed with media pre-equilibrated in 10% CO~2~ to remove residual precipitate, and the original growth media reapplied.
 
 ### Immunocytochemistry{#immuno}
 
@@ -442,7 +442,7 @@ Secondary-only controls were carried out for each combination of cell type and s
 
 ### Microscopy
 
-Live imaging of axonal transport was carried out with spinning disc confocal microscopy, using an Olympus IX70 microscope and a PerkinElmer UltraVIEW scanner controlled with MetaMorph software.  The microscope was enclosed and maintained at 37°C with supplemental CO~2~ during imaging.  For kymographs, the axons of DIV14-16 neurons were imaged for approximately three minutes at least ~500$\mu$m from the cell body.  
+Live imaging of axonal transport was carried out with spinning disc confocal microscopy, using an Olympus IX70 microscope and a PerkinElmer UltraVIEW scanner controlled with MetaMorph software.  The microscope was enclosed and maintained at 37°C with supplemental CO~2~ during imaging.  For kymographs, the axons of DIV14-16 neurons were imaged for approximately three minutes at least ~500\textmu{}m from the cell body.  
 
 High resolution images of fixed cells were obtained with a Leica DMI4000B confocal or Leica DMI6000B epifluorescent microscope, running LAS-AF software.  Confocal images were obtained as Z-stacks with frame averaging.  All files were exported as TIFs before further analysis.  
 
@@ -457,7 +457,7 @@ All manual image analysis tasks were conducted blind, with the exception of figu
 Kymographs were generated from Metamorph stack files using the Fiji Multi Kymograph plugin.  In cases where moving puncta were especially faint (most notably Rab7), stacks were pre-processed with the Bleach Correction plugin, using the histogram matching method.  Snapshots of the axon marker channel (typically either EGFP or mCherry-tagged protrudin) were traced to generate axon ROIs, which were then used to generate the kymographs.  Line width for the Multi Kymograph plugin was set to 5 pixels.  Generated kymographs were further refined as needed through rolling ball background subtraction and contrast adjustment.
 
 We tested KymoButler [@jakobsKymoButlerDeepLearning2019] for automated kymograph analysis, but found that it did not consistently pick up the small, fast-moving particles common in our lysosome and late endosome data.  As a result, kymographs were manually traced in Fiji using the segmented line tool, with a custom macro to export the data in CSV format for analysis in R.  For the purposes of classification, anterograde and retrograde were defined as continuous movements of at
-least 5μm away from or towards the cell body, respectively.  
+least 5\textmu{}m away from or towards the cell body, respectively.  
 
 ### Statistical analysis
 
@@ -519,7 +519,7 @@ The BORC/Arl8b/SKIP interaction is one of the best-characterised mechanisms invo
 
 #### Calcyon and other adaptor proteins
 
-While the BORC complex is involved in kinesin-mediated transport, several other adaptor proteins facilitate minus-end directed transport through binding to dyneins.  These include calcyon (which binds to late endosomes and lysosomes) [@shiDyneinBindsStimulates2017; @shiCouplingMicrotubuleMotors2018], RILP (which is a specific adaptor for Rab)[@bucciExpressionAnalysisChromosomal2001], ALG2 (which binds lysosomes in a calcium-dependent manner) [@liMolecularMechanismRegulate2016], and JIP3 and JIP4, which are involved in amino-acid induced lysosomal transport through TMEM55B [@willettTFEBRegulatesLysosomal2017; @gowrishankarOverlappingRolesJIP32021].  The diversity of effector proteins involved in this process likely reflects the importance of lysosome positioning on the function of diverse tissues and cell types.
+While the BORC complex is involved in kinesin-mediated transport, several other adaptor proteins facilitate minus-end directed transport through binding to dyneins.  These include calcyon (which binds to late endosomes and lysosomes) [@shiDyneinBindsStimulates2017; @shiCouplingMicrotubuleMotors2018], RILP (which is a specific adaptor for Rab7)[@bucciExpressionAnalysisChromosomal2001], ALG2 (which binds lysosomes in a calcium-dependent manner) [@liMolecularMechanismRegulate2016], and JIP3 and JIP4, which are involved in amino-acid induced lysosomal transport through TMEM55B [@willettTFEBRegulatesLysosomal2017; @gowrishankarOverlappingRolesJIP32021].  The diversity of effector proteins involved in this process likely reflects the importance of lysosome positioning on the function of diverse tissues and cell types.
 
 #### Protrudin
 
@@ -551,7 +551,7 @@ insert reverse & ATCTGACGGTTCACTAAACCTCGACTGCGCTCTCAGGC\\
 \end{tabular}}
 \end{table}
 
-Fragments for cloning were produced by PCR, separated on a 1% agarose TBE gel, and purified using the Wizard SV Gel and PCR Clean-Up System kit *(Promega, A9282)*. 20$\mu$L assembly reactions were set up with Gibson master mix *(New England Biolabs, E2611S)* and an appropriate ratio of insert and vector DNA (2:1 or higher) and incubated at 50°C for 1.5 hours. Assembled constructs were scaled up, and successful cloning confirmed with restriction digest and DNA sequencing.
+Fragments for cloning were produced by PCR, separated on a 1% agarose TBE gel, and purified using the Wizard SV Gel and PCR Clean-Up System kit *(Promega, A9282)*. 20\textmu{}L assembly reactions were set up with Gibson master mix *(New England Biolabs, E2611S)* and an appropriate ratio of insert and vector DNA (2:1 or higher) and incubated at 50°C for 1.5 hours. Assembled constructs were scaled up, and successful cloning confirmed with restriction digest and DNA sequencing.
 
 ### Calcyon shRNA silencing
 
@@ -609,7 +609,7 @@ The optic nerve crush model is a powerful tool for examining CNS survival and re
 For this experiment, mice received intravitreal injections of AAV2 viruses containing either EGFP only, WT protrudin, or active protrudin under a CAG promoter, followed two weeks later by a unilateral optic nerve crush.  Two weeks post-crush, the mice were perfused, and eyes and optic nerves were collected.  RBPMS staining of retinal flat mounts showed a significant increase in RGC survival with expression of the active protrudin construct, as measured by comparing the number of RBPMS positive cells between the crush and uninjured eyes (Figure \@ref(fig:ONC-figure))[@petrovaProtrudinFunctionsEndoplasmic2020].  
 
 \begin{figure}
-\includegraphics{../figures/full/ONC-figure-1} \caption[RGC neuroprotection experiment from Petrova et al. 2020]{Reproduced with permission from Petrova et al. 2020.  A) Representative images of RBPMS-stained retinal whole mounts.  B) Quantification of surviving RGCs.   Fisher’s exact test with analysis of stack of p values and Bonferroni–Dunn multiple comparison test. Error bars represent mean ± SEM.}(\#fig:ONC-figure)
+\includegraphics{../figures/full/ONC-figure-1} \caption[RGC neuroprotection experiment from Petrova et al. 2020]{Reproduced with permission from Petrova et al. 2020.  A) Representative images of RBPMS-stained retinal whole mounts.  Scale bar is 100\textmu{}m.  B) Quantification of surviving RGCs.   Fisher’s exact test with analysis of stack of p values and Bonferroni–Dunn multiple comparison test. Error bars represent mean ± SEM.}(\#fig:ONC-figure)
 \end{figure}
 
 This effect was further substantiated by mouse retinal explant experiments, which showed that transfection with either WT or active protrudin completely preserved RGC survival over three days *ex vivo*, compared to an EGFP control which lost approximately 55% of RGCs over the same time. [@petrovaProtrudinFunctionsEndoplasmic2020].
@@ -634,10 +634,12 @@ Taken together, these results demonstrate that neither wild type nor active prot
 
 ## Discussion{#no-FYCO}
 
-Somewhat surprisingly, we found that protrudin overexpression had little if any effect on lysosomal and late endosomal transport in cortical neurons.  However, further examination of the literature provides a likely explanation.  The mechanism described in Raiborg et al. — which used PC12 cells as a model system — relies on the protein FYCO1 as an adaptor to link late endosomes to kinesin for anterograde transport [@raiborgRepeatedEREndosome2015].  This protein, also known as ZFYVE7, contains similar Rab7- and PIP-, and kinesin-binding domains to protrudin.  Raiborg et al. reported that protrudin brings late endosomes and kinesin together through Rab7 and PI(3)P binding, but then transfers the kinesin onto Rab7-bound FYCO1 to facilitate transport.   However, transcriptomic data from Koseki et al. suggests that FYCO1 mRNA is almost undetectable in cortical neurons, which could explain why we see no effect on late endosome transport with protrudin overexpression [@kosekiSelectiveRab11Transport2017].  This is consistent with transcriptomic data from other studies that show extremely low FYCO1 in human cortical neurons, expression biased towards non-neuronal cell types in the brain, and low levels in mouse DRG neurons, as illustrated in figure \@ref(fig:FYCO1-RNAseq-full-figure) [@zhangPurificationCharacterizationProgenitor2016; @kelleyVariationIntactTissue2018; @tedeschiCalciumChannelSubunit2016].
+Somewhat surprisingly, we found that protrudin overexpression had little if any effect on lysosomal and late endosomal transport in cortical neurons.  However, further examination of the literature provides a likely explanation.  The mechanism described in Raiborg et al. — which used PC12 cells as a model system — relies on the protein FYCO1 as an adaptor to link late endosomes to kinesin for anterograde transport [@raiborgRepeatedEREndosome2015].  This protein, also known as ZFYVE7, contains similar Rab7-, PIP-, and kinesin-binding domains to protrudin.  Raiborg et al. reported that protrudin brings late endosomes and kinesin together through Rab7 and PI(3)P binding, but then transfers the kinesin onto Rab7-bound FYCO1 to facilitate transport.   However, transcriptomic data from Koseki et al. suggests that FYCO1 mRNA is almost undetectable in cortical neurons, which could explain why we see no effect on late endosome transport with protrudin overexpression [@kosekiSelectiveRab11Transport2017].  This is consistent with transcriptomic data from other studies that show extremely low FYCO1 in human cortical neurons, expression biased towards non-neuronal cell types in the brain, and low levels in mouse DRG neurons, as illustrated in figure \@ref(fig:FYCO1-RNAseq-full-figure) [@zhangPurificationCharacterizationProgenitor2016; @kelleyVariationIntactTissue2018; @tedeschiCalciumChannelSubunit2016].
 
+
+(ref:FYCO-cap) RNA sequencing data from A) Koseki et al. 2017 [@kosekiSelectiveRab11Transport2017], B) Zhang et al. 2016 [@zhangPurificationCharacterizationProgenitor2016], C) Kelley et al. 2018 [@kelleyVariationIntactTissue2018], D) Tian et al. 2019 (via `https://ineuronrnaseq.shinyapps.io/rnaseq_app`) [@tianCRISPRInterferenceBasedPlatform2019], E-G) Tedeschi et al. 2016 [@tedeschiCalciumChannelSubunit2016].
 \begin{figure}
-\includegraphics{../figures/full/FYCO1-RNAseq-full-figure-1} \caption[FYCO1 transcriptome comparisons]{RNA sequencing data from A) Koseki et al. 2017, B) Zhang et al. 2016, C) Kelley et al. 2018, D) Tian et al. 2019 (via $\texttt{https://ineuronrnaseq.shinyapps.io/rnaseq\_app/}$), E-G) Tedeschi et al. 2016.}(\#fig:FYCO1-RNAseq-full-figure)
+\includegraphics{../figures/full/FYCO1-RNAseq-full-figure-1} \caption[FYCO1 transcriptome comparisons]{(ref:FYCO-cap)}(\#fig:FYCO1-RNAseq-full-figure)
 \end{figure}
 
 Of note, Özkan et al. also do not find a link between protrudin and CNS axonal lysosome transport.  They knocked down protrudin in hippocampal neurons, but found no effect on the distribution of LAMP1-labelled lysosomes into the axon  [@ozkanERLysosomeContacts2021].   This supports the idea that protrudin is not involved with late endosome/lysosome transport in neurons, but that other transport mechanisms (e.g. BORC) are predominant in axon transport.
@@ -690,7 +692,7 @@ General cell culture and microscopy methods can be found in section \@ref(METHOD
 
 ### Dendritic spine imaging and analysis
 
-Neurons were co-transfected with mCherry or an mCherry-tagged protrudin construct and EGFP/Emerald.  Cells were imaged as Z-stacks at DIV15, either on the spinning disc at 100x, or confocal at 63x (see \@ref(METHODS) for microscope details).  Image stacks from the green channel were converted to maximum intensity projections, and a custom ImageJ macro was used to select and crop 20$\mu$m sections from a dendrite.  These images were then blinded, and the Cell Counter Fiji plugin was used to count and classify spines.  For spine length, the Fiji segmented line tool was used to measure along each spine.
+Neurons were co-transfected with mCherry or an mCherry-tagged protrudin construct and EGFP/Emerald.  Cells were imaged as Z-stacks at DIV15, either on the spinning disc at 100x, or confocal at 63x (see \@ref(METHODS) for microscope details).  Image stacks from the green channel were converted to maximum intensity projections, and a custom ImageJ macro was used to select and crop 20\textmu{}m sections from a dendrite.  These images were then blinded, and the Cell Counter Fiji plugin was used to count and classify spines.  For spine length, the Fiji segmented line tool was used to measure along each spine.
 
 ### Gene ontology analysis
 
@@ -700,9 +702,9 @@ Lists of protrudin-interacting proteins were obtained from supplementary data pu
 
 HeLa cells were expanded before use and cryopreserved in individual vials to prevent genetic drift between batches.
 
-HeLa cells were grown in DMEM *(Thermo Fisher, 41966-029)*, supplemented with 1% FBS *(Thermo Fisher, 10500064)* and antibiotic-antimycotic *(Thermo Fisher, 15240062)*, at 37°C, 5% CO~2~.  For each batch of cells, a single vial was thawed, passaged, and grown to 60-80% confluence before transfection.  Cells were transfected with EGFP or EGFP-tagged protrudin under a CAG promoter, using TransIT-LT1 reagent *(Mirus Bio, MIR2300)*, according to the manufacturer's protocol.  These were then passaged 24 hours after transfection to reduce overlap between cells and encourage protrusion growth.
+HeLa cells were grown in DMEM *(Thermo Fisher, 41966-029)*, supplemented with 10% FBS *(Thermo Fisher, 10500064)* and antibiotic-antimycotic *(Thermo Fisher, 15240062)*, at 37°C, 5% CO~2~.  For each batch of cells, a single vial was thawed, passaged, and grown to 60-80% confluence before transfection.  Cells were transfected with EGFP or EGFP-tagged protrudin under a CAG promoter, using TransIT-LT1 reagent *(Mirus Bio, MIR2300)*, according to the manufacturer's protocol.  These were then passaged 24 hours after transfection to reduce overlap between cells and encourage protrusion growth.
 
-Cells were fixed with 3% formaldehyde in PBS for 15 minutes at room temperature.  Immunochemistry was carried out according to the protocol in section \@ref(immuno).  Staining with BODIPY TR C~5~ ceramide *(Thermo Fisher, B34400)* was carried out according to the manufacturer's protocol.  Briefly, cells were incubated with 5$\mu$M dye in DMEM for 30 minutes at 4°C.  They were then recovered in supplemented media at 37°C, 5% CO~2~ for 30 minutes before fixing as usual.
+Cells were fixed with 3% formaldehyde in PBS for 15 minutes at room temperature.  Immunochemistry was carried out according to the protocol in section \@ref(immuno).  Staining with BODIPY TR C~5~ ceramide *(Thermo Fisher, B34400)* was carried out according to the manufacturer's protocol.  Briefly, cells were incubated with 5\textmu{}M dye in DMEM for 30 minutes at 4°C.  They were then recovered in supplemented media at 37°C, 5% CO~2~ for 30 minutes before fixing as usual.
 
 ## Results
 
@@ -710,13 +712,13 @@ Cells were fixed with 3% formaldehyde in PBS for 15 minutes at room temperature.
 
 Given protrudin's dendritic localisation and known effects on protrusion formation, we first decided to examine whether protrudin plays a role in regulating dendritic spine morphology.  Dendritic spines show diverse morphology within and between cells, which is generally considered to be reflective of the maturity, functionality, and plasticity of each spine.  While these ultimately fall on a continuous spectrum of shapes, they are conventionally grouped into four morphological classes — mushroom, thin, stubby, and filopodia [@pchitskayaDendriticSpinesShape2020].  We decided to use these classes to obtain an overview of spine morphology on cells expressing protrudin.  
 
-We counted and manually classified dendritic spines on 20$\mu$m sections of dendrite from DIV15 or DIV21 neurons co-expressing an EGFP/Emerald filler with an mCherry-labelled protrudin construct (figure \@ref(fig:spine-type-full-figure)).  These included WT and active protrudin, as well as a set of domain-deletion mutants to act as dominant negatives.  $\Delta$FFAT, $\Delta$RBD, and $\Delta$FYVE each have a single binding motif deleted, $\Delta$KIF5 has both the CC and FFAT domains deleted, to completely block binding to kinesin, and $\Delta$ER mutant ($\Delta$TM1-3) has all transmembrane domains deleted [@petrovaProtrudinFunctionsEndoplasmic2020].  The DIV15 data suggests that WT protrudin might be associated with fewer, stubbier spines, although the significant comparisons varied for each spine classification, and is inconsistent with the DIV21 data.
+We counted and manually classified dendritic spines on 20\textmu{}m sections of dendrite from DIV15 or DIV21 neurons co-expressing an EGFP/Emerald filler with an mCherry-labelled protrudin construct (figure \@ref(fig:spine-type-full-figure)).  These included WT and active protrudin, as well as a set of domain-deletion mutants to act as dominant negatives.  \textDelta{}FFAT, \textDelta{}RBD, and \textDelta{}FYVE each have a single binding motif deleted, \textDelta{}KIF5 has both the CC and FFAT domains deleted, to completely block binding to kinesin, and \textDelta{}ER mutant (\textDelta{}TM1-3) has all transmembrane domains deleted [@petrovaProtrudinFunctionsEndoplasmic2020].  The DIV15 data suggests that WT protrudin might be associated with fewer, stubbier spines, although the significant comparisons varied for each spine classification, and is inconsistent with the DIV21 data.
 
 ```{=latex}
 \newgeometry{a4paper, top=40mm, left=35mm, right=35mm, bottom = 30mm} %unnecessary as long as 1.5in margins overall
 ```
 \begin{figure}
-\includegraphics{../figures/full/spine-type-full-figure-1} \caption[Protrudin effect on dendritic spine morphology]{A) Schematic showing selection of dendrite sections for analysis and basic spine morphology groups.  One dendrite section was analysed per cell.  Scale bar is 10$\mu$m.  B-C) Total spine counts in 20$\mu$m section for DIV15 and DIV21 groups.  D-E) Quantification of each spine type, normalised to the total number of spines in the section measured.  DIV15: n = 30 cells per condition across three independent batches; DIV21: n = 10 cells per condition in one batch.}(\#fig:spine-type-full-figure)
+\includegraphics{../figures/full/spine-type-full-figure-1} \caption[Protrudin effect on dendritic spine morphology]{A) Schematic showing selection of dendrite sections for analysis and basic spine morphology groups.  One dendrite section was analysed per cell.  Scale bar is 10\textmu{}m.  B-C) Total spine counts in 20\textmu{}m section for DIV15 and DIV21 groups.  D-E) Quantification of each spine type, normalised to the total number of spines in the section measured.  DIV15: n = 30 cells per condition across three independent batches; DIV21: n = 10 cells per condition in one batch.}(\#fig:spine-type-full-figure)
 \end{figure}
 ```{=latex}
 \restoregeometry
@@ -726,7 +728,7 @@ We counted and manually classified dendritic spines on 20$\mu$m sections of dend
 As manual spine classification is an inherently subjective measure, and did not show any clear associations, we decided to look instead at spine length, which can be measured more objectively.  We re-analysed the initial DIV15 data, measuring the length of each spine from the edge of the dendrite.  This did yield some significant comparisons, both in spine number and length, so we followed this up with a full replication, which we analysed in the same way (figure \@ref(fig:spine-length-full-figure)).  While the replication also produced statistically significant results, they were wholly inconsistent between the two experiments.    
 
 \begin{figure}
-\includegraphics{../figures/full/spine-length-full-figure-1} \caption[Protrudin effect on dendritic spine length]{A-B) Number of dendritic spines counted per 20$\mu$m section in cells co-expressing EGFP/Emerald with an mCherry-tagged protrudin construct.  Replicate 1: n = 30 cells per condition across three independent batches, except $\Delta$RBD n = 29, $\Delta$KIF5 n = 20, $\Delta$FYVE n = 19 across two batches.  Replicate 2: n = 40 cells per condition, except WT and $\Delta$ER n = 39, across three independent batches. C-D) Length of each spine measured, in $\mu$m.}(\#fig:spine-length-full-figure)
+\includegraphics{../figures/full/spine-length-full-figure-1} \caption[Protrudin effect on dendritic spine length]{A-B) Number of dendritic spines counted per 20\textmu{}m section in cells co-expressing EGFP/Emerald with an mCherry-tagged protrudin construct.  Replicate 1: n = 30 cells per condition across three independent batches, except \textDelta{}RBD n = 29, \textDelta{}KIF5 n = 20, \textDelta{}FYVE n = 19 across two batches.  Replicate 2: n = 40 cells per condition, except WT and \textDelta{}ER n = 39, across three independent batches. C-D) Length of each spine measured, in \textmu{}m.}(\#fig:spine-length-full-figure)
 \end{figure}
 
 Taken together, these results show that protrudin overexpression does not substantially impact dendritic spine number, length, or morphology.  These measurements were highly variable between cells and between replicates, and did not show any consistent patterns that would suggest that protrudin plays any role in controlling spine outgrowth.  This obviously cannot rule out changes in spine function, but in any case such changes do not seem to be mediated by morphological changes at the micron scale.
@@ -772,13 +774,13 @@ Table: (\#tab:unnamed-chunk-1)Markers for HeLa screen.
 Of the ERES-related proteins, different markers showed different levels of colocalisation with protrudin.  BCAP31 and SURF4 were consistently enriched in cellular protrusions, more so than at other areas of the cell periphery.  MIA3 and SEC31A colocalised well with protrudin in the perinuclear area, but were found at lower levels in protrusions, and were less consistent between cells.  At this stage, it was not possible to conclusively say whether these variations represented differences in how ERES proteins were transported or in how effectively the individual antibodies stained these components, so we decided to proceed with BCAP31 and SURF4, which produced more clear results. (Figure \@ref(fig:HeLa-ERES-grid-full-figure))
 
 \begin{figure}
-\includegraphics{../figures/full/HeLa-ERES-grid-full-figure-1} \caption[Protrudin-expressing HeLa cells stained for BCAP31, SURF4, MIA3, and SEC31A]{Representative images of HeLa cells expressing EGFP-tagged protrudin constructs and stained for ER/ERES-related markers A) BCAP31, B) SURF4, C) MIA3(TANGO1), and D) SEC31A.  All scale bars are 20$\mu$m.}(\#fig:HeLa-ERES-grid-full-figure)
+\includegraphics{../figures/full/HeLa-ERES-grid-full-figure-1} \caption[Protrudin-expressing HeLa cells stained for BCAP31, SURF4, MIA3, and SEC31A]{Representative images of HeLa cells expressing EGFP-tagged protrudin constructs and stained for ER/ERES-related markers A) BCAP31, B) SURF4, C) MIA3(TANGO1), and D) SEC31A.  All scale bars are 20\textmu{}m.}(\#fig:HeLa-ERES-grid-full-figure)
 \end{figure}
 
 Of the Golgi-related proteins, GS28, GLG1, and USO1 clearly labelled the perinuclear Golgi compartment, but were either entirely absent or found only at very low levels in protrusions.  ERGIC53, on the other hand, was highly enriched in protrusions, in most cases well above the levels seen in the cell body.  This was the strongest concentration with any of the markers used in this screen, and point to the ERGIC compartment not only colocalising with protrudin, but specifically playing a role in the growth of cellular protrusions.  This marker was added to the set (along with BCAP31 and SURF4) to examine in neurons.  (Figure \@ref(fig:HeLa-Golgi-grid-full-figure))
 
 \begin{figure}
-\includegraphics{../figures/full/HeLa-Golgi-grid-full-figure-1} \caption[Protrudin-expressing HeLa cells stained for ERGIC53, GS28, GLG1, and USO1]{Representative images of HeLa cells expressing EGFP-tagged protrudin constructs and stained for ERGIC and Golgi-related markers A) ERGIC53, B) GS28, C) GLG1, and D) USO1(p115)  E) Close up of ERGIC53 staining in the protrusion of a cell expressing WT protrudin, as shown in panel A.  F) Fluorescence profile along the protrusion shown in panel E.  All scale bars are 20$\mu$m.}(\#fig:HeLa-Golgi-grid-full-figure)
+\includegraphics{../figures/full/HeLa-Golgi-grid-full-figure-1} \caption[Protrudin-expressing HeLa cells stained for ERGIC53, GS28, GLG1, and USO1]{Representative images of HeLa cells expressing EGFP-tagged protrudin constructs and stained for ERGIC and Golgi-related markers A) ERGIC53, B) GS28, C) GLG1, and D) USO1(p115)  E) Close up of ERGIC53 staining in the protrusion of a cell expressing WT protrudin, as shown in panel A.  F) Fluorescence profile along the protrusion shown in panel E.  All scale bars are 20\textmu{}m.}(\#fig:HeLa-Golgi-grid-full-figure)
 \end{figure}
 
 #### Lysosomes, enzymes, and transporters
@@ -790,7 +792,7 @@ ACSL3 was found in cellular protrusions, but — similar to MIA3 and SEC31A — 
 Finally, SLC38A1 was found to concentrate in protrusions, and similarly to ERGIC53 was found at higher levels here than near the nucleus.  This result is particularly interesting, as SLC38A1 is a potential cargo of the local secretory pathway.  Matsuzaki et al. identified SLC38A1 in their set of protrudin-interacting proteins, and Shigeoka et al. showed that it was locally translated in RGC axons [@matsuzakiProtrudinServesAdaptor2011; @shigeokaDynamicAxonalTranslation2016]. SLC38A1 was added to the list with BCAP31, SURF4, and ERGIC53 to examine in neurons.  (Figure \@ref(fig:HeLa-misc-grid-full-figure), panel D)
 
 \begin{figure}
-\includegraphics{../figures/full/HeLa-misc-grid-full-figure-1} \caption[Protrudin-expressing HeLa cells stained for LAMP1, mTOR, ACSL3, and SLC38A1]{Representative images of HeLa cells expressing EGFP-tagged protrudin constructs and stained  for A) LAMP1, B) mTOR, C) ACSL3, and D) SLC38A1.  All scale bars are 20$\mu$m.}(\#fig:HeLa-misc-grid-full-figure)
+\includegraphics{../figures/full/HeLa-misc-grid-full-figure-1} \caption[Protrudin-expressing HeLa cells stained for LAMP1, mTOR, ACSL3, and SLC38A1]{Representative images of HeLa cells expressing EGFP-tagged protrudin constructs and stained  for A) LAMP1, B) mTOR, C) ACSL3, and D) SLC38A1.  All scale bars are 20\textmu{}m.}(\#fig:HeLa-misc-grid-full-figure)
 \end{figure}
 
 #### Other morphological changes
@@ -802,13 +804,13 @@ LC3 strongly colocalised with protrudin in these structures, suggesting that the
 We followed up this result with a pilot experiment in neurons, co-expressing EGFP-protrudin and mRFP1-tagged LC3.  LC3 showed differences in localisation between cells, ranging from fully cytoplasmic to fully punctate, which likely reflects the conversion between soluble LC3-I and membrane-associated LC3-II [@kabeyaLC3MammalianHomologue2000].  All cells expressing either WT or active protrudin contained at least some LC3 puncta, in contrast to control cells, of which 12.5% had fully cytoplasmic LC3.  This suggests that protrudin might be encouraging autophagosome biogenesis, although further experiments are needed to confirm this result.
 
 \begin{figure}
-\includegraphics{../figures/full/LC3-full-figure-1} \caption[Protrudin effect on LC3 localisation in HeLa cells and cortical neurons]{A) Representative image of HeLa cells expressing WT protrudin and stained for LC3.  Inset is 20x20$\mu$m.  B) Fluorescence profile along the dotted line shown in panel A inset.  Note strong correspondence between protrudin (green) and LC3 (magenta) signal.  C) Protrusion of a HeLa cell expressing WT protrudin and stained for LC3.  Note the lack of LC3 enrichment with protrudin in the tip, compared to the cell body.  Scale bar is 20$\mu$m.  D) Representative images of neurons expressing mRFP1-tagged LC3 showing range of distribution patterns.  Scale bars are 20$\mu$m.  E) Quantification of LC3 distributions in cells co-expressing EGFP-protrudin and mRFP1-LC3.  n = 40 cells per condition across two independent batches.}(\#fig:LC3-full-figure)
+\includegraphics{../figures/full/LC3-full-figure-1} \caption[Protrudin effect on LC3 localisation in HeLa cells and cortical neurons]{A) Representative image of HeLa cells expressing WT protrudin and stained for LC3.  Inset is 20x20\textmu{}m.  B) Fluorescence profile along the dotted line shown in panel A inset.  Note strong correspondence between protrudin (green) and LC3 (magenta) signal.  C) Protrusion of a HeLa cell expressing WT protrudin and stained for LC3.  Note the lack of LC3 enrichment with protrudin in the tip, compared to the cell body.  Scale bar is 20\textmu{}m.  D) Representative images of neurons expressing mRFP1-tagged LC3 showing range of distribution patterns.  Scale bars are 20\textmu{}m.  E) Quantification of LC3 distributions in cells co-expressing EGFP-protrudin and mRFP1-LC3.  n = 40 cells per condition across two independent batches.}(\#fig:LC3-full-figure)
 \end{figure}
 
 BODIPY C~5~ ceramide, a lipid dye often used to label the Golgi apparatus, strongly labelled the lumen of these organelles.   It is not clear in this context whether the dye is labelling Golgi-related structures or lipid droplets, however it is worth noting that other Golgi markers did *not* colocalise with these structures (e.g. figure \@ref(fig:HeLa-Golgi-grid-full-figure), particularly visible in panel C).  Given the relationship with LC3 as discussed above, this may indicate an increase in lipophagy, although further experiments would be needed to confirm this hypothesis.
 
 \begin{figure}
-\includegraphics{../figures/full/ceramide-full-figure-1} \caption[Protrudin effect on BODIPY C$\textsubscript{5}$ ceramide localisation in HeLa cells]{A) Representative image of HeLa cells expressing WT protrudin and stained with BODIPY C~5~ ceramide dye.  Inset is 20x20$\mu$m.  B) Fluorescence profile along the dotted line shown in panel A inset.  Note BODIPY signal (magenta) between spikes of protrudin (green).}(\#fig:ceramide-full-figure)
+\includegraphics{../figures/full/ceramide-full-figure-1} \caption[Protrudin effect on BODIPY C$\textsubscript{5}$ ceramide localisation in HeLa cells]{A) Representative image of HeLa cells expressing WT protrudin and stained with BODIPY C$\textsubscript{5}$ ceramide dye.  Inset is 20x20\textmu{}m.  B) Fluorescence profile along the dotted line shown in panel A inset.  Note BODIPY signal (magenta) between spikes of protrudin (green).}(\#fig:ceramide-full-figure)
 \end{figure}
 
 ## Discussion
@@ -906,19 +908,19 @@ Based on these preliminary results, we decided to test if clofibrate could block
 We first set about to determine the baseline localisation of our selected markers, and to assess whether this changed during neuronal development, as regenerative ability declines.  We stained cortical neurons for BCAP31, SURF4, ERGIC53, and SLC38A1 at DIV3 (the earliest point at which axons can be clearly identified) and DIV15 (synaptic maturation and low regenerative ability), and compared fluorescence intensity between the cell body and axon terminal.  This showed that, with the exception of SURF4, all markers show a relative decline at the axon terminal with age (figure \@ref(fig:dev-changed-full-figure)).  Separate analysis of each region shows that all markers show increased intensity in the cell body with age, but that most show no significant change in the axon terminal, with the exception of SLC38A1, which increases (supplementary figure \@ref(fig:suppl-dev-grid)).  This is in keeping with SLC38A1's role as an amino acid transporter, which is a particularly important function for synaptically active neurons [@hellstenNeuronalAstrocyticProtein2017].  It is worth noting that, while the average intensity remains the same, the axon terminal dramatically reduces in size as the cell matures, so this represents a decrease in the total amount of these proteins present at the axon tip.
 
 \begin{figure}
-\includegraphics{../figures/full/dev-changed-full-figure-1} \caption[Developmental changes in marker localisation in cortical neurons]{A) Ratio of fluorescence intensity between Cell body and axon terminal in DIV3 vs DIV15 neurons.  All n = 26 or 27 cells per condition across three batches, except SLC38A1 (n = 18 cells, three batches). B-M) Representative images of DIV3 neurons (B-E), DIV15 cell bodies (F-I), and DIV15 axon terminals (J-M)  All scale bars are 20$\mu$m, and J-M are 20x20$\mu$m.  Markers correspond to the graph at the top of each column.}(\#fig:dev-changed-full-figure)
+\includegraphics{../figures/full/dev-changed-full-figure-1} \caption[Developmental changes in marker localisation in cortical neurons]{A) Ratio of fluorescence intensity between Cell body and axon terminal in DIV3 vs DIV15 neurons.  All n = 26 or 27 cells per condition across three batches, except SLC38A1 (n = 18 cells, three batches). B-M) Representative images of DIV3 neurons (B-E), DIV15 cell bodies (F-I), and DIV15 axon terminals (J-M)  All scale bars are 20\textmu{}m, and J-M are 20x20\textmu{}m.  Markers correspond to the graph at the top of each column.}(\#fig:dev-changed-full-figure)
 \end{figure}
 
 The staining was repeated in DIV1 (post-differentiation) i3 neurons, at a stage when they are just beginning to grow axons, to confirm that the axon terminal:cell body ratio was conserved between rodent and human neurons.  This showed remarkable consistency between cell types, with the exception of BCAP31, which had a very slightly higher ratio in rat neurons.
 
 \begin{figure}
-\includegraphics{../figures/full/i3-ratio-plot-1} \caption[Comparison of marker localisation between i3 neurons and rat cortical neurons]{A) Ratio of fluorescence intensity between Cell body and axon terminal in DIV1 i3 vs DIV3 rat cortical neurons.  n = 17 or 18 i3 neurons per condition across three batches. B-E) Representative images of DIV1 i3 neurons stained for each marker.  All scale bars are 20$\mu$m.}(\#fig:i3-ratio-plot)
+\includegraphics{../figures/full/i3-ratio-plot-1} \caption[Comparison of marker localisation between i3 neurons and rat cortical neurons]{A) Ratio of fluorescence intensity between Cell body and axon terminal in DIV1 i3 vs DIV3 rat cortical neurons.  n = 17 or 18 i3 neurons per condition across three batches. B-E) Representative images of DIV1 i3 neurons stained for each marker.  All scale bars are 20\textmu{}m.}(\#fig:i3-ratio-plot)
 \end{figure}
 
 We also tested a tool called ESCargo(FTV) to visualise ER exit sites [@caslerESC2020; @govindActivitydependentGolgiSatellite2021].  This encodes a SURF4-dependent synthetic secretory cargo, which can be inducibly released from the ER with the addition of a synthetic ligand.  While the aggregates were clearly visible in cell bodies, we also observed them in axons, although they were distributed very sparsely along their length (figure \@ref(fig:ESCargo-figure)).  In some cases, these were found at axonal swellings or branch points, raising the possibility that these exit sites may concentrate at particular structural features.  Further work is required to test if this corresponds to the localisation of functional ER exit sites in the axon, and whether their size or number is regulated developmentally or with the overexpression of protrudin.
 
 \begin{figure}
-\includegraphics{../figures/full/ESCargo-figure-1} \caption[ESCargo localisation in cortical neurons]{A) Cell body of a cell co-expressing EGFP/Emerald with ESCargo(FTV)-Crimson.  Note individual aggregates or small clusters in dendrites, often at branch points.  B) Axon of neuron depicted in A, with two ESCargo(FTV) aggregates circled.  All scale bars are 20$\mu$m.}(\#fig:ESCargo-figure)
+\includegraphics{../figures/full/ESCargo-figure-1} \caption[ESCargo localisation in cortical neurons]{A) Cell body of a cell co-expressing EGFP/Emerald with ESCargo(FTV)-Crimson.  Note individual aggregates or small clusters in dendrites, often at branch points.  B) Axon of neuron depicted in A, with two ESCargo(FTV) aggregates circled.  All scale bars are 20\textmu{}m.}(\#fig:ESCargo-figure)
 \end{figure}
 
 ### The role of protrudin in localisation and transport
@@ -945,19 +947,19 @@ In contrast with the other markers, ERGIC53 showed significantly altered localis
 
 
 \begin{figure}
-\includegraphics{../figures/fullBCAP31-plot-1} \caption[BCAP31 localisation in protrudin-expressing neurons]{A-F) Representative images of BCAP31 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20$\mu$m, and D-F are 20x20$\mu$m.  G-I) Quantification of BCAP31 fluorescence intensity. n = 18 cells per condition across three independent batches.}(\#fig:BCAP31-plot)
+\includegraphics{../figures/fullBCAP31-plot-1} \caption[BCAP31 localisation in protrudin-expressing neurons]{A-F) Representative images of BCAP31 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20\textmu{}m, and D-F are 20x20\textmu{}m.  G-I) Quantification of BCAP31 fluorescence intensity. n = 18 cells per condition across three independent batches.}(\#fig:BCAP31-plot)
 \end{figure}
 
 \begin{figure}
-\includegraphics{../figures/fullSURF4-plot-1} \caption[SURF4 localisation in protrudin-expressing neurons]{A-F) Representative images of SURF4 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20$\mu$m, and D-F are 20x20$\mu$m.  G-I) Quantification of SURF4 fluorescence intensity. n = 17 or 18 cells per condition across three independent batches.}(\#fig:SURF4-plot)
+\includegraphics{../figures/fullSURF4-plot-1} \caption[SURF4 localisation in protrudin-expressing neurons]{A-F) Representative images of SURF4 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20\textmu{}m, and D-F are 20x20\textmu{}m.  G-I) Quantification of SURF4 fluorescence intensity. n = 17 or 18 cells per condition across three independent batches.}(\#fig:SURF4-plot)
 \end{figure}
 
 \begin{figure}
-\includegraphics{../figures/fullSLC38A1-plot-1} \caption[SLC38A1 localisation in protrudin-expressing neurons]{A-F) Representative images of SLC38A1 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20$\mu$m, and D-F are 20x20$\mu$m.  G-I) Quantification of SLC38A1 fluorescence intensity. n = 15 to 18 cells per condition across three independent batches.}(\#fig:SLC38A1-plot)
+\includegraphics{../figures/fullSLC38A1-plot-1} \caption[SLC38A1 localisation in protrudin-expressing neurons]{A-F) Representative images of SLC38A1 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20\textmu{}m, and D-F are 20x20\textmu{}m.  G-I) Quantification of SLC38A1 fluorescence intensity. n = 15 to 18 cells per condition across three independent batches.}(\#fig:SLC38A1-plot)
 \end{figure}
 
 \begin{figure}
-\includegraphics{../figures/fullERGIC53-plot-1} \caption[ERGIC53 localisation in protrudin-expressing neurons]{A-F) Representative images of ERGIC53 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20$\mu$m, and D-F are 20x20$\mu$m.  G-I) Quantification of ERGIC53 fluorescence intensity. n = 16 or 18 cells per condition across three independent batches.}(\#fig:ERGIC53-plot)
+\includegraphics{../figures/fullERGIC53-plot-1} \caption[ERGIC53 localisation in protrudin-expressing neurons]{A-F) Representative images of ERGIC53 in control, WT, and active protrudin-expressing cell bodies (A-C, respectively) and axon terminals (D-F).  All scale bars are 20\textmu{}m, and D-F are 20x20\textmu{}m.  G-I) Quantification of ERGIC53 fluorescence intensity. n = 16 or 18 cells per condition across three independent batches.}(\#fig:ERGIC53-plot)
 \end{figure}
 
 ### Protrudin's effect on Golgi satellites
@@ -971,7 +973,7 @@ Given protrudin's effect on the ERGIC compartment, we were particularly interest
 Following live imaging, these cells were fixed, and imaged at higher exposure on a confocal microscope to more clearly visualise Golgi satellites in the axon.  We measured both the number of puncta, as well as point intensity of each, as a proxy for size.  This confirmed that protrudin overexpression did not affect the overall number of Golgi satellites in the distal axon.
 
 \begin{figure}
-\includegraphics{../figures/full/GS-puncta-full-figure-1} \caption[Protrudin effect on Golgi satellite abundance and size in the distal axon]{A) Representative axon image showing St3Gal5 puncta.  Scale bar is 20$\mu$m.  B) Number of puncta per length of axon imaged.  C)Point fluorescence intensity of each St3Gal3 puncta counted.  n = 18 cells per condition across three independent batches.}(\#fig:GS-puncta-full-figure)
+\includegraphics{../figures/full/GS-puncta-full-figure-1} \caption[Protrudin effect on Golgi satellite abundance and size in the distal axon]{A) Representative axon image showing St3Gal5 puncta.  Scale bar is 20\textmu{}m.  B) Number of puncta per length of axon imaged.  C)Point fluorescence intensity of each St3Gal3 puncta counted.  n = 18 cells per condition across three independent batches.}(\#fig:GS-puncta-full-figure)
 \end{figure}
 
 We then conducted a scratch assay to determine the localisation of Golgi satellites in the growth cones of mature neurons and examine whether protrudin might have an effect on axonal Golgi satellites in response to injury.  Cortical neurons cultured on glass coverslips were scratched with a sterile needle, then incubated for 18-20 hours before fixing.  Axons growing into the scratched region were imaged on a confocal microscope.
@@ -979,7 +981,7 @@ We then conducted a scratch assay to determine the localisation of Golgi satelli
 This revealed a strong concentration of St3Gal5 at the base of each growth cone, with slightly weaker signal extending further distally.  Where St3Gal5 was co-expressed with protrudin, it is apparent that the Golgi satellite signal reaches further into the growth cone than the ER.  This suggests that there are distinct ER and Golgi compartments in the growth cone, with secretory machinery oriented towards the direction of growth.  The images also suggest that there might be an accumulation of St3Gal5 immediately proximal to the growth cone in protrudin-expressing neurons, although further work is required to confirm and quantify this result.
 
 \begin{figure}
-\includegraphics{../figures/full/scratch-assay-full-1} \caption[Scratch assay of neurons co-expressing protrudin and St3Gal5]{Representative images of growth cones on DIV15 cortical neurons after scratch.  Neurons are co-expressing either mCherry (A) or mCherry-protrudin (B-C) with St3Gal5-EGFP.  Scale bars are 20$\mu$m.  D-F) 20x20$\mu$m images highlighting the growth cone details shown in A-C.  Arrows indicate large Golgi satellites, as well as the distal edge of protrudin localisation.  Note how the St3Gal5 signal extends beyond protrudin in these growth cones.}(\#fig:scratch-assay-full)
+\includegraphics{../figures/full/scratch-assay-full-1} \caption[Scratch assay of neurons co-expressing protrudin and St3Gal5]{Representative images of growth cones on DIV15 cortical neurons after scratch.  Neurons are co-expressing either mCherry (A) or mCherry-protrudin (B-C) with St3Gal5-EGFP.  Scale bars are 20\textmu{}m.  D-F) 20x20\textmu{}m images highlighting the growth cone details shown in A-C.  Arrows indicate large Golgi satellites, as well as the distal edge of protrudin localisation.  Note how the St3Gal5 signal extends beyond protrudin in these growth cones.}(\#fig:scratch-assay-full)
 \end{figure}
 
 ## Discussion
@@ -1034,7 +1036,7 @@ While this project has provided some answers to how protrudin can promote surviv
 
 ### Autophagy
 
-Protrudin's effects on LC3 localisation, both in HeLa cells and cortical neurons (figure \@ref(fig:LC3-full-figure)), suggests an active role in regulating autophagy.  The preliminary results demonstrated in this project suggest that protrudin may increase autophagy or autophagosome biogenesis.  However, Hong et al. actually found the opposite — protrudin *depletion* promoted autophagy initiation in cultured epithelial cells [@hongPtdIns3PControlsMTORC12017].  
+Protrudin's effects on LC3 localisation, both in HeLa cells and cortical neurons (figure \@ref(fig:LC3-full-figure)), suggest an active role in regulating autophagy.  The preliminary results demonstrated in this project suggest that protrudin may increase autophagy or autophagosome biogenesis.  However, Hong et al. actually found the opposite — protrudin *depletion* promoted autophagy initiation in cultured epithelial cells [@hongPtdIns3PControlsMTORC12017].  
 
 With this in mind, it would be worthwhile to examine further what effect protrudin overexpression has on autophagy.  Given the abundance of literature linking autophagy to neuronal survival (reviewed in [@overhoffMechanismsNeuronalSurvival2021]), this may well represent another pathway through which protrudin acts, particularly in a neuroprotective role.  
 

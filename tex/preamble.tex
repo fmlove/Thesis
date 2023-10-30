@@ -2,25 +2,33 @@
 \usepackage{fancyhdr} % for custom headers
 \usepackage{booktabs} % for table formatting
 \usepackage{longtable} % table formatting for glossary - over multiple pages
-\usepackage[LGRgreek]{mathastext} % getting rid of italics in math mode for greek letters
+\usepackage{textgreek} % getting rid of italics in math mode for greek letters
+\usepackage[upgreek, LGRgreek]{mathastext} % getting rid of italics in math mode for greek letters
 \usepackage{tocbibind} % adding Contents and References to TOC
 \usepackage[a4paper,left=35mm,right=35mm,top=40mm,bottom=40mm]{geometry} % margins
 \usepackage{sectsty} % section title formatting
 \usepackage{chngcntr} % table and figure numbering in introduction
 \usepackage[bottom]{footmisc} % leaving space at bottom of page to avoid big gaps between paragraphs
+\usepackage{fvextra} % code chunk formatting
+\usepackage{ccaption} % splitting captions across pages
+\usepackage{float} % working with above to make sure continued caption stays on following page
+\usepackage[width=\textwidth]{caption} % expanding table caption widths to avoid two lines
 
-%numbering starting with 0.1
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+
+
+% numbering starting with 0.1
 \counterwithin{table}{chapter}
 \counterwithin{figure}{chapter}
 
 
-%single spacing for section and chapter titles
+% single spacing for section and chapter titles
 \allsectionsfont{\singlespacing}
 
-%header space
+% header space
 \setlength{\headheight}{16pt}
 
-%page numbers always at the bottom
+% page numbers always at the bottom
 \fancypagestyle{plain}{
   \fancyfoot[C]{\thepage}
   \fancyhead[LE, RO]{\MakeUppercase{\leftmark}}
@@ -39,3 +47,9 @@
 
 % allowing text to move up from bottom of page instead of having big gaps
 \raggedbottom
+
+% code wrapping for Appendix
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+
+% single space code chunks
+\AtBeginEnvironment{Shaded}{\singlespace}
