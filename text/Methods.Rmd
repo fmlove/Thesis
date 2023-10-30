@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 library(here)
 library(knitr)
-library(kableExtra)
+#library(kableExtra)
 ```
 
 ## Plasmids and antibodies
@@ -44,7 +44,6 @@ ab$Target = ab$Marker
 kable(ab[ab$HeLa_screen == TRUE & ab$stage == 'primary', c('Target', 'Source', 'Dilution')],
       row.names = FALSE,
       format = 'markdown',
-      longtable = TRUE,
       caption = 'Primary antibodies used in this thesis.')
 ```
 ```{r secondary-table}

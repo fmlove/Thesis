@@ -1,10 +1,13 @@
 ```{=latex}
 \markboth{APPENDIX}{}
+\setcounter{chapter}{5}
+\setcounter{section}{0}
+\setcounter{figure}{0}
 ```
 
 # Appendix {.unnumbered #APPENDIX}
 
-## Supplementary Figures {.unnumbered #SUPPLEMENT}
+## Supplementary Figures {#SUPPLEMENT}
 
 ```{r supplementary-setup, include = F}
 knitr::opts_chunk$set(echo = FALSE)
@@ -66,7 +69,7 @@ image_as_ggplot(read.bitmap(here('figures/external/plasmids/PNGs/Myrlysin-MYC_ma
 ```
 
 
-## Code {.unnumbered #CODE}
+## Code {#CODE}
 
 In this section, I have included many of the ImageJ macros (written in the ImageJ Macro language) and R scripts that I wrote to simplify collecting and analysing data over the course of this project.  All are freely available to use and modify; if you use them extensively for your own work, please cite this thesis.  You might find the occasional 'TODO' in with the more descriptive comments; I have left these in place as suggestions for future improvements.
 

@@ -88,20 +88,19 @@ We co-transfected rat cortical neurons with EGFP/Emerald (as a cytoplasmic label
 ```{r mutant-maps-full-figure, echo=F, fig.width=16, fig.height = 16, dpi = 160, fig.path = '../figures/full/', fig.cap='Domain maps of the protrudin constructs used in this experiment.   Changes relative to the wild type protrudin sequence are shown in purple, with bars indicating amino acid substitutions and dotted lines indicating deletions.  Not to scale.', fig.scap="Domain maps of protrudin mutants"}
 image_as_ggplot(read.bitmap(here('figures/external/protrudin_mutant_maps.png')))
 ```
+\vspace{30pt}
 
 For each of these conditions, we counted and manually classified dendritic spines on 20 \textmu{}m sections of dendrite from cells at DIV15 or DIV21.  The DIV15 data suggests that WT protrudin might be associated with fewer, stubbier spines (figure \@ref(fig:spine-type-full-figure), panel D), although the significant comparisons varied for each spine classification, and is inconsistent with the DIV21 data (figure \@ref(fig:spine-type-full-figure), panel E). 
 
-```{=latex}
-\newgeometry{a4paper, top=40mm, left=35mm, right=35mm, bottom = 30mm} %unnecessary as long as 1.5in margins overall
-```
-(ref:spine-type-cap) A) Schematic showing selection of dendrite sections for analysis and basic spine morphology groups.  One dendrite section was analysed per cell.  Scale bar is 10 \textmu{}m.  B-C) Total spine counts in 20 \textmu{}m section for DIV15 and DIV21 groups.  D-E) Quantification of each spine type, normalised to the total number of spines in the section measured.  DIV15: *n* = 30 cells per condition across three independent batches; DIV21: *n* = 10 cells per condition in one batch.  Kruskal-Wallis *p* values are shown at the top of each plot; significant *p* values from Dunn's post-hoc test with Bonferroni correction for multiple comparisons are shown over brackets.
+(ref:spine-type-cap) A) Schematic showing selection of dendrite sections for analysis and basic spine morphology groups.  One dendrite section was analysed per cell.  Scale bar is 10 \textmu{}m.  B-C) Total spine counts in 20 \textmu{}m section for DIV15 and DIV21 groups.  D-E) Quantification of each spine type, normalised to the total number of spines in the section measured.  (Continued on following page)
 ```{r spine-type-full-figure, echo = F,  fig.width = 16, fig.height = 22, fig.path = '../figures/full/', fig.cap="(ref:spine-type-cap)", fig.scap="Protrudin effect on dendritic spine morphology"}
 
 spine_types_plot
 ```
 ```{=latex}
-\restoregeometry
-\setstretch{1.5} %not restored by \restoregeometry
+\begin{figure}
+\contcaption{(Continued) DIV15: \textit{n} = 30 cells per condition across three independent batches; DIV21: \textit{n} = 10 cells per condition in one batch.  Kruskal-Wallis \textit{p} values are shown at the top of each plot; significant \textit{p} values from Dunn's post-hoc test with Bonferroni correction for multiple comparisons are shown over brackets.}
+\end{figure}
 ```
 
 As manual spine classification is an inherently subjective measure, and did not show any clear associations, we decided to look instead at spine length, which can be measured more objectively.  We re-analysed the initial DIV15 data, measuring the length of each spine from the edge of the dendrite.  This did yield some significant comparisons, both in spine number and length (figure \@ref(fig:spine-length-full-figure), panels A and C), so we followed this up with a full replication, which we analysed in the same way (figure \@ref(fig:spine-length-full-figure), panels B and D).  While the replication also produced statistically significant results, they were wholly inconsistent between the two experiments.    
@@ -162,9 +161,14 @@ ERES_grid
 
 Of the Golgi-related proteins, GS28, GLG1, and USO1 clearly labelled the perinuclear Golgi compartment, but were either entirely absent or found only at very low levels in protrusions (figure \@ref(fig:HeLa-Golgi-grid-full-figure), panels B-D).  ERGIC53^[ERGIC53, or LMAN1, is the human homolog of a protein sometimes known as p58 in rat and several other species [@lahtinenMolecularCloningExpression1996].  For the sake of simplicity I will refer to it as ERGIC53 throughout this thesis.], on the other hand, was highly enriched in protrusions, in most cases well above the levels seen in the cell body (figure \@ref(fig:HeLa-Golgi-grid-full-figure), panel A).  More detailed analysis of the ERGIC53 signal showed exceptionally strong colocalisation with protrudin, as shown in figure \@ref(fig:HeLa-Golgi-grid-full-figure), panels E-F.  ERGIC53 showed the strongest concentration in protrusions of any of the markers used in this screen, and point to the ERGIC compartment not only colocalising with protrudin, but specifically playing a role in the growth of cellular protrusions.  This marker was added to the set (along with BCAP31 and SURF4) to examine in neurons.
 
-(ref:Golgi-grid-cap) Representative images of HeLa cells expressing EGFP-tagged protrudin constructs and stained for ERGIC and Golgi-related markers A) ERGIC53, B) GS28, C) GLG1, and D) USO1(p115).  E) Close up of ERGIC53 staining in the protrusion of a cell expressing WT protrudin, as shown in panel A.  F) Fluorescence profile along the protrusion shown in panel E.  A and B are maximum intensity projections of confocal stacks, C is an epifluorescent image, and D is a maximum intensity projection if a spinning disc confocal stack.  All scale bars are 20 \textmu{}m.
+(ref:Golgi-grid-cap) Representative images of HeLa cells expressing EGFP-tagged protrudin constructs and stained for ERGIC and Golgi-related markers A) ERGIC53, B) GS28, C) GLG1, and D) USO1(p115).  E) Close up of ERGIC53 staining in the protrusion of a cell expressing WT protrudin, as shown in panel A.  F) Fluorescence profile along the protrusion shown in panel E.  (Continued on following page)
 ```{r HeLa-Golgi-grid-full-figure, fig.width=16, fig.height=22, fig.path = "../figures/full/", fig.cap="(ref:Golgi-grid-cap)", fig.scap = "Protrudin-expressing HeLa cells stained for ERGIC53, GS28, GLG1, and USO1"}
 Golgi_extended
+```
+```{=latex}
+\begin{figure}[h]
+\contcaption{(Continued) A and B are maximum intensity projections of confocal stacks, C is an epifluorescent image, and D is a maximum intensity projection if a spinning disc confocal stack.  All scale bars are 20 \textmu{}m.}
+\end{figure}
 ```
 
 
@@ -180,6 +184,18 @@ Finally, SLC38A1 was found to concentrate in protrusions, and similarly to ERGIC
 misc_grid
 ```
 
+
+
+(ref:LC3-cap) A) Representative image of HeLa cells expressing WT protrudin and stained for LC3.  Inset is 20x20 \textmu{}m.  B) Fluorescence profile along the dotted line shown in panel A inset.  Note strong correspondence between protrudin (green) and LC3 (magenta) signal.  (Continued on following page)
+```{r LC3-full-figure, fig.width=16, fig.height=22, fig.path = "../figures/full/", fig.cap="(ref:LC3-cap)", fig.scap="Protrudin effect on LC3 localisation in HeLa cells and cortical neurons", fig.pos='H'}
+LC3_full_plot
+```
+```{=latex}
+\begin{figure}[h]
+\contcaption{(Continued) C) Protrusion of a HeLa cell expressing WT protrudin and stained for LC3.  Note the lack of LC3 enrichment with protrudin in the tip, compared to the cell body.  D) Representative image of a HeLa cell expressing GFP and stained for LC3.  Note the lack of large, ring-shaped structures as seen in the protrudin expressing cell in panel A.  E) Representative images of neurons expressing mRFP1-tagged LC3 showing range of distribution patterns.  F) Quantification of LC3 distributions in cells co-expressing EGFP-protrudin and mRFP1-LC3.  A, C, and D are maximum intensity projections of confocal stacks.  F shows single plane spinning disc confocal images.  \textit{n} = 40 cells per condition across two independent batches.  All scale bars are 20 \textmu{}m.}
+\end{figure}
+```
+
 #### Other morphological effects of protrudin overexpression
 
 In addition to protrusions, we noted that protrudin overexpression also induces the formation of large, ring-shaped structures in the perinuclear region of HeLa cells.  These are observed occasionally in neurons expressing protrudin, but not to the same extent as in HeLa cells (supplementary figure \@ref(fig:suppl-ring)).  While these structures were not the primary focus of this experiment, they did reveal interesting results with two of the markers screened, and may indicate protrudin involvement in additional cellular pathways.
@@ -188,18 +204,12 @@ LC3 strongly colocalised with protrudin in these structures, suggesting that the
 
 We followed up this result with a pilot experiment in neurons, co-expressing EGFP-protrudin and mRFP1-tagged LC3.  LC3 showed differences in localisation between cells, ranging from fully cytoplasmic to fully punctate, which likely reflects the conversion between soluble LC3-I and membrane-associated LC3-II [@kabeyaLC3MammalianHomologue2000].  All cells expressing either WT or active protrudin contained at least some LC3 puncta, in contrast to control cells, of which 12.5% had fully cytoplasmic LC3.  This suggests that protrudin might be encouraging autophagosome biogenesis, although further experiments are needed to confirm this result.
 
-(ref:LC3-cap) A) Representative image of HeLa cells expressing WT protrudin and stained for LC3.  Maximum intensity projection of a confocal stack.  Inset is 20x20 \textmu{}m.  B) Fluorescence profile along the dotted line shown in panel A inset.  Note strong correspondence between protrudin (green) and LC3 (magenta) signal.  C) Protrusion of a HeLa cell expressing WT protrudin and stained for LC3.  Note the lack of LC3 enrichment with protrudin in the tip, compared to the cell body.  Maximum intensity projection of a confocal stack.  D) Representative image of a HeLa cell expressing GFP and stained for LC3.  Note the lack of large, ring-shaped structures as seen in the protrudin expressing cell in panel A.  Maximum intensity projection of a confocal stack.  E) Representative images of neurons expressing mRFP1-tagged LC3 showing range of distribution patterns.  F) Quantification of LC3 distributions in cells co-expressing EGFP-protrudin and mRFP1-LC3.  Single plane spinning disc confocal images.  *n* = 40 cells per condition across two independent batches.  All scale bars are 20 \textmu{}m.
-```{r LC3-full-figure, fig.width=16, fig.height=22, fig.path = "../figures/full/", fig.cap="(ref:LC3-cap)", fig.scap="Protrudin effect on LC3 localisation in HeLa cells and cortical neurons"}
-LC3_full_plot
-```
-
-
-
-BODIPY C~5~ ceramide, a lipid dye often used to label the Golgi apparatus, strongly labelled the lumen of these organelles.   It is not clear in this context whether the dye is labelling Golgi-related structures or lipid droplets, however it is worth noting that other Golgi markers did *not* colocalise with these structures (e.g. figure \@ref(fig:HeLa-Golgi-grid-full-figure), particularly visible in panel C).  Given the relationship with LC3 as discussed above, this may indicate an increase in lipophagy, although further experiments would be needed to confirm this hypothesis.
-
-```{r ceramide-full-figure, fig.width = 16, fig.height = 12, fig.path = "../figures/full/", fig.cap="A) Representative image of HeLa cells expressing WT protrudin and stained with BODIPY C$\\textsubscript{5}$ ceramide dye.  Maximum intensity projection of a confocal stack.  Inset is 20x20 \\textmu{}m.  B) Fluorescence profile along the dotted line shown in panel A inset.  Note BODIPY signal (magenta) between spikes of protrudin (green).  C) Representative image of a HeLa cell expressing GFP and stained with BODIPY C$\\textsubscript{5}$ ceramide dye.  Note the lack of large, bright puncta as seen in the protrudin-expressing cell in panel A.  Maximum intensity projection of a confocal stack.  All scale bars are 20 \\textmu{}m.", fig.scap = "Protrudin effect on BODIPY C$\\textsubscript{5}$ ceramide localisation in HeLa cells"}
+\vspace{14pt}
+```{r ceramide-full-figure, fig.width = 16, fig.height = 12, fig.path = "../figures/full/", fig.cap="A) Representative image of HeLa cells expressing WT protrudin and stained with BODIPY C$\\textsubscript{5}$ ceramide dye.  Maximum intensity projection of a confocal stack.  Inset is 20x20 \\textmu{}m.  B) Fluorescence profile along the dotted line shown in panel A inset.  Note BODIPY signal (magenta) between spikes of protrudin (green).  C) Representative image of a HeLa cell expressing GFP and stained with BODIPY C$\\textsubscript{5}$ ceramide dye.  Note the lack of large, bright puncta as seen in the protrudin-expressing cell in panel A.  Maximum intensity projection of a confocal stack.  All scale bars are 20 \\textmu{}m.", fig.scap = "Protrudin effect on BODIPY C$\\textsubscript{5}$ ceramide localisation in HeLa cells", fig.pos = 'h'}
 ceramide_grid
 ```
+
+BODIPY C~5~ ceramide, a lipid dye often used to label the Golgi apparatus, strongly labelled the lumen of these organelles.   It is not clear in this context whether the dye is labelling Golgi-related structures or lipid droplets, however it is worth noting that other Golgi markers did *not* colocalise with these structures (e.g. figure \@ref(fig:HeLa-Golgi-grid-full-figure), particularly visible in panel C).  Given the relationship with LC3 as discussed above, this may indicate an increase in lipophagy, although further experiments would be needed to confirm this hypothesis.
 
 ## Discussion
 
