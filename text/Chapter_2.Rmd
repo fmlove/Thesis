@@ -12,7 +12,7 @@ always_allow_html: true
 # Identifying protrudin's cellular functions in CNS neurons
 
 ```{=latex}
-\chaptermark{Cellular functions}
+\chaptermark{Cellular functions of protrudin}
 ```
 
 ```{r chapter_2_setup, include=FALSE}

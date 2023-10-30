@@ -84,7 +84,7 @@ Immunochemistry was carried out as described in section \@ref(immuno).  In the c
 
 ### Fluorescence quantification
 
-Confocal images were analysed as maximum-intensity stack projections in Fiji.  Tracing of regions of interest was assisted by a custom macro (section \@ref(fluor-quant})).  The area of the nucleus was excluded from cell body quantification.  Background correction was carried out for axon terminals, axons, and dendrites by subtracting the intensity of an identical ROI, manually shifted to avoid overlap with the area of interest.  Cell bodies were not background-corrected, due to brighter overall intensity and the density of neurites and other cellular structures nearby.
+Confocal images were analysed as maximum-intensity stack projections in Fiji.  Tracing of regions of interest was assisted by a custom macro (section \@ref(fluor-quant)).  The area of the nucleus was excluded from cell body quantification.  Background correction was carried out for axon terminals, axons, and dendrites by subtracting the intensity of an identical ROI, manually shifted to avoid overlap with the area of interest.  Cell bodies were not background-corrected, due to brighter overall intensity and the density of neurites and other cellular structures nearby.
 
 ### Inhibition of ER to Golgi transport
 

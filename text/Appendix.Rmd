@@ -1,11 +1,12 @@
+
+# Appendix {.unnumbered #APPENDIX}
+
 ```{=latex}
 \markboth{APPENDIX}{}
 \setcounter{chapter}{5}
 \setcounter{section}{0}
 \setcounter{figure}{0}
 ```
-
-# Appendix {.unnumbered #APPENDIX}
 
 ## Supplementary Figures {#SUPPLEMENT}
 
@@ -29,7 +30,7 @@ image_as_ggplot(read.bitmap(here('images/microscopy/LC3/neuron_ring_structure.pn
 ```
 
 <!-- Note: won't render without Ch3. -->
-(ref:suppl-gc-cap) Axon terminal area of DIV3 vs DIV15 rat cortical neurons, A) for each marker and B) pooled together.  All show a significant decrease in axon terminal area with age, with the exeception of SURF4.  Given the substantially smaller measurements in DIV3 neurons stained for SURF4 compared to other markers, this suggests that SURF4 is confined to the central region of the developing growth cone.  All *n* = 26 or 27 cells per condition across three batches, except SLC38A1 (*n* = 18 cells, three batches).
+(ref:suppl-gc-cap) Axon terminal area of DIV3 vs DIV15 rat cortical neurons, A) for each marker and B) pooled together.  All show a significant decrease in axon terminal area during development, with the exception of SURF4.  Given the substantially smaller measurements in DIV3 neurons stained for SURF4 compared to other markers, this suggests that SURF4 is confined to the central region of the developing growth cone.  All *n* = 26 or 27 cells per condition across three batches, except SLC38A1 (*n* = 18 cells, three batches).  Wilcoxon rank-sum *p* values are shown at the top of each plot.
 ```{r suppl-gc-area, echo = F, fig.width=16, fig.height=10, fig.path='./figures/full/', fig.cap="(ref:suppl-gc-cap)", fig.scap="Supplementary figure; axon terminal area in developing cortical neurons"}
 
 gc_area_full
