@@ -38,7 +38,7 @@ CNC79.csvs = lapply(list.files(path = CNC79.dir, pattern = '\\.csv$'),
 #remove key.csvs if present - assuming that these will be fewer than desired spine length CSVs
 #WARNING - reassigned for each experiment - start looking here if any bugs pop up
 colnames = unique(lapply(CNC79.csvs, colnames))
-colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC79.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC79.csvs, colnames), function(r){all(length(r) == length(c) & r == c)})) })#edited to account for && operator change in R 4.3.0
 colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
 
 CNC79.csvs = CNC79.csvs[which(lapply(lapply(CNC79.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
@@ -63,7 +63,7 @@ CNC80.csvs = lapply(list.files(path = CNC80.dir, pattern = '\\.csv$'),
                               })
 #remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
 colnames = unique(lapply(CNC80.csvs, colnames))
-colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC80.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC80.csvs, colnames), function(r){all(length(r) == length(c) & r == c)})) })#edited to account for && operator change in R 4.3.0
 colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
 
 CNC80.csvs = CNC80.csvs[which(lapply(lapply(CNC80.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
@@ -88,7 +88,7 @@ CNC78.csvs = lapply(list.files(path = CNC78.dir, pattern = '\\.csv$'),
                               })
 #remove key.csvs if present - assuming that these will be fewer than desired spine length CSVs
 colnames = unique(lapply(CNC78.csvs, colnames))
-colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC78.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC78.csvs, colnames), function(r){all(length(r) == length(c) & r == c)})) })#edited to account for && operator change in R 4.3.0
 colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
 
 CNC78.csvs = CNC78.csvs[which(lapply(lapply(CNC78.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
@@ -189,7 +189,7 @@ CNC81.csvs = lapply(list.files(path = CNC81.dir, pattern = '\\.csv$'),
 #remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
 #WARNING - reassigned for each experiment - start looking here if any bugs pop up
 colnames = unique(lapply(CNC81.csvs, colnames))
-colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC81.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC81.csvs, colnames), function(r){all(length(r) == length(c) & r == c)})) })#edited to account for && operator change in R 4.3.0
 colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
 
 CNC81.csvs = CNC81.csvs[which(lapply(lapply(CNC81.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
@@ -218,7 +218,7 @@ CNC82.csvs = lapply(list.files(path = CNC82.dir, pattern = '\\.csv$'),
 #remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
 #WARNING - reassigned for each experiment - start looking here if any bugs pop up
 colnames = unique(lapply(CNC82.csvs, colnames))
-colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC82.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC82.csvs, colnames), function(r){all(length(r) == length(c) & r == c)})) })#edited to account for && operator change in R 4.3.0
 colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
 
 CNC82.csvs = CNC82.csvs[which(lapply(lapply(CNC82.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
@@ -247,7 +247,7 @@ CNC83.csvs = lapply(list.files(path = CNC83.dir, pattern = '\\.csv$'),
 #remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
 #WARNING - reassigned for each experiment - start looking here if any bugs pop up
 colnames = unique(lapply(CNC83.csvs, colnames))
-colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC83.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC83.csvs, colnames), function(r){all(length(r) == length(c) & r == c)})) })#edited to account for && operator change in R 4.3.0
 colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
 
 CNC83.csvs = CNC83.csvs[which(lapply(lapply(CNC83.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
@@ -276,7 +276,7 @@ CNC84.csvs = lapply(list.files(path = CNC84.dir, pattern = '\\.csv$'),
 #remove key.csvs if present - assuming that these will be fewer than desired spine lngth CSVs
 #WARNING - reassigned for each experiment - start looking here if any bugs pop up
 colnames = unique(lapply(CNC84.csvs, colnames))
-colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC84.csvs, colnames), function(r){length(r) == length(c) && r == c})) })
+colnames.counts = sapply(colnames, function(c){ sum(sapply(lapply(CNC84.csvs, colnames), function(r){all(length(r) == length(c) & r == c)})) })#edited to account for && operator change in R 4.3.0
 colnames.correct = colnames[[which(colnames.counts == max(colnames.counts))]]
 
 CNC84.csvs = CNC84.csvs[which(lapply(lapply(CNC84.csvs, colnames), function(c){ all(c == colnames.correct) }) == TRUE)]
